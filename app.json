@@ -1,19 +1,20 @@
 {
   "expo": {
-    "name": "mandarinai",
+    "name": "MandarinAI",
     "slug": "mandarinai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "app.mandarinai"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,10 +22,28 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "app.mandarinai",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-av"
+    ],
+    "scheme": "mandarinai",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2319de7d-aefd-4c41-baa8-e2aa469f1a93"
+      }
+    },
+    "owner": "serafymdev"
   }
 }
