@@ -1,9 +1,10 @@
 import { router } from "expo-router";
 import { BookOpen, Compass, LibraryBig, Plus, Type } from "lucide-react-native";
 import type { LucideProps } from "lucide-react-native";
-import { ScrollView, View } from "react-native";
+import { Pressable, ScrollView, View } from "react-native";
 
 import { Card, Screen, Text, useToast } from "@/components/ui";
+import { EXERCISE_META, type ExerciseType } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
 type Entry = {
@@ -13,6 +14,15 @@ type Entry = {
   onPress: () => void;
   disabled?: boolean;
 };
+
+const EXERCISE_ORDER: ExerciseType[] = [
+  "translate",
+  "listen-and-pick",
+  "tone-id",
+  "match-pairs",
+  "word-order",
+  "fill-blank",
+];
 
 export default function Learn() {
   const theme = useTheme();
@@ -45,10 +55,10 @@ export default function Learn() {
     },
     {
       title: "Grammar patterns",
-      hint: "Coming in Phase 7",
+      hint: "Coming later",
       Icon: Compass,
       disabled: true,
-      onPress: () => toast.info("Grammar patterns arrive with the exercises hub"),
+      onPress: () => toast.info("Grammar patterns arrive later"),
     },
   ];
 
@@ -72,10 +82,15 @@ export default function Learn() {
           {entries.map((e) => (
             <Card
               key={e.title}
-              onPress={e.disabled ? e.onPress : e.onPress}
+              onPress={e.onPress}
               accessibilityLabel={e.title}
               bordered
-              style={{ flexDirection: "row", alignItems: "center", gap: theme.spacing.lg, opacity: e.disabled ? 0.55 : 1 }}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: theme.spacing.lg,
+                opacity: e.disabled ? 0.55 : 1,
+              }}
             >
               <View
                 style={{
@@ -97,6 +112,47 @@ export default function Learn() {
               </View>
             </Card>
           ))}
+        </View>
+
+        <View style={{ gap: theme.spacing.md }}>
+          <View style={{ gap: theme.spacing.xs }}>
+            <Text variant="caption" color="tertiary">
+              Quick exercises
+            </Text>
+            <Text variant="h3">Drill from your deck</Text>
+            <Text variant="small" color="secondary">
+              10 rounds each, generated from words you've already saved.
+            </Text>
+          </View>
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.sm }}>
+            {EXERCISE_ORDER.map((t) => {
+              const meta = EXERCISE_META[t];
+              return (
+                <Pressable
+                  key={t}
+                  onPress={() => router.push(`/(app)/exercises/${t}`)}
+                  accessibilityLabel={meta.label}
+                  style={{
+                    flexBasis: "47%",
+                    flexGrow: 1,
+                    padding: theme.spacing.md,
+                    borderRadius: theme.radii.md,
+                    backgroundColor: theme.colors.surface,
+                    borderWidth: 1,
+                    borderColor: theme.colors.border,
+                    gap: 4,
+                  }}
+                >
+                  <Text style={{ fontSize: 28, lineHeight: 32 }}>{meta.emoji}</Text>
+                  <Text variant="bodyStrong">{meta.label}</Text>
+                  <Text variant="small" color="tertiary" numberOfLines={2}>
+                    {meta.hint}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
         </View>
       </ScrollView>
     </Screen>
