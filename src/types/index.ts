@@ -1,5 +1,13 @@
 export type NativeLanguage = "en" | "es" | "pt" | "ru" | "zh";
 export type LearningGoal = "travel" | "work" | "hsk_exam" | "immigration" | "fun";
+export type AppThemeId =
+  | "system"
+  | "light"
+  | "dark"
+  | "sakura"
+  | "bamboo"
+  | "midnight"
+  | "parchment";
 
 /**
  * Shape of the `profiles` row we care about on the mobile side.
@@ -18,6 +26,7 @@ export type Profile = {
   notification_enabled: boolean;
   timezone: string;
   onboarding_completed: boolean;
+  app_theme: AppThemeId;
 };
 
 export type ProfileUpdate = Partial<Omit<Profile, "id">>;

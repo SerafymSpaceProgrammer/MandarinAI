@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ScrollView, View } from "react-native";
 
 import { deleteAccount, signOut } from "@/api";
+import { ThemePicker } from "@/components/ThemePicker";
 import {
   Button,
   Card,
@@ -24,7 +25,6 @@ export default function Profile() {
     if (busy) return;
     setBusy(true);
     await signOut();
-    // onAuthStateChange clears session → root layout reroutes to /(auth).
   }
 
   async function handleDelete() {
@@ -65,6 +65,19 @@ export default function Profile() {
             Onboarding: {profile?.onboarding_completed ? "done" : "not yet"}
           </Text>
         </Card>
+
+        <View style={{ gap: theme.spacing.md }}>
+          <View style={{ gap: theme.spacing.xs }}>
+            <Text variant="caption" color="tertiary">
+              Appearance
+            </Text>
+            <Text variant="h3">Theme</Text>
+            <Text variant="small" color="secondary">
+              System follows your device. Pick a specific one to stay put.
+            </Text>
+          </View>
+          <ThemePicker />
+        </View>
 
         <View style={{ gap: theme.spacing.md }}>
           <Button
