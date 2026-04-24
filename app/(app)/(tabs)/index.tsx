@@ -141,20 +141,30 @@ export default function Home() {
             <QuickChip
               emoji="🔥"
               label="Flashcards"
-              hint="Review one card"
-              onPress={() => toast.info("Review lands in Phase 4")}
+              hint={home.dueCount > 0 ? `${home.dueCount} due now` : "Review deck"}
+              onPress={() => router.push("/(app)/vocab/review")}
+            />
+            <QuickChip
+              emoji="➕"
+              label="Add a word"
+              hint="Save a new term"
+              onPress={() => router.push("/(app)/vocab/add")}
             />
           </ScrollView>
         </View>
 
         {/* Recent from ChineseLens */}
         <View style={{ gap: theme.spacing.md }}>
-          <View style={{ flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" }}>
+          <Pressable
+            onPress={() => router.push("/(app)/vocab/browse")}
+            style={{ flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" }}
+            accessibilityLabel="Browse deck"
+          >
             <Text variant="h3">From ChineseLens</Text>
-            <Text variant="small" color="tertiary">
-              {home.savedWordsTotal} saved
+            <Text variant="small" color="accent">
+              {home.savedWordsTotal} saved ›
             </Text>
-          </View>
+          </Pressable>
 
           {home.loading ? (
             <Card>
