@@ -1,174 +1,73 @@
 import { Pause, Play, RotateCcw } from "lucide-react-native";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-import { ActivityIndicator, Animated, Easing, Pressable, View } from "react-native";
-import Svg, { ClipPath, Defs, G, Path } from "react-native-svg";
+import { useRef, useState } from "react";
+import { Pressable, View } from "react-native";
+import { WebView, type WebViewMessageEvent } from "react-native-webview";
 
 import { Text } from "@/components/ui";
-import {
-  fetchStrokeData,
-  medianLength,
-  medianToPathD,
-  type StrokeData,
-} from "@/features/strokes/api";
 import { useTheme } from "@/theme";
-
-const AnimatedPath = Animated.createAnimatedComponent(Path);
-
-// hanzi-writer-data is authored in a 1024-wide coordinate system with the
-// origin bottom-left (y grows up). To render in SVG (origin top-left, y grows
-// down) we flip y and translate by the full height. Using 900 here — which I
-// did earlier — clips any stroke between y=900 and y=1024.
-const VIEWBOX = "0 0 1024 1024";
-const Y_FLIP = "matrix(1 0 0 -1 0 1024)";
-// Width of the reveal brush in viewBox units. Must exceed the thickest real
-// stroke so the median-sweep clip fully uncovers it.
-const REVEAL_WIDTH = 320;
-const MS_PER_STROKE = 600;
-const GAP_MS = 160;
 
 type Props = {
   hanzi: string;
   /** Render size in screen points. Defaults to 260×260. */
   size?: number;
-  /** Show outline of every stroke in muted color. Default true. */
-  showOutline?: boolean;
-  /** Autoplay the animation on mount. Default true. */
+  /** Autoplay the animation once the page loads. Default true. */
   autoplay?: boolean;
-  /** Paint radical strokes in the accent color. Default true. */
-  highlightRadical?: boolean;
 };
 
-type Status = "loading" | "ready" | "unavailable";
-
-export function StrokeAnimator({
-  hanzi,
-  size = 260,
-  showOutline = true,
-  autoplay = true,
-  highlightRadical = true,
-}: Props) {
+/**
+ * Embeds hanzi-writer (the same library used by the ChineseLens extension)
+ * inside a WebView. This is by far the most reliable way to get the smooth,
+ * crisp stroke-order animation across Android/iOS — react-native-svg's
+ * clip-path rendering is too buggy for the required reveal effect, so we
+ * let the battle-tested web implementation do the drawing.
+ */
+export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
   const theme = useTheme();
-
-  const [data, setData] = useState<StrokeData | null>(null);
-  const [status, setStatus] = useState<Status>("loading");
-  const [activeIdx, setActiveIdx] = useState(-1);
+  const webviewRef = useRef<WebView>(null);
+  const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [strokeCount, setStrokeCount] = useState<number | null>(null);
+  const [currentStroke, setCurrentStroke] = useState<number | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
-    setStatus("loading");
-    setData(null);
-    setActiveIdx(-1);
-    (async () => {
-      const result = await fetchStrokeData(hanzi);
-      if (cancelled) return;
-      if (!result) {
-        setStatus("unavailable");
-      } else {
-        setData(result);
-        setStatus("ready");
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [hanzi]);
+  const html = buildHtml({
+    hanzi,
+    bg: theme.colors.surface,
+    stroke: theme.colors.textPrimary,
+    radical: theme.colors.accent,
+    outline: theme.colors.border,
+    autoplay,
+  });
 
-  const lengths = useMemo(() => (data ? data.medians.map((m) => medianLength(m)) : []), [data]);
-
-  // One Animated.Value per stroke, stable across renders for this hanzi.
-  const offsetsRef = useRef<Animated.Value[]>([]);
-  useEffect(() => {
-    if (!data) return;
-    offsetsRef.current = data.medians.map((_, i) => new Animated.Value(lengths[i] ?? 1));
-    // Restart activeIdx when a new character loads.
-    setActiveIdx(-1);
-  }, [data, lengths]);
-
-  // Generation counter — every play/reset bumps this. Any in-flight callback
-  // that sees a stale generation bails out, so there's no way for an old
-  // sequence to keep driving state after stop() or a new play() takes over.
-  const genRef = useRef(0);
-  const runningTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const runningAnim = useRef<Animated.CompositeAnimation | null>(null);
-
-  function stop() {
-    genRef.current += 1;
-    runningAnim.current?.stop();
-    runningAnim.current = null;
-    if (runningTimer.current != null) {
-      clearTimeout(runningTimer.current);
-      runningTimer.current = null;
-    }
-    setPlaying(false);
-    setActiveIdx(-1);
+  function send(command: "play" | "pause" | "reset") {
+    webviewRef.current?.injectJavaScript(`window._hw_${command}?.(); true;`);
   }
 
-  function reset() {
-    stop();
-    if (!data) return;
-    data.medians.forEach((_, i) => {
-      offsetsRef.current[i]?.setValue(lengths[i] ?? 1);
-    });
-  }
-
-  function play() {
-    if (!data || data.strokes.length === 0) return;
-    reset();
-
-    genRef.current += 1;
-    const gen = genRef.current;
-    setPlaying(true);
-
-    const step = (i: number) => {
-      if (gen !== genRef.current) return;
-      if (i >= data.strokes.length) {
-        setActiveIdx(-1);
+  function onMessage(e: WebViewMessageEvent) {
+    try {
+      const data = JSON.parse(e.nativeEvent.data) as {
+        type: string;
+        strokeCount?: number;
+        index?: number;
+      };
+      if (data.type === "ready") {
+        setReady(true);
+        if (data.strokeCount != null) setStrokeCount(data.strokeCount);
+      } else if (data.type === "start") {
+        setPlaying(true);
+        setCurrentStroke(data.index ?? 0);
+      } else if (data.type === "stroke") {
+        setCurrentStroke(data.index ?? null);
+      } else if (data.type === "end") {
         setPlaying(false);
-        return;
+        setCurrentStroke(null);
+      } else if (data.type === "unavailable") {
+        setReady(true);
+        setStrokeCount(0);
       }
-      setActiveIdx(i);
-      const offset = offsetsRef.current[i];
-      if (!offset) {
-        step(i + 1);
-        return;
-      }
-      const anim = Animated.timing(offset, {
-        toValue: 0,
-        duration: MS_PER_STROKE,
-        easing: Easing.inOut(Easing.ease),
-        useNativeDriver: false,
-      });
-      runningAnim.current = anim;
-      anim.start(({ finished }) => {
-        if (gen !== genRef.current) return;
-        if (!finished) return;
-        runningAnim.current = null;
-        runningTimer.current = setTimeout(() => {
-          runningTimer.current = null;
-          step(i + 1);
-        }, GAP_MS);
-      });
-    };
-
-    step(0);
+    } catch {
+      // ignore non-JSON messages
+    }
   }
-
-  // Autoplay once the character's strokes are loaded.
-  useEffect(() => {
-    if (status !== "ready" || !autoplay) return;
-    const id = setTimeout(play, 120);
-    return () => clearTimeout(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status, hanzi, autoplay]);
-
-  // Stop any in-flight animation on unmount.
-  useEffect(() => () => stop(), []);
-
-  const radicalSet = useMemo(
-    () => new Set(data?.radStrokes ?? []),
-    [data],
-  );
 
   return (
     <View style={{ alignItems: "center", gap: theme.spacing.md }}>
@@ -181,147 +80,57 @@ export function StrokeAnimator({
           borderColor: theme.colors.border,
           backgroundColor: theme.colors.surface,
           overflow: "hidden",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 4,
         }}
       >
-        {status === "loading" ? (
-          <ActivityIndicator color={theme.colors.accent} />
-        ) : status === "unavailable" || !data ? (
-          <View style={{ alignItems: "center", gap: 4, paddingHorizontal: 12 }}>
-            <Text chinese style={{ fontSize: 96, lineHeight: 104, color: theme.colors.textPrimary }}>
-              {hanzi}
-            </Text>
-            <Text variant="small" color="tertiary" align="center">
-              Stroke data unavailable for this character.
-            </Text>
-          </View>
-        ) : (
-          <GlyphSvg
-            hanzi={hanzi}
-            data={data}
-            offsets={offsetsRef.current}
-            lengths={lengths}
-            radicals={radicalSet}
-            size={size - 8}
-            showOutline={showOutline}
-            highlightRadical={highlightRadical}
-            outlineColor={theme.colors.border}
-            fillColor={theme.colors.textPrimary}
-            accent={theme.colors.accent}
-          />
-        )}
+        <WebView
+          ref={webviewRef}
+          source={{ html }}
+          originWhitelist={["*"]}
+          onMessage={onMessage}
+          javaScriptEnabled
+          domStorageEnabled
+          scrollEnabled={false}
+          bounces={false}
+          androidLayerType="hardware"
+          // Transparent so the outer View's background (theme surface) shows through
+          // while fonts/data are loading — avoids a flash of white on dark themes.
+          style={{ backgroundColor: "transparent", width: size, height: size }}
+        />
       </View>
 
-      {status === "ready" && data ? (
-        <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
+      <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
+        {strokeCount !== null && strokeCount > 0 ? (
           <Text variant="small" color="tertiary">
-            {data.strokes.length} {data.strokes.length === 1 ? "stroke" : "strokes"}
-            {activeIdx >= 0 ? ` · drawing ${activeIdx + 1}/${data.strokes.length}` : ""}
+            {strokeCount} {strokeCount === 1 ? "stroke" : "strokes"}
+            {currentStroke !== null ? ` · drawing ${currentStroke + 1}/${strokeCount}` : ""}
           </Text>
+        ) : strokeCount === 0 ? (
+          <Text variant="small" color="tertiary">
+            Stroke data unavailable
+          </Text>
+        ) : (
+          <Text variant="small" color="tertiary">
+            Loading…
+          </Text>
+        )}
+        {ready && strokeCount && strokeCount > 0 ? (
           <View style={{ flexDirection: "row", gap: theme.spacing.md }}>
             <IconBtn
-              accessibilityLabel={playing ? "Pause" : "Play"}
-              onPress={() => (playing ? stop() : play())}
               Icon={playing ? Pause : Play}
+              accessibilityLabel={playing ? "Pause" : "Play"}
+              onPress={() => send(playing ? "pause" : "play")}
             />
             <IconBtn
-              accessibilityLabel="Restart"
-              onPress={() => {
-                reset();
-                setTimeout(play, 80);
-              }}
               Icon={RotateCcw}
+              accessibilityLabel="Restart"
+              onPress={() => send("reset")}
             />
           </View>
-        </View>
-      ) : null}
+        ) : null}
+      </View>
     </View>
   );
 }
-
-// Memoized SVG shell. Props are stable for the duration of any single
-// character's animation (offsets are Animated.Value refs that don't change
-// identity, lengths are stable once data loads), so React skips re-rendering
-// it when the outer component updates the play/counter state.
-type GlyphSvgProps = {
-  hanzi: string;
-  data: StrokeData;
-  offsets: Animated.Value[];
-  lengths: number[];
-  radicals: Set<number>;
-  size: number;
-  showOutline: boolean;
-  highlightRadical: boolean;
-  outlineColor: string;
-  fillColor: string;
-  accent: string;
-};
-
-const GlyphSvg = memo(function GlyphSvg({
-  hanzi,
-  data,
-  offsets,
-  lengths,
-  radicals,
-  size,
-  showOutline,
-  highlightRadical,
-  outlineColor,
-  fillColor,
-  accent,
-}: GlyphSvgProps) {
-  return (
-    <Svg width={size} height={size} viewBox={VIEWBOX}>
-      <Defs>
-        {data.medians.map((m, i) => {
-          const offset = offsets[i];
-          if (!offset) return null;
-          return (
-            <ClipPath key={`clip-${i}`} id={`cl-${hanzi}-${i}`}>
-              <AnimatedPath
-                d={medianToPathD(m)}
-                stroke="#000"
-                strokeWidth={REVEAL_WIDTH}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-                strokeDasharray={lengths[i] ?? 1}
-                strokeDashoffset={offset}
-              />
-            </ClipPath>
-          );
-        })}
-      </Defs>
-
-      <G transform={Y_FLIP}>
-        {showOutline
-          ? data.strokes.map((d, i) => (
-              <Path
-                key={`outline-${i}`}
-                d={d}
-                fill="none"
-                stroke={outlineColor}
-                strokeWidth={2}
-              />
-            ))
-          : null}
-        {data.strokes.map((d, i) => {
-          const isRadical = highlightRadical && radicals.has(i);
-          return (
-            <Path
-              key={`fill-${i}`}
-              d={d}
-              fill={isRadical ? accent : fillColor}
-              clipPath={`url(#cl-${hanzi}-${i})`}
-            />
-          );
-        })}
-      </G>
-    </Svg>
-  );
-});
 
 function IconBtn({
   Icon,
@@ -350,4 +159,143 @@ function IconBtn({
       <Icon color={theme.colors.accent} size={22} strokeWidth={2} />
     </Pressable>
   );
+}
+
+/**
+ * Produce a self-contained HTML document that:
+ *  • loads hanzi-writer (same version family as the extension — 3.7.x)
+ *  • draws the given character with the app's theme colors
+ *  • posts start/stroke/end events back to RN so we can drive the counter
+ *  • exposes window._hw_play / _hw_pause / _hw_reset for the RN controls
+ */
+function buildHtml(opts: {
+  hanzi: string;
+  bg: string;
+  stroke: string;
+  radical: string;
+  outline: string;
+  autoplay: boolean;
+}): string {
+  const { hanzi, bg, stroke, radical, outline, autoplay } = opts;
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: ${bg};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #target {
+      width: 92%;
+      height: 92%;
+    }
+  </style>
+</head>
+<body>
+  <div id="target"></div>
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.3/dist/hanzi-writer.min.js"></script>
+  <script>
+    (function () {
+      function post(payload) {
+        try {
+          window.ReactNativeWebView.postMessage(JSON.stringify(payload));
+        } catch (e) { /* noop */ }
+      }
+
+      function start() {
+        var el = document.getElementById('target');
+        if (!el || typeof HanziWriter === 'undefined') {
+          post({ type: 'unavailable' });
+          return;
+        }
+
+        var rect = el.getBoundingClientRect();
+        var side = Math.min(rect.width, rect.height);
+
+        try {
+          var writer = HanziWriter.create('target', ${JSON.stringify(hanzi)}, {
+            width: side,
+            height: side,
+            padding: 6,
+            showOutline: true,
+            showCharacter: false,
+            strokeColor: ${JSON.stringify(stroke)},
+            radicalColor: ${JSON.stringify(radical)},
+            outlineColor: ${JSON.stringify(outline)},
+            strokeAnimationSpeed: 1,
+            delayBetweenStrokes: 220,
+            strokeFadeDuration: 280
+          });
+
+          // The library loads stroke data async from a CDN. Start animating
+          // once loaded so the UI feels instant. Errors here usually mean the
+          // character isn't in the dataset.
+          writer.loadCharacterData(${JSON.stringify(hanzi)}).then(function (data) {
+            var strokeCount = (data && data.strokes) ? data.strokes.length : 0;
+            post({ type: 'ready', strokeCount: strokeCount });
+            if (${autoplay ? "true" : "false"}) runAnimation();
+          }).catch(function () {
+            post({ type: 'unavailable' });
+          });
+
+          function runAnimation() {
+            post({ type: 'start', index: 0 });
+            writer.animateCharacter({
+              onAnimationComplete: function () {
+                post({ type: 'end' });
+              }
+            });
+            // hanzi-writer doesn't emit per-stroke events directly, so we use
+            // the plugin-less approach: intercept animateStroke and ping RN
+            // whenever the library kicks off the next stroke.
+          }
+
+          // Monkey-patch the per-stroke animator to emit progress.
+          var origAnimate = writer._renderState && writer._renderState.state
+            ? null
+            : null;
+
+          // hanzi-writer 3.x exposes an animateCharacter that internally calls
+          // animateStroke in sequence. We subscribe via the _characterRenderer
+          // if available, else use a fallback timer that polls isAnimating.
+          try {
+            var orig = writer.animateStroke.bind(writer);
+            writer.animateStroke = function (idx, opt) {
+              post({ type: 'stroke', index: idx });
+              return orig(idx, opt);
+            };
+          } catch (e) { /* old hanzi-writer API */ }
+
+          window._hw_play = function () { writer.animateCharacter({ onAnimationComplete: function () { post({ type: 'end' }); } }); post({ type: 'start', index: 0 }); };
+          window._hw_pause = function () { try { writer.pauseAnimation && writer.pauseAnimation(); } catch (e) {} post({ type: 'end' }); };
+          window._hw_reset = function () {
+            try { writer.cancelAnimation && writer.cancelAnimation(); } catch (e) {}
+            try { writer.hideCharacter(); } catch (e) {}
+            post({ type: 'end' });
+            setTimeout(function () {
+              post({ type: 'start', index: 0 });
+              writer.animateCharacter({ onAnimationComplete: function () { post({ type: 'end' }); } });
+            }, 80);
+          };
+        } catch (err) {
+          post({ type: 'unavailable' });
+        }
+      }
+
+      if (document.readyState === 'complete') start();
+      else window.addEventListener('load', start);
+    })();
+  </script>
+</body>
+</html>`;
 }

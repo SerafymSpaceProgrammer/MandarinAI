@@ -24,14 +24,20 @@ export function StrokeViewerModal({ visible, onClose, hanzi, pinyin, english }: 
   const chars = [...hanzi];
   const [idx, setIdx] = useState(0);
 
-  // Reset to first char whenever the modal opens with a new word.
   const current = chars[Math.min(idx, chars.length - 1)] ?? hanzi;
 
   return (
     <Modal visible={visible} onClose={onClose} title="Stroke order">
-      <View style={{ gap: theme.spacing.lg, alignItems: "center" }}>
+      <ScrollView
+        contentContainerStyle={{
+          gap: theme.spacing.lg,
+          alignItems: "center",
+          paddingBottom: theme.spacing.md,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
         {pinyin || english ? (
-          <View style={{ alignItems: "center", gap: 2 }}>
+          <View style={{ alignItems: "center", gap: 4 }}>
             {pinyin ? (
               <Text variant="pinyin" color="accent">
                 {pinyin}
@@ -78,8 +84,8 @@ export function StrokeViewerModal({ visible, onClose, hanzi, pinyin, english }: 
           </ScrollView>
         ) : null}
 
-        <StrokeAnimator key={current} hanzi={current} size={260} />
-      </View>
+        <StrokeAnimator key={current} hanzi={current} size={240} />
+      </ScrollView>
     </Modal>
   );
 }
