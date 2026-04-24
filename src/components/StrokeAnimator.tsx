@@ -4,6 +4,7 @@ import { Pressable, View } from "react-native";
 import { WebView, type WebViewMessageEvent } from "react-native-webview";
 
 import { Text } from "@/components/ui";
+import { logger } from "@/lib/logger";
 import { useTheme } from "@/theme";
 
 type Props = {
@@ -16,10 +17,10 @@ type Props = {
 
 /**
  * Embeds hanzi-writer (the same library used by the ChineseLens extension)
- * inside a WebView. This is by far the most reliable way to get the smooth,
- * crisp stroke-order animation across Android/iOS — react-native-svg's
- * clip-path rendering is too buggy for the required reveal effect, so we
- * let the battle-tested web implementation do the drawing.
+ * inside a WebView. This is the most reliable way to get smooth, crisp
+ * stroke-order animation across iOS/Android — react-native-svg's clip-path
+ * rendering is too buggy for the required reveal effect, so we let the
+ * battle-tested web implementation do the drawing.
  */
 export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
   const theme = useTheme();
@@ -28,6 +29,7 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
   const [playing, setPlaying] = useState(false);
   const [strokeCount, setStrokeCount] = useState<number | null>(null);
   const [currentStroke, setCurrentStroke] = useState<number | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const html = buildHtml({
     hanzi,
@@ -48,9 +50,11 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
         type: string;
         strokeCount?: number;
         index?: number;
+        message?: string;
       };
       if (data.type === "ready") {
         setReady(true);
+        setErrorMessage(null);
         if (data.strokeCount != null) setStrokeCount(data.strokeCount);
       } else if (data.type === "start") {
         setPlaying(true);
@@ -63,6 +67,8 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
       } else if (data.type === "unavailable") {
         setReady(true);
         setStrokeCount(0);
+        setErrorMessage(data.message ?? "Stroke data unavailable");
+        logger.warn("stroke animator unavailable", hanzi, data.message);
       }
     } catch {
       // ignore non-JSON messages
@@ -84,7 +90,7 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
       >
         <WebView
           ref={webviewRef}
-          source={{ html }}
+          source={{ html, baseUrl: "https://cdn.jsdelivr.net/" }}
           originWhitelist={["*"]}
           onMessage={onMessage}
           javaScriptEnabled
@@ -92,8 +98,7 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
           scrollEnabled={false}
           bounces={false}
           androidLayerType="hardware"
-          // Transparent so the outer View's background (theme surface) shows through
-          // while fonts/data are loading — avoids a flash of white on dark themes.
+          mixedContentMode="always"
           style={{ backgroundColor: "transparent", width: size, height: size }}
         />
       </View>
@@ -105,9 +110,16 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
             {currentStroke !== null ? ` · drawing ${currentStroke + 1}/${strokeCount}` : ""}
           </Text>
         ) : strokeCount === 0 ? (
-          <Text variant="small" color="tertiary">
-            Stroke data unavailable
-          </Text>
+          <View style={{ alignItems: "center", gap: 2 }}>
+            <Text variant="small" color="tertiary">
+              Stroke data unavailable
+            </Text>
+            {errorMessage ? (
+              <Text variant="caption" color="tertiary">
+                ({errorMessage})
+              </Text>
+            ) : null}
+          </View>
         ) : (
           <Text variant="small" color="tertiary">
             Loading…
@@ -162,11 +174,10 @@ function IconBtn({
 }
 
 /**
- * Produce a self-contained HTML document that:
- *  • loads hanzi-writer (same version family as the extension — 3.7.x)
- *  • draws the given character with the app's theme colors
- *  • posts start/stroke/end events back to RN so we can drive the counter
- *  • exposes window._hw_play / _hw_pause / _hw_reset for the RN controls
+ * Self-contained HTML that loads hanzi-writer and uses its built-in data
+ * loader (CDN-fed) with onLoadCharDataSuccess / onLoadCharDataError so we
+ * don't need to call a non-existent instance method. postMessage relays
+ * ready / start / stroke / end / unavailable events back to RN.
  */
 function buildHtml(opts: {
   hanzi: string;
@@ -203,27 +214,35 @@ function buildHtml(opts: {
 </head>
 <body>
   <div id="target"></div>
-  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.3/dist/hanzi-writer.min.js"></script>
+  <script>
+    function post(payload) {
+      try { window.ReactNativeWebView.postMessage(JSON.stringify(payload)); } catch (e) {}
+    }
+    window.addEventListener('error', function (ev) {
+      post({ type: 'unavailable', message: 'js error: ' + (ev.message || 'unknown') });
+    });
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.3/dist/hanzi-writer.min.js"
+    onerror="post({ type: 'unavailable', message: 'script load failed' })"
+  ></script>
   <script>
     (function () {
-      function post(payload) {
-        try {
-          window.ReactNativeWebView.postMessage(JSON.stringify(payload));
-        } catch (e) { /* noop */ }
-      }
-
       function start() {
-        var el = document.getElementById('target');
-        if (!el || typeof HanziWriter === 'undefined') {
-          post({ type: 'unavailable' });
+        if (typeof HanziWriter === 'undefined') {
+          post({ type: 'unavailable', message: 'HanziWriter not defined' });
           return;
         }
 
-        var rect = el.getBoundingClientRect();
-        var side = Math.min(rect.width, rect.height);
+        var el = document.getElementById('target');
+        if (!el) { post({ type: 'unavailable', message: 'no target element' }); return; }
 
+        var rect = el.getBoundingClientRect();
+        var side = Math.max(80, Math.min(rect.width, rect.height));
+
+        var writer;
         try {
-          var writer = HanziWriter.create('target', ${JSON.stringify(hanzi)}, {
+          writer = HanziWriter.create('target', ${JSON.stringify(hanzi)}, {
             width: side,
             height: side,
             padding: 6,
@@ -233,63 +252,51 @@ function buildHtml(opts: {
             radicalColor: ${JSON.stringify(radical)},
             outlineColor: ${JSON.stringify(outline)},
             strokeAnimationSpeed: 1,
-            delayBetweenStrokes: 220,
-            strokeFadeDuration: 280
-          });
-
-          // The library loads stroke data async from a CDN. Start animating
-          // once loaded so the UI feels instant. Errors here usually mean the
-          // character isn't in the dataset.
-          writer.loadCharacterData(${JSON.stringify(hanzi)}).then(function (data) {
-            var strokeCount = (data && data.strokes) ? data.strokes.length : 0;
-            post({ type: 'ready', strokeCount: strokeCount });
-            if (${autoplay ? "true" : "false"}) runAnimation();
-          }).catch(function () {
-            post({ type: 'unavailable' });
-          });
-
-          function runAnimation() {
-            post({ type: 'start', index: 0 });
-            writer.animateCharacter({
-              onAnimationComplete: function () {
-                post({ type: 'end' });
+            delayBetweenStrokes: 200,
+            strokeFadeDuration: 280,
+            onLoadCharDataSuccess: function (data) {
+              var count = (data && data.strokes) ? data.strokes.length : 0;
+              post({ type: 'ready', strokeCount: count });
+              if (${autoplay ? "true" : "false"}) {
+                setTimeout(function () { runAnimation(); }, 60);
               }
-            });
-            // hanzi-writer doesn't emit per-stroke events directly, so we use
-            // the plugin-less approach: intercept animateStroke and ping RN
-            // whenever the library kicks off the next stroke.
-          }
-
-          // Monkey-patch the per-stroke animator to emit progress.
-          var origAnimate = writer._renderState && writer._renderState.state
-            ? null
-            : null;
-
-          // hanzi-writer 3.x exposes an animateCharacter that internally calls
-          // animateStroke in sequence. We subscribe via the _characterRenderer
-          // if available, else use a fallback timer that polls isAnimating.
-          try {
-            var orig = writer.animateStroke.bind(writer);
-            writer.animateStroke = function (idx, opt) {
-              post({ type: 'stroke', index: idx });
-              return orig(idx, opt);
-            };
-          } catch (e) { /* old hanzi-writer API */ }
-
-          window._hw_play = function () { writer.animateCharacter({ onAnimationComplete: function () { post({ type: 'end' }); } }); post({ type: 'start', index: 0 }); };
-          window._hw_pause = function () { try { writer.pauseAnimation && writer.pauseAnimation(); } catch (e) {} post({ type: 'end' }); };
-          window._hw_reset = function () {
-            try { writer.cancelAnimation && writer.cancelAnimation(); } catch (e) {}
-            try { writer.hideCharacter(); } catch (e) {}
-            post({ type: 'end' });
-            setTimeout(function () {
-              post({ type: 'start', index: 0 });
-              writer.animateCharacter({ onAnimationComplete: function () { post({ type: 'end' }); } });
-            }, 80);
-          };
+            },
+            onLoadCharDataError: function (err) {
+              post({ type: 'unavailable', message: 'char data error: ' + (err && err.message ? err.message : 'not found') });
+            }
+          });
         } catch (err) {
-          post({ type: 'unavailable' });
+          post({ type: 'unavailable', message: 'create error: ' + (err.message || err) });
+          return;
         }
+
+        // Emit per-stroke progress by monkey-patching animateStroke.
+        try {
+          var origAnimate = writer.animateStroke.bind(writer);
+          writer.animateStroke = function (idx, opts) {
+            post({ type: 'stroke', index: idx });
+            return origAnimate(idx, opts);
+          };
+        } catch (e) { /* older hanzi-writer API */ }
+
+        function runAnimation() {
+          post({ type: 'start', index: 0 });
+          writer.animateCharacter({
+            onComplete: function () { post({ type: 'end' }); }
+          });
+        }
+
+        window._hw_play = function () { runAnimation(); };
+        window._hw_pause = function () {
+          try { writer.pauseAnimation && writer.pauseAnimation(); } catch (e) {}
+          post({ type: 'end' });
+        };
+        window._hw_reset = function () {
+          try { writer.cancelAnimation && writer.cancelAnimation(); } catch (e) {}
+          try { writer.hideCharacter && writer.hideCharacter(); } catch (e) {}
+          post({ type: 'end' });
+          setTimeout(runAnimation, 120);
+        };
       }
 
       if (document.readyState === 'complete') start();
