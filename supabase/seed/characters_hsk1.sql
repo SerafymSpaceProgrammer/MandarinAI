@@ -1,0 +1,60 @@
+-- ============================================================
+-- MandarinAI — HSK 1 character seed
+--
+-- 50 most-frequent HSK 1 characters with curated mnemonics.
+-- Idempotent — re-running is a no-op thanks to the upsert guard.
+-- Future seeds (HSK 2-6) will live in sibling files.
+-- ============================================================
+
+insert into public.characters_dict (hanzi, pinyin, meanings, hsk_level, frequency_rank, stroke_count, mnemonic_en) values
+('的', array['de'], array['(possessive particle)','of'], 1, 1, 8, 'White (白) with a ladle (勺) — "the white one". The possessive ''de'' glues owner to thing.'),
+('一', array['yī'], array['one','a single'], 1, 2, 1, 'A single horizontal stroke — literally the number one.'),
+('是', array['shì'], array['to be','is','are'], 1, 3, 9, 'Sun (日) above correct (正). "Under the sun, this is correct."'),
+('不', array['bù'], array['not','no'], 1, 4, 4, 'A bird flying into a wall — blocked, NOT allowed through.'),
+('了', array['le','liǎo'], array['(completed action particle)','to finish'], 1, 5, 2, 'A one-armed figure — the action is done, finished.'),
+('人', array['rén'], array['person','people'], 1, 6, 2, 'Two legs walking — the iconic shape of a person.'),
+('我', array['wǒ'], array['I','me'], 1, 7, 7, 'A hand (扌) holding a spear (戈) — "this is me, standing my ground".'),
+('在', array['zài'], array['at','in','exist'], 1, 8, 6, 'A plant rooted in the earth (土) — existing here, in this place.'),
+('有', array['yǒu'], array['to have','there is'], 1, 9, 6, 'A hand (ナ) holding meat (月) — I have meat, I have something.'),
+('他', array['tā'], array['he','him'], 1, 10, 5, 'Person (亻) + also (也) — another person, "he".'),
+('这', array['zhè'], array['this'], 1, 11, 7, 'Walk (辶) + letter (文) — "walk to this letter, this one here".'),
+('中', array['zhōng'], array['middle','center','China'], 1, 12, 4, 'A vertical line through the center of a box — the middle.'),
+('大', array['dà'], array['big','large'], 1, 13, 3, 'A person (人) with arms stretched wide — "this big".'),
+('来', array['lái'], array['to come'], 1, 14, 7, 'A plant growing towards you — come closer.'),
+('上', array['shàng'], array['up','above','on'], 1, 15, 3, 'A mark above the line — up there.'),
+('你', array['nǐ'], array['you'], 1, 16, 7, 'Person (亻) + you-pronoun (尔) — the other person, you.'),
+('好', array['hǎo'], array['good','well'], 1, 17, 6, 'Woman (女) + child (子) — a woman with her child is "good".'),
+('们', array['men'], array['(plural suffix for people)'], 1, 18, 5, 'People (亻) by a gate (门) — a group.'),
+('下', array['xià'], array['down','below','under'], 1, 19, 3, 'A mark below the line — down there.'),
+('那', array['nà'], array['that'], 1, 20, 6, 'The right-side ear (阝) pointing away — "that one over there".'),
+('去', array['qù'], array['to go','to leave'], 1, 21, 5, 'Earth (土) going away (厶) — leaving this place.'),
+('她', array['tā'], array['she','her'], 1, 22, 6, 'Woman (女) + also (也) — another (woman), "she".'),
+('小', array['xiǎo'], array['small','little'], 1, 23, 3, 'Three tiny dots — a little something.'),
+('说', array['shuō'], array['to speak','to say'], 1, 24, 9, 'Speech (讠) + exchange (兑) — "exchanging words".'),
+('看', array['kàn'], array['to look','to watch','to read'], 1, 25, 9, 'Hand (扌) shielding above an eye (目) — looking into the distance.'),
+('天', array['tiān'], array['day','sky','heaven'], 1, 26, 4, 'Big (大) with a heaven-bar on top — the sky above all.'),
+('爱', array['ài'], array['to love','love'], 1, 27, 10, 'A heart (心) covered (冖) and held by a friend (友) — love.'),
+('水', array['shuǐ'], array['water'], 1, 28, 4, 'Three streams flowing — water.'),
+('火', array['huǒ'], array['fire'], 1, 29, 4, 'A person on fire, arms flailing — fire!'),
+('口', array['kǒu'], array['mouth','opening'], 1, 30, 3, 'A square opening — a mouth.'),
+('山', array['shān'], array['mountain'], 1, 31, 3, 'Three peaks — a mountain range.'),
+('日', array['rì'], array['sun','day'], 1, 32, 4, 'A box with a line — the sun through a window.'),
+('月', array['yuè'], array['moon','month'], 1, 33, 4, 'A crescent moon on its side.'),
+('国', array['guó'], array['country','nation'], 1, 34, 8, 'Jade (玉) surrounded by borders — a country protects its treasures.'),
+('家', array['jiā'], array['home','family'], 1, 35, 10, 'A roof (宀) over a pig (豕) — in ancient China homes had pigs inside.'),
+('学', array['xué'], array['to study','to learn'], 1, 36, 8, 'A child (子) under a roof with learning hands reaching up.'),
+('生', array['shēng'], array['life','to give birth','raw','student'], 1, 37, 5, 'A plant sprouting from the earth — new life.'),
+('老', array['lǎo'], array['old','venerable'], 1, 38, 6, 'A person with a long beard leaning on a cane.'),
+('师', array['shī'], array['teacher','master'], 1, 39, 6, 'A mentor figure standing tall — the master.'),
+('心', array['xīn'], array['heart','mind'], 1, 40, 4, 'A pictograph of a heart with arteries radiating out.'),
+('手', array['shǒu'], array['hand'], 1, 41, 4, 'Five fingers stylized — a hand.'),
+('多', array['duō'], array['many','much'], 1, 42, 6, 'Two evenings (夕) stacked — many nights have passed.'),
+('少', array['shǎo','shào'], array['few','little','young'], 1, 43, 4, 'Small (小) with a slash — even less.'),
+('吃', array['chī'], array['to eat'], 1, 44, 6, 'Mouth (口) + beg (乞) — the mouth begging for food.'),
+('喝', array['hē'], array['to drink'], 1, 45, 12, 'Mouth (口) next to a sun — drinking water under the hot sun.'),
+('请', array['qǐng'], array['please','to invite'], 1, 46, 10, 'Speech (讠) + blue-green (青) — speaking politely, freshly.'),
+('谢', array['xiè'], array['to thank'], 1, 47, 12, 'Speech (讠) + shooting body — thanking someone with a bow.'),
+('见', array['jiàn'], array['to see','to meet'], 1, 48, 4, 'A person (儿) with an eye (目) — seeing.'),
+('听', array['tīng'], array['to listen','to hear'], 1, 49, 7, 'Mouth (口) + axe (斤) — listening sharply.'),
+('买', array['mǎi'], array['to buy'], 1, 50, 6, 'Head (头) down counting coins — making a purchase.')
+on conflict (hanzi) do nothing;

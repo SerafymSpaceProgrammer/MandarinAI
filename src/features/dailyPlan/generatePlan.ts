@@ -95,7 +95,7 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     emoji: "字",
     durationMin: 5,
     priority: 60,
-    href: null,
+    href: "/(app)/character",
     progress: 0,
   });
 
