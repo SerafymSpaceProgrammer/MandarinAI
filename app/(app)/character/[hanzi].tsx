@@ -7,6 +7,7 @@ import { ActivityIndicator, Pressable, ScrollView, TextInput, View } from "react
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Screen, Text } from "@/components/ui";
+import { StrokeAnimator } from "@/components/StrokeAnimator";
 import {
   advanceStep,
   fetchDict,
@@ -415,63 +416,20 @@ function PronounceStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () =>
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// Step 3 — Write (stub — Skia canvas + stroke_order data arrives later)
+// Step 3 — Write (watch the stroke order animate)
 // ──────────────────────────────────────────────────────────────────────────
 function WriteStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () => void }) {
   const theme = useTheme();
 
   return (
     <View style={{ gap: theme.spacing.xl, alignItems: "center" }}>
-      <View
-        style={{
-          width: 200,
-          height: 200,
-          borderRadius: theme.radii.md,
-          borderWidth: 2,
-          borderColor: theme.colors.border,
-          borderStyle: "dashed",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: theme.colors.surface,
-        }}
-      >
-        <Text
-          chinese
-          style={{
-            fontSize: 140,
-            lineHeight: 160,
-            color: theme.colors.textTertiary,
-            opacity: 0.4,
-            fontWeight: "700",
-          }}
-        >
-          {dict.hanzi}
-        </Text>
-      </View>
+      <StrokeAnimator hanzi={dict.hanzi} size={280} />
 
       <Text variant="body" color="secondary" align="center">
-        {dict.stroke_count ?? "?"} strokes.
+        Watch the stroke order. Real finger-tracing with scoring lands with the Skia writing trainer later.
       </Text>
 
-      <View
-        style={{
-          padding: theme.spacing.lg,
-          borderRadius: theme.radii.md,
-          borderWidth: 1,
-          borderColor: theme.colors.border,
-          backgroundColor: theme.colors.surface,
-          gap: theme.spacing.xs,
-        }}
-      >
-        <Text variant="caption" color="warning">
-          Stroke practice — coming soon
-        </Text>
-        <Text variant="small" color="secondary" align="center">
-          Trace-on-screen with @shopify/react-native-skia, matched against the character's stroke order. Arrives after the character dictionary has the SVG data seeded.
-        </Text>
-      </View>
-
-      <Button label="Skip for now" size="lg" fullWidth onPress={onSkip} />
+      <Button label="Got it — continue" size="lg" fullWidth onPress={onSkip} />
     </View>
   );
 }

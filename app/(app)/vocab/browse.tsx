@@ -1,9 +1,10 @@
 import { router } from "expo-router";
-import { ArrowLeft, Plus, Search, Trash2 } from "lucide-react-native";
+import { ArrowLeft, PenTool, Plus, Search, Trash2 } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { FlatList, Pressable, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Screen, Text, useToast } from "@/components/ui";
 import {
   deleteWord,
@@ -188,45 +189,69 @@ export default function Browse() {
 
 function WordRow({ word, onDelete }: { word: SavedWord; onDelete: () => void }) {
   const theme = useTheme();
+  const [showStrokes, setShowStrokes] = useState(false);
   const due = new Date(word.next_review_at).getTime() <= Date.now();
 
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        gap: theme.spacing.md,
-        padding: theme.spacing.md,
-        backgroundColor: theme.colors.surface,
-        borderRadius: theme.radii.md,
-        borderWidth: 1,
-        borderColor: theme.colors.border,
-      }}
-    >
-      <Text chinese variant="h2">
-        {word.hanzi}
-      </Text>
-      <View style={{ flex: 1, gap: 2 }}>
-        <Text variant="small" color="secondary">
-          {word.pinyin}
-        </Text>
-        <Text variant="body" numberOfLines={1}>
-          {word.english}
-        </Text>
-        <View style={{ flexDirection: "row", gap: 6, marginTop: 2 }}>
-          {word.hsk_level > 0 ? (
-            <Badge text={`HSK ${word.hsk_level}`} tone="accent" />
-          ) : null}
-          <Badge
-            text={due ? "due" : `${word.review_count} reviews`}
-            tone={due ? "warning" : "neutral"}
-          />
+    <>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: theme.spacing.md,
+          padding: theme.spacing.md,
+          backgroundColor: theme.colors.surface,
+          borderRadius: theme.radii.md,
+          borderWidth: 1,
+          borderColor: theme.colors.border,
+        }}
+      >
+        <Pressable
+          onPress={() => setShowStrokes(true)}
+          accessibilityLabel={`Show strokes for ${word.hanzi}`}
+        >
+          <Text chinese variant="h2">
+            {word.hanzi}
+          </Text>
+        </Pressable>
+        <View style={{ flex: 1, gap: 2 }}>
+          <Text variant="small" color="secondary">
+            {word.pinyin}
+          </Text>
+          <Text variant="body" numberOfLines={1}>
+            {word.english}
+          </Text>
+          <View style={{ flexDirection: "row", gap: 6, marginTop: 2 }}>
+            {word.hsk_level > 0 ? (
+              <Badge text={`HSK ${word.hsk_level}`} tone="accent" />
+            ) : null}
+            <Badge
+              text={due ? "due" : `${word.review_count} reviews`}
+              tone={due ? "warning" : "neutral"}
+            />
+          </View>
         </View>
+        <Pressable
+          onPress={() => setShowStrokes(true)}
+          hitSlop={8}
+          accessibilityLabel={`Strokes for ${word.hanzi}`}
+          style={{ padding: 4 }}
+        >
+          <PenTool color={theme.colors.textTertiary} size={18} strokeWidth={2} />
+        </Pressable>
+        <Pressable onPress={onDelete} hitSlop={12} accessibilityLabel={`Delete ${word.hanzi}`}>
+          <Trash2 color={theme.colors.textTertiary} size={18} strokeWidth={2} />
+        </Pressable>
       </View>
-      <Pressable onPress={onDelete} hitSlop={12} accessibilityLabel={`Delete ${word.hanzi}`}>
-        <Trash2 color={theme.colors.textTertiary} size={18} strokeWidth={2} />
-      </Pressable>
-    </View>
+
+      <StrokeViewerModal
+        visible={showStrokes}
+        onClose={() => setShowStrokes(false)}
+        hanzi={word.hanzi}
+        pinyin={word.pinyin}
+        english={word.english}
+      />
+    </>
   );
 }
 
