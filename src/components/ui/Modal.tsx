@@ -1,12 +1,15 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import {
   Animated,
+  Dimensions,
+  Easing,
   Modal as RNModal,
   Pressable,
   StyleSheet,
   View,
   type ViewStyle,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useTheme } from "@/theme";
 
@@ -24,6 +27,8 @@ type ModalProps = {
   contentStyle?: ViewStyle;
 };
 
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+
 export function Modal({
   visible,
   onClose,
@@ -34,27 +39,71 @@ export function Modal({
   contentStyle,
 }: ModalProps) {
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
+
+  // Two values so we can give the sheet a spring entrance and a cleaner fade
+  // exit. backdrop opacity shares `backdrop`, sheet uses its own `slide`.
+  const backdrop = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.timing(slide, {
-      toValue: visible ? 1 : 0,
-      duration: theme.duration.emphasis,
-      useNativeDriver: true,
-    }).start();
-  }, [visible, slide, theme.duration.emphasis]);
+    if (visible) {
+      Animated.parallel([
+        Animated.timing(backdrop, {
+          toValue: 1,
+          duration: 220,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: true,
+        }),
+        Animated.spring(slide, {
+          toValue: 1,
+          useNativeDriver: true,
+          friction: 11,
+          tension: 65,
+          restDisplacementThreshold: 0.01,
+          restSpeedThreshold: 0.01,
+        }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(backdrop, {
+          toValue: 0,
+          duration: 200,
+          easing: Easing.in(Easing.cubic),
+          useNativeDriver: true,
+        }),
+        Animated.timing(slide, {
+          toValue: 0,
+          duration: 220,
+          easing: Easing.in(Easing.cubic),
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+  }, [visible, backdrop, slide]);
 
-  const translateY = slide.interpolate({ inputRange: [0, 1], outputRange: [80, 0] });
-  const backdropOpacity = slide.interpolate({ inputRange: [0, 1], outputRange: [0, 1] });
+  const translateY = slide.interpolate({
+    inputRange: [0, 1],
+    outputRange: [SCREEN_HEIGHT * 0.5, 0],
+    extrapolate: "clamp",
+  });
+
+  const sheetBottomPad =
+    presentation === "sheet"
+      ? Math.max(insets.bottom + theme.spacing.md, theme.spacing["2xl"])
+      : theme.spacing.xl;
 
   const sheetStyles: ViewStyle = {
     backgroundColor: theme.colors.bg,
     borderTopLeftRadius: theme.radii.xl,
     borderTopRightRadius: theme.radii.xl,
     paddingHorizontal: theme.spacing.lg,
-    paddingTop: theme.spacing.lg,
-    paddingBottom: theme.spacing["3xl"],
-    maxHeight: "85%",
+    paddingTop: theme.spacing.md,
+    paddingBottom: sheetBottomPad,
+    // Hard cap. The inner content area uses `flexShrink:1` so any ScrollView
+    // the caller nests inside this Modal has a bounded height to scroll
+    // within, instead of running off the screen.
+    maxHeight: "92%",
     ...theme.shadows.xl,
   };
 
@@ -64,6 +113,7 @@ export function Modal({
     padding: theme.spacing.xl,
     width: "86%",
     maxWidth: 400,
+    maxHeight: "85%",
     ...theme.shadows.xl,
   };
 
@@ -79,12 +129,17 @@ export function Modal({
       onRequestClose={onClose}
       statusBarTranslucent
     >
-      <Animated.View style={[styles.backdrop, { opacity: backdropOpacity, backgroundColor: theme.colors.overlay }]}>
+      <Animated.View
+        style={[
+          styles.backdrop,
+          { opacity: backdrop, backgroundColor: theme.colors.overlay },
+        ]}
+      >
         <Pressable accessibilityLabel="Dismiss" style={StyleSheet.absoluteFill} onPress={handleOutside} />
         <Animated.View
           style={[
             presentation === "sheet" ? styles.sheetWrapper : styles.centerWrapper,
-            { transform: [{ translateY }] },
+            { transform: [{ translateY }], opacity: slide },
           ]}
         >
           <View
@@ -108,7 +163,7 @@ export function Modal({
                 {title}
               </Text>
             ) : null}
-            {children}
+            <View style={{ flexShrink: 1 }}>{children}</View>
           </View>
         </Animated.View>
       </Animated.View>
