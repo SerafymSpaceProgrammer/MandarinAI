@@ -122,7 +122,7 @@ export function generatePlan(input: PlanInput): PlanItem[] {
       emoji: "🗣️",
       durationMin: 5,
       priority: 50,
-      href: null,
+      href: "/(app)/practice/scenarios",
       progress: 0,
     });
   }

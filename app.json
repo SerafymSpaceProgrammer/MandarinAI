@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.mandarinai"
+      "bundleIdentifier": "app.mandarinai",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "MandarinAI uses the microphone so you can rehearse Mandarin out loud and receive pronunciation feedback."
+      }
     },
     "android": {
       "adaptiveIcon": {
