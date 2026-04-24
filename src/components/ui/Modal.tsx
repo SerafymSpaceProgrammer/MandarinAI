@@ -100,10 +100,11 @@ export function Modal({
     paddingHorizontal: theme.spacing.lg,
     paddingTop: theme.spacing.md,
     paddingBottom: sheetBottomPad,
-    // Hard cap. The inner content area uses `flexShrink:1` so any ScrollView
-    // the caller nests inside this Modal has a bounded height to scroll
-    // within, instead of running off the screen.
-    maxHeight: "92%",
+    // Absolute-anchored to the bottom of the window so the sheet always
+    // touches the screen edge. maxHeight uses an absolute px value (not %)
+    // because sheetWrapper has no intrinsic height for % to resolve against,
+    // which was the silent reason the sheet was floating mid-screen.
+    maxHeight: SCREEN_HEIGHT * 0.92,
     ...theme.shadows.xl,
   };
 
@@ -174,10 +175,16 @@ export function Modal({
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    justifyContent: "flex-end",
   },
+  // Absolute-anchored so the sheet sticks to the bottom of the window no
+  // matter how tall its content is. The previous flex + justifyContent
+  // approach placed the sheet "at the bottom" of an unsized flex child,
+  // which on some devices let short sheets float above the home indicator.
   sheetWrapper: {
-    width: "100%",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   centerWrapper: {
     flex: 1,

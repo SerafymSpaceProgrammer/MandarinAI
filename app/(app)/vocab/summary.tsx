@@ -81,7 +81,7 @@ export default function ReviewSummary() {
             label="Done"
             variant="ghost"
             fullWidth
-            onPress={() => router.replace("/(app)/(tabs)")}
+            onPress={() => router.replace("/(app)")}
           />
         </View>
       </View>

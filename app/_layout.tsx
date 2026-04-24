@@ -65,7 +65,7 @@ function AuthGate({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    if (group !== "(app)") router.replace("/(app)/(tabs)");
+    if (group !== "(app)") router.replace("/(app)");
   }, [initializing, session, profile, segments, pathname, router]);
 
   if (initializing) {

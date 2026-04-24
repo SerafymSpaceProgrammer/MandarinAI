@@ -242,13 +242,13 @@ function ExerciseSummary({
             label="Pick another exercise"
             variant="secondary"
             fullWidth
-            onPress={() => router.replace("/(app)/(tabs)/learn")}
+            onPress={() => router.replace("/(app)/learn")}
           />
           <Button
             label="Home"
             variant="ghost"
             fullWidth
-            onPress={() => router.replace("/(app)/(tabs)")}
+            onPress={() => router.replace("/(app)")}
           />
         </View>
       </View>

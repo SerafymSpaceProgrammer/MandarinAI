@@ -514,7 +514,7 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
             fullWidth
             onPress={() => router.replace("/(app)/practice/scenarios")}
           />
-          <Button label="Done" variant="ghost" fullWidth onPress={() => router.replace("/(app)/(tabs)")} />
+          <Button label="Done" variant="ghost" fullWidth onPress={() => router.replace("/(app)")} />
         </View>
       </ScrollView>
     </Screen>
