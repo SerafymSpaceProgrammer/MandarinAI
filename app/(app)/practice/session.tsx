@@ -440,7 +440,7 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
     <Screen padded>
       <ScrollView
         contentContainerStyle={{
-          paddingTop: insets.top + theme.spacing.lg,
+          paddingTop: theme.spacing.lg,
           paddingBottom: theme.spacing["3xl"],
           gap: theme.spacing.xl,
         }}

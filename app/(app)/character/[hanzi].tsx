@@ -4,7 +4,6 @@ import { router, useLocalSearchParams } from "expo-router";
 import { CheckCircle2, Volume2, X } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, TextInput, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Screen, Text } from "@/components/ui";
 import { StrokeAnimator } from "@/components/StrokeAnimator";
@@ -23,7 +22,6 @@ import { useTheme } from "@/theme";
 
 export default function CharacterDetail() {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
   const params = useLocalSearchParams<{ hanzi: string }>();
   const hanzi = decodeURIComponent(params.hanzi ?? "");
@@ -89,7 +87,7 @@ export default function CharacterDetail() {
       {/* Header */}
       <View
         style={{
-          paddingTop: insets.top + theme.spacing.sm,
+          paddingTop: theme.spacing.sm,
           paddingHorizontal: theme.spacing.lg,
           paddingBottom: theme.spacing.sm,
           flexDirection: "row",

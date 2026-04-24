@@ -2,8 +2,6 @@ import { router } from "expo-router";
 import { ArrowLeft, PenTool, Plus, Search, Trash2 } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { FlatList, Pressable, TextInput, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Screen, Text, useToast } from "@/components/ui";
 import {
@@ -26,7 +24,6 @@ const FILTERS: { id: Filter; label: string }[] = [
 export default function Browse() {
   const theme = useTheme();
   const toast = useToast();
-  const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
 
   const [words, setWords] = useState<SavedWord[]>([]);
@@ -85,7 +82,7 @@ export default function Browse() {
     <Screen>
       <View
         style={{
-          paddingTop: insets.top + theme.spacing.sm,
+          paddingTop: theme.spacing.sm,
           paddingHorizontal: theme.spacing.lg,
           paddingBottom: theme.spacing.sm,
           gap: theme.spacing.md,

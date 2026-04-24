@@ -1,21 +1,18 @@
 import { router } from "expo-router";
 import { ArrowLeft } from "lucide-react-native";
 import { Pressable, ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { Card, Screen, Text } from "@/components/ui";
 import { SCENARIOS } from "@/features/speaking/scenarios";
 import { useTheme } from "@/theme";
 
 export default function ScenarioPicker() {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
 
   return (
     <Screen>
       <View
         style={{
-          paddingTop: insets.top + theme.spacing.sm,
+          paddingTop: theme.spacing.sm,
           paddingHorizontal: theme.spacing.lg,
           paddingBottom: theme.spacing.sm,
           flexDirection: "row",

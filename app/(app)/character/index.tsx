@@ -2,8 +2,6 @@ import { router } from "expo-router";
 import { ArrowLeft } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { Screen, Text } from "@/components/ui";
 import {
   fetchDict,
@@ -25,7 +23,6 @@ const FILTERS: { id: Filter; label: string }[] = [
 
 export default function CharacterRoadmap() {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
 
   const [loading, setLoading] = useState(true);
@@ -81,7 +78,7 @@ export default function CharacterRoadmap() {
     <Screen>
       <View
         style={{
-          paddingTop: insets.top + theme.spacing.sm,
+          paddingTop: theme.spacing.sm,
           paddingHorizontal: theme.spacing.lg,
           paddingBottom: theme.spacing.sm,
           gap: theme.spacing.md,

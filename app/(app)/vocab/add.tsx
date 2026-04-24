@@ -3,8 +3,6 @@ import { ArrowLeft } from "lucide-react-native";
 import { pinyin } from "pinyin-pro";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { Button, Input, Screen, Text, useToast } from "@/components/ui";
 import { addWord } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
@@ -13,7 +11,6 @@ import { useTheme } from "@/theme";
 export default function AddWord() {
   const theme = useTheme();
   const toast = useToast();
-  const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
 
   const [hanzi, setHanzi] = useState("");
@@ -65,7 +62,7 @@ export default function AddWord() {
     <Screen>
       <View
         style={{
-          paddingTop: insets.top + theme.spacing.sm,
+          paddingTop: theme.spacing.sm,
           paddingHorizontal: theme.spacing.lg,
           paddingBottom: theme.spacing.sm,
           flexDirection: "row",
