@@ -1,10 +1,11 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { ArrowLeft, BookmarkCheck, BookmarkPlus, PenTool } from "lucide-react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
   Pressable,
+  ScrollView,
   View,
 } from "react-native";
 
@@ -16,7 +17,9 @@ import {
   fetchCatalog,
   fetchSavedHanziSet,
   fetchTranslations,
+  POS_LABELS,
   type HskWord,
+  type PosTag,
   type Syllabus,
 } from "@/features/hsk/hsk";
 import { useUserStore } from "@/stores/userStore";
@@ -39,6 +42,7 @@ export default function HskLevelList() {
   const [saved, setSaved] = useState<Set<string>>(new Set());
   const [savingAll, setSavingAll] = useState(false);
   const [strokeHanzi, setStrokeHanzi] = useState<string | null>(null);
+  const [posFilter, setPosFilter] = useState<PosTag | null>(null);
 
   // Pull catalog + saved set in parallel.
   useEffect(() => {
@@ -104,7 +108,7 @@ export default function HskLevelList() {
 
   async function handleSaveAll() {
     if (!session || savingAll) return;
-    const unsaved = words.filter((w) => !saved.has(w.hanzi));
+    const unsaved = filteredWords.filter((w) => !saved.has(w.hanzi));
     const ready = unsaved.filter((w) => meanings[w.hanzi]?.length);
     if (ready.length === 0) {
       toast.info("Translations still loading");
@@ -129,7 +133,22 @@ export default function HskLevelList() {
     router.push(`/(app)/vocab/review?mode=hsk&syllabus=${syllabus}&level=${level}`);
   }
 
-  const unsavedCount = words.filter((w) => !saved.has(w.hanzi)).length;
+  const posCounts = useMemo(() => {
+    const counts = new Map<PosTag, number>();
+    for (const w of words) {
+      for (const p of w.pos ?? []) counts.set(p as PosTag, (counts.get(p as PosTag) ?? 0) + 1);
+    }
+    // Sort tags by frequency (descending) so the most useful filter chips
+    // come first. Only show tags that have at least one word in this level.
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  }, [words]);
+
+  const filteredWords = useMemo(() => {
+    if (!posFilter) return words;
+    return words.filter((w) => (w.pos ?? []).includes(posFilter));
+  }, [words, posFilter]);
+
+  const unsavedCount = filteredWords.filter((w) => !saved.has(w.hanzi)).length;
 
   return (
     <Screen>
@@ -153,9 +172,36 @@ export default function HskLevelList() {
           <Text variant="h3">HSK {level}</Text>
         </View>
         <Text variant="small" color="tertiary">
-          {words.length}
+          {posFilter ? `${filteredWords.length} / ${words.length}` : words.length}
         </Text>
       </View>
+
+      {/* POS filter chip strip */}
+      {!loading && posCounts.length > 0 ? (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: theme.spacing.lg,
+            paddingBottom: theme.spacing.sm,
+            gap: theme.spacing.xs,
+          }}
+        >
+          <PosChip
+            label="All"
+            active={posFilter === null}
+            onPress={() => setPosFilter(null)}
+          />
+          {posCounts.map(([tag, count]) => (
+            <PosChip
+              key={tag}
+              label={`${POS_LABELS[tag].label} ${count}`}
+              active={posFilter === tag}
+              onPress={() => setPosFilter(tag)}
+            />
+          ))}
+        </ScrollView>
+      ) : null}
 
       {loading ? (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -163,13 +209,20 @@ export default function HskLevelList() {
         </View>
       ) : (
         <FlatList
-          data={words}
+          data={filteredWords}
           keyExtractor={(w) => w.hanzi}
           contentContainerStyle={{
             paddingHorizontal: theme.spacing.lg,
             paddingBottom: 130,
             gap: theme.spacing.sm,
           }}
+          ListEmptyComponent={
+            <View style={{ paddingVertical: theme.spacing["2xl"], alignItems: "center" }}>
+              <Text variant="body" color="secondary">
+                No words match this filter
+              </Text>
+            </View>
+          }
           renderItem={({ item }) => (
             <WordRow
               word={item}
@@ -201,8 +254,9 @@ export default function HskLevelList() {
           }}
         >
           <Button
-            label={`Practice ${Math.min(20, words.length)}`}
+            label={`Practice ${Math.min(20, filteredWords.length)}`}
             onPress={handlePractice}
+            disabled={filteredWords.length === 0}
             fullWidth
             style={{ flex: 1 }}
           />
@@ -242,6 +296,7 @@ function WordRow({
   onShowStrokes: () => void;
 }) {
   const theme = useTheme();
+  const primaryPos = word.pos?.[0] as PosTag | undefined;
 
   return (
     <View
@@ -262,9 +317,25 @@ function WordRow({
         </Text>
       </Pressable>
       <View style={{ flex: 1, gap: 2 }}>
-        <Text variant="small" color="secondary">
-          {word.pinyin}
-        </Text>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+          <Text variant="small" color="secondary">
+            {word.pinyin}
+          </Text>
+          {primaryPos ? (
+            <View
+              style={{
+                paddingVertical: 1,
+                paddingHorizontal: 6,
+                borderRadius: theme.radii.full,
+                backgroundColor: theme.colors.surfaceHover,
+              }}
+            >
+              <Text variant="caption" color="tertiary">
+                {POS_LABELS[primaryPos].label}
+              </Text>
+            </View>
+          ) : null}
+        </View>
         {meaning ? (
           <Text variant="body" numberOfLines={1}>
             {meaning}
@@ -297,5 +368,34 @@ function WordRow({
         )}
       </Pressable>
     </View>
+  );
+}
+
+function PosChip({
+  label,
+  active,
+  onPress,
+}: {
+  label: string;
+  active: boolean;
+  onPress: () => void;
+}) {
+  const theme = useTheme();
+  return (
+    <Pressable
+      onPress={onPress}
+      style={{
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: theme.radii.full,
+        backgroundColor: active ? theme.colors.accent : theme.colors.surface,
+        borderWidth: 1,
+        borderColor: active ? theme.colors.accent : theme.colors.border,
+      }}
+    >
+      <Text variant="small" color={active ? "onAccent" : "secondary"}>
+        {label}
+      </Text>
+    </Pressable>
   );
 }

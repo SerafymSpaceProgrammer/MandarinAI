@@ -7,13 +7,44 @@ export type HskWord = {
   pinyin: string;
   hsk_old: number | null;
   hsk_new: number | null;
+  pos: string[] | null;
 };
 
 export type Syllabus = "old" | "new";
 
+export const POS_TAGS = [
+  "noun",
+  "verb",
+  "adjective",
+  "adverb",
+  "classifier",
+  "particle",
+  "pronoun",
+  "conjunction",
+  "preposition",
+  "interjection",
+  "number",
+  "proper",
+] as const;
+export type PosTag = (typeof POS_TAGS)[number];
+
+export const POS_LABELS: Record<PosTag, { label: string; emoji: string }> = {
+  noun: { label: "Noun", emoji: "🅽" },
+  verb: { label: "Verb", emoji: "🅥" },
+  adjective: { label: "Adj.", emoji: "🅐" },
+  adverb: { label: "Adv.", emoji: "🅡" },
+  classifier: { label: "Classifier", emoji: "🅒" },
+  particle: { label: "Particle", emoji: "🅟" },
+  pronoun: { label: "Pronoun", emoji: "🆉" },
+  conjunction: { label: "Conj.", emoji: "🅢" },
+  preposition: { label: "Prep.", emoji: "🅠" },
+  interjection: { label: "Interj.", emoji: "🅘" },
+  number: { label: "Number", emoji: "#" },
+  proper: { label: "Name", emoji: "𝐍" },
+};
+
 /**
- * Pull the catalog filtered by HSK level + syllabus. Sorted by hanzi length
- * (single chars first) then by hanzi for predictability.
+ * Pull the catalog filtered by HSK level + syllabus. Sorted by hanzi.
  */
 export async function fetchCatalog(
   syllabus: Syllabus,
@@ -23,7 +54,7 @@ export async function fetchCatalog(
   const column = syllabus === "old" ? "hsk_old" : "hsk_new";
   const { data, error } = await supabase
     .from("hsk_words")
-    .select("hanzi, pinyin, hsk_old, hsk_new")
+    .select("hanzi, pinyin, hsk_old, hsk_new, pos")
     .eq(column, level)
     .order("hanzi", { ascending: true })
     .limit(limit);
@@ -61,9 +92,16 @@ export async function countByLevel(
 export type TranslationsByHanzi = Record<string, string[]>;
 
 /**
- * Bulk translate up to 50 hanzi into the user's language. The edge function
- * checks `hsk_word_translations` first; misses are fetched from Google
- * Translate and written back, so subsequent calls hit cache.
+ * Bulk translate hanzi into the user's language.
+ *
+ * Fast path (lang === 'en'): pulls hand-curated CC-CEDICT translations
+ *   directly from hsk_word_translations in a single SELECT — no edge
+ *   function round-trip, no Google fallback needed.
+ *
+ * Other languages: falls through the translate-meaning edge function
+ *   which checks the cache, then Google-translates the rest and writes
+ *   them back. First user pays the latency, every subsequent caller hits
+ *   cache.
  */
 export async function fetchTranslations(
   hanzis: string[],
@@ -71,16 +109,25 @@ export async function fetchTranslations(
 ): Promise<TranslationsByHanzi> {
   if (hanzis.length === 0) return {};
 
+  // Direct DB read for English — every HSK word has a curated entry.
+  if (lang === "en") {
+    return await fetchCachedTranslations(hanzis, "en");
+  }
+
+  // Other languages: cache → edge fn for misses.
+  const cached = await fetchCachedTranslations(hanzis, lang);
+  const missing = hanzis.filter((h) => !cached[h] || cached[h].length === 0);
+  if (missing.length === 0) return cached;
+
   const { data: sess } = await supabase.auth.getSession();
   const token = sess.session?.access_token;
-  if (!token) return {};
+  if (!token) return cached;
 
   const url = `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/translate-meaning`;
-  const out: TranslationsByHanzi = {};
+  const out: TranslationsByHanzi = { ...cached };
 
-  // Cap per request at 50 so we don't time out the function.
-  for (let i = 0; i < hanzis.length; i += 50) {
-    const slice = hanzis.slice(i, i + 50);
+  for (let i = 0; i < missing.length; i += 50) {
+    const slice = missing.slice(i, i + 50);
     try {
       const res = await fetch(url, {
         method: "POST",
@@ -103,6 +150,30 @@ export async function fetchTranslations(
       }
     } catch (err) {
       logger.warn("translate-meaning batch error", err);
+    }
+  }
+  return out;
+}
+
+async function fetchCachedTranslations(
+  hanzis: string[],
+  lang: string,
+): Promise<TranslationsByHanzi> {
+  const out: TranslationsByHanzi = {};
+  // Supabase URL filter accepts an `in.()` list; chunk to keep URL short.
+  for (let i = 0; i < hanzis.length; i += 200) {
+    const slice = hanzis.slice(i, i + 200);
+    const { data, error } = await supabase
+      .from("hsk_word_translations")
+      .select("hanzi, meanings")
+      .eq("lang", lang)
+      .in("hanzi", slice);
+    if (error) {
+      logger.warn("fetchCachedTranslations error", error.message);
+      continue;
+    }
+    for (const row of (data ?? []) as Array<{ hanzi: string; meanings: string[] }>) {
+      out[row.hanzi] = row.meanings ?? [];
     }
   }
   return out;
