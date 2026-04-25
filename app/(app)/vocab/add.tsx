@@ -4,12 +4,15 @@ import { pinyin } from "pinyin-pro";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 import { Button, Input, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { addWord } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 export default function AddWord() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const session = useUserStore((s) => s.session);
 
@@ -20,7 +23,6 @@ export default function AddWord() {
   const [busy, setBusy] = useState(false);
   const [autoPinyin, setAutoPinyin] = useState(true);
 
-  // Auto-fill pinyin from hanzi via pinyin-pro (offline, polyphonic-aware).
   useEffect(() => {
     if (!autoPinyin) return;
     if (!hanzi.trim()) {
@@ -31,14 +33,14 @@ export default function AddWord() {
       const auto = pinyin(hanzi, { toneType: "symbol", nonZh: "removed" });
       setPinyinValue(auto);
     } catch {
-      // swallow — pinyin-pro throws on some edge cases; user can edit manually
+      // pinyin-pro throws on some edge cases; user can edit manually
     }
   }, [hanzi, autoPinyin]);
 
   async function save() {
     if (!session || busy) return;
     if (!hanzi.trim() || !english.trim()) {
-      toast.error("Hanzi and meaning are required");
+      toast.error(t.vocab.add.requireBoth);
       return;
     }
     setBusy(true);
@@ -51,10 +53,10 @@ export default function AddWord() {
     });
     setBusy(false);
     if (!saved) {
-      toast.error("Couldn't save word");
+      toast.error(t.vocab.add.saveError);
       return;
     }
-    toast.success(`Saved ${saved.hanzi}`);
+    toast.success(fmt(t.vocab.add.savedToast, { hanzi: saved.hanzi }));
     router.back();
   }
 
@@ -70,10 +72,10 @@ export default function AddWord() {
           gap: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
           <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
-        <Text variant="h3">Add a word</Text>
+        <Text variant="h3">{t.vocab.add.title}</Text>
       </View>
 
       <ScrollView
@@ -84,33 +86,33 @@ export default function AddWord() {
         }}
       >
         <Input
-          label="Hanzi"
+          label={t.vocab.add.hanziLabel}
           chinese
           value={hanzi}
           onChangeText={setHanzi}
-          placeholder="汉字"
+          placeholder={t.vocab.review.hanziPlaceholder}
           autoFocus
         />
         <Input
-          label="Pinyin"
+          label={t.vocab.add.pinyinLabel}
           value={pinyinValue}
           onChangeText={(v) => {
             setAutoPinyin(false);
             setPinyinValue(v);
           }}
           placeholder="hàn zì"
-          helper={autoPinyin ? "Auto-generated — edit to override" : undefined}
+          helper={autoPinyin ? t.vocab.add.pinyinHelper : undefined}
         />
         <Input
-          label="Meaning"
+          label={t.vocab.add.meaningLabel}
           value={english}
           onChangeText={setEnglish}
-          placeholder="character / word"
+          placeholder={t.vocab.add.meaningPlaceholder}
         />
 
         <View style={{ gap: theme.spacing.sm }}>
           <Text variant="smallStrong" color="secondary">
-            HSK level
+            {t.vocab.add.hskLabel}
           </Text>
           <View style={{ flexDirection: "row", gap: theme.spacing.sm, flexWrap: "wrap" }}>
             {[0, 1, 2, 3, 4, 5, 6].map((lvl) => {
@@ -129,7 +131,7 @@ export default function AddWord() {
                   }}
                 >
                   <Text variant="smallStrong" color={active ? "onAccent" : "secondary"}>
-                    {lvl === 0 ? "none" : `HSK ${lvl}`}
+                    {lvl === 0 ? t.vocab.add.hskNone : fmt(t.vocab.browse.hskBadge, { n: lvl })}
                   </Text>
                 </Pressable>
               );
@@ -137,7 +139,7 @@ export default function AddWord() {
           </View>
         </View>
 
-        <Button label="Save" onPress={save} loading={busy} size="lg" fullWidth />
+        <Button label={t.vocab.add.saveBtn} onPress={save} loading={busy} size="lg" fullWidth />
       </ScrollView>
     </Screen>
   );

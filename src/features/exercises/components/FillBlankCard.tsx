@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { FillBlankQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -13,6 +14,7 @@ type Props = {
 
 export function FillBlankCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<string | null>(null);
 
   function choose(option: string) {
@@ -38,7 +40,7 @@ export function FillBlankCard({ question, onResult }: Props) {
     <View style={{ gap: theme.spacing.xl }}>
       <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
         <Text variant="caption" color="tertiary">
-          Fill the blank
+          {t.exercises.cards.fillBlankTitle}
         </Text>
         <View
           style={{

@@ -19,6 +19,38 @@ export type ExerciseMeta = {
   needsContext?: boolean;
 };
 
+/**
+ * Maps each exercise type to its label/hint keys in `t.exercises.types`.
+ * Use this together with `useT()` to render localized copy without
+ * duplicating the mapping in every consumer.
+ */
+export const EXERCISE_I18N_KEYS: Record<
+  ExerciseType,
+  {
+    label:
+      | "translateLabel"
+      | "listenPickLabel"
+      | "matchPairsLabel"
+      | "toneIdLabel"
+      | "wordOrderLabel"
+      | "fillBlankLabel";
+    hint:
+      | "translateHint"
+      | "listenPickHint"
+      | "matchPairsHint"
+      | "toneIdHint"
+      | "wordOrderHint"
+      | "fillBlankHint";
+  }
+> = {
+  translate: { label: "translateLabel", hint: "translateHint" },
+  "listen-and-pick": { label: "listenPickLabel", hint: "listenPickHint" },
+  "match-pairs": { label: "matchPairsLabel", hint: "matchPairsHint" },
+  "tone-id": { label: "toneIdLabel", hint: "toneIdHint" },
+  "word-order": { label: "wordOrderLabel", hint: "wordOrderHint" },
+  "fill-blank": { label: "fillBlankLabel", hint: "fillBlankHint" },
+};
+
 export const EXERCISE_META: Record<ExerciseType, ExerciseMeta> = {
   translate: {
     type: "translate",

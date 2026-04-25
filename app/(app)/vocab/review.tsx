@@ -19,6 +19,8 @@ import {
 } from "@/features/hsk/hsk";
 import type { ReviewGrade } from "@/features/vocab/srs";
 import { Button, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
@@ -42,6 +44,7 @@ function pickVariant(card: SavedWord): CardVariant {
 
 export default function ReviewSession() {
   const theme = useTheme();
+  const t = useT();
   const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
   const profile = useUserStore((s) => s.profile);
@@ -162,14 +165,14 @@ export default function ReviewSession() {
             休息
           </Text>
           <Text variant="h2" align="center">
-            No cards due
+            {t.vocab.review.noCardsTitle}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            Come back later, or add new words to get more practice.
+            {t.vocab.review.noCardsHint}
           </Text>
           <View style={{ height: theme.spacing.xl }} />
-          <Button label="Add a word" fullWidth onPress={() => router.replace("/(app)/vocab/add")} />
-          <Button label="Back home" variant="ghost" fullWidth onPress={() => router.back()} />
+          <Button label={t.vocab.review.addAWord} fullWidth onPress={() => router.replace("/(app)/vocab/add")} />
+          <Button label={t.vocab.review.backHome} variant="ghost" fullWidth onPress={() => router.back()} />
         </View>
       </Screen>
     );
@@ -202,13 +205,13 @@ export default function ReviewSession() {
         >
           <Pressable
             onPress={() => router.back()}
-            accessibilityLabel="Exit review"
+            accessibilityLabel={t.common.close}
             hitSlop={16}
           >
             <X color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
           <Text variant="small" color="tertiary">
-            {index + 1} / {cards.length}
+            {fmt(t.vocab.review.counter, { n: index + 1, total: cards.length })}
           </Text>
           <View style={{ width: 24 }} />
         </View>

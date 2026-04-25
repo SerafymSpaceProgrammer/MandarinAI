@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import type { MatchPairsQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -15,6 +17,7 @@ type Side = "hanzi" | "english";
 
 export function MatchPairsCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [matched, setMatched] = useState<Set<string>>(new Set());
   const [wrong, setWrong] = useState<{ hanzi: string | null; english: string | null }>({
     hanzi: null,
@@ -69,10 +72,10 @@ export function MatchPairsCard({ question, onResult }: Props) {
     <View style={{ gap: theme.spacing.lg }}>
       <View style={{ alignItems: "center", gap: theme.spacing.xs }}>
         <Text variant="caption" color="tertiary">
-          Match pairs
+          {t.exercises.cards.matchTitle}
         </Text>
         <Text variant="body" color="secondary" align="center">
-          Tap a hanzi, then tap its meaning.
+          {t.exercises.cards.matchHint}
         </Text>
       </View>
 
@@ -151,7 +154,7 @@ export function MatchPairsCard({ question, onResult }: Props) {
       </View>
 
       <Text variant="caption" color="tertiary" align="center">
-        {matched.size} / {pairs.length} matched
+        {fmt(t.exercises.cards.matchedCount, { matched: matched.size, total: pairs.length })}
       </Text>
     </View>
   );

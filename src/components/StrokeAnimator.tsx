@@ -4,6 +4,8 @@ import { Pressable, View } from "react-native";
 import { WebView, type WebViewMessageEvent } from "react-native-webview";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { logger } from "@/lib/logger";
 import { useTheme } from "@/theme";
 
@@ -24,6 +26,7 @@ type Props = {
  */
 export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
   const theme = useTheme();
+  const t = useT();
   const webviewRef = useRef<WebView>(null);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -67,7 +70,7 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
       } else if (data.type === "unavailable") {
         setReady(true);
         setStrokeCount(0);
-        setErrorMessage(data.message ?? "Stroke data unavailable");
+        setErrorMessage(data.message ?? t.strokes.unavailable);
         logger.warn("stroke animator unavailable", hanzi, data.message);
       }
     } catch {
@@ -106,13 +109,17 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
       <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
         {strokeCount !== null && strokeCount > 0 ? (
           <Text variant="small" color="tertiary">
-            {strokeCount} {strokeCount === 1 ? "stroke" : "strokes"}
-            {currentStroke !== null ? ` · drawing ${currentStroke + 1}/${strokeCount}` : ""}
+            {fmt(strokeCount === 1 ? t.strokes.strokesOne : t.strokes.strokesOther, {
+              n: strokeCount,
+            })}
+            {currentStroke !== null
+              ? ` · ${fmt(t.strokes.drawing, { n: currentStroke + 1, total: strokeCount })}`
+              : ""}
           </Text>
         ) : strokeCount === 0 ? (
           <View style={{ alignItems: "center", gap: 2 }}>
             <Text variant="small" color="tertiary">
-              Stroke data unavailable
+              {t.strokes.unavailable}
             </Text>
             {errorMessage ? (
               <Text variant="caption" color="tertiary">
@@ -122,7 +129,7 @@ export function StrokeAnimator({ hanzi, size = 260, autoplay = true }: Props) {
           </View>
         ) : (
           <Text variant="small" color="tertiary">
-            Loading…
+            {t.common.loading}
           </Text>
         )}
         {ready && strokeCount && strokeCount > 0 ? (

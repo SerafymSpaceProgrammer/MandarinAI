@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { ListenPickQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -15,6 +16,7 @@ type Props = {
 
 export function ListenPickCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<string | null>(null);
 
   const target = question.word.hanzi;
@@ -46,12 +48,12 @@ export function ListenPickCard({ question, onResult }: Props) {
   return (
     <View style={{ gap: theme.spacing.xl, alignItems: "center" }}>
       <Text variant="caption" color="tertiary">
-        Listen
+        {t.exercises.cards.listenTitle}
       </Text>
 
       <Pressable
         onPress={speak}
-        accessibilityLabel="Replay"
+        accessibilityLabel={t.vocab.review.tapToReplay}
         style={{
           width: 104,
           height: 104,
@@ -65,7 +67,7 @@ export function ListenPickCard({ question, onResult }: Props) {
       </Pressable>
 
       <Text variant="small" color="tertiary">
-        Tap to replay
+        {t.exercises.cards.listenReplayHint}
       </Text>
 
       <View

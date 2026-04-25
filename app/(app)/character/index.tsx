@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, View } from "react-native";
 import { Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import {
   fetchDict,
   fetchUserCharacters,
@@ -14,16 +15,17 @@ import { useTheme } from "@/theme";
 
 type Filter = "all" | "learning" | "mastered" | "new";
 
-const FILTERS: { id: Filter; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "new", label: "New" },
-  { id: "learning", label: "Learning" },
-  { id: "mastered", label: "Mastered" },
-];
-
 export default function CharacterRoadmap() {
   const theme = useTheme();
+  const t = useT();
   const session = useUserStore((s) => s.session);
+
+  const FILTERS: { id: Filter; label: string }[] = [
+    { id: "all", label: t.character.filterAll },
+    { id: "new", label: t.character.filterNew },
+    { id: "learning", label: t.character.filterLearning },
+    { id: "mastered", label: t.character.filterMastered },
+  ];
 
   const [loading, setLoading] = useState(true);
   const [chars, setChars] = useState<CharacterWithProgress[]>([]);
@@ -91,10 +93,10 @@ export default function CharacterRoadmap() {
             justifyContent: "space-between",
           }}
         >
-          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
             <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
-          <Text variant="h3">Characters</Text>
+          <Text variant="h3">{t.character.listTitle}</Text>
           <View style={{ width: 24 }} />
         </View>
 
@@ -109,9 +111,9 @@ export default function CharacterRoadmap() {
             borderColor: theme.colors.border,
           }}
         >
-          <Stat label="Total" value={totals.total} />
-          <Stat label="Learning" value={totals.learning} color="warning" />
-          <Stat label="Mastered" value={totals.mastered} color="success" />
+          <Stat label={t.character.statTotal} value={totals.total} />
+          <Stat label={t.character.statLearning} value={totals.learning} color="warning" />
+          <Stat label={t.character.statMastered} value={totals.mastered} color="success" />
         </View>
 
         <ScrollView
@@ -160,7 +162,7 @@ export default function CharacterRoadmap() {
           </View>
           {filtered.length === 0 ? (
             <Text variant="body" color="secondary" align="center" style={{ padding: theme.spacing["2xl"] }}>
-              Nothing here yet.
+              {t.character.emptyState}
             </Text>
           ) : null}
         </ScrollView>

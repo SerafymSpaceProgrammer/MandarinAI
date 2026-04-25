@@ -10,8 +10,9 @@ const repoRoot = join(__dirname, "..");
 
 const tsFile = readFileSync(join(repoRoot, "src", "i18n", "strings.en.ts"), "utf-8");
 
-// Extract everything between `export const EN = {` and `} as const;`.
-const m = tsFile.match(/export const EN = (\{[\s\S]+\}) as const;/);
+// Extract the EN literal. Stops at the first top-level closing brace + semicolon,
+// matched lazily so we don't grab DeepStringify or anything below.
+const m = tsFile.match(/export const EN = (\{[\s\S]+?\n\});/);
 if (!m) throw new Error("Couldn't locate EN literal in strings.en.ts");
 const literal = m[1];
 

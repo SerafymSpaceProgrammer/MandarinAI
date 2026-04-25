@@ -4,6 +4,7 @@ import { Pressable, View } from "react-native";
 
 import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { SavedWord } from "@/features/vocab/vocab";
 import { useTheme } from "@/theme";
 
@@ -19,6 +20,7 @@ type Props = {
  */
 export function RecognitionCard({ card, onRevealed }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [revealed, setRevealed] = useState(false);
   const [showStrokes, setShowStrokes] = useState(false);
 
@@ -32,8 +34,7 @@ export function RecognitionCard({ card, onRevealed }: Props) {
     <>
       <Pressable
         onPress={reveal}
-        accessibilityLabel="Reveal answer"
-        accessibilityHint="Shows pinyin and meaning"
+        accessibilityLabel={t.vocab.review.tapToReveal}
         style={{
           flex: 1,
           backgroundColor: theme.colors.surface,
@@ -47,7 +48,7 @@ export function RecognitionCard({ card, onRevealed }: Props) {
         }}
       >
         <Text variant="caption" color="tertiary">
-          Recognize
+          {t.vocab.review.recognize}
         </Text>
 
         <Text
@@ -89,7 +90,7 @@ export function RecognitionCard({ card, onRevealed }: Props) {
                 setShowStrokes(true);
               }}
               hitSlop={10}
-              accessibilityLabel="Show stroke order"
+              accessibilityLabel={t.strokes.title}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
@@ -104,13 +105,13 @@ export function RecognitionCard({ card, onRevealed }: Props) {
             >
               <PenTool color={theme.colors.accent} size={14} strokeWidth={2.2} />
               <Text variant="small" color="accent">
-                Strokes
+                {t.strokes.title}
               </Text>
             </Pressable>
           </View>
         ) : (
           <Text variant="small" color="tertiary">
-            Tap to reveal
+            {t.vocab.review.tapToReveal}
           </Text>
         )}
       </Pressable>

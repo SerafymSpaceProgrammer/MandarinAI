@@ -5,6 +5,8 @@ import { ActivityIndicator, Pressable, ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt, type Translations } from "@/i18n/strings";
 import { recordActivity } from "@/features/activity/activity";
 import { FillBlankCard } from "@/features/exercises/components/FillBlankCard";
 import { ListenPickCard } from "@/features/exercises/components/ListenPickCard";
@@ -13,15 +15,25 @@ import { ToneIdCard } from "@/features/exercises/components/ToneIdCard";
 import { TranslateCard } from "@/features/exercises/components/TranslateCard";
 import { WordOrderCard } from "@/features/exercises/components/WordOrderCard";
 import { generateExercises } from "@/features/exercises/generator";
-import { EXERCISE_META, type ExerciseType, type Question } from "@/features/exercises/types";
+import {
+  EXERCISE_I18N_KEYS,
+  EXERCISE_META,
+  type ExerciseType,
+  type Question,
+} from "@/features/exercises/types";
 import { fetchAllWords } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 const QUESTION_COUNT = 10;
 
+function localizedLabel(t: Translations, type: ExerciseType): string {
+  return t.exercises.types[EXERCISE_I18N_KEYS[type].label];
+}
+
 export default function ExerciseRunner() {
   const theme = useTheme();
+  const t = useT();
   const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
   const params = useLocalSearchParams<{ type?: string }>();
@@ -69,16 +81,18 @@ export default function ExerciseRunner() {
     setIndex(next);
   }
 
-  if (!meta) {
+  if (!meta || !type) {
     return (
       <Screen padded>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: theme.spacing.md }}>
-          <Text variant="h2">Unknown exercise</Text>
-          <Button label="Back" variant="secondary" onPress={() => router.back()} />
+          <Text variant="h2">{t.common.error}</Text>
+          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
         </View>
       </Screen>
     );
   }
+
+  const label = localizedLabel(t, type);
 
   if (loading) {
     return (
@@ -98,14 +112,14 @@ export default function ExerciseRunner() {
             空
           </Text>
           <Text variant="h2" align="center">
-            Not enough data
+            {t.exercises.runnerNotEnough}
           </Text>
           <Text variant="body" color="secondary" align="center" style={{ paddingHorizontal: theme.spacing.xl }}>
             {meta.needsContext
-              ? "This exercise needs saved words with context sentences. Save a few words with their surrounding sentence first."
-              : `You need at least ${meta.minWords} saved words for this mode.`}
+              ? t.exercises.runnerNeedsContext
+              : fmt(t.exercises.runnerNeedsWords, { n: meta.minWords })}
           </Text>
-          <Button label="Back" variant="secondary" onPress={() => router.back()} />
+          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
         </View>
       </Screen>
     );
@@ -114,7 +128,9 @@ export default function ExerciseRunner() {
   if (finished) {
     return (
       <ExerciseSummary
-        meta={meta}
+        emoji={meta.emoji}
+        label={label}
+        type={meta.type}
         correct={correctCount}
         total={questions.length}
         onReplay={() => {
@@ -146,11 +162,16 @@ export default function ExerciseRunner() {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Exit">
+          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.close}>
             <X color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
           <Text variant="small" color="tertiary">
-            {meta.emoji} {meta.label} · {index + 1}/{questions.length}
+            {fmt(t.exercises.sectionLabel, {
+              emoji: meta.emoji,
+              label,
+              n: index + 1,
+              total: questions.length,
+            })}
           </Text>
           <View style={{ width: 24 }} />
         </View>
@@ -209,17 +230,21 @@ function QuestionView({
 }
 
 function ExerciseSummary({
-  meta,
+  emoji,
+  label,
   correct,
   total,
   onReplay,
 }: {
-  meta: { emoji: string; label: string; type: ExerciseType };
+  emoji: string;
+  label: string;
+  type: ExerciseType;
   correct: number;
   total: number;
   onReplay: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
   const xp = correct * 2 + (total - correct);
 
@@ -227,25 +252,25 @@ function ExerciseSummary({
     <Screen padded>
       <View style={{ flex: 1, justifyContent: "center", gap: theme.spacing["2xl"] }}>
         <View style={{ alignItems: "center", gap: theme.spacing.md }}>
-          <Text style={{ fontSize: 72, lineHeight: 80 }}>{meta.emoji}</Text>
+          <Text style={{ fontSize: 72, lineHeight: 80 }}>{emoji}</Text>
           <Text variant="h1" align="center">
-            {meta.label} done
+            {fmt(t.exercises.runnerSummaryTitle, { label })}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            {correct} / {total} correct · {accuracy}% · +{xp} XP
+            {fmt(t.exercises.runnerSummaryBody, { correct, total, accuracy, xp })}
           </Text>
         </View>
 
         <View style={{ gap: theme.spacing.sm }}>
-          <Button label="Try again" size="lg" fullWidth onPress={onReplay} />
+          <Button label={t.exercises.runnerTryAgain} size="lg" fullWidth onPress={onReplay} />
           <Button
-            label="Pick another exercise"
+            label={t.exercises.runnerPickAnother}
             variant="secondary"
             fullWidth
             onPress={() => router.replace("/(app)/learn")}
           />
           <Button
-            label="Home"
+            label={t.exercises.runnerHome}
             variant="ghost"
             fullWidth
             onPress={() => router.replace("/(app)")}

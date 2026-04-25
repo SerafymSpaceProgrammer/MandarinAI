@@ -7,12 +7,13 @@ import { ActivityIndicator, Pressable, ScrollView, TextInput, View } from "react
 
 import { Button, Screen, Text } from "@/components/ui";
 import { StrokeAnimator } from "@/components/StrokeAnimator";
+import { useT } from "@/i18n/i18n";
+import { fmt, type Translations } from "@/i18n/strings";
 import {
   advanceStep,
   fetchDict,
   fetchOneFromDict,
   fetchUserCharacter,
-  STEP_LABELS,
   type CharacterDictRow,
   type UserCharacter,
 } from "@/features/character/character";
@@ -20,9 +21,21 @@ import { recordActivity } from "@/features/activity/activity";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
+function localizedStepLabels(t: Translations): readonly string[] {
+  return [
+    t.character.stepLearn,
+    t.character.stepRecognize,
+    t.character.stepPronounce,
+    t.character.stepWrite,
+    t.character.stepProduce,
+  ];
+}
+
 export default function CharacterDetail() {
   const theme = useTheme();
+  const t = useT();
   const session = useUserStore((s) => s.session);
+  const STEP_LABELS = localizedStepLabels(t);
   const params = useLocalSearchParams<{ hanzi: string }>();
   const hanzi = decodeURIComponent(params.hanzi ?? "");
 
@@ -95,15 +108,22 @@ export default function CharacterDetail() {
           gap: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Close">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.close}>
           <X color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text variant="caption" color="tertiary">
-            Character · HSK {dict.hsk_level ?? "?"}
+            {dict.hsk_level != null
+              ? fmt(t.character.detailHeader, { n: dict.hsk_level })
+              : t.character.detailHeaderUnknown}
           </Text>
           <Text variant="bodyStrong">
-            {mastered ? "Mastered" : `Step ${Math.min(stepIdx + 1, 5)} of 5 · ${STEP_LABELS[Math.min(stepIdx, 4)]}`}
+            {mastered
+              ? t.character.masteredHeader
+              : fmt(t.character.stepCounter, {
+                  n: Math.min(stepIdx + 1, 5),
+                  label: STEP_LABELS[Math.min(stepIdx, 4)] ?? "",
+                })}
           </Text>
         </View>
       </View>
@@ -153,9 +173,12 @@ export default function CharacterDetail() {
           />
         )}
 
-        {progress ? (
+        {progress && progress.reps > 0 ? (
           <Text variant="caption" color="tertiary" align="center">
-            {progress.reps > 0 ? `${progress.reps} reps · next review ${formatDate(progress.due_at)}` : null}
+            {fmt(t.character.repsLine, {
+              reps: progress.reps,
+              when: formatDate(progress.due_at, t),
+            })}
           </Text>
         ) : null}
       </ScrollView>
@@ -168,6 +191,7 @@ export default function CharacterDetail() {
 // ──────────────────────────────────────────────────────────────────────────
 function LearnStep({ dict, onDone }: { dict: CharacterDictRow; onDone: () => void }) {
   const theme = useTheme();
+  const t = useT();
 
   function speak() {
     Speech.stop().catch(() => {});
@@ -198,7 +222,7 @@ function LearnStep({ dict, onDone }: { dict: CharacterDictRow; onDone: () => voi
               {p}
             </Text>
           ))}
-          <Pressable onPress={speak} hitSlop={12} accessibilityLabel="Play audio">
+          <Pressable onPress={speak} hitSlop={12} accessibilityLabel={t.vocab.review.tapToReplay}>
             <View
               style={{
                 width: 40,
@@ -226,7 +250,7 @@ function LearnStep({ dict, onDone }: { dict: CharacterDictRow; onDone: () => voi
         }}
       >
         <Text variant="caption" color="tertiary">
-          Meanings
+          {t.character.meaningsHeader}
         </Text>
         {dict.meanings.map((m, i) => (
           <Text key={i} variant="body">
@@ -245,19 +269,19 @@ function LearnStep({ dict, onDone }: { dict: CharacterDictRow; onDone: () => voi
           }}
         >
           <Text variant="caption" color="accent">
-            Mnemonic
+            {t.character.mnemonicHeader}
           </Text>
           <Text variant="body">{dict.mnemonic_en}</Text>
         </View>
       ) : null}
 
       <View style={{ flexDirection: "row", gap: theme.spacing.md, justifyContent: "center" }}>
-        <Stat label="Strokes" value={dict.stroke_count ?? "?"} />
-        <Stat label="HSK" value={dict.hsk_level ?? "?"} />
-        <Stat label="Rank" value={dict.frequency_rank ?? "?"} />
+        <Stat label={t.character.strokesStat} value={dict.stroke_count ?? "?"} />
+        <Stat label={t.character.hskStat} value={dict.hsk_level ?? "?"} />
+        <Stat label={t.character.rankStat} value={dict.frequency_rank ?? "?"} />
       </View>
 
-      <Button label="Got it" size="lg" fullWidth onPress={onDone} />
+      <Button label={t.character.gotIt} size="lg" fullWidth onPress={onDone} />
     </View>
   );
 }
@@ -275,6 +299,7 @@ function RecognizeStep({
   onResult: (correct: boolean) => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<string | null>(null);
 
   const options = useMemo(() => {
@@ -297,7 +322,7 @@ function RecognizeStep({
     <View style={{ gap: theme.spacing.xl }}>
       <View style={{ gap: theme.spacing.sm, alignItems: "center" }}>
         <Text variant="caption" color="tertiary">
-          Which one means
+          {t.character.whichMeans}
         </Text>
         <Text variant="h1" align="center">
           {dict.meanings[0] ?? ""}
@@ -346,7 +371,7 @@ function RecognizeStep({
 
       {revealed ? (
         <Button
-          label="Continue"
+          label={t.common.continue}
           size="lg"
           fullWidth
           onPress={() => onResult(picked === dict.hanzi)}
@@ -361,6 +386,7 @@ function RecognizeStep({
 // ──────────────────────────────────────────────────────────────────────────
 function PronounceStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () => void }) {
   const theme = useTheme();
+  const t = useT();
 
   function speak() {
     Speech.stop().catch(() => {});
@@ -401,14 +427,14 @@ function PronounceStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () =>
         }}
       >
         <Text variant="caption" color="warning">
-          Whisper scoring — coming in Phase 6
+          {t.character.pronounceSoon}
         </Text>
         <Text variant="small" color="secondary" align="center">
-          For now, listen and say it aloud. AI-scored pronunciation (tone accuracy, syllable feedback) lands with the speaking trainer.
+          {t.character.pronounceSoonHint}
         </Text>
       </View>
 
-      <Button label="I said it — continue" size="lg" fullWidth onPress={onSkip} />
+      <Button label={t.character.pronounceContinue} size="lg" fullWidth onPress={onSkip} />
     </View>
   );
 }
@@ -418,16 +444,17 @@ function PronounceStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () =>
 // ──────────────────────────────────────────────────────────────────────────
 function WriteStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () => void }) {
   const theme = useTheme();
+  const t = useT();
 
   return (
     <View style={{ gap: theme.spacing.xl, alignItems: "center" }}>
       <StrokeAnimator hanzi={dict.hanzi} size={280} />
 
       <Text variant="body" color="secondary" align="center">
-        Watch the stroke order. Real finger-tracing with scoring lands with the Skia writing trainer later.
+        {t.character.writeWatchHint}
       </Text>
 
-      <Button label="Got it — continue" size="lg" fullWidth onPress={onSkip} />
+      <Button label={t.character.writeContinue} size="lg" fullWidth onPress={onSkip} />
     </View>
   );
 }
@@ -445,6 +472,7 @@ function ProduceStep({
   onResult: (correct: boolean) => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const [typed, setTyped] = useState("");
   const [picked, setPicked] = useState<string | null>(null);
 
@@ -493,7 +521,7 @@ function ProduceStep({
     <View style={{ gap: theme.spacing.xl }}>
       <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
         <Text variant="caption" color="tertiary">
-          How do you say
+          {t.character.produceHowSay}
         </Text>
         <Text variant="h1" align="center">
           {dict.meanings[0] ?? ""}
@@ -503,7 +531,7 @@ function ProduceStep({
       {!showCandidates ? (
         <View style={{ gap: theme.spacing.md }}>
           <Text variant="smallStrong" color="secondary">
-            Type the pinyin (no tones needed)
+            {t.character.typePinyin}
           </Text>
           <TextInput
             value={typed}
@@ -525,13 +553,13 @@ function ProduceStep({
             }}
           />
           <Text variant="small" color="tertiary" align="center">
-            Expected: {expectedPinyin}
+            {fmt(t.character.expectedPinyin, { pinyin: expectedPinyin })}
           </Text>
         </View>
       ) : (
         <View style={{ gap: theme.spacing.md }}>
           <Text variant="smallStrong" color="secondary" align="center">
-            Now pick the character
+            {t.character.nowPickHanzi}
           </Text>
           <View
             style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.md, justifyContent: "center" }}
@@ -571,7 +599,7 @@ function ProduceStep({
 
           {revealed ? (
             <Button
-              label="Continue"
+              label={t.common.continue}
               size="lg"
               fullWidth
               onPress={() => onResult(picked === dict.hanzi)}
@@ -588,6 +616,7 @@ function ProduceStep({
 // ──────────────────────────────────────────────────────────────────────────
 function MasteredView({ dict, onClose }: { dict: CharacterDictRow; onClose: () => void }) {
   const theme = useTheme();
+  const t = useT();
   return (
     <View style={{ alignItems: "center", gap: theme.spacing.lg, paddingVertical: theme.spacing["2xl"] }}>
       <View
@@ -602,14 +631,14 @@ function MasteredView({ dict, onClose }: { dict: CharacterDictRow; onClose: () =
       >
         <CheckCircle2 color={theme.colors.onAccent} size={56} strokeWidth={2.2} />
       </View>
-      <Text variant="h1">Mastered</Text>
+      <Text variant="h1">{t.character.masteredCelebrate}</Text>
       <Text chinese style={{ fontSize: 64, lineHeight: 72, color: theme.colors.accent, fontWeight: "700" }}>
         {dict.hanzi}
       </Text>
       <Text variant="body" color="secondary" align="center">
-        This character will come back for review in two weeks to keep it fresh.
+        {t.character.masteredHint}
       </Text>
-      <Button label="Back to roadmap" size="lg" fullWidth onPress={onClose} />
+      <Button label={t.character.backToRoadmap} size="lg" fullWidth onPress={onClose} />
     </View>
   );
 }
@@ -628,13 +657,13 @@ function Stat({ label, value }: { label: string; value: number | string }) {
   );
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, t: Translations): string {
   const d = new Date(iso);
   const now = Date.now();
   const diff = Math.round((d.getTime() - now) / 86_400_000);
-  if (diff <= 0) return "now";
-  if (diff === 1) return "tomorrow";
-  if (diff < 7) return `in ${diff} days`;
-  if (diff < 30) return `in ${Math.round(diff / 7)}w`;
-  return `in ${Math.round(diff / 30)}mo`;
+  if (diff <= 0) return t.character.relativeNow;
+  if (diff === 1) return t.character.relativeTomorrow;
+  if (diff < 7) return fmt(t.character.relativeInDays, { n: diff });
+  if (diff < 30) return fmt(t.character.relativeInWeeks, { n: Math.round(diff / 7) });
+  return fmt(t.character.relativeInMonths, { n: Math.round(diff / 30) });
 }

@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { FlatList, Pressable, TextInput, View } from "react-native";
 import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import {
   deleteWord,
   fetchAllWords,
@@ -14,17 +16,18 @@ import { useTheme } from "@/theme";
 
 type Filter = "all" | "due" | "learning" | "mastered";
 
-const FILTERS: { id: Filter; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "due", label: "Due" },
-  { id: "learning", label: "Learning" },
-  { id: "mastered", label: "Mastered" },
-];
-
 export default function Browse() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const session = useUserStore((s) => s.session);
+
+  const FILTERS: { id: Filter; label: string }[] = [
+    { id: "all",       label: t.vocab.browse.filterAll },
+    { id: "due",       label: t.vocab.browse.filterDue },
+    { id: "learning",  label: t.vocab.browse.filterLearning },
+    { id: "mastered",  label: t.vocab.browse.filterMastered },
+  ];
 
   const [words, setWords] = useState<SavedWord[]>([]);
   const [query, setQuery] = useState("");
@@ -72,9 +75,9 @@ export default function Browse() {
     const ok = await deleteWord(session.user.id, hanzi);
     if (ok) {
       setWords((ws) => ws.filter((w) => w.hanzi !== hanzi));
-      toast.info(`Removed ${hanzi}`);
+      toast.info(fmt(t.vocab.browse.removed, { hanzi }));
     } else {
-      toast.error("Couldn't delete");
+      toast.error(t.vocab.browse.removeError);
     }
   }
 
@@ -89,14 +92,14 @@ export default function Browse() {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
             <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
-          <Text variant="h3">My deck</Text>
+          <Text variant="h3">{t.vocab.browse.title}</Text>
           <Pressable
             onPress={() => router.push("/(app)/vocab/add")}
             hitSlop={16}
-            accessibilityLabel="Add word"
+            accessibilityLabel={t.vocab.add.title}
           >
             <Plus color={theme.colors.accent} size={24} strokeWidth={2.4} />
           </Pressable>
@@ -118,7 +121,7 @@ export default function Browse() {
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="Search hanzi, pinyin, meaning"
+            placeholder={t.vocab.browse.searchPlaceholder}
             placeholderTextColor={theme.colors.textTertiary}
             autoCapitalize="none"
             autoCorrect={false}
@@ -167,12 +170,12 @@ export default function Browse() {
         ListEmptyComponent={
           <View style={{ padding: theme.spacing["2xl"], alignItems: "center", gap: theme.spacing.sm }}>
             <Text variant="body" color="secondary">
-              {words.length === 0 ? "No words yet" : "Nothing matches that filter"}
+              {words.length === 0 ? t.vocab.browse.noWords : t.vocab.browse.noMatch}
             </Text>
             {words.length === 0 ? (
               <Pressable onPress={() => router.push("/(app)/vocab/add")}>
                 <Text variant="bodyStrong" color="accent">
-                  + Add your first word
+                  {t.vocab.browse.addFirst}
                 </Text>
               </Pressable>
             ) : null}
@@ -186,6 +189,7 @@ export default function Browse() {
 
 function WordRow({ word, onDelete }: { word: SavedWord; onDelete: () => void }) {
   const theme = useTheme();
+  const t = useT();
   const [showStrokes, setShowStrokes] = useState(false);
   const due = new Date(word.next_review_at).getTime() <= Date.now();
 
@@ -205,7 +209,7 @@ function WordRow({ word, onDelete }: { word: SavedWord; onDelete: () => void }) 
       >
         <Pressable
           onPress={() => setShowStrokes(true)}
-          accessibilityLabel={`Show strokes for ${word.hanzi}`}
+          accessibilityLabel={t.strokes.title}
         >
           <Text chinese variant="h2">
             {word.hanzi}
@@ -220,10 +224,19 @@ function WordRow({ word, onDelete }: { word: SavedWord; onDelete: () => void }) 
           </Text>
           <View style={{ flexDirection: "row", gap: 6, marginTop: 2 }}>
             {word.hsk_level > 0 ? (
-              <Badge text={`HSK ${word.hsk_level}`} tone="accent" />
+              <Badge text={fmt(t.vocab.browse.hskBadge, { n: word.hsk_level })} tone="accent" />
             ) : null}
             <Badge
-              text={due ? "due" : `${word.review_count} reviews`}
+              text={
+                due
+                  ? t.vocab.browse.dueBadge
+                  : fmt(
+                      word.review_count === 1
+                        ? t.vocab.browse.reviewsBadgeOne
+                        : t.vocab.browse.reviewsBadgeOther,
+                      { n: word.review_count },
+                    )
+              }
               tone={due ? "warning" : "neutral"}
             />
           </View>
@@ -236,7 +249,7 @@ function WordRow({ word, onDelete }: { word: SavedWord; onDelete: () => void }) 
         >
           <PenTool color={theme.colors.textTertiary} size={18} strokeWidth={2} />
         </Pressable>
-        <Pressable onPress={onDelete} hitSlop={12} accessibilityLabel={`Delete ${word.hanzi}`}>
+        <Pressable onPress={onDelete} hitSlop={12} accessibilityLabel={t.common.close}>
           <Trash2 color={theme.colors.textTertiary} size={18} strokeWidth={2} />
         </Pressable>
       </View>

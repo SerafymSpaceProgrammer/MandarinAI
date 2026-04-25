@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { TranslateQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -13,11 +14,12 @@ type Props = {
 
 export function TranslateCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<string | null>(null);
 
   const prompt = question.direction === "zh_to_en" ? question.word.hanzi : question.word.english;
   const subPrompt =
-    question.direction === "zh_to_en" ? question.word.pinyin : "Pick the hanzi";
+    question.direction === "zh_to_en" ? question.word.pinyin : t.exercises.cards.translateSubPickHanzi;
 
   function choose(option: string) {
     if (picked) return;
@@ -33,7 +35,7 @@ export function TranslateCard({ question, onResult }: Props) {
     <View style={{ gap: theme.spacing.xl }}>
       <View style={{ alignItems: "center", gap: theme.spacing.sm }}>
         <Text variant="caption" color="tertiary">
-          Translate
+          {t.exercises.cards.translatePromptHanzi}
         </Text>
         {question.direction === "zh_to_en" ? (
           <Text chinese style={{ fontSize: 56, lineHeight: 64, fontWeight: "700" }}>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { TextInput, View } from "react-native";
 
 import { Button, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { SavedWord } from "@/features/vocab/vocab";
 import { useTheme } from "@/theme";
 
@@ -18,6 +19,7 @@ type Props = {
  */
 export function ProductionCard({ card, onRevealed }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [value, setValue] = useState("");
   const [revealed, setRevealed] = useState(false);
 
@@ -46,14 +48,14 @@ export function ProductionCard({ card, onRevealed }: Props) {
       }}
     >
       <Text variant="caption" color="tertiary">
-        Produce
+        {t.vocab.review.produce}
       </Text>
 
       <Text variant="h2" align="center">
         {card.english}
       </Text>
       <Text variant="small" color="secondary">
-        Write it in Chinese.
+        {t.vocab.review.produceHint}
       </Text>
 
       <TextInput
@@ -63,7 +65,7 @@ export function ProductionCard({ card, onRevealed }: Props) {
         autoFocus
         autoCapitalize="none"
         autoCorrect={false}
-        placeholder="汉字"
+        placeholder={t.vocab.review.hanziPlaceholder}
         placeholderTextColor={theme.colors.textTertiary}
         style={{
           minWidth: 200,
@@ -96,11 +98,11 @@ export function ProductionCard({ card, onRevealed }: Props) {
             {card.pinyin}
           </Text>
           <Text variant="small" color={correct ? "success" : "danger"}>
-            {correct ? "Exact match" : "Not quite — that's the correct answer"}
+            {correct ? t.vocab.review.exactMatch : t.vocab.review.notQuite}
           </Text>
         </View>
       ) : (
-        <Button label="Check" onPress={check} fullWidth disabled={value.trim().length === 0} />
+        <Button label={t.vocab.review.check} onPress={check} fullWidth disabled={value.trim().length === 0} />
       )}
     </View>
   );

@@ -11,6 +11,8 @@ import {
 
 import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Button, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt, type Translations } from "@/i18n/strings";
 import { addWord } from "@/features/vocab/vocab";
 import {
   bulkAddToDeck,
@@ -18,7 +20,6 @@ import {
   fetchSavedHanziSet,
   fetchTopics,
   fetchTranslations,
-  POS_LABELS,
   type HskWord,
   type PosTag,
   type Topic,
@@ -26,8 +27,28 @@ import {
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
+const POS_I18N_KEY: Record<PosTag, keyof Translations["hsk"]> = {
+  noun: "posLabelNoun",
+  verb: "posLabelVerb",
+  adjective: "posLabelAdjective",
+  adverb: "posLabelAdverb",
+  classifier: "posLabelClassifier",
+  particle: "posLabelParticle",
+  pronoun: "posLabelPronoun",
+  conjunction: "posLabelConjunction",
+  preposition: "posLabelPreposition",
+  interjection: "posLabelInterjection",
+  number: "posLabelNumber",
+  proper: "posLabelProper",
+};
+
+function posLabel(t: Translations, tag: PosTag): string {
+  return t.hsk[POS_I18N_KEY[tag]];
+}
+
 export default function TopicDetail() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const session = useUserStore((s) => s.session);
   const profile = useUserStore((s) => s.profile);
@@ -58,8 +79,8 @@ export default function TopicDetail() {
       fetchSavedHanziSet(session.user.id),
     ]).then(([allTopics, list, savedSet]) => {
       if (cancelled) return;
-      const t = allTopics.find((x) => x.id === topicId) ?? null;
-      setTopic(t);
+      const found = allTopics.find((x) => x.id === topicId) ?? null;
+      setTopic(found);
       setWords(list);
       setSaved(savedSet);
       setLoading(false);
@@ -125,7 +146,7 @@ export default function TopicDetail() {
     if (!session) return;
     const meaning = meanings[w.hanzi]?.[0] ?? "";
     if (!meaning) {
-      toast.info("Translation still loading");
+      toast.info(t.hsk.listSavingTranslations);
       return;
     }
     const result = await addWord({
@@ -137,9 +158,9 @@ export default function TopicDetail() {
     });
     if (result) {
       setSaved((s) => new Set([...s, w.hanzi]));
-      toast.success(`Saved ${w.hanzi}`);
+      toast.success(fmt(t.hsk.listSavedToast, { hanzi: w.hanzi }));
     } else {
-      toast.error("Couldn't save");
+      toast.error(t.hsk.listSaveError);
     }
   }
 
@@ -148,7 +169,7 @@ export default function TopicDetail() {
     const unsaved = filteredWords.filter((w) => !saved.has(w.hanzi));
     const ready = unsaved.filter((w) => meanings[w.hanzi]?.length);
     if (ready.length === 0) {
-      toast.info("Translations still loading");
+      toast.info(t.hsk.listSavingTranslations);
       return;
     }
     setSavingAll(true);
@@ -163,7 +184,7 @@ export default function TopicDetail() {
     );
     setSavingAll(false);
     setSaved((s) => new Set([...s, ...ready.map((w) => w.hanzi)]));
-    toast.success(`Added ${added} words to your deck`);
+    toast.success(fmt(t.hsk.listAddedToast, { n: added }));
   }
 
   function handlePractice() {
@@ -185,13 +206,13 @@ export default function TopicDetail() {
           gap: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
           <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
         <Text style={{ fontSize: 28, lineHeight: 32 }}>{topic?.emoji ?? "📦"}</Text>
         <View style={{ flex: 1 }}>
           <Text variant="caption" color="tertiary">
-            Topic
+            {t.hsk.topicLabel}
           </Text>
           <Text variant="h3">{topicName}</Text>
         </View>
@@ -210,11 +231,11 @@ export default function TopicDetail() {
             gap: theme.spacing.xs,
           }}
         >
-          <Chip label="All HSK" active={hskFilter === null} onPress={() => setHskFilter(null)} />
+          <Chip label={t.hsk.topicHskFilterAll} active={hskFilter === null} onPress={() => setHskFilter(null)} />
           {levelChips.map((c) => (
             <Chip
               key={`${c.syllabus}-${c.level}`}
-              label={`${c.syllabus === "new" ? "HSK" : "HSK old"} ${c.level} · ${c.count}`}
+              label={`${fmt(c.syllabus === "new" ? t.hsk.topicHskBadge : t.hsk.topicHskBadgeOld, { n: c.level })} · ${c.count}`}
               active={
                 hskFilter !== null &&
                 hskFilter.syllabus === c.syllabus &&
@@ -242,7 +263,7 @@ export default function TopicDetail() {
           ListEmptyComponent={
             <View style={{ paddingVertical: theme.spacing["2xl"], alignItems: "center" }}>
               <Text variant="body" color="secondary">
-                No words yet for this topic at this level.
+                {t.hsk.listEmptyTopic}
               </Text>
             </View>
           }
@@ -276,14 +297,14 @@ export default function TopicDetail() {
           }}
         >
           <Button
-            label={`Practice ${Math.min(20, filteredWords.length)}`}
+            label={fmt(t.hsk.listPractice, { n: Math.min(20, filteredWords.length) })}
             onPress={handlePractice}
             disabled={filteredWords.length === 0}
             fullWidth
             style={{ flex: 1 }}
           />
           <Button
-            label={savingAll ? "Saving…" : `Save ${unsavedCount}`}
+            label={savingAll ? t.common.saving : fmt(t.hsk.listSaveN, { n: unsavedCount })}
             variant="secondary"
             onPress={handleSaveAll}
             disabled={savingAll || unsavedCount === 0}
@@ -318,12 +339,13 @@ function WordRow({
   onShowStrokes: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const primaryPos = word.pos?.[0] as PosTag | undefined;
   const hskBadge =
     word.hsk_new !== null
-      ? `HSK ${word.hsk_new}`
+      ? fmt(t.hsk.topicHskBadge, { n: word.hsk_new })
       : word.hsk_old !== null
-        ? `HSK ${word.hsk_old} (old)`
+        ? fmt(t.hsk.topicHskBadgeOld, { n: word.hsk_old })
         : null;
 
   return (
@@ -339,7 +361,7 @@ function WordRow({
         borderColor: theme.colors.border,
       }}
     >
-      <Pressable onPress={onShowStrokes} accessibilityLabel={`Show strokes for ${word.hanzi}`}>
+      <Pressable onPress={onShowStrokes} accessibilityLabel={t.strokes.title}>
         <Text chinese variant="h2">
           {word.hanzi}
         </Text>
@@ -349,7 +371,7 @@ function WordRow({
           <Text variant="small" color="secondary">
             {word.pinyin}
           </Text>
-          {primaryPos ? <Pill text={POS_LABELS[primaryPos].label} tone="neutral" /> : null}
+          {primaryPos ? <Pill text={posLabel(t, primaryPos)} tone="neutral" /> : null}
           {hskBadge ? <Pill text={hskBadge} tone="accent" /> : null}
         </View>
         {meaning ? (

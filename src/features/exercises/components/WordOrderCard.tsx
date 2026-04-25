@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Button, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import type { WordOrderQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -18,10 +20,11 @@ type Props = {
  */
 export function WordOrderCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
 
   // Give every shuffled token a stable key (token + index in shuffle).
   const bank = useMemo(
-    () => question.shuffled.map((t, i) => ({ id: `${i}:${t}`, token: t })),
+    () => question.shuffled.map((tok, i) => ({ id: `${i}:${tok}`, token: tok })),
     [question.shuffled],
   );
 
@@ -56,7 +59,7 @@ export function WordOrderCard({ question, onResult }: Props) {
     <View style={{ gap: theme.spacing.lg }}>
       <View style={{ alignItems: "center", gap: theme.spacing.xs }}>
         <Text variant="caption" color="tertiary">
-          Build the sentence
+          {t.exercises.cards.wordOrderTitle}
         </Text>
         <Text variant="body" color="secondary" align="center">
           {question.english}
@@ -85,7 +88,7 @@ export function WordOrderCard({ question, onResult }: Props) {
       >
         {placed.length === 0 ? (
           <Text variant="small" color="tertiary">
-            Tap tokens below in order…
+            {t.exercises.cards.wordOrderHint}
           </Text>
         ) : (
           placed.map((p) => (
@@ -140,7 +143,7 @@ export function WordOrderCard({ question, onResult }: Props) {
       </View>
 
       <Button
-        label={revealed === "wrong" ? "Wrong — see answer" : "Check"}
+        label={revealed === "wrong" ? t.exercises.cards.wordOrderWrong : t.exercises.cards.wordOrderCheck}
         disabled={placed.length !== question.answer.length || revealed !== null}
         onPress={check}
         size="lg"
@@ -149,7 +152,7 @@ export function WordOrderCard({ question, onResult }: Props) {
 
       {revealed === "wrong" ? (
         <Text chinese variant="body" color="secondary" align="center">
-          Correct: {question.answer.join("")}
+          {fmt(t.exercises.cards.wordOrderCorrect, { answer: question.answer.join("") })}
         </Text>
       ) : null}
     </View>

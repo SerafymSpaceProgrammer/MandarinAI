@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import type { ToneIdQuestion } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -13,16 +15,24 @@ type Props = {
   onResult: (correct: boolean) => void;
 };
 
-const TONES: Array<{ value: 1 | 2 | 3 | 4; label: string; glyph: string }> = [
-  { value: 1, label: "Flat", glyph: "ā" },
-  { value: 2, label: "Rising", glyph: "á" },
-  { value: 3, label: "Dipping", glyph: "ǎ" },
-  { value: 4, label: "Falling", glyph: "à" },
+const TONE_GLYPHS: Array<{ value: 1 | 2 | 3 | 4; glyph: string }> = [
+  { value: 1, glyph: "ā" },
+  { value: 2, glyph: "á" },
+  { value: 3, glyph: "ǎ" },
+  { value: 4, glyph: "à" },
 ];
 
 export function ToneIdCard({ question, onResult }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<number | null>(null);
+
+  const TONE_LABELS: Record<1 | 2 | 3 | 4, string> = {
+    1: t.exercises.cards.tone1,
+    2: t.exercises.cards.tone2,
+    3: t.exercises.cards.tone3,
+    4: t.exercises.cards.tone4,
+  };
 
   function speak() {
     Speech.stop().catch(() => {});
@@ -58,12 +68,12 @@ export function ToneIdCard({ question, onResult }: Props) {
   return (
     <View style={{ gap: theme.spacing.xl, alignItems: "center" }}>
       <Text variant="caption" color="tertiary">
-        Tone ID
+        {t.exercises.cards.toneTitle}
       </Text>
 
       <Pressable
         onPress={speak}
-        accessibilityLabel="Replay"
+        accessibilityLabel={t.vocab.review.tapToReplay}
         style={{
           width: 96,
           height: 96,
@@ -77,13 +87,13 @@ export function ToneIdCard({ question, onResult }: Props) {
       </Pressable>
 
       <Text variant="small" color="tertiary">
-        Which tone did you hear?
+        {t.exercises.cards.toneQuestion}
       </Text>
 
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.md, justifyContent: "center" }}>
-        {TONES.map((t) => {
-          const isPicked = picked === t.value;
-          const isCorrect = t.value === question.tone;
+        {TONE_GLYPHS.map((tone) => {
+          const isPicked = picked === tone.value;
+          const isCorrect = tone.value === question.tone;
           const showResult = picked !== null;
           const borderColor = showResult && isCorrect
             ? theme.colors.success
@@ -92,8 +102,8 @@ export function ToneIdCard({ question, onResult }: Props) {
               : theme.colors.border;
           return (
             <Pressable
-              key={t.value}
-              onPress={() => choose(t.value)}
+              key={tone.value}
+              onPress={() => choose(tone.value)}
               disabled={picked !== null}
               style={{
                 flexBasis: "45%",
@@ -107,11 +117,11 @@ export function ToneIdCard({ question, onResult }: Props) {
                 gap: 2,
               }}
             >
-              <Text style={{ fontSize: 36, lineHeight: 40, color: toneColor[t.value], fontWeight: "700" }}>
-                {t.glyph}
+              <Text style={{ fontSize: 36, lineHeight: 40, color: toneColor[tone.value], fontWeight: "700" }}>
+                {tone.glyph}
               </Text>
               <Text variant="small" color="secondary">
-                Tone {t.value} · {t.label}
+                {fmt(t.exercises.cards.toneOption, { n: tone.value, label: TONE_LABELS[tone.value] })}
               </Text>
             </Pressable>
           );

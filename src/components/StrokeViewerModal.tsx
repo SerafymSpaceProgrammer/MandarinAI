@@ -3,6 +3,7 @@ import { Pressable, ScrollView, View } from "react-native";
 
 import { Modal, Text } from "@/components/ui";
 import { StrokeAnimator } from "@/components/StrokeAnimator";
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 type Props = {
@@ -21,13 +22,14 @@ type Props = {
  */
 export function StrokeViewerModal({ visible, onClose, hanzi, pinyin, english }: Props) {
   const theme = useTheme();
+  const t = useT();
   const chars = [...hanzi];
   const [idx, setIdx] = useState(0);
 
   const current = chars[Math.min(idx, chars.length - 1)] ?? hanzi;
 
   return (
-    <Modal visible={visible} onClose={onClose} title="Stroke order">
+    <Modal visible={visible} onClose={onClose} title={t.strokes.title}>
       <ScrollView
         contentContainerStyle={{
           gap: theme.spacing.lg,
@@ -63,7 +65,7 @@ export function StrokeViewerModal({ visible, onClose, hanzi, pinyin, english }: 
                 <Pressable
                   key={`${c}-${i}`}
                   onPress={() => setIdx(i)}
-                  accessibilityLabel={`Show ${c}`}
+                  accessibilityLabel={c}
                   style={{
                     width: 52,
                     height: 52,

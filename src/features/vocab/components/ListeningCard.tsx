@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { SavedWord } from "@/features/vocab/vocab";
 import { useTheme } from "@/theme";
 
@@ -20,6 +21,7 @@ type Props = {
  */
 export function ListeningCard({ card, distractors, onRevealed }: Props) {
   const theme = useTheme();
+  const t = useT();
   const [picked, setPicked] = useState<string | null>(null);
 
   const options = useMemo(() => {
@@ -69,12 +71,12 @@ export function ListeningCard({ card, distractors, onRevealed }: Props) {
     >
       <View style={{ alignItems: "center", gap: theme.spacing.md }}>
         <Text variant="caption" color="tertiary">
-          Listen
+          {t.vocab.review.listen}
         </Text>
 
         <Pressable
           onPress={speak}
-          accessibilityLabel="Play audio again"
+          accessibilityLabel={t.vocab.review.tapToReplay}
           style={{
             width: 104,
             height: 104,
@@ -88,7 +90,7 @@ export function ListeningCard({ card, distractors, onRevealed }: Props) {
         </Pressable>
 
         <Text variant="small" color="tertiary">
-          Tap to replay
+          {t.vocab.review.tapToReplay}
         </Text>
       </View>
 

@@ -7,6 +7,8 @@ import { Animated, Easing, Pressable, ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { recordActivity } from "@/features/activity/activity";
 import { findScenario, type Scenario, type ScenarioTurn } from "@/features/speaking/scenarios";
 import { scorePronunciation, type PronunciationResult } from "@/features/speaking/score";
@@ -28,6 +30,7 @@ type PhaseState =
 
 export default function ScenarioSession() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
@@ -76,8 +79,8 @@ export default function ScenarioSession() {
     return (
       <Screen padded>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: theme.spacing.md }}>
-          <Text variant="h2" align="center">Scenario not found</Text>
-          <Button label="Back" variant="secondary" onPress={() => router.back()} />
+          <Text variant="h2" align="center">{t.speaking.sessionNotFound}</Text>
+          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
         </View>
       </Screen>
     );
@@ -94,7 +97,7 @@ export default function ScenarioSession() {
   async function startRecord() {
     const granted = await ensureMicPermission();
     if (!granted) {
-      toast.error("Microphone permission is needed");
+      toast.error(t.speaking.micPermission);
       return;
     }
     try {
@@ -102,7 +105,7 @@ export default function ScenarioSession() {
       setPhase({ kind: "recording", stopFn: handle.stop });
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
     } catch (err) {
-      toast.error("Couldn't start recording");
+      toast.error(t.speaking.recordingError);
       console.warn(err);
     }
   }
@@ -123,16 +126,16 @@ export default function ScenarioSession() {
       const err = res.error;
       switch (err.kind) {
         case "audio_too_short":
-          toast.info("That was too quiet — try holding the button a bit longer");
+          toast.info(t.speaking.audioTooShort);
           return;
         case "daily_limit":
-          toast.info(`Daily speaking limit reached (${err.used}/${err.limit})`);
+          toast.info(fmt(t.speaking.dailyLimit, { used: err.used, limit: err.limit }));
           return;
         case "network":
-          toast.error("Network error. Try again.");
+          toast.error(t.speaking.networkError);
           return;
         default:
-          toast.error(`Something went wrong: ${err.kind}`);
+          toast.error(fmt(t.speaking.genericError, { kind: err.kind }));
           return;
       }
     }
@@ -198,11 +201,11 @@ export default function ScenarioSession() {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-          <Pressable onPress={quit} hitSlop={16} accessibilityLabel="Exit">
+          <Pressable onPress={quit} hitSlop={16} accessibilityLabel={t.common.close}>
             <X color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
           <Text variant="small" color="tertiary">
-            {turnIdx + 1} / {scenario.turns.length}
+            {fmt(t.vocab.review.counter, { n: turnIdx + 1, total: scenario.turns.length })}
           </Text>
           <View style={{ width: 24 }} />
         </View>
@@ -244,7 +247,7 @@ export default function ScenarioSession() {
             }}
           >
             <Text variant="caption" color="tertiary">
-              Setting
+              {t.speaking.setting}
             </Text>
             <Text variant="small">{scenario.setting}</Text>
           </View>
@@ -263,10 +266,10 @@ export default function ScenarioSession() {
         >
           <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
             <Text variant="caption" color={current.speaker === "you" ? "accent" : "tertiary"}>
-              {current.speaker === "you" ? "YOUR LINE" : "THEY SAY"}
+              {current.speaker === "you" ? t.speaking.yourLine : t.speaking.theySay}
             </Text>
             {current.speaker === "npc" ? (
-              <Pressable onPress={playNpcAgain} hitSlop={12} accessibilityLabel="Replay">
+              <Pressable onPress={playNpcAgain} hitSlop={12} accessibilityLabel={t.vocab.review.tapToReplay}>
                 <Volume2 color={theme.colors.textSecondary} size={20} strokeWidth={2} />
               </Pressable>
             ) : null}
@@ -286,6 +289,7 @@ export default function ScenarioSession() {
         {phase.kind === "revealed" ? (
           <FeedbackCard expected={current.hanzi} result={phase.result} />
         ) : null}
+
       </ScrollView>
 
       {/* Bottom action area */}
@@ -301,7 +305,7 @@ export default function ScenarioSession() {
       >
         {current.speaker === "npc" ? (
           <Button
-            label="Continue"
+            label={t.common.continue}
             size="lg"
             fullWidth
             rightIcon={<ArrowRight color={theme.colors.onAccent} size={18} strokeWidth={2.4} />}
@@ -309,7 +313,7 @@ export default function ScenarioSession() {
           />
         ) : phase.kind === "revealed" ? (
           <Button
-            label="Next line"
+            label={t.speaking.nextLine}
             size="lg"
             fullWidth
             rightIcon={<ArrowRight color={theme.colors.onAccent} size={18} strokeWidth={2.4} />}
@@ -321,7 +325,7 @@ export default function ScenarioSession() {
               <Pressable
                 onPress={phase.kind === "recording" ? stopAndScore : startRecord}
                 disabled={phase.kind === "scoring"}
-                accessibilityLabel={phase.kind === "recording" ? "Stop recording" : "Start recording"}
+                accessibilityLabel={phase.kind === "recording" ? t.speaking.tapToStop : t.speaking.tapAndSay}
                 style={{
                   width: 84,
                   height: 84,
@@ -342,10 +346,10 @@ export default function ScenarioSession() {
             </Animated.View>
             <Text variant="small" color="tertiary">
               {phase.kind === "recording"
-                ? "Tap to stop"
+                ? t.speaking.tapToStop
                 : phase.kind === "scoring"
-                  ? "Scoring…"
-                  : "Tap and say the line"}
+                  ? t.speaking.scoring
+                  : t.speaking.tapAndSay}
             </Text>
           </View>
         )}
@@ -357,6 +361,7 @@ export default function ScenarioSession() {
 // ────────────────────────── FEEDBACK CARD ──────────────────────────
 function FeedbackCard({ expected, result }: { expected: string; result: PronunciationResult }) {
   const theme = useTheme();
+  const t = useT();
 
   const verdictColor: "success" | "warning" | "danger" =
     result.verdict === "excellent" || result.verdict === "good"
@@ -366,10 +371,10 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
         : "danger";
 
   const verdictLabel: Record<PronunciationResult["verdict"], string> = {
-    excellent: "Excellent!",
-    good: "Good — you got the core",
-    try_again: "Close — try again",
-    unclear: "Couldn't catch that",
+    excellent: t.speaking.verdictExcellent,
+    good: t.speaking.verdictGood,
+    try_again: t.speaking.verdictTryAgain,
+    unclear: t.speaking.verdictUnclear,
   };
 
   return (
@@ -394,7 +399,7 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
 
       <View style={{ gap: 4 }}>
         <Text variant="caption" color="tertiary">
-          Expected → Heard
+          {t.speaking.expectedHeard}
         </Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6 }}>
           {result.perChar.map((p, i) => (
@@ -413,13 +418,13 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
         </View>
         {result.transcript ? (
           <Text variant="small" color="secondary">
-            Heard: {result.transcript}
+            {fmt(t.speaking.heardLabel, { transcript: result.transcript })}
           </Text>
         ) : null}
       </View>
 
       <Text variant="caption" color="tertiary">
-        Target: {expected}
+        {fmt(t.speaking.targetLabel, { expected })}
       </Text>
     </View>
   );
@@ -428,12 +433,12 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
 // ────────────────────────── SUMMARY ──────────────────────────
 function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: TurnOutcome[] }) {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
+  const t = useT();
 
   const avg = outcomes.length
     ? Math.round(outcomes.reduce((s, o) => s + o.score, 0) / outcomes.length)
     : 0;
-  const youTurns = scenario.turns.filter((t) => t.speaker === "you").length;
+  const youTurns = scenario.turns.filter((turn) => turn.speaker === "you").length;
   const xp = outcomes.reduce((s, o) => s + (o.score >= 60 ? 3 : 1), 0);
 
   return (
@@ -448,10 +453,15 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
         <View style={{ alignItems: "center", gap: theme.spacing.md }}>
           <Text style={{ fontSize: 72, lineHeight: 80 }}>{scenario.emoji}</Text>
           <Text variant="h1" align="center">
-            {scenario.title} done
+            {fmt(t.speaking.summaryTitle, { title: scenario.title })}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            {outcomes.length} / {youTurns} turns scored · avg {avg}% · +{xp} XP
+            {fmt(t.speaking.summarySubtitle, {
+              scored: outcomes.length,
+              total: youTurns,
+              avg,
+              xp,
+            })}
           </Text>
         </View>
 
@@ -466,9 +476,9 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
           }}
         >
           <Text variant="caption" color="tertiary">
-            Transcript
+            {t.speaking.transcriptHeader}
           </Text>
-          {scenario.turns.map((t, i) => {
+          {scenario.turns.map((turn, i) => {
             const outcome = outcomes.find((o) => o.turnIdx === i);
             const scoreColor: "success" | "warning" | "danger" | "tertiary" = outcome
               ? outcome.score >= 80
@@ -481,8 +491,8 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
             return (
               <View key={i} style={{ gap: 2 }}>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                  <Text variant="caption" color={t.speaker === "you" ? "accent" : "tertiary"}>
-                    {t.speaker === "you" ? "YOU" : "NPC"}
+                  <Text variant="caption" color={turn.speaker === "you" ? "accent" : "tertiary"}>
+                    {turn.speaker === "you" ? t.speaking.youLabel : t.speaking.npcLabel}
                   </Text>
                   {outcome ? (
                     <Text variant="smallStrong" color={scoreColor}>
@@ -491,10 +501,10 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
                   ) : null}
                 </View>
                 <Text chinese variant="bodyStrong">
-                  {t.hanzi}
+                  {turn.hanzi}
                 </Text>
                 <Text variant="small" color="secondary">
-                  {t.english}
+                  {turn.english}
                 </Text>
               </View>
             );
@@ -503,18 +513,18 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
 
         <View style={{ gap: theme.spacing.sm }}>
           <Button
-            label="Practice again"
+            label={t.speaking.practiceAgain}
             size="lg"
             fullWidth
             onPress={() => router.replace(`/(app)/practice/session?id=${scenario.id}`)}
           />
           <Button
-            label="Pick another scenario"
+            label={t.speaking.pickAnother}
             variant="secondary"
             fullWidth
             onPress={() => router.replace("/(app)/practice/scenarios")}
           />
-          <Button label="Done" variant="ghost" fullWidth onPress={() => router.replace("/(app)")} />
+          <Button label={t.common.done} variant="ghost" fullWidth onPress={() => router.replace("/(app)")} />
         </View>
       </ScrollView>
     </Screen>

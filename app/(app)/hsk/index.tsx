@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 
 import { Card, Screen, Skeleton, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import {
   countByLevel,
   fetchTopics,
@@ -24,6 +26,7 @@ type Mode = "level" | "topic";
 
 export default function HskIndex() {
   const theme = useTheme();
+  const t = useT();
   const profile = useUserStore((s) => s.profile);
   const lang = profile?.native_language ?? "en";
 
@@ -48,8 +51,8 @@ export default function HskIndex() {
     if (mode !== "topic") return;
     let cancelled = false;
     if (!topics) {
-      fetchTopics().then((t) => {
-        if (!cancelled) setTopics(t);
+      fetchTopics().then((rows) => {
+        if (!cancelled) setTopics(rows);
       });
     }
     return () => {
@@ -70,14 +73,14 @@ export default function HskIndex() {
           paddingBottom: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
           <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text variant="caption" color="tertiary">
-            HSK catalog
+            {t.hsk.headerLabel}
           </Text>
-          <Text variant="h3">{mode === "level" ? "Pick a level" : "Pick a topic"}</Text>
+          <Text variant="h3">{mode === "level" ? t.hsk.pickLevel : t.hsk.pickTopic}</Text>
         </View>
       </View>
 
@@ -112,7 +115,7 @@ export default function HskIndex() {
                 }}
               >
                 <Text variant="bodyStrong" color={active ? "primary" : "tertiary"}>
-                  {m === "level" ? "By HSK level" : "By topic"}
+                  {m === "level" ? t.hsk.byLevel : t.hsk.byTopic}
                 </Text>
               </Pressable>
             );
@@ -146,10 +149,10 @@ export default function HskIndex() {
                     }}
                   >
                     <Text variant="bodyStrong" color={active ? "primary" : "tertiary"}>
-                      {s === "new" ? "HSK 3.0 (new)" : "HSK Classic"}
+                      {s === "new" ? t.hsk.syllabusNew : t.hsk.syllabusOld}
                     </Text>
                     <Text variant="caption" color="tertiary">
-                      {s === "new" ? "2021 standard" : "Pre-2021"}
+                      {s === "new" ? t.hsk.syllabusNewHint : t.hsk.syllabusOldHint}
                     </Text>
                   </Pressable>
                 );
@@ -157,8 +160,7 @@ export default function HskIndex() {
             </View>
 
             <Text variant="small" color="secondary">
-              Browse by level. Tap any HSK level to see its words, save selections
-              to your deck, or run a quick practice session.
+              {t.hsk.levelHint}
             </Text>
 
             <View style={{ gap: theme.spacing.md }}>
@@ -175,8 +177,7 @@ export default function HskIndex() {
         ) : (
           <>
             <Text variant="small" color="secondary">
-              Topics are AI-classified across all 6,300+ HSK words. Pick one to
-              study a focused vocabulary set.
+              {t.hsk.topicHint}
             </Text>
 
             {topics === null ? (
@@ -187,12 +188,12 @@ export default function HskIndex() {
               </View>
             ) : (
               <View style={{ gap: theme.spacing.sm }}>
-                {topics.map((t) => (
+                {topics.map((topic) => (
                   <TopicCard
-                    key={t.id}
-                    topic={t}
+                    key={topic.id}
+                    topic={topic}
                     lang={lang}
-                    onPress={() => router.push(`/(app)/hsk/topic/${t.id}`)}
+                    onPress={() => router.push(`/(app)/hsk/topic/${topic.id}`)}
                   />
                 ))}
               </View>
@@ -214,6 +215,7 @@ function LevelCard({
   onPress: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
 
   return (
     <Card onPress={onPress} bordered>
@@ -233,12 +235,14 @@ function LevelCard({
           </Text>
         </View>
         <View style={{ flex: 1, gap: 2 }}>
-          <Text variant="bodyStrong">HSK {level}</Text>
+          <Text variant="bodyStrong">{fmt(t.hsk.topicHskBadge, { n: level })}</Text>
           {count == null ? (
             <Skeleton height={14} width="40%" />
           ) : (
             <Text variant="small" color="secondary">
-              {count} {count === 1 ? "word" : "words"}
+              {fmt(count === 1 ? t.hsk.levelCardWordOne : t.hsk.levelCardWordOther, {
+                n: count,
+              })}
             </Text>
           )}
         </View>
@@ -258,8 +262,10 @@ function TopicCard({
   onPress: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const name = topic.name[lang] ?? topic.name.en ?? topic.id;
   const description = topic.description?.[lang] ?? topic.description?.en;
+  const wordCount = topic.word_count ?? 0;
 
   return (
     <Card onPress={onPress} bordered padding="md">
@@ -276,7 +282,9 @@ function TopicCard({
           >
             <Text variant="bodyStrong">{name}</Text>
             <Text variant="caption" color="tertiary">
-              {topic.word_count ?? 0} {topic.word_count === 1 ? "word" : "words"}
+              {fmt(wordCount === 1 ? t.hsk.levelCardWordOne : t.hsk.levelCardWordOther, {
+                n: wordCount,
+              })}
             </Text>
           </View>
           {description ? (

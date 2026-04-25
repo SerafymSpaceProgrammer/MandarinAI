@@ -2,11 +2,14 @@ import { router } from "expo-router";
 import { ArrowLeft } from "lucide-react-native";
 import { Pressable, ScrollView, View } from "react-native";
 import { Card, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { SCENARIOS } from "@/features/speaking/scenarios";
 import { useTheme } from "@/theme";
 
 export default function ScenarioPicker() {
   const theme = useTheme();
+  const t = useT();
 
   return (
     <Screen>
@@ -20,14 +23,14 @@ export default function ScenarioPicker() {
           gap: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
           <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text variant="caption" color="tertiary">
-            Speaking
+            {t.speaking.title}
           </Text>
-          <Text variant="h3">Pick a scenario</Text>
+          <Text variant="h3">{t.speaking.pickScenario}</Text>
         </View>
       </View>
 
@@ -47,11 +50,10 @@ export default function ScenarioPicker() {
           }}
         >
           <Text variant="caption" color="accent">
-            How it works
+            {t.speaking.howItWorks}
           </Text>
           <Text variant="small">
-            Walk through a short dialogue. When it's your turn, tap 🎤 and read the line aloud —
-            Whisper will score your pronunciation and give instant feedback.
+            {t.speaking.howItWorksBody}
           </Text>
         </View>
 
@@ -74,9 +76,18 @@ export default function ScenarioPicker() {
                 {s.blurb}
               </Text>
               <View style={{ flexDirection: "row", gap: 6, marginTop: 2 }}>
-                <Badge text={`HSK ${s.hskLevel}`} tone="accent" />
-                <Badge text={`${s.minutes} min`} tone="neutral" />
-                <Badge text={`${s.turns.filter((t) => t.speaker === "you").length} turns`} tone="neutral" />
+                <Badge text={fmt(t.speaking.badgeHsk, { n: s.hskLevel })} tone="accent" />
+                <Badge text={fmt(t.speaking.badgeMinutes, { n: s.minutes })} tone="neutral" />
+                <Badge
+                  text={(() => {
+                    const turnCount = s.turns.filter((turn) => turn.speaker === "you").length;
+                    return fmt(
+                      turnCount === 1 ? t.speaking.badgeTurnsOne : t.speaking.badgeTurnsOther,
+                      { n: turnCount },
+                    );
+                  })()}
+                  tone="neutral"
+                />
               </View>
             </View>
           </Card>

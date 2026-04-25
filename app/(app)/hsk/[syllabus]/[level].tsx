@@ -11,13 +11,14 @@ import {
 
 import { StrokeViewerModal } from "@/components/StrokeViewerModal";
 import { Button, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt, type Translations } from "@/i18n/strings";
 import { addWord } from "@/features/vocab/vocab";
 import {
   bulkAddToDeck,
   fetchCatalog,
   fetchSavedHanziSet,
   fetchTranslations,
-  POS_LABELS,
   type HskWord,
   type PosTag,
   type Syllabus,
@@ -25,8 +26,28 @@ import {
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
+const POS_I18N_KEY: Record<PosTag, keyof Translations["hsk"]> = {
+  noun: "posLabelNoun",
+  verb: "posLabelVerb",
+  adjective: "posLabelAdjective",
+  adverb: "posLabelAdverb",
+  classifier: "posLabelClassifier",
+  particle: "posLabelParticle",
+  pronoun: "posLabelPronoun",
+  conjunction: "posLabelConjunction",
+  preposition: "posLabelPreposition",
+  interjection: "posLabelInterjection",
+  number: "posLabelNumber",
+  proper: "posLabelProper",
+};
+
+function posLabel(t: Translations, tag: PosTag): string {
+  return t.hsk[POS_I18N_KEY[tag]];
+}
+
 export default function HskLevelList() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const session = useUserStore((s) => s.session);
   const profile = useUserStore((s) => s.profile);
@@ -88,7 +109,7 @@ export default function HskLevelList() {
     if (!session) return;
     const meaning = meanings[w.hanzi]?.[0] ?? "";
     if (!meaning) {
-      toast.info("Translation still loading — try again in a moment");
+      toast.info(t.hsk.listLoadingTranslations);
       return;
     }
     const result = await addWord({
@@ -100,9 +121,9 @@ export default function HskLevelList() {
     });
     if (result) {
       setSaved((s) => new Set([...s, w.hanzi]));
-      toast.success(`Saved ${w.hanzi}`);
+      toast.success(fmt(t.hsk.listSavedToast, { hanzi: w.hanzi }));
     } else {
-      toast.error("Couldn't save");
+      toast.error(t.hsk.listSaveError);
     }
   }
 
@@ -111,7 +132,7 @@ export default function HskLevelList() {
     const unsaved = filteredWords.filter((w) => !saved.has(w.hanzi));
     const ready = unsaved.filter((w) => meanings[w.hanzi]?.length);
     if (ready.length === 0) {
-      toast.info("Translations still loading");
+      toast.info(t.hsk.listSavingTranslations);
       return;
     }
     setSavingAll(true);
@@ -126,7 +147,7 @@ export default function HskLevelList() {
     );
     setSavingAll(false);
     setSaved((s) => new Set([...s, ...ready.map((w) => w.hanzi)]));
-    toast.success(`Added ${added} words to your deck`);
+    toast.success(fmt(t.hsk.listAddedToast, { n: added }));
   }
 
   function handlePractice() {
@@ -162,14 +183,14 @@ export default function HskLevelList() {
           gap: theme.spacing.md,
         }}
       >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel="Back">
+        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
           <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text variant="caption" color="tertiary">
-            {syllabus === "new" ? "HSK 3.0" : "HSK Classic"}
+            {syllabus === "new" ? t.hsk.syllabusNew : t.hsk.syllabusOld}
           </Text>
-          <Text variant="h3">HSK {level}</Text>
+          <Text variant="h3">{fmt(t.hsk.topicHskBadge, { n: level })}</Text>
         </View>
         <Text variant="small" color="tertiary">
           {posFilter ? `${filteredWords.length} / ${words.length}` : words.length}
@@ -188,14 +209,14 @@ export default function HskLevelList() {
           }}
         >
           <PosChip
-            label="All"
+            label={t.hsk.posChipsAll}
             active={posFilter === null}
             onPress={() => setPosFilter(null)}
           />
           {posCounts.map(([tag, count]) => (
             <PosChip
               key={tag}
-              label={`${POS_LABELS[tag].label} ${count}`}
+              label={`${posLabel(t, tag)} ${count}`}
               active={posFilter === tag}
               onPress={() => setPosFilter(tag)}
             />
@@ -219,7 +240,7 @@ export default function HskLevelList() {
           ListEmptyComponent={
             <View style={{ paddingVertical: theme.spacing["2xl"], alignItems: "center" }}>
               <Text variant="body" color="secondary">
-                No words match this filter
+                {t.hsk.listEmpty}
               </Text>
             </View>
           }
@@ -254,14 +275,14 @@ export default function HskLevelList() {
           }}
         >
           <Button
-            label={`Practice ${Math.min(20, filteredWords.length)}`}
+            label={fmt(t.hsk.listPractice, { n: Math.min(20, filteredWords.length) })}
             onPress={handlePractice}
             disabled={filteredWords.length === 0}
             fullWidth
             style={{ flex: 1 }}
           />
           <Button
-            label={savingAll ? "Saving…" : `Save ${unsavedCount}`}
+            label={savingAll ? t.common.saving : fmt(t.hsk.listSaveN, { n: unsavedCount })}
             variant="secondary"
             onPress={handleSaveAll}
             disabled={savingAll || unsavedCount === 0}
@@ -296,6 +317,7 @@ function WordRow({
   onShowStrokes: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const primaryPos = word.pos?.[0] as PosTag | undefined;
 
   return (
@@ -311,7 +333,7 @@ function WordRow({
         borderColor: theme.colors.border,
       }}
     >
-      <Pressable onPress={onShowStrokes} accessibilityLabel={`Show strokes for ${word.hanzi}`}>
+      <Pressable onPress={onShowStrokes} accessibilityLabel={t.strokes.title}>
         <Text chinese variant="h2">
           {word.hanzi}
         </Text>
@@ -331,7 +353,7 @@ function WordRow({
               }}
             >
               <Text variant="caption" color="tertiary">
-                {POS_LABELS[primaryPos].label}
+                {posLabel(t, primaryPos)}
               </Text>
             </View>
           ) : null}
@@ -349,7 +371,7 @@ function WordRow({
       <Pressable
         onPress={onShowStrokes}
         hitSlop={8}
-        accessibilityLabel="Strokes"
+        accessibilityLabel={t.strokes.title}
         style={{ padding: 4 }}
       >
         <PenTool color={theme.colors.textTertiary} size={18} strokeWidth={2} />
@@ -358,7 +380,7 @@ function WordRow({
         onPress={isSaved ? undefined : onSave}
         disabled={isSaved}
         hitSlop={8}
-        accessibilityLabel={isSaved ? "Already saved" : `Save ${word.hanzi}`}
+        accessibilityLabel={isSaved ? t.vocab.add.title : fmt(t.hsk.listSavedToast, { hanzi: word.hanzi })}
         style={{ padding: 4 }}
       >
         {isSaved ? (

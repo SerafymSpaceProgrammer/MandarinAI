@@ -3,12 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { Animated, Easing, View } from "react-native";
 
 import { Button, Card, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { dueCountOnDay } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 export default function ReviewSummary() {
   const theme = useTheme();
+  const t = useT();
   const session = useUserStore((s) => s.session);
   const params = useLocalSearchParams<{ reviewed?: string; correct?: string; minutes?: string }>();
 
@@ -50,35 +53,43 @@ export default function ReviewSummary() {
             干杯
           </Text>
           <Text variant="h1" align="center">
-            Session done
+            {t.vocab.summary.title}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            {reviewed} {reviewed === 1 ? "card" : "cards"} reviewed · {accuracy}% correct · {minutes} min
+            {fmt(t.vocab.summary.subtitle, {
+              reviewed,
+              label: reviewed === 1 ? t.vocab.summary.cardsLabelOne : t.vocab.summary.cardsLabelOther,
+              accuracy,
+              minutes,
+            })}
           </Text>
         </Animated.View>
 
         <Card>
           <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-            <Stat label="Reviewed" value={reviewed} />
-            <Stat label="Correct" value={correct} color="success" />
-            <Stat label="XP" value={xp} color="accent" />
+            <Stat label={t.vocab.summary.reviewed} value={reviewed} />
+            <Stat label={t.vocab.summary.correct} value={correct} color="success" />
+            <Stat label={t.vocab.summary.xp} value={xp} color="accent" />
           </View>
         </Card>
 
         {tomorrow !== null ? (
           <Text variant="small" color="tertiary" align="center">
-            Tomorrow you have {tomorrow} {tomorrow === 1 ? "card" : "cards"} due.
+            {fmt(
+              tomorrow === 1 ? t.vocab.summary.tomorrowOne : t.vocab.summary.tomorrowOther,
+              { n: tomorrow },
+            )}
           </Text>
         ) : null}
 
         <View style={{ gap: theme.spacing.sm }}>
           <Button
-            label="Review more"
+            label={t.vocab.summary.reviewMore}
             fullWidth
             onPress={() => router.replace("/(app)/vocab/review")}
           />
           <Button
-            label="Done"
+            label={t.common.done}
             variant="ghost"
             fullWidth
             onPress={() => router.replace("/(app)")}

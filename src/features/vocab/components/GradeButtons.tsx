@@ -2,6 +2,7 @@ import * as Haptics from "expo-haptics";
 import { Pressable, View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { previewIntervals, type ReviewableCard, type ReviewGrade } from "@/features/vocab/srs";
 import { useTheme } from "@/theme";
 
@@ -11,12 +12,6 @@ type Props = {
   disabled?: boolean;
 };
 
-const GRADES: { grade: ReviewGrade; label: string; color: "danger" | "warning" | "success" }[] = [
-  { grade: "again", label: "Again", color: "danger" },
-  { grade: "good", label: "Good", color: "warning" },
-  { grade: "easy", label: "Easy", color: "success" },
-];
-
 const HAPTIC_FOR_GRADE: Record<ReviewGrade, Haptics.ImpactFeedbackStyle> = {
   again: Haptics.ImpactFeedbackStyle.Heavy,
   good: Haptics.ImpactFeedbackStyle.Medium,
@@ -25,7 +20,14 @@ const HAPTIC_FOR_GRADE: Record<ReviewGrade, Haptics.ImpactFeedbackStyle> = {
 
 export function GradeButtons({ card, onGrade, disabled }: Props) {
   const theme = useTheme();
+  const t = useT();
   const intervals = previewIntervals(card);
+
+  const GRADES: { grade: ReviewGrade; label: string; color: "danger" | "warning" | "success" }[] = [
+    { grade: "again", label: t.vocab.review.gradeAgain, color: "danger" },
+    { grade: "good",  label: t.vocab.review.gradeGood,  color: "warning" },
+    { grade: "easy",  label: t.vocab.review.gradeEasy,  color: "success" },
+  ];
 
   return (
     <View style={{ flexDirection: "row", gap: theme.spacing.sm }}>
