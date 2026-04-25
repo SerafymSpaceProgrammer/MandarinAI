@@ -21,7 +21,8 @@ import {
   type ExerciseType,
   type Question,
 } from "@/features/exercises/types";
-import { fetchAllWords } from "@/features/vocab/vocab";
+import { fetchTranslations } from "@/features/hsk/hsk";
+import { fetchAllWords, type SavedWord } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
@@ -36,6 +37,7 @@ export default function ExerciseRunner() {
   const t = useT();
   const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
+  const profile = useUserStore((s) => s.profile);
   const params = useLocalSearchParams<{ type?: string }>();
   const type = params.type as ExerciseType | undefined;
   const meta = type ? EXERCISE_META[type] : undefined;
@@ -50,17 +52,27 @@ export default function ExerciseRunner() {
   useEffect(() => {
     if (!session || !type) return;
     let cancelled = false;
+    const lang = profile?.native_language ?? "en";
     (async () => {
       const words = await fetchAllWords(session.user.id);
       if (cancelled) return;
-      const qs = generateExercises(type, words, QUESTION_COUNT);
+
+      // saved_words.english may have been stored in any language depending on
+      // when/where it was saved (extension defaults to native, mobile add page
+      // accepts free text, older saves are English). Re-translate to the
+      // user's current native_language so all six exercise types display the
+      // meaning they expect to see.
+      const localized = await localizeMeanings(words, lang);
+      if (cancelled) return;
+
+      const qs = generateExercises(type, localized, QUESTION_COUNT);
       setQuestions(qs);
       setLoading(false);
     })();
     return () => {
       cancelled = true;
     };
-  }, [session, type]);
+  }, [session, type, profile?.native_language]);
 
   function handleResult(correct: boolean) {
     if (correct) setCorrectCount((c) => c + 1);
@@ -204,6 +216,26 @@ export default function ExerciseRunner() {
       </ScrollView>
     </View>
   );
+}
+
+/**
+ * Patch each saved word's `english` field with a fresh translation in the
+ * user's current native language. We hit fetchTranslations once for the
+ * whole batch (it caches per-language in supabase) so the cost is one
+ * round-trip, not N. Words missing a translation keep whatever was in
+ * saved_words.
+ */
+async function localizeMeanings(words: SavedWord[], lang: string): Promise<SavedWord[]> {
+  if (words.length === 0) return words;
+  const map = await fetchTranslations(
+    words.map((w) => w.hanzi),
+    lang,
+  );
+  return words.map((w) => {
+    const translated = map[w.hanzi]?.[0];
+    if (!translated) return w;
+    return { ...w, english: translated };
+  });
 }
 
 function QuestionView({

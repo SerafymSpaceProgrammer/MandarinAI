@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/api";
 import { computeStreak, fetchRecentActivity, todayISO } from "@/features/activity/activity";
 import { generatePlan, type PlanItem } from "@/features/dailyPlan/generatePlan";
+import { fetchTranslations } from "@/features/hsk/hsk";
 import { logger } from "@/lib/logger";
 import { useUserStore } from "@/stores/userStore";
 
@@ -74,8 +75,24 @@ export function useHomeData(): HomeData {
 
     const due = dueRes.count ?? 0;
     const total = totalRes.count ?? 0;
-    const recent = (recentRes.data ?? []) as RecentWord[];
+    const recentRaw = (recentRes.data ?? []) as RecentWord[];
     const today = activityRows.find((r) => r.date === todayISO());
+
+    // Re-translate the meaning to whatever native language the user is set
+    // to right now. saved_words.english is a snapshot of whatever was
+    // localized at save time; the user can have changed languages since.
+    const lang = profile.native_language ?? "en";
+    const translations =
+      recentRaw.length > 0
+        ? await fetchTranslations(
+            recentRaw.map((w) => w.hanzi),
+            lang,
+          )
+        : {};
+    const recent: RecentWord[] = recentRaw.map((w) => {
+      const translated = translations[w.hanzi]?.[0];
+      return translated ? { ...w, english: translated } : w;
+    });
 
     const nextPlan = generatePlan({
       profile,

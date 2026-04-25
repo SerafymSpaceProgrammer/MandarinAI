@@ -101,10 +101,22 @@ export default function ReviewSession() {
         }
       } else {
         const data = await fetchDueCards(session.user.id, SESSION_LIMIT);
-        if (!cancelled) {
-          setCards(data);
-          setLoading(false);
-        }
+        if (cancelled) return;
+        // Localize the meaning to the user's current native language so the
+        // review card never shows English to a non-English speaker just
+        // because the word was saved before the translation pipeline ran.
+        const lang = profile?.native_language ?? "en";
+        const map = await fetchTranslations(
+          data.map((w) => w.hanzi),
+          lang,
+        );
+        if (cancelled) return;
+        const localized = data.map((w) => {
+          const translated = map[w.hanzi]?.[0];
+          return translated ? { ...w, english: translated } : w;
+        });
+        setCards(localized);
+        setLoading(false);
       }
     })();
     return () => {

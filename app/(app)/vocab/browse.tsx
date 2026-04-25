@@ -7,6 +7,7 @@ import { WordDetailSheet, type WordDetail } from "@/components/cards/WordDetailS
 import { Screen, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { fmt } from "@/i18n/strings";
+import { fetchTranslations } from "@/features/hsk/hsk";
 import {
   deleteWord,
   fetchAllWords,
@@ -22,6 +23,7 @@ export default function Browse() {
   const t = useT();
   const toast = useToast();
   const session = useUserStore((s) => s.session);
+  const profile = useUserStore((s) => s.profile);
 
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all",       label: t.vocab.browse.filterAll },
@@ -38,13 +40,29 @@ export default function Browse() {
   async function reload() {
     if (!session) return;
     const data = await fetchAllWords(session.user.id);
-    setWords(data);
+    // Localize meanings to user's current native language so filter/search
+    // and the visible English column always match the in-app language.
+    const lang = profile?.native_language ?? "en";
+    if (data.length === 0 || lang === "en") {
+      setWords(data);
+      return;
+    }
+    const map = await fetchTranslations(
+      data.map((w) => w.hanzi),
+      lang,
+    );
+    setWords(
+      data.map((w) => {
+        const translated = map[w.hanzi]?.[0];
+        return translated ? { ...w, english: translated } : w;
+      }),
+    );
   }
 
   useEffect(() => {
     reload();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session?.user.id]);
+  }, [session?.user.id, profile?.native_language]);
 
   const filtered = useMemo(() => {
     const now = Date.now();
