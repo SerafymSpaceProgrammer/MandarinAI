@@ -66,6 +66,79 @@ export async function fetchCatalog(
   return (data ?? []) as HskWord[];
 }
 
+export type Topic = {
+  id: string;
+  name: Record<string, string>;
+  emoji: string | null;
+  description: Record<string, string>;
+  word_count?: number;
+};
+
+/**
+ * All topics with their word counts (so the topic landing can show "412 words"
+ * straight away). Sorted by count descending.
+ */
+export async function fetchTopics(): Promise<Topic[]> {
+  const [topicsRes, countsRes] = await Promise.all([
+    supabase
+      .from("hsk_topics")
+      .select("id, name, emoji, description"),
+    supabase
+      .from("hsk_word_topics")
+      .select("topic_id"),
+  ]);
+
+  if (topicsRes.error) {
+    logger.warn("fetchTopics error", topicsRes.error.message);
+    return [];
+  }
+  const counts = new Map<string, number>();
+  for (const r of (countsRes.data ?? []) as Array<{ topic_id: string }>) {
+    counts.set(r.topic_id, (counts.get(r.topic_id) ?? 0) + 1);
+  }
+
+  const topics = (topicsRes.data ?? []) as Topic[];
+  return topics
+    .map((t) => ({ ...t, word_count: counts.get(t.id) ?? 0 }))
+    .sort((a, b) => (b.word_count ?? 0) - (a.word_count ?? 0));
+}
+
+/**
+ * Words tagged with a specific topic, optionally narrowed by HSK level.
+ * Joins via hsk_word_topics through PostgREST's nested-select syntax so
+ * it's a single round-trip.
+ */
+export async function fetchByTopic(
+  topicId: string,
+  options: { syllabus?: Syllabus; level?: number; limit?: number } = {},
+): Promise<HskWord[]> {
+  const { data, error } = await supabase
+    .from("hsk_word_topics")
+    .select("hanzi, hsk_words!inner(hanzi, pinyin, hsk_old, hsk_new, pos)")
+    .eq("topic_id", topicId)
+    .limit(options.limit ?? 1000);
+
+  if (error) {
+    logger.warn("fetchByTopic error", error.message);
+    return [];
+  }
+
+  // Supabase wraps a nested-select result in an array even for many-to-one
+  // joins. Pick the first (and only) element per row.
+  let rows = ((data ?? []) as unknown as Array<{
+    hsk_words: HskWord | HskWord[];
+  }>)
+    .map((r) => (Array.isArray(r.hsk_words) ? r.hsk_words[0] : r.hsk_words))
+    .filter((w): w is HskWord => Boolean(w));
+
+  if (options.syllabus && options.level) {
+    const col = options.syllabus === "old" ? "hsk_old" : "hsk_new";
+    rows = rows.filter((w) => w[col as keyof HskWord] === options.level);
+  }
+
+  return rows.sort((a, b) => a.hanzi.localeCompare(b.hanzi));
+}
+
 export async function countByLevel(
   syllabus: Syllabus,
 ): Promise<Map<number, number>> {
