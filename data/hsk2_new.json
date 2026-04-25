@@ -1,0 +1,798 @@
+[
+  {
+    "hanzi": "啊",
+    "pinyin": "a"
+  },
+  {
+    "hanzi": "爱好",
+    "pinyin": "àihào"
+  },
+  {
+    "hanzi": "白色",
+    "pinyin": "báisè"
+  },
+  {
+    "hanzi": "班",
+    "pinyin": "bān"
+  },
+  {
+    "hanzi": "帮",
+    "pinyin": "bāng"
+  },
+  {
+    "hanzi": "帮忙",
+    "pinyin": "bāngmáng"
+  },
+  {
+    "hanzi": "包",
+    "pinyin": "bāo"
+  },
+  {
+    "hanzi": "本子",
+    "pinyin": "běnzi"
+  },
+  {
+    "hanzi": "比",
+    "pinyin": "bǐ"
+  },
+  {
+    "hanzi": "笔",
+    "pinyin": "bǐ"
+  },
+  {
+    "hanzi": "别",
+    "pinyin": "bié"
+  },
+  {
+    "hanzi": "不错",
+    "pinyin": "búcuò"
+  },
+  {
+    "hanzi": "不好意思",
+    "pinyin": "bù hǎoyìsi"
+  },
+  {
+    "hanzi": "长",
+    "pinyin": "cháng"
+  },
+  {
+    "hanzi": "车站",
+    "pinyin": "chēzhàn"
+  },
+  {
+    "hanzi": "出",
+    "pinyin": "chū"
+  },
+  {
+    "hanzi": "出国",
+    "pinyin": "chūguó"
+  },
+  {
+    "hanzi": "出来",
+    "pinyin": "chūlái"
+  },
+  {
+    "hanzi": "出门",
+    "pinyin": "chūmén"
+  },
+  {
+    "hanzi": "出去",
+    "pinyin": "chūqù"
+  },
+  {
+    "hanzi": "床",
+    "pinyin": "chuáng"
+  },
+  {
+    "hanzi": "词",
+    "pinyin": "cí"
+  },
+  {
+    "hanzi": "次",
+    "pinyin": "cì"
+  },
+  {
+    "hanzi": "从",
+    "pinyin": "cóng"
+  },
+  {
+    "hanzi": "从小",
+    "pinyin": "cóngxiǎo"
+  },
+  {
+    "hanzi": "错",
+    "pinyin": "cuò"
+  },
+  {
+    "hanzi": "打",
+    "pinyin": "dǎ"
+  },
+  {
+    "hanzi": "打车",
+    "pinyin": "dǎchē"
+  },
+  {
+    "hanzi": "打开",
+    "pinyin": "dǎkāi"
+  },
+  {
+    "hanzi": "但",
+    "pinyin": "dàn"
+  },
+  {
+    "hanzi": "但是",
+    "pinyin": "dànshì"
+  },
+  {
+    "hanzi": "得",
+    "pinyin": "de"
+  },
+  {
+    "hanzi": "地",
+    "pinyin": "de"
+  },
+  {
+    "hanzi": "等",
+    "pinyin": "děng"
+  },
+  {
+    "hanzi": "地铁",
+    "pinyin": "dìtiě"
+  },
+  {
+    "hanzi": "点",
+    "pinyin": "diǎn"
+  },
+  {
+    "hanzi": "懂",
+    "pinyin": "dǒng"
+  },
+  {
+    "hanzi": "动",
+    "pinyin": "dòng"
+  },
+  {
+    "hanzi": "饭馆",
+    "pinyin": "fànguǎn"
+  },
+  {
+    "hanzi": "飞",
+    "pinyin": "fēi"
+  },
+  {
+    "hanzi": "高",
+    "pinyin": "gāo"
+  },
+  {
+    "hanzi": "高中",
+    "pinyin": "gāozhōng"
+  },
+  {
+    "hanzi": "告诉",
+    "pinyin": "gàosu"
+  },
+  {
+    "hanzi": "个子",
+    "pinyin": "gèzi"
+  },
+  {
+    "hanzi": "跟",
+    "pinyin": "gēn"
+  },
+  {
+    "hanzi": "公交车",
+    "pinyin": "gōngjiāochē"
+  },
+  {
+    "hanzi": "过",
+    "pinyin": "guò"
+  },
+  {
+    "hanzi": "过来",
+    "pinyin": "guòlái"
+  },
+  {
+    "hanzi": "过年",
+    "pinyin": "guònián"
+  },
+  {
+    "hanzi": "过去",
+    "pinyin": "guòqù"
+  },
+  {
+    "hanzi": "过",
+    "pinyin": "guo"
+  },
+  {
+    "hanzi": "还是",
+    "pinyin": "háishi"
+  },
+  {
+    "hanzi": "黑色",
+    "pinyin": "hēisè"
+  },
+  {
+    "hanzi": "红茶",
+    "pinyin": "hóngchá"
+  },
+  {
+    "hanzi": "红色",
+    "pinyin": "hóngsè"
+  },
+  {
+    "hanzi": "后面",
+    "pinyin": "hòumiàn"
+  },
+  {
+    "hanzi": "花",
+    "pinyin": "huā"
+  },
+  {
+    "hanzi": "画",
+    "pinyin": "huà"
+  },
+  {
+    "hanzi": "坏",
+    "pinyin": "huài"
+  },
+  {
+    "hanzi": "回来",
+    "pinyin": "huílái"
+  },
+  {
+    "hanzi": "回去",
+    "pinyin": "huíqù"
+  },
+  {
+    "hanzi": "机场",
+    "pinyin": "jīchǎng"
+  },
+  {
+    "hanzi": "机票",
+    "pinyin": "jīpiào"
+  },
+  {
+    "hanzi": "记得",
+    "pinyin": "jìde"
+  },
+  {
+    "hanzi": "间",
+    "pinyin": "jiān"
+  },
+  {
+    "hanzi": "教",
+    "pinyin": "jiāo"
+  },
+  {
+    "hanzi": "教室",
+    "pinyin": "jiàoshì"
+  },
+  {
+    "hanzi": "介绍",
+    "pinyin": "jièshào"
+  },
+  {
+    "hanzi": "进",
+    "pinyin": "jìn"
+  },
+  {
+    "hanzi": "近",
+    "pinyin": "jìn"
+  },
+  {
+    "hanzi": "进来",
+    "pinyin": "jìnlái"
+  },
+  {
+    "hanzi": "进去",
+    "pinyin": "jìnqù"
+  },
+  {
+    "hanzi": "经常",
+    "pinyin": "jīngcháng"
+  },
+  {
+    "hanzi": "酒店",
+    "pinyin": "jiǔdiàn"
+  },
+  {
+    "hanzi": "就",
+    "pinyin": "jiù"
+  },
+  {
+    "hanzi": "咖啡",
+    "pinyin": "kāfēi"
+  },
+  {
+    "hanzi": "开始",
+    "pinyin": "kāishǐ"
+  },
+  {
+    "hanzi": "开学",
+    "pinyin": "kāixué"
+  },
+  {
+    "hanzi": "考",
+    "pinyin": "kǎo"
+  },
+  {
+    "hanzi": "考试",
+    "pinyin": "kǎoshì"
+  },
+  {
+    "hanzi": "可能",
+    "pinyin": "kěnéng"
+  },
+  {
+    "hanzi": "裤子",
+    "pinyin": "kùzi"
+  },
+  {
+    "hanzi": "快",
+    "pinyin": "kuài"
+  },
+  {
+    "hanzi": "快乐",
+    "pinyin": "kuàilè"
+  },
+  {
+    "hanzi": "快要",
+    "pinyin": "kuàiyào"
+  },
+  {
+    "hanzi": "篮球",
+    "pinyin": "lánqiú"
+  },
+  {
+    "hanzi": "累",
+    "pinyin": "lèi"
+  },
+  {
+    "hanzi": "离",
+    "pinyin": "lí"
+  },
+  {
+    "hanzi": "里面",
+    "pinyin": "lǐmiàn"
+  },
+  {
+    "hanzi": "楼",
+    "pinyin": "lóu"
+  },
+  {
+    "hanzi": "路",
+    "pinyin": "lù"
+  },
+  {
+    "hanzi": "路上",
+    "pinyin": "lùshang"
+  },
+  {
+    "hanzi": "旅游",
+    "pinyin": "lǚyóu"
+  },
+  {
+    "hanzi": "绿茶",
+    "pinyin": "lǜchá"
+  },
+  {
+    "hanzi": "绿色",
+    "pinyin": "lǜsè"
+  },
+  {
+    "hanzi": "慢",
+    "pinyin": "màn"
+  },
+  {
+    "hanzi": "没意思",
+    "pinyin": "méi yìsi"
+  },
+  {
+    "hanzi": "每",
+    "pinyin": "měi"
+  },
+  {
+    "hanzi": "门",
+    "pinyin": "mén"
+  },
+  {
+    "hanzi": "门口",
+    "pinyin": "ménkǒu"
+  },
+  {
+    "hanzi": "门票",
+    "pinyin": "ménpiào"
+  },
+  {
+    "hanzi": "面",
+    "pinyin": "miàn"
+  },
+  {
+    "hanzi": "名",
+    "pinyin": "míng"
+  },
+  {
+    "hanzi": "拿",
+    "pinyin": "ná"
+  },
+  {
+    "hanzi": "那么",
+    "pinyin": "nàme"
+  },
+  {
+    "hanzi": "那样",
+    "pinyin": "nàyàng"
+  },
+  {
+    "hanzi": "奶茶",
+    "pinyin": "nǎichá"
+  },
+  {
+    "hanzi": "奶奶",
+    "pinyin": "nǎinai"
+  },
+  {
+    "hanzi": "男孩儿",
+    "pinyin": "nánháir"
+  },
+  {
+    "hanzi": "鸟",
+    "pinyin": "niǎo"
+  },
+  {
+    "hanzi": "女孩儿",
+    "pinyin": "nǚháir"
+  },
+  {
+    "hanzi": "旁边",
+    "pinyin": "pángbiān"
+  },
+  {
+    "hanzi": "跑",
+    "pinyin": "pǎo"
+  },
+  {
+    "hanzi": "跑步",
+    "pinyin": "pǎobù"
+  },
+  {
+    "hanzi": "票",
+    "pinyin": "piào"
+  },
+  {
+    "hanzi": "妻子",
+    "pinyin": "qīzi"
+  },
+  {
+    "hanzi": "起来",
+    "pinyin": "qǐlái"
+  },
+  {
+    "hanzi": "前面",
+    "pinyin": "qiánmiàn"
+  },
+  {
+    "hanzi": "晴",
+    "pinyin": "qíng"
+  },
+  {
+    "hanzi": "球",
+    "pinyin": "qiú"
+  },
+  {
+    "hanzi": "让",
+    "pinyin": "ràng"
+  },
+  {
+    "hanzi": "肉",
+    "pinyin": "ròu"
+  },
+  {
+    "hanzi": "商场",
+    "pinyin": "shāngchǎng"
+  },
+  {
+    "hanzi": "上来",
+    "pinyin": "shànglái"
+  },
+  {
+    "hanzi": "上面",
+    "pinyin": "shàngmiàn"
+  },
+  {
+    "hanzi": "上去",
+    "pinyin": "shàngqù"
+  },
+  {
+    "hanzi": "上网",
+    "pinyin": "shàngwǎng"
+  },
+  {
+    "hanzi": "身体",
+    "pinyin": "shēntǐ"
+  },
+  {
+    "hanzi": "生日",
+    "pinyin": "shēngrì"
+  },
+  {
+    "hanzi": "时",
+    "pinyin": "shí"
+  },
+  {
+    "hanzi": "事情",
+    "pinyin": "shìqing"
+  },
+  {
+    "hanzi": "手",
+    "pinyin": "shǒu"
+  },
+  {
+    "hanzi": "手表",
+    "pinyin": "shǒubiǎo"
+  },
+  {
+    "hanzi": "书包",
+    "pinyin": "shūbāo"
+  },
+  {
+    "hanzi": "舒服",
+    "pinyin": "shūfu"
+  },
+  {
+    "hanzi": "送",
+    "pinyin": "sòng"
+  },
+  {
+    "hanzi": "虽然",
+    "pinyin": "suīrán"
+  },
+  {
+    "hanzi": "所以",
+    "pinyin": "suǒyǐ"
+  },
+  {
+    "hanzi": "疼",
+    "pinyin": "téng"
+  },
+  {
+    "hanzi": "踢",
+    "pinyin": "tī"
+  },
+  {
+    "hanzi": "题",
+    "pinyin": "tí"
+  },
+  {
+    "hanzi": "条",
+    "pinyin": "tiáo"
+  },
+  {
+    "hanzi": "跳舞",
+    "pinyin": "tiàowǔ"
+  },
+  {
+    "hanzi": "头",
+    "pinyin": "tóu"
+  },
+  {
+    "hanzi": "外国",
+    "pinyin": "wàiguó"
+  },
+  {
+    "hanzi": "外面",
+    "pinyin": "wàimiàn"
+  },
+  {
+    "hanzi": "完",
+    "pinyin": "wán"
+  },
+  {
+    "hanzi": "万",
+    "pinyin": "wàn"
+  },
+  {
+    "hanzi": "往",
+    "pinyin": "wǎng"
+  },
+  {
+    "hanzi": "网上",
+    "pinyin": "wǎngshang"
+  },
+  {
+    "hanzi": "忘",
+    "pinyin": "wàng"
+  },
+  {
+    "hanzi": "位",
+    "pinyin": "wèi"
+  },
+  {
+    "hanzi": "为什么",
+    "pinyin": "wèi shénme"
+  },
+  {
+    "hanzi": "希望",
+    "pinyin": "xīwàng"
+  },
+  {
+    "hanzi": "洗",
+    "pinyin": "xǐ"
+  },
+  {
+    "hanzi": "洗手间",
+    "pinyin": "xǐshǒujiān"
+  },
+  {
+    "hanzi": "下来",
+    "pinyin": "xiàlái"
+  },
+  {
+    "hanzi": "下面",
+    "pinyin": "xiàmiàn"
+  },
+  {
+    "hanzi": "下去",
+    "pinyin": "xiàqù"
+  },
+  {
+    "hanzi": "小孩儿",
+    "pinyin": "xiǎoháir"
+  },
+  {
+    "hanzi": "小时候",
+    "pinyin": "xiǎoshíhou"
+  },
+  {
+    "hanzi": "笑",
+    "pinyin": "xiào"
+  },
+  {
+    "hanzi": "姓",
+    "pinyin": "xìng"
+  },
+  {
+    "hanzi": "姓名",
+    "pinyin": "xìngmíng"
+  },
+  {
+    "hanzi": "颜色",
+    "pinyin": "yánsè"
+  },
+  {
+    "hanzi": "眼睛",
+    "pinyin": "yǎnjing"
+  },
+  {
+    "hanzi": "药",
+    "pinyin": "yào"
+  },
+  {
+    "hanzi": "药店",
+    "pinyin": "yàodiàn"
+  },
+  {
+    "hanzi": "爷爷",
+    "pinyin": "yéye"
+  },
+  {
+    "hanzi": "一会儿",
+    "pinyin": "yíhuìr"
+  },
+  {
+    "hanzi": "已经",
+    "pinyin": "yǐjīng"
+  },
+  {
+    "hanzi": "一起",
+    "pinyin": "yìqǐ"
+  },
+  {
+    "hanzi": "意思",
+    "pinyin": "yìsi"
+  },
+  {
+    "hanzi": "阴",
+    "pinyin": "yīn"
+  },
+  {
+    "hanzi": "因为",
+    "pinyin": "yīnwèi"
+  },
+  {
+    "hanzi": "游",
+    "pinyin": "yóu"
+  },
+  {
+    "hanzi": "游泳",
+    "pinyin": "yóuyǒng"
+  },
+  {
+    "hanzi": "有意思",
+    "pinyin": "yǒu yìsi"
+  },
+  {
+    "hanzi": "有时",
+    "pinyin": "yǒushí"
+  },
+  {
+    "hanzi": "右",
+    "pinyin": "yòu"
+  },
+  {
+    "hanzi": "右边",
+    "pinyin": "yòubian"
+  },
+  {
+    "hanzi": "鱼",
+    "pinyin": "yú"
+  },
+  {
+    "hanzi": "远",
+    "pinyin": "yuǎn"
+  },
+  {
+    "hanzi": "运动",
+    "pinyin": "yùndòng"
+  },
+  {
+    "hanzi": "站",
+    "pinyin": "zhàn"
+  },
+  {
+    "hanzi": "丈夫",
+    "pinyin": "zhàngfu"
+  },
+  {
+    "hanzi": "这么",
+    "pinyin": "zhème"
+  },
+  {
+    "hanzi": "这样",
+    "pinyin": "zhèyàng"
+  },
+  {
+    "hanzi": "着",
+    "pinyin": "zhe"
+  },
+  {
+    "hanzi": "正",
+    "pinyin": "zhèng"
+  },
+  {
+    "hanzi": "周",
+    "pinyin": "zhōu"
+  },
+  {
+    "hanzi": "准备",
+    "pinyin": "zhǔnbèi"
+  },
+  {
+    "hanzi": "自己",
+    "pinyin": "zìjǐ"
+  },
+  {
+    "hanzi": "走",
+    "pinyin": "zǒu"
+  },
+  {
+    "hanzi": "走路",
+    "pinyin": "zǒulù"
+  },
+  {
+    "hanzi": "足球",
+    "pinyin": "zúqiú"
+  },
+  {
+    "hanzi": "最",
+    "pinyin": "zuì"
+  },
+  {
+    "hanzi": "左",
+    "pinyin": "zuǒ"
+  },
+  {
+    "hanzi": "左边",
+    "pinyin": "zuǒbian"
+  }
+]

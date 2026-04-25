@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { BookOpen, Compass, LibraryBig, Plus, Type } from "lucide-react-native";
+import { BookOpen, Compass, LibraryBig, ListChecks, Plus, Type } from "lucide-react-native";
 import type { LucideProps } from "lucide-react-native";
 import { Pressable, ScrollView, View } from "react-native";
 
@@ -46,6 +46,12 @@ export default function Learn() {
       hint: "Manual entry with auto-pinyin",
       Icon: Plus,
       onPress: () => router.push("/(app)/vocab/add"),
+    },
+    {
+      title: "HSK catalog",
+      hint: "Browse 6,300+ words by level — old + new syllabus",
+      Icon: ListChecks,
+      onPress: () => router.push("/(app)/hsk"),
     },
     {
       title: "Characters",

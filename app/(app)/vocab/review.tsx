@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { X } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, View } from "react-native";
@@ -10,6 +10,12 @@ import { ListeningCard } from "@/features/vocab/components/ListeningCard";
 import { ProductionCard } from "@/features/vocab/components/ProductionCard";
 import { RecognitionCard } from "@/features/vocab/components/RecognitionCard";
 import { fetchDueCards, gradeCard, type SavedWord } from "@/features/vocab/vocab";
+import {
+  asEphemeralCard,
+  fetchCatalog,
+  fetchTranslations,
+  type Syllabus,
+} from "@/features/hsk/hsk";
 import type { ReviewGrade } from "@/features/vocab/srs";
 import { Button, Screen, Text } from "@/components/ui";
 import { useUserStore } from "@/stores/userStore";
@@ -37,6 +43,19 @@ export default function ReviewSession() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const session = useUserStore((s) => s.session);
+  const profile = useUserStore((s) => s.profile);
+  const params = useLocalSearchParams<{
+    mode?: string;
+    syllabus?: string;
+    level?: string;
+  }>();
+
+  // Ephemeral practice mode loads N words from the HSK catalog without
+  // committing them to saved_words. Grades only update the user's daily
+  // activity counters; nothing about the underlying word state is persisted.
+  const isHskMode = params.mode === "hsk";
+  const hskSyllabus = (params.syllabus === "old" ? "old" : "new") as Syllabus;
+  const hskLevel = Number(params.level ?? 0) || 1;
 
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState<SavedWord[]>([]);
@@ -52,16 +71,35 @@ export default function ReviewSession() {
     if (!session) return;
     let cancelled = false;
     setLoading(true);
-    fetchDueCards(session.user.id, SESSION_LIMIT).then((data) => {
-      if (!cancelled) {
-        setCards(data);
-        setLoading(false);
+    (async () => {
+      if (isHskMode) {
+        const lang = profile?.native_language ?? "en";
+        const catalog = await fetchCatalog(hskSyllabus, hskLevel);
+        // Pull a random sample so repeat practice doesn't stale.
+        const shuffled = [...catalog].sort(() => Math.random() - 0.5).slice(0, SESSION_LIMIT);
+        const meanings = await fetchTranslations(
+          shuffled.map((w) => w.hanzi),
+          lang,
+        );
+        const ephemeral = shuffled.map((w) =>
+          asEphemeralCard(w, meanings[w.hanzi]?.[0] ?? "", session.user.id),
+        );
+        if (!cancelled) {
+          setCards(ephemeral);
+          setLoading(false);
+        }
+      } else {
+        const data = await fetchDueCards(session.user.id, SESSION_LIMIT);
+        if (!cancelled) {
+          setCards(data);
+          setLoading(false);
+        }
       }
-    });
+    })();
     return () => {
       cancelled = true;
     };
-  }, [session]);
+  }, [session, isHskMode, hskSyllabus, hskLevel, profile?.native_language]);
 
   async function handleGrade(grade: ReviewGrade) {
     if (!session || !current) return;
@@ -69,8 +107,12 @@ export default function ReviewSession() {
       setCorrectCount((c) => c + 1);
     }
 
-    // Persist in the background; don't block the UI.
-    gradeCard(session.user.id, current.hanzi, current, grade);
+    // In HSK practice mode we don't write anything back to saved_words —
+    // the cards aren't in the deck. Activity counters still update so XP
+    // and streaks reflect the work.
+    if (!isHskMode) {
+      gradeCard(session.user.id, current.hanzi, current, grade);
+    }
     recordActivity(session.user.id, { words_reviewed: 1, xp_earned: grade === "again" ? 1 : 2 });
 
     const isLast = index + 1 >= cards.length;

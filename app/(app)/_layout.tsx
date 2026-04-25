@@ -67,6 +67,7 @@ export default function AppLayout() {
       <Tabs.Screen name="vocab" options={{ href: null }} />
       <Tabs.Screen name="character" options={{ href: null }} />
       <Tabs.Screen name="exercises" options={{ href: null }} />
+      <Tabs.Screen name="hsk" options={{ href: null }} />
     </Tabs>
   );
 }
