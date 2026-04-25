@@ -10,7 +10,9 @@ import { fetchAllWords, type SavedWord } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
-const HSK_LEVELS = [1, 2, 3, 4, 5, 6];
+// hsk_words (the actual data source) only has full coverage for new-syllabus
+// levels 1-5. Picker mirrors that to avoid leading the user into empty lists.
+const HSK_LEVELS = [1, 2, 3, 4, 5];
 
 /**
  * Picker for the writing trainer. The user chooses a source set; the

@@ -16,6 +16,7 @@ import { useT } from "@/i18n/i18n";
 import { fmt } from "@/i18n/strings";
 import { recordActivity } from "@/features/activity/activity";
 import { fetchDict, type CharacterDictRow } from "@/features/character/character";
+import { fetchCatalog } from "@/features/hsk/hsk";
 import { fetchAllWords } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
@@ -69,37 +70,66 @@ export default function WritingSession() {
     if (!session) return;
     let cancelled = false;
     (async () => {
-      // Fetch the source pool. For HSK we get full dict rows back already,
-      // so we keep them as-is. For deck, we'll need to look up metadata for
-      // each unique hanzi from characters_dict.
-      let enriched: CharacterDictRow[] = [];
+      // Whichever source the user picked, we end up with a list of unique
+      // hanzi to drill. characters_dict is the ideal metadata source (has
+      // mnemonic + frequency), but it's only seeded for HSK 1 — so for
+      // higher levels we fall back to hsk_words and synthesize pinyin from
+      // the parent word entries.
+      let pool: string[] = [];
+      let pinyinByHanzi: Map<string, string> | null = null;
+
       if (source === "deck") {
         const words = await fetchAllWords(session.user.id);
         if (cancelled) return;
-        const pool = Array.from(
+        pool = Array.from(
           new Set(words.flatMap((w) => Array.from(w.hanzi))),
         ).filter((c) => /\p{Script=Han}/u.test(c));
-        if (pool.length === 0) {
-          if (!cancelled) {
-            setChars([]);
-            setLoading(false);
-          }
-          return;
-        }
-        const shuffled = [...pool]
-          .sort(() => Math.random() - 0.5)
-          .slice(0, SESSION_LIMIT);
-        const dict = await fetchDict();
-        if (cancelled) return;
-        const byHanzi = new Map(dict.map((d) => [d.hanzi, d] as const));
-        enriched = shuffled.map((h) => byHanzi.get(h) ?? bareDictRow(h));
       } else {
-        const dict = await fetchDict(hskLevel);
+        // HSK level: the characters_dict is sparsely populated, but
+        // hsk_words has full coverage 1-5. Split each word into its glyphs.
+        const hskWords = await fetchCatalog("new", hskLevel, 2000);
         if (cancelled) return;
-        enriched = [...dict]
-          .sort(() => Math.random() - 0.5)
-          .slice(0, SESSION_LIMIT);
+        const seen = new Set<string>();
+        const py = new Map<string, string>();
+        for (const w of hskWords) {
+          const syllables = w.pinyin.split(/\s+/);
+          const chars = Array.from(w.hanzi);
+          chars.forEach((c, i) => {
+            if (!/\p{Script=Han}/u.test(c)) return;
+            if (!seen.has(c)) {
+              seen.add(c);
+              const sy = syllables[i];
+              if (sy) py.set(c, sy);
+            }
+          });
+        }
+        pool = [...seen];
+        pinyinByHanzi = py;
       }
+
+      if (pool.length === 0) {
+        if (!cancelled) {
+          setChars([]);
+          setLoading(false);
+        }
+        return;
+      }
+
+      const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, SESSION_LIMIT);
+
+      // Try to enrich with characters_dict metadata (pinyin alternatives,
+      // meanings, mnemonic). Missing rows fall back to a bare row, with
+      // pinyin patched from hsk_words when we have it.
+      const dict = await fetchDict();
+      if (cancelled) return;
+      const byHanzi = new Map(dict.map((d) => [d.hanzi, d] as const));
+      const enriched: CharacterDictRow[] = shuffled.map((h) => {
+        const found = byHanzi.get(h);
+        if (found) return found;
+        const bare = bareDictRow(h);
+        const sy = pinyinByHanzi?.get(h);
+        return sy ? { ...bare, pinyin: [sy] } : bare;
+      });
 
       if (!cancelled) {
         setChars(enriched);
