@@ -2,6 +2,7 @@ import { BookOpen, Dumbbell, MicVocal, Type } from "lucide-react-native";
 import { View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import type { SkillTotals } from "@/features/stats/useStats";
 import { useTheme } from "@/theme";
 
@@ -19,31 +20,32 @@ type Props = {
  */
 export function SkillsGrid({ totals, subtitle }: Props) {
   const theme = useTheme();
+  const t = useT();
 
   const tiles = [
     {
       Icon: BookOpen,
-      label: "Vocab",
+      label: t.stats.skillVocab,
       value: totals.vocab,
-      unit: "reviews",
+      unit: t.stats.skillVocabUnit,
     },
     {
       Icon: Type,
-      label: "Characters",
+      label: t.stats.skillCharacters,
       value: totals.characters,
-      unit: "introduced",
+      unit: t.stats.skillCharactersUnit,
     },
     {
       Icon: MicVocal,
-      label: "Speaking",
+      label: t.stats.skillSpeaking,
       value: totals.speaking,
-      unit: "scenarios",
+      unit: t.stats.skillSpeakingUnit,
     },
     {
       Icon: Dumbbell,
-      label: "Exercises",
+      label: t.stats.skillExercises,
       value: totals.exercises,
-      unit: "completed",
+      unit: t.stats.skillExercisesUnit,
     },
   ];
 
@@ -55,9 +57,9 @@ export function SkillsGrid({ totals, subtitle }: Props) {
         </Text>
       ) : null}
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.sm }}>
-        {tiles.map((t) => (
+        {tiles.map((tile) => (
           <View
-            key={t.label}
+            key={tile.label}
             style={{
               flexBasis: "47%",
               flexGrow: 1,
@@ -79,16 +81,16 @@ export function SkillsGrid({ totals, subtitle }: Props) {
                 justifyContent: "center",
               }}
             >
-              <t.Icon color={theme.colors.accent} size={18} strokeWidth={2} />
+              <tile.Icon color={theme.colors.accent} size={18} strokeWidth={2} />
             </View>
             <Text variant="h2" style={{ marginTop: 4 }}>
-              {t.value}
+              {tile.value}
             </Text>
             <Text variant="small" color="secondary">
-              {t.label}
+              {tile.label}
             </Text>
             <Text variant="caption" color="tertiary">
-              {t.unit}
+              {tile.unit}
             </Text>
           </View>
         ))}

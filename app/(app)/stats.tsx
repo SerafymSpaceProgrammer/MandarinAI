@@ -5,11 +5,14 @@ import { Card, Screen, Skeleton, Text } from "@/components/ui";
 import { Heatmap } from "@/components/stats/Heatmap";
 import { HskBars } from "@/components/stats/HskBars";
 import { SkillsGrid } from "@/components/stats/SkillsGrid";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { useStats } from "@/features/stats/useStats";
 import { useTheme } from "@/theme";
 
 export default function Stats() {
   const theme = useTheme();
+  const t = useT();
   const stats = useStats();
 
   return (
@@ -30,35 +33,33 @@ export default function Stats() {
       >
         <View style={{ gap: theme.spacing.xs }}>
           <Text variant="caption" color="tertiary">
-            Progress
+            {t.stats.section}
           </Text>
-          <Text variant="h1">Stats</Text>
+          <Text variant="h1">{t.stats.title}</Text>
         </View>
 
-        {/* Hero tiles */}
         <View style={{ flexDirection: "row", gap: theme.spacing.md }}>
           <HeroTile
             Icon={Flame}
-            label="Streak"
+            label={t.stats.streak}
             value={stats.loading ? "—" : `${stats.streak}`}
             accent
           />
           <HeroTile
             Icon={Trophy}
-            label="Level"
+            label={t.stats.level}
             value={stats.loading ? "—" : `${stats.level}`}
           />
         </View>
 
-        {/* Level bar */}
         <Card>
           <View style={{ gap: theme.spacing.sm }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <Text variant="small" color="secondary">
-                Level {stats.level} progress
+                {fmt(t.stats.levelProgress, { n: stats.level })}
               </Text>
               <Text variant="small" color="tertiary">
-                {stats.xpIntoLevel} / {stats.xpForNextLevel} XP
+                {fmt(t.stats.xpInto, { into: stats.xpIntoLevel, next: stats.xpForNextLevel })}
               </Text>
             </View>
             <View
@@ -78,12 +79,15 @@ export default function Stats() {
               />
             </View>
             <Text variant="caption" color="tertiary">
-              Total {stats.totalXp} XP · Today +{stats.todaysXp} · {stats.todaysMinutes} min
+              {fmt(t.stats.xpTotal, {
+                total: stats.totalXp,
+                today: stats.todaysXp,
+                minutes: stats.todaysMinutes,
+              })}
             </Text>
           </View>
         </Card>
 
-        {/* Insight */}
         <Card
           bordered
           style={{
@@ -95,19 +99,18 @@ export default function Stats() {
             <Sparkles color={theme.colors.accent} size={22} strokeWidth={2} />
             <View style={{ flex: 1, gap: 4 }}>
               <Text variant="caption" color="accent">
-                Insight
+                {t.stats.insight}
               </Text>
               <Text variant="bodyStrong">{stats.insight}</Text>
             </View>
           </View>
         </Card>
 
-        {/* Heatmap */}
         <View style={{ gap: theme.spacing.md }}>
           <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "baseline" }}>
-            <Text variant="h3">Activity</Text>
+            <Text variant="h3">{t.stats.activity}</Text>
             <Text variant="small" color="tertiary">
-              Last 13 weeks
+              {t.stats.activityWindow}
             </Text>
           </View>
           {stats.loading ? (
@@ -117,9 +120,8 @@ export default function Stats() {
           )}
         </View>
 
-        {/* HSK mastery */}
         <View style={{ gap: theme.spacing.md }}>
-          <Text variant="h3">HSK mastery</Text>
+          <Text variant="h3">{t.stats.hskMastery}</Text>
           {stats.loading ? (
             <Skeleton height={150} />
           ) : (
@@ -127,13 +129,12 @@ export default function Stats() {
           )}
         </View>
 
-        {/* Skills (last 30d) */}
         <View style={{ gap: theme.spacing.md }}>
-          <Text variant="h3">Skills</Text>
+          <Text variant="h3">{t.stats.skills}</Text>
           {stats.loading ? (
             <Skeleton height={150} />
           ) : (
-            <SkillsGrid totals={stats.skills30d} subtitle="Last 30 days" />
+            <SkillsGrid totals={stats.skills30d} subtitle={t.stats.skills30Days} />
           )}
         </View>
       </ScrollView>

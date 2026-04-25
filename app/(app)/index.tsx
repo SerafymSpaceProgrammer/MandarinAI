@@ -9,6 +9,8 @@ import {
 import { Pressable, RefreshControl, ScrollView, View } from "react-native";
 
 import { Card, Screen, Skeleton, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { useHomeData, type RecentWord } from "@/features/home/useHomeData";
 import type { PlanItem } from "@/features/dailyPlan/generatePlan";
 import { useUserStore } from "@/stores/userStore";
@@ -16,18 +18,19 @@ import { useTheme } from "@/theme";
 
 export default function Home() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const profile = useUserStore((s) => s.profile);
   const home = useHomeData();
 
-  const greeting = getGreeting();
+  const greeting = getGreeting(t);
   const name = profile?.display_name ?? null;
 
   function openPlanItem(item: PlanItem) {
     if (item.href) {
       router.push(item.href as never);
     } else {
-      toast.info(`${item.title} lands in a later phase`);
+      toast.info(fmt(t.home.laterPhase, { title: item.title }));
     }
   }
 
@@ -53,7 +56,7 @@ export default function Home() {
             <Text variant="caption" color="tertiary">
               {greeting}
             </Text>
-            <Text variant="h2">{name ? name : "Let's study"}</Text>
+            <Text variant="h2">{name ? name : t.home.studyTitle}</Text>
           </View>
           <StreakChip streak={home.streak} />
         </View>
@@ -61,9 +64,9 @@ export default function Home() {
         {/* Today's plan */}
         <View style={{ gap: theme.spacing.md }}>
           <View style={{ flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" }}>
-            <Text variant="h3">Today's plan</Text>
+            <Text variant="h3">{t.home.todaysPlan}</Text>
             <Text variant="small" color="tertiary">
-              {profile?.daily_goal_minutes ?? 15} min goal
+              {fmt(t.home.minGoal, { n: profile?.daily_goal_minutes ?? 15 })}
             </Text>
           </View>
           <Card padding="none">
@@ -76,7 +79,7 @@ export default function Home() {
             ) : home.plan.length === 0 ? (
               <View style={{ padding: theme.spacing.lg }}>
                 <Text variant="body" color="secondary" align="center">
-                  Nothing to do — lucky you.
+                  {t.home.nothingToDo}
                 </Text>
               </View>
             ) : (
@@ -105,7 +108,7 @@ export default function Home() {
               }}
             >
               <Text variant="bodyStrong" color="onAccent">
-                Continue
+                {t.common.continue}
               </Text>
               <ArrowRight color={theme.colors.onAccent} size={18} strokeWidth={2.4} />
             </Pressable>
@@ -114,7 +117,7 @@ export default function Home() {
 
         {/* Quick sessions */}
         <View style={{ gap: theme.spacing.md }}>
-          <Text variant="h3">Quick sessions</Text>
+          <Text variant="h3">{t.home.quickSessions}</Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -122,32 +125,36 @@ export default function Home() {
           >
             <QuickChip
               emoji="🎧"
-              label="5 min audio"
-              hint="Listen to native speakers"
-              onPress={() => toast.info("Listening coming soon")}
+              label={t.home.quickAudio}
+              hint={t.home.quickAudioHint}
+              onPress={() => toast.info(t.home.listeningSoon)}
             />
             <QuickChip
               emoji="💬"
-              label="AI chat"
-              hint="Casual tutor talk"
-              onPress={() => toast.info("AI chat coming soon")}
+              label={t.home.quickChat}
+              hint={t.home.quickChatHint}
+              onPress={() => toast.info(t.home.aiChatSoon)}
             />
             <QuickChip
               emoji="🎲"
-              label="Random drill"
-              hint="One-tap practice"
-              onPress={() => toast.info("Drills coming soon")}
+              label={t.home.quickDrill}
+              hint={t.home.quickDrillHint}
+              onPress={() => toast.info(t.home.drillsSoon)}
             />
             <QuickChip
               emoji="🔥"
-              label="Flashcards"
-              hint={home.dueCount > 0 ? `${home.dueCount} due now` : "Review deck"}
+              label={t.home.quickFlashcards}
+              hint={
+                home.dueCount > 0
+                  ? fmt(t.home.quickFlashcardsDueNow, { n: home.dueCount })
+                  : t.home.quickFlashcardsBrowse
+              }
               onPress={() => router.push("/(app)/vocab/review")}
             />
             <QuickChip
               emoji="➕"
-              label="Add a word"
-              hint="Save a new term"
+              label={t.home.quickAddWord}
+              hint={t.home.quickAddWordHint}
               onPress={() => router.push("/(app)/vocab/add")}
             />
           </ScrollView>
@@ -158,11 +165,11 @@ export default function Home() {
           <Pressable
             onPress={() => router.push("/(app)/vocab/browse")}
             style={{ flexDirection: "row", alignItems: "baseline", justifyContent: "space-between" }}
-            accessibilityLabel="Browse deck"
+            accessibilityLabel={t.vocab.browse.title}
           >
-            <Text variant="h3">From ChineseLens</Text>
+            <Text variant="h3">{t.home.fromExtension}</Text>
             <Text variant="small" color="accent">
-              {home.savedWordsTotal} saved ›
+              {fmt(t.home.savedTotal, { n: home.savedWordsTotal })}
             </Text>
           </Pressable>
 
@@ -173,16 +180,16 @@ export default function Home() {
           ) : home.recentWords.length === 0 ? (
             <Card bordered>
               <View style={{ gap: theme.spacing.xs, alignItems: "flex-start" }}>
-                <Text variant="bodyStrong">No synced words yet</Text>
+                <Text variant="bodyStrong">{t.home.noSyncedWords}</Text>
                 <Text variant="small" color="secondary">
-                  Install ChineseLens in Chrome and save a word to see it here.
+                  {t.home.installExtension}
                 </Text>
               </View>
             </Card>
           ) : (
             <View style={{ gap: theme.spacing.sm }}>
               {home.recentWords.map((w) => (
-                <RecentWordRow key={w.hanzi} word={w} />
+                <RecentWordRow key={w.hanzi} word={w} hskLabel={t.vocab.browse.hskBadge} />
               ))}
             </View>
           )}
@@ -200,7 +207,7 @@ export default function Home() {
             <Sparkles color={theme.colors.accent} size={22} strokeWidth={2} />
             <View style={{ flex: 1, gap: 4 }}>
               <Text variant="bodyStrong">
-                {buildInsight(home.dueCount, home.savedWordsTotal)}
+                {buildInsight(home.dueCount, home.savedWordsTotal, t)}
               </Text>
             </View>
           </View>
@@ -249,6 +256,7 @@ function PlanRow({
   onPress: () => void;
 }) {
   const theme = useTheme();
+  const t = useT();
   const complete = item.progress >= 1;
 
   return (
@@ -267,7 +275,7 @@ function PlanRow({
       <View style={{ flex: 1, gap: 2 }}>
         <Text variant="bodyStrong">{item.title}</Text>
         <Text variant="small" color="secondary">
-          {item.subtitle} · {item.durationMin} min
+          {item.subtitle} · {fmt(t.common.minutesShort, { n: item.durationMin })}
         </Text>
       </View>
       {complete ? (
@@ -313,7 +321,7 @@ function QuickChip({
   );
 }
 
-function RecentWordRow({ word }: { word: RecentWord }) {
+function RecentWordRow({ word, hskLabel }: { word: RecentWord; hskLabel: string }) {
   const theme = useTheme();
   return (
     <View
@@ -349,7 +357,7 @@ function RecentWordRow({ word }: { word: RecentWord }) {
           }}
         >
           <Text variant="small" color="accent">
-            HSK {word.hsk_level}
+            {fmt(hskLabel, { n: word.hsk_level })}
           </Text>
         </View>
       ) : null}
@@ -360,27 +368,23 @@ function RecentWordRow({ word }: { word: RecentWord }) {
 // ──────────────────────────────────────────────────────────────────────────
 // Helpers
 // ──────────────────────────────────────────────────────────────────────────
-function getGreeting(): string {
+function getGreeting(t: ReturnType<typeof useT>): string {
   const hour = new Date().getHours();
-  if (hour < 5) return "Burning the midnight oil";
-  if (hour < 12) return "Good morning";
-  if (hour < 17) return "Good afternoon";
-  if (hour < 22) return "Good evening";
-  return "Burning the midnight oil";
+  if (hour < 5) return t.home.greetingLate;
+  if (hour < 12) return t.home.greetingMorning;
+  if (hour < 17) return t.home.greetingAfternoon;
+  if (hour < 22) return t.home.greetingEvening;
+  return t.home.greetingLate;
 }
 
-function buildInsight(dueCount: number, savedTotal: number): string {
-  if (dueCount >= 20) {
-    return `You have ${dueCount} cards due — tackle half now, the rest after lunch?`;
-  }
-  if (dueCount > 0) {
-    return `${dueCount} reviews due today. A 5-minute session clears them out.`;
-  }
-  if (savedTotal === 0) {
-    return "Save your first word to start building your deck — either here or in the ChineseLens extension.";
-  }
-  if (savedTotal < 30) {
-    return `Your deck has ${savedTotal} words. Add 5 new ones today to hit escape velocity.`;
-  }
-  return "No reviews due — great moment to learn something new or try a speaking scenario.";
+function buildInsight(
+  dueCount: number,
+  savedTotal: number,
+  t: ReturnType<typeof useT>,
+): string {
+  if (dueCount >= 20) return fmt(t.home.insightDueLot, { n: dueCount });
+  if (dueCount > 0) return fmt(t.home.insightDueSome, { n: dueCount });
+  if (savedTotal === 0) return t.home.insightSaveFirst;
+  if (savedTotal < 30) return fmt(t.home.insightDeckSmall, { n: savedTotal });
+  return t.home.insightAllCaughtUp;
 }

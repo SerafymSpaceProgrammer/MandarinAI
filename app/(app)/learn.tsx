@@ -4,6 +4,7 @@ import type { LucideProps } from "lucide-react-native";
 import { Pressable, ScrollView, View } from "react-native";
 
 import { Card, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { EXERCISE_META, type ExerciseType } from "@/features/exercises/types";
 import { useTheme } from "@/theme";
 
@@ -24,47 +25,60 @@ const EXERCISE_ORDER: ExerciseType[] = [
   "fill-blank",
 ];
 
+// CC-CEDICT keys for each exercise type's localized label/hint.
+// EXERCISE_META holds the canonical emoji + min-words requirement; copy comes
+// from the i18n dict so the chips translate alongside the rest of the UI.
+const EXERCISE_LABEL_KEYS: Record<ExerciseType, { label: keyof ReturnType<typeof useT>["exercises"]["types"]; hint: keyof ReturnType<typeof useT>["exercises"]["types"] }> = {
+  translate: { label: "translateLabel", hint: "translateHint" },
+  "listen-and-pick": { label: "listenPickLabel", hint: "listenPickHint" },
+  "match-pairs": { label: "matchPairsLabel", hint: "matchPairsHint" },
+  "tone-id": { label: "toneIdLabel", hint: "toneIdHint" },
+  "word-order": { label: "wordOrderLabel", hint: "wordOrderHint" },
+  "fill-blank": { label: "fillBlankLabel", hint: "fillBlankHint" },
+};
+
 export default function Learn() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
 
   const entries: Entry[] = [
     {
-      title: "Vocabulary review",
-      hint: "SRS flashcards from your saved deck",
+      title: t.learn.vocabularyReview,
+      hint: t.learn.vocabularyReviewHint,
       Icon: BookOpen,
       onPress: () => router.push("/(app)/vocab/review"),
     },
     {
-      title: "Browse deck",
-      hint: "Search, filter, and manage saved words",
+      title: t.learn.browseDeck,
+      hint: t.learn.browseDeckHint,
       Icon: LibraryBig,
       onPress: () => router.push("/(app)/vocab/browse"),
     },
     {
-      title: "Add a word",
-      hint: "Manual entry with auto-pinyin",
+      title: t.learn.addWord,
+      hint: t.learn.addWordHint,
       Icon: Plus,
       onPress: () => router.push("/(app)/vocab/add"),
     },
     {
-      title: "HSK catalog",
-      hint: "Browse 6,300+ words by level — old + new syllabus",
+      title: t.learn.hskCatalog,
+      hint: t.learn.hskCatalogHint,
       Icon: ListChecks,
       onPress: () => router.push("/(app)/hsk"),
     },
     {
-      title: "Characters",
-      hint: "5-step introduction + mnemonics · HSK 1",
+      title: t.learn.characters,
+      hint: t.learn.charactersHint,
       Icon: Type,
       onPress: () => router.push("/(app)/character"),
     },
     {
-      title: "Grammar patterns",
-      hint: "Coming later",
+      title: t.learn.grammar,
+      hint: t.learn.grammarHint,
       Icon: Compass,
       disabled: true,
-      onPress: () => toast.info("Grammar patterns arrive later"),
+      onPress: () => toast.info(t.learn.grammarSoon),
     },
   ];
 
@@ -79,9 +93,9 @@ export default function Learn() {
       >
         <View style={{ gap: theme.spacing.xs }}>
           <Text variant="caption" color="tertiary">
-            Learn
+            {t.learn.section}
           </Text>
-          <Text variant="h1">Pick a mode</Text>
+          <Text variant="h1">{t.learn.title}</Text>
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
@@ -123,22 +137,25 @@ export default function Learn() {
         <View style={{ gap: theme.spacing.md }}>
           <View style={{ gap: theme.spacing.xs }}>
             <Text variant="caption" color="tertiary">
-              Quick exercises
+              {t.learn.quickExercises}
             </Text>
-            <Text variant="h3">Drill from your deck</Text>
+            <Text variant="h3">{t.learn.quickExercisesTitle}</Text>
             <Text variant="small" color="secondary">
-              10 rounds each, generated from words you've already saved.
+              {t.learn.quickExercisesHint}
             </Text>
           </View>
 
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.sm }}>
-            {EXERCISE_ORDER.map((t) => {
-              const meta = EXERCISE_META[t];
+            {EXERCISE_ORDER.map((et) => {
+              const meta = EXERCISE_META[et];
+              const keys = EXERCISE_LABEL_KEYS[et];
+              const label = t.exercises.types[keys.label];
+              const hint = t.exercises.types[keys.hint];
               return (
                 <Pressable
-                  key={t}
-                  onPress={() => router.push(`/(app)/exercises/${t}`)}
-                  accessibilityLabel={meta.label}
+                  key={et}
+                  onPress={() => router.push(`/(app)/exercises/${et}`)}
+                  accessibilityLabel={label}
                   style={{
                     flexBasis: "47%",
                     flexGrow: 1,
@@ -151,9 +168,9 @@ export default function Learn() {
                   }}
                 >
                   <Text style={{ fontSize: 28, lineHeight: 32 }}>{meta.emoji}</Text>
-                  <Text variant="bodyStrong">{meta.label}</Text>
+                  <Text variant="bodyStrong">{label}</Text>
                   <Text variant="small" color="tertiary" numberOfLines={2}>
-                    {meta.hint}
+                    {hint}
                   </Text>
                 </Pressable>
               );

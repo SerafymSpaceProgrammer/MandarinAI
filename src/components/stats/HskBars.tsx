@@ -1,6 +1,8 @@
 import { View } from "react-native";
 
 import { Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import type { HskBreakdown } from "@/features/stats/useStats";
 import { useTheme } from "@/theme";
 
@@ -10,6 +12,7 @@ type Props = {
 
 export function HskBars({ rows }: Props) {
   const theme = useTheme();
+  const t = useT();
   const max = Math.max(1, ...rows.map((r) => r.total));
 
   return (
@@ -21,10 +24,10 @@ export function HskBars({ rows }: Props) {
           <View key={r.hskLevel} style={{ gap: 4 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <Text variant="small" color="secondary">
-                HSK {r.hskLevel}
+                {fmt(t.vocab.browse.hskBadge, { n: r.hskLevel })}
               </Text>
               <Text variant="small" color="tertiary">
-                {r.mastered} / {total}
+                {fmt(t.stats.masteryFraction, { mastered: r.mastered, total })}
               </Text>
             </View>
             <View
@@ -65,9 +68,9 @@ export function HskBars({ rows }: Props) {
       })}
 
       <View style={{ flexDirection: "row", gap: theme.spacing.md, marginTop: 4 }}>
-        <LegendSwatch color={theme.colors.success} label="Mastered" />
-        <LegendSwatch color={theme.colors.accent} label="Learning" />
-        <LegendSwatch color={theme.colors.textTertiary} label="New" faded />
+        <LegendSwatch color={theme.colors.success} label={t.stats.legendMastered} />
+        <LegendSwatch color={theme.colors.accent} label={t.stats.legendLearning} />
+        <LegendSwatch color={theme.colors.textTertiary} label={t.stats.legendNew} faded />
       </View>
     </View>
   );

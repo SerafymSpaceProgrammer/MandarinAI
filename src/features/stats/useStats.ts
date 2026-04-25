@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import { supabase } from "@/api";
 import { computeStreak, fetchRecentActivity, todayISO, type DailyActivityRow } from "@/features/activity/activity";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { logger } from "@/lib/logger";
 import { useUserStore } from "@/stores/userStore";
 
@@ -44,38 +46,30 @@ function deriveLevel(xp: number): { level: number; into: number; next: number } 
   return { level, into, next: XP_PER_LEVEL };
 }
 
-function buildInsight(args: {
-  streak: number;
-  todaysXp: number;
-  totalSaved: number;
-  mastered: number;
-  skills: SkillTotals;
-}): string {
+function buildInsight(
+  args: {
+    streak: number;
+    todaysXp: number;
+    totalSaved: number;
+    mastered: number;
+    skills: SkillTotals;
+  },
+  t: ReturnType<typeof useT>,
+): string {
   const { streak, todaysXp, totalSaved, mastered, skills } = args;
 
-  if (totalSaved === 0) {
-    return "Save your first word (here or in ChineseLens) to start tracking progress.";
-  }
-  if (streak === 0) {
-    return "No streak yet — one short session today starts it.";
-  }
-  if (todaysXp === 0) {
-    return `Your ${streak}-day streak is still alive. One review keeps it going.`;
-  }
-  if (mastered === 0 && totalSaved > 10) {
-    return "You have plenty saved but nothing mastered yet. Keep reviewing — words count as mastered after 5+ reps.";
-  }
-  if (skills.speaking === 0 && skills.vocab > 20) {
-    return "You're strong on vocab — try a speaking scenario to use them out loud.";
-  }
-  if (skills.characters === 0 && skills.vocab > 10) {
-    return "You know the words, but haven't drilled individual characters. Try the character trainer.";
-  }
-  return `On track. ${mastered} words mastered, ${totalSaved - mastered} still learning.`;
+  if (totalSaved === 0) return t.stats.insightSaveFirst;
+  if (streak === 0) return t.stats.insightStartStreak;
+  if (todaysXp === 0) return fmt(t.stats.insightKeepGoing, { n: streak });
+  if (mastered === 0 && totalSaved > 10) return t.stats.insightNeedMastery;
+  if (skills.speaking === 0 && skills.vocab > 20) return t.stats.insightTrySpeaking;
+  if (skills.characters === 0 && skills.vocab > 10) return t.stats.insightTryCharacters;
+  return fmt(t.stats.insightOnTrack, { mastered, learning: totalSaved - mastered });
 }
 
 export function useStats(): StatsData {
   const session = useUserStore((s) => s.session);
+  const t = useT();
 
   const [loading, setLoading] = useState(true);
   const [activity, setActivity] = useState<DailyActivityRow[]>([]);
@@ -154,13 +148,16 @@ export function useStats(): StatsData {
     );
 
   const mastered = hsk.reduce((s, h) => s + h.mastered, 0);
-  const insight = buildInsight({
-    streak,
-    todaysXp,
-    totalSaved,
-    mastered,
-    skills: skills30d,
-  });
+  const insight = buildInsight(
+    {
+      streak,
+      todaysXp,
+      totalSaved,
+      mastered,
+      skills: skills30d,
+    },
+    t,
+  );
 
   return {
     loading,

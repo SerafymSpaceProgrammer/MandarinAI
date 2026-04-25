@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 
 import { Button, Card, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import { fmt } from "@/i18n/strings";
 import { useOnboardingStore } from "@/stores/onboardingStore";
 import { useTheme } from "@/theme";
 
@@ -39,6 +41,7 @@ export default function LevelStep() {
 
 function LevelMenu({ onStartTest }: { onStartTest: () => void }) {
   const theme = useTheme();
+  const t = useT();
   const setDraft = useOnboardingStore((s) => s.set);
   const current = useOnboardingStore((s) => s.hsk_level);
 
@@ -51,24 +54,24 @@ function LevelMenu({ onStartTest }: { onStartTest: () => void }) {
     <Screen padded>
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.sm }}>
-          <Text variant="h1">Let's find your level</Text>
+          <Text variant="h1">{t.onboarding.level.title}</Text>
           <Text variant="body" color="secondary">
-            HSK is the standard test for Mandarin. HSK 1 is beginner, HSK 6 is advanced.
+            {t.onboarding.level.hint}
           </Text>
         </View>
 
-        <Card onPress={onStartTest} accessibilityLabel="Quick test">
+        <Card onPress={onStartTest} accessibilityLabel={t.onboarding.level.quickTest}>
           <View style={{ gap: theme.spacing.xs }}>
-            <Text variant="bodyStrong">⚡ Quick test (1 min)</Text>
+            <Text variant="bodyStrong">{t.onboarding.level.quickTest}</Text>
             <Text variant="small" color="secondary">
-              6 quick questions. We'll pick the level for you.
+              {t.onboarding.level.quickTestHint}
             </Text>
           </View>
         </Card>
 
         <View style={{ gap: theme.spacing.md }}>
           <Text variant="caption" color="tertiary">
-            Or pick yourself
+            {t.onboarding.level.orPickYourself}
           </Text>
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.spacing.sm }}>
             {[1, 2, 3, 4, 5, 6].map((lvl) => {
@@ -89,7 +92,7 @@ function LevelMenu({ onStartTest }: { onStartTest: () => void }) {
                   }}
                 >
                   <Text variant="h2" color={active ? "accent" : "primary"}>
-                    HSK {lvl}
+                    {fmt(t.onboarding.level.hskLabel, { n: lvl })}
                   </Text>
                 </Pressable>
               );
@@ -103,6 +106,7 @@ function LevelMenu({ onStartTest }: { onStartTest: () => void }) {
 
 function PlacementTest({ onCancel }: { onCancel: () => void }) {
   const theme = useTheme();
+  const t = useT();
   const setDraft = useOnboardingStore((s) => s.set);
   const [index, setIndex] = useState(0);
   // Tracks the highest HSK level the user has answered correctly so far.
@@ -150,9 +154,9 @@ function PlacementTest({ onCancel }: { onCancel: () => void }) {
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.xs }}>
           <Text variant="caption" color="tertiary">
-            HSK {q.hsk} · {index + 1} / {QUESTIONS.length}
+            {fmt(t.onboarding.level.counter, { hsk: q.hsk, n: index + 1, total: QUESTIONS.length })}
           </Text>
-          <Text variant="h1">Which means "{q.english}"?</Text>
+          <Text variant="h1">{fmt(t.onboarding.level.whichMeans, { english: q.english })}</Text>
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
@@ -196,13 +200,13 @@ function PlacementTest({ onCancel }: { onCancel: () => void }) {
 
         {revealed ? (
           <Button
-            label={index + 1 < QUESTIONS.length ? "Next question" : "See my level"}
+            label={index + 1 < QUESTIONS.length ? t.onboarding.level.nextQuestion : t.onboarding.level.seeMyLevel}
             onPress={next}
             fullWidth
             size="lg"
           />
         ) : (
-          <Button label="I don't know" variant="ghost" onPress={onCancel} />
+          <Button label={t.onboarding.level.iDontKnow} variant="ghost" onPress={onCancel} />
         )}
       </ScrollView>
     </Screen>

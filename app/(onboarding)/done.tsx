@@ -4,12 +4,14 @@ import { Animated, Easing, View } from "react-native";
 
 import { updateProfile } from "@/api";
 import { Button, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { useOnboardingStore } from "@/stores/onboardingStore";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 export default function DoneStep() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const { session, refreshProfile } = useUserStore();
   const draft = useOnboardingStore();
@@ -58,7 +60,7 @@ export default function DoneStep() {
     setBusy(false);
 
     if (!updated) {
-      toast.error("Couldn't save. Please try again.");
+      toast.error(t.onboarding.done.saveError);
       return;
     }
     resetDraft();
@@ -89,17 +91,17 @@ export default function DoneStep() {
 
         <Animated.View style={{ opacity: fade, alignItems: "center", gap: theme.spacing.sm }}>
           <Text variant="h1" align="center">
-            You're all set!
+            {t.onboarding.done.title}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            Let's start your Mandarin journey.
+            {t.onboarding.done.hint}
           </Text>
         </Animated.View>
 
         <View style={{ height: theme.spacing["2xl"] }} />
 
         <Button
-          label="Start my first lesson"
+          label={t.onboarding.done.cta}
           onPress={finish}
           loading={busy}
           size="lg"

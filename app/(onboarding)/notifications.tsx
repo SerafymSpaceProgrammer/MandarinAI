@@ -3,31 +3,27 @@ import * as Notifications from "expo-notifications";
 import { useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 
-import { Button, Card, Screen, Text } from "@/components/ui";
+import { Button, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { logger } from "@/lib/logger";
 import { useOnboardingStore } from "@/stores/onboardingStore";
 import { useTheme } from "@/theme";
-
-type TimeOption = {
-  label: string;
-  value: string; // "HH:MM:SS" for Postgres time
-  emoji: string;
-};
-
-const TIME_OPTIONS: TimeOption[] = [
-  { label: "Morning · 8:00",   value: "08:00:00", emoji: "🌅" },
-  { label: "Noon · 12:00",     value: "12:00:00", emoji: "☀️" },
-  { label: "Evening · 18:00",  value: "18:00:00", emoji: "🌆" },
-  { label: "Night · 21:00",    value: "21:00:00", emoji: "🌙" },
-];
 
 const DEFAULT_TIME = "19:00:00";
 
 export default function NotificationsStep() {
   const theme = useTheme();
+  const t = useT();
   const setDraft = useOnboardingStore((s) => s.set);
   const current = useOnboardingStore((s) => s.notification_time) ?? DEFAULT_TIME;
   const [busy, setBusy] = useState(false);
+
+  const TIME_OPTIONS = [
+    { label: t.onboarding.notifications.morning, value: "08:00:00", emoji: "🌅" },
+    { label: t.onboarding.notifications.noon,    value: "12:00:00", emoji: "☀️" },
+    { label: t.onboarding.notifications.evening, value: "18:00:00", emoji: "🌆" },
+    { label: t.onboarding.notifications.night,   value: "21:00:00", emoji: "🌙" },
+  ];
 
   async function enableAndContinue() {
     setBusy(true);
@@ -61,23 +57,23 @@ export default function NotificationsStep() {
     <Screen padded>
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.sm }}>
-          <Text variant="h1">Daily reminder?</Text>
+          <Text variant="h1">{t.onboarding.notifications.title}</Text>
           <Text variant="body" color="secondary">
-            One friendly nudge per day. No spam, no streak-guilt.
+            {t.onboarding.notifications.hint}
           </Text>
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
           <Text variant="caption" color="tertiary">
-            Remind me at
+            {t.onboarding.notifications.remindAt}
           </Text>
-          {TIME_OPTIONS.map((t) => {
-            const active = current === t.value;
+          {TIME_OPTIONS.map((opt) => {
+            const active = current === opt.value;
             return (
               <Pressable
-                key={t.value}
-                onPress={() => setDraft({ notification_time: t.value })}
-                accessibilityLabel={t.label}
+                key={opt.value}
+                onPress={() => setDraft({ notification_time: opt.value })}
+                accessibilityLabel={opt.label}
                 style={{
                   padding: theme.spacing.lg,
                   borderRadius: theme.radii.md,
@@ -89,8 +85,8 @@ export default function NotificationsStep() {
                   gap: theme.spacing.md,
                 }}
               >
-                <Text style={{ fontSize: 24 }}>{t.emoji}</Text>
-                <Text variant="bodyStrong">{t.label}</Text>
+                <Text style={{ fontSize: 24 }}>{opt.emoji}</Text>
+                <Text variant="bodyStrong">{opt.label}</Text>
               </Pressable>
             );
           })}
@@ -98,14 +94,14 @@ export default function NotificationsStep() {
 
         <View style={{ gap: theme.spacing.md }}>
           <Button
-            label="Enable notifications"
+            label={t.onboarding.notifications.enable}
             onPress={enableAndContinue}
             loading={busy}
             size="lg"
             fullWidth
           />
           <Button
-            label="Not now"
+            label={t.onboarding.notifications.notNow}
             variant="ghost"
             onPress={skipAndContinue}
             fullWidth

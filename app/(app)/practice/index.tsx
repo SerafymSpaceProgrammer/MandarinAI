@@ -4,6 +4,7 @@ import type { LucideProps } from "lucide-react-native";
 import { ScrollView, View } from "react-native";
 
 import { Card, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 type Mode = {
@@ -16,35 +17,36 @@ type Mode = {
 
 export default function Practice() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
 
   const modes: Mode[] = [
     {
-      title: "Speaking scenarios",
-      hint: "Rehearse short dialogues — Whisper scores your pronunciation",
+      title: t.practiceTab.speaking,
+      hint: t.practiceTab.speakingHint,
       Icon: MicVocal,
       onPress: () => router.push("/(app)/practice/scenarios"),
     },
     {
-      title: "Free-form conversation",
-      hint: "Live AI tutor · arrives with Realtime API phase",
+      title: t.practiceTab.freeForm,
+      hint: t.practiceTab.freeFormHint,
       Icon: Mic,
       disabled: true,
-      onPress: () => toast.info("Live conversation is a later phase"),
+      onPress: () => toast.info(t.practiceTab.freeFormSoon),
     },
     {
-      title: "Listening",
-      hint: "Audio snippets + quick comprehension quiz · coming soon",
+      title: t.practiceTab.listening,
+      hint: t.practiceTab.listeningHint,
       Icon: Headphones,
       disabled: true,
-      onPress: () => toast.info("Listening practice comes next"),
+      onPress: () => toast.info(t.practiceTab.listeningSoon),
     },
     {
-      title: "Writing",
-      hint: "Stroke order drawing · needs Skia canvas",
+      title: t.practiceTab.writing,
+      hint: t.practiceTab.writingHint,
       Icon: PencilLine,
       disabled: true,
-      onPress: () => toast.info("Writing practice arrives with stroke data"),
+      onPress: () => toast.info(t.practiceTab.writingSoon),
     },
   ];
 
@@ -59,9 +61,9 @@ export default function Practice() {
       >
         <View style={{ gap: theme.spacing.xs }}>
           <Text variant="caption" color="tertiary">
-            Practice
+            {t.practiceTab.section}
           </Text>
-          <Text variant="h1">Pick a mode</Text>
+          <Text variant="h1">{t.practiceTab.title}</Text>
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
