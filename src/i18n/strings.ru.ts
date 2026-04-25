@@ -569,5 +569,15 @@ export const RU: Translations = {
     "confirmExitBody": "Ваш прогресс за эту сессию будет потерян.",
     "confirmExitYes": "Выйти",
     "confirmExitNo": "Продолжить"
+  },
+  "wordDetail": {
+    "meanings": "Значения",
+    "context": "Контекст",
+    "flipHint": "Нажмите, чтобы открыть значение",
+    "tapToFlipBack": "Нажмите, чтобы вернуться назад",
+    "practiceWriting": "Практика письма",
+    "saved": "Сохранено",
+    "remove": "Удалить",
+    "playAudio": "Воспроизвести аудио"
   }
 };

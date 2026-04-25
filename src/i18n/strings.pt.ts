@@ -569,5 +569,15 @@ export const PT: Translations = {
     "confirmExitBody": "O seu progresso nesta sessão será perdido.",
     "confirmExitYes": "Sair",
     "confirmExitNo": "Continuar"
+  },
+  "wordDetail": {
+    "meanings": "Significados",
+    "context": "Contexto",
+    "flipHint": "Toque para revelar o significado",
+    "tapToFlipBack": "Toque para voltar",
+    "practiceWriting": "Praticar escrita",
+    "saved": "Guardado",
+    "remove": "Remover",
+    "playAudio": "Reproduzir áudio"
   }
 };

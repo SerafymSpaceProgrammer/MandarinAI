@@ -569,5 +569,15 @@ export const ZH: Translations = {
     "confirmExitBody": "你本次会话的进度将会丢失。",
     "confirmExitYes": "退出",
     "confirmExitNo": "继续"
+  },
+  "wordDetail": {
+    "meanings": "词义",
+    "context": "语境",
+    "flipHint": "点击以显示词义",
+    "tapToFlipBack": "点击以翻回",
+    "practiceWriting": "练习书写",
+    "saved": "已保存",
+    "remove": "移除",
+    "playAudio": "播放音频"
   }
 };

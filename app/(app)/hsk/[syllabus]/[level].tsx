@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { ArrowLeft, BookmarkCheck, BookmarkPlus, PenTool } from "lucide-react-native";
+import { ArrowLeft, BookmarkCheck, BookmarkPlus } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -9,7 +9,8 @@ import {
   View,
 } from "react-native";
 
-import { StrokeViewerModal } from "@/components/StrokeViewerModal";
+import { WordCard } from "@/components/cards/WordCard";
+import { WordDetailSheet, type WordDetail } from "@/components/cards/WordDetailSheet";
 import { Button, Screen, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { fmt, type Translations } from "@/i18n/strings";
@@ -61,8 +62,8 @@ export default function HskLevelList() {
   const [words, setWords] = useState<HskWord[]>([]);
   const [meanings, setMeanings] = useState<Record<string, string[]>>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  const [detail, setDetail] = useState<WordDetail | null>(null);
   const [savingAll, setSavingAll] = useState(false);
-  const [strokeHanzi, setStrokeHanzi] = useState<string | null>(null);
   const [posFilter, setPosFilter] = useState<PosTag | null>(null);
 
   // Pull catalog + saved set in parallel.
@@ -250,11 +251,39 @@ export default function HskLevelList() {
               meaning={meanings[item.hanzi]?.[0]}
               isSaved={saved.has(item.hanzi)}
               onSave={() => handleSave(item)}
-              onShowStrokes={() => setStrokeHanzi(item.hanzi)}
+              onPress={() =>
+                setDetail({
+                  hanzi: item.hanzi,
+                  pinyin: item.pinyin,
+                  english: meanings[item.hanzi]?.[0] ?? "",
+                  meanings: meanings[item.hanzi],
+                  hskLevel: item.hsk_new ?? item.hsk_old,
+                  posLabel: item.pos?.[0]
+                    ? posLabel(t, item.pos[0] as PosTag)
+                    : null,
+                })
+              }
             />
           )}
         />
       )}
+
+      <WordDetailSheet
+        visible={detail !== null}
+        onClose={() => setDetail(null)}
+        word={detail}
+        isSaved={detail ? saved.has(detail.hanzi) : false}
+        onSave={
+          detail
+            ? () => {
+                const w = words.find((x) => x.hanzi === detail.hanzi);
+                if (w) handleSave(w);
+                setDetail(null);
+              }
+            : undefined
+        }
+      />
+
 
       {/* Bottom action bar */}
       {!loading ? (
@@ -292,13 +321,6 @@ export default function HskLevelList() {
         </View>
       ) : null}
 
-      <StrokeViewerModal
-        visible={strokeHanzi !== null}
-        onClose={() => setStrokeHanzi(null)}
-        hanzi={strokeHanzi ?? ""}
-        pinyin={words.find((w) => w.hanzi === strokeHanzi)?.pinyin}
-        english={meanings[strokeHanzi ?? ""]?.[0]}
-      />
     </Screen>
   );
 }
@@ -308,88 +330,59 @@ function WordRow({
   meaning,
   isSaved,
   onSave,
-  onShowStrokes,
+  onPress,
 }: {
   word: HskWord;
   meaning: string | undefined;
   isSaved: boolean;
   onSave: () => void;
-  onShowStrokes: () => void;
+  onPress: () => void;
 }) {
   const theme = useTheme();
   const t = useT();
   const primaryPos = word.pos?.[0] as PosTag | undefined;
 
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        gap: theme.spacing.md,
-        padding: theme.spacing.md,
-        backgroundColor: theme.colors.surface,
-        borderRadius: theme.radii.md,
-        borderWidth: 1,
-        borderColor: theme.colors.border,
-      }}
-    >
-      <Pressable onPress={onShowStrokes} accessibilityLabel={t.strokes.title}>
-        <Text chinese variant="h2">
-          {word.hanzi}
-        </Text>
-      </Pressable>
-      <View style={{ flex: 1, gap: 2 }}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
-          <Text variant="small" color="secondary">
-            {word.pinyin}
-          </Text>
-          {primaryPos ? (
-            <View
-              style={{
-                paddingVertical: 1,
-                paddingHorizontal: 6,
-                borderRadius: theme.radii.full,
-                backgroundColor: theme.colors.surfaceHover,
-              }}
-            >
-              <Text variant="caption" color="tertiary">
-                {posLabel(t, primaryPos)}
-              </Text>
-            </View>
-          ) : null}
-        </View>
-        {meaning ? (
-          <Text variant="body" numberOfLines={1}>
-            {meaning}
-          </Text>
-        ) : (
-          <Text variant="body" color="tertiary">
-            …
-          </Text>
-        )}
-      </View>
-      <Pressable
-        onPress={onShowStrokes}
-        hitSlop={8}
-        accessibilityLabel={t.strokes.title}
-        style={{ padding: 4 }}
-      >
-        <PenTool color={theme.colors.textTertiary} size={18} strokeWidth={2} />
-      </Pressable>
-      <Pressable
-        onPress={isSaved ? undefined : onSave}
-        disabled={isSaved}
-        hitSlop={8}
-        accessibilityLabel={isSaved ? t.vocab.add.title : fmt(t.hsk.listSavedToast, { hanzi: word.hanzi })}
-        style={{ padding: 4 }}
-      >
-        {isSaved ? (
-          <BookmarkCheck color={theme.colors.success} size={20} strokeWidth={2} />
-        ) : (
-          <BookmarkPlus color={theme.colors.accent} size={20} strokeWidth={2} />
-        )}
-      </Pressable>
-    </View>
+    <WordCard
+      hanzi={word.hanzi}
+      pinyin={word.pinyin}
+      english={meaning}
+      onPress={onPress}
+      badges={
+        primaryPos ? (
+          <View
+            style={{
+              paddingVertical: 1,
+              paddingHorizontal: 6,
+              borderRadius: theme.radii.full,
+              backgroundColor: theme.colors.surfaceHover,
+            }}
+          >
+            <Text variant="caption" color="tertiary">
+              {posLabel(t, primaryPos)}
+            </Text>
+          </View>
+        ) : null
+      }
+      trailing={
+        <Pressable
+          onPress={(e) => {
+            e.stopPropagation?.();
+            if (!isSaved) onSave();
+          }}
+          disabled={isSaved}
+          hitSlop={8}
+          accessibilityLabel={isSaved ? t.vocab.add.title : fmt(t.hsk.listSavedToast, { hanzi: word.hanzi })}
+          style={{ padding: 4 }}
+        >
+          {isSaved ? (
+            <BookmarkCheck color={theme.colors.success} size={20} strokeWidth={2} />
+          ) : (
+            <BookmarkPlus color={theme.colors.accent} size={20} strokeWidth={2} />
+          )}
+        </Pressable>
+      }
+    />
   );
 }
 

@@ -6,8 +6,11 @@ import {
   Flame,
   Sparkles,
 } from "lucide-react-native";
+import { useState } from "react";
 import { Pressable, RefreshControl, ScrollView, View } from "react-native";
 
+import { WordCard } from "@/components/cards/WordCard";
+import { WordDetailSheet, type WordDetail } from "@/components/cards/WordDetailSheet";
 import { Card, Screen, Skeleton, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { fmt } from "@/i18n/strings";
@@ -22,6 +25,7 @@ export default function Home() {
   const toast = useToast();
   const profile = useUserStore((s) => s.profile);
   const home = useHomeData();
+  const [detail, setDetail] = useState<RecentWord | null>(null);
 
   const greeting = getGreeting(t);
   const name = profile?.display_name ?? null;
@@ -189,11 +193,32 @@ export default function Home() {
           ) : (
             <View style={{ gap: theme.spacing.sm }}>
               {home.recentWords.map((w) => (
-                <RecentWordRow key={w.hanzi} word={w} hskLabel={t.vocab.browse.hskBadge} />
+                <RecentWordRow
+                  key={w.hanzi}
+                  word={w}
+                  hskLabel={t.vocab.browse.hskBadge}
+                  onPress={() => setDetail(w)}
+                />
               ))}
             </View>
           )}
         </View>
+
+        {/* Word detail sheet shared by every recent-word row */}
+        <WordDetailSheet
+          visible={detail !== null}
+          onClose={() => setDetail(null)}
+          word={
+            detail
+              ? {
+                  hanzi: detail.hanzi,
+                  pinyin: detail.pinyin,
+                  english: detail.english,
+                  hskLevel: detail.hsk_level,
+                }
+              : null
+          }
+        />
 
         {/* AI suggestion stub */}
         <Card
@@ -321,47 +346,39 @@ function QuickChip({
   );
 }
 
-function RecentWordRow({ word, hskLabel }: { word: RecentWord; hskLabel: string }) {
+function RecentWordRow({
+  word,
+  hskLabel,
+  onPress,
+}: {
+  word: RecentWord;
+  hskLabel: string;
+  onPress: () => void;
+}) {
   const theme = useTheme();
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        gap: theme.spacing.md,
-        padding: theme.spacing.md,
-        backgroundColor: theme.colors.surface,
-        borderRadius: theme.radii.md,
-        borderWidth: 1,
-        borderColor: theme.colors.border,
-      }}
-    >
-      <Text chinese variant="h2">
-        {word.hanzi}
-      </Text>
-      <View style={{ flex: 1, gap: 2 }}>
-        <Text variant="small" color="secondary">
-          {word.pinyin}
-        </Text>
-        <Text variant="body" numberOfLines={1}>
-          {word.english}
-        </Text>
-      </View>
-      {word.hsk_level > 0 ? (
-        <View
-          style={{
-            paddingVertical: 2,
-            paddingHorizontal: 8,
-            borderRadius: theme.radii.full,
-            backgroundColor: theme.colors.accentMuted,
-          }}
-        >
-          <Text variant="small" color="accent">
-            {fmt(hskLabel, { n: word.hsk_level })}
-          </Text>
-        </View>
-      ) : null}
-    </View>
+    <WordCard
+      hanzi={word.hanzi}
+      pinyin={word.pinyin}
+      english={word.english}
+      onPress={onPress}
+      trailing={
+        word.hsk_level > 0 ? (
+          <View
+            style={{
+              paddingVertical: 2,
+              paddingHorizontal: 8,
+              borderRadius: theme.radii.full,
+              backgroundColor: theme.colors.accentMuted,
+            }}
+          >
+            <Text variant="small" color="accent">
+              {fmt(hskLabel, { n: word.hsk_level })}
+            </Text>
+          </View>
+        ) : null
+      }
+    />
   );
 }
 

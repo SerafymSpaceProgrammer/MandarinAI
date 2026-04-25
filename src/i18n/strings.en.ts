@@ -572,6 +572,17 @@ export const EN = {
     unavailable: "Stroke data unavailable",
   },
 
+  wordDetail: {
+    meanings: "Meanings",
+    context: "Context",
+    flipHint: "Tap to reveal meaning",
+    tapToFlipBack: "Tap to flip back",
+    practiceWriting: "Practice writing",
+    saved: "Saved",
+    remove: "Remove",
+    playAudio: "Play audio",
+  },
+
   writing: {
     headerLabel: "Writing",
     pickerTitle: "Trace the strokes",
