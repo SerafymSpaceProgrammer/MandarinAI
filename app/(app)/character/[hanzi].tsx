@@ -7,6 +7,7 @@ import { ActivityIndicator, Pressable, ScrollView, TextInput, View } from "react
 
 import { Button, Screen, Text } from "@/components/ui";
 import { StrokeAnimator } from "@/components/StrokeAnimator";
+import { StrokeQuiz } from "@/components/StrokeQuiz";
 import { useT } from "@/i18n/i18n";
 import { fmt, type Translations } from "@/i18n/strings";
 import {
@@ -440,21 +441,45 @@ function PronounceStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () =>
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// Step 3 — Write (watch the stroke order animate)
+// Step 3 — Write (trace strokes; falls back to animator if quiz unavailable)
 // ──────────────────────────────────────────────────────────────────────────
 function WriteStub({ dict, onSkip }: { dict: CharacterDictRow; onSkip: () => void }) {
   const theme = useTheme();
   const t = useT();
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   return (
     <View style={{ gap: theme.spacing.xl, alignItems: "center" }}>
-      <StrokeAnimator hanzi={dict.hanzi} size={280} />
+      {showAnimation ? (
+        <StrokeAnimator hanzi={dict.hanzi} size={280} />
+      ) : (
+        <StrokeQuiz
+          hanzi={dict.hanzi}
+          size={280}
+          onComplete={() => setCompleted(true)}
+        />
+      )}
 
       <Text variant="body" color="secondary" align="center">
         {t.character.writeWatchHint}
       </Text>
 
-      <Button label={t.character.writeContinue} size="lg" fullWidth onPress={onSkip} />
+      {!showAnimation ? (
+        <Button
+          label={t.writing.showAnimation}
+          variant="ghost"
+          fullWidth
+          onPress={() => setShowAnimation(true)}
+        />
+      ) : null}
+
+      <Button
+        label={completed ? t.common.continue : t.character.writeContinue}
+        size="lg"
+        fullWidth
+        onPress={onSkip}
+      />
     </View>
   );
 }

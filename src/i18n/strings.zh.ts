@@ -204,8 +204,8 @@ export const ZH: Translations = {
     "listeningHint": "音频片段 + 快速理解测验 · 即将推出",
     "listeningSoon": "听力练习即将到来",
     "writing": "写作",
-    "writingHint": "笔顺绘制 · 需要 Skia 画布",
-    "writingSoon": "写作练习将在笔顺数据推出时到来"
+    "writingSoon": "写作练习将在笔顺数据推出时到来",
+    "writingHint": "描摹每个笔画 — 立即反馈顺序和准确性"
   },
   "stats": {
     "section": "进度",
@@ -533,5 +533,41 @@ export const ZH: Translations = {
     "strokesOther": "{n} 画",
     "drawing": "绘制 {n}/{total}",
     "unavailable": "笔顺数据不可用"
+  },
+  "writing": {
+    "headerLabel": "书写",
+    "pickerTitle": "描摹笔画",
+    "pickerHint": "选择一个汉字，逐笔描绘。训练师会评分并在你遇到困难时提供提示。",
+    "sourceDeck": "来自你的词库",
+    "sourceDeckHint": "你已保存的单词",
+    "sourceHsk": "HSK 级别",
+    "sourceHskHint": "按级别的单个汉字",
+    "deckEmpty": "还没有保存的单词",
+    "deckEmptyHint": "从任何列表中保存一个单词，然后回来这里。",
+    "progress": "笔画 {drawn} / {total}",
+    "allStrokesDone": "所有笔画已完成！",
+    "mistakesOne": "{n} 个错误",
+    "mistakesOther": "{n} 个错误",
+    "hint": "提示",
+    "restart": "重新开始",
+    "skipStroke": "跳过",
+    "next": "下一个汉字",
+    "finish": "完成",
+    "counter": "{n} / {total}",
+    "summaryTitle": "书写完成",
+    "summarySubtitle": "{characters} 个汉字 · {accuracy}% 准确率 · {minutes} 分钟 · +{xp} XP",
+    "summaryAccuracy": "准确率",
+    "summaryCharacters": "汉字",
+    "summaryMistakes": "错误",
+    "practiceAgain": "再练习一次",
+    "pickAnother": "选择其他内容",
+    "showAnimation": "先给我看",
+    "backToList": "返回列表",
+    "sessionEmpty": "没有可练习的内容",
+    "sessionEmptyHint": "此列表没有带笔画数据的汉字。",
+    "confirmExitTitle": "退出书写？",
+    "confirmExitBody": "你本次会话的进度将会丢失。",
+    "confirmExitYes": "退出",
+    "confirmExitNo": "继续"
   }
 };

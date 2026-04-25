@@ -45,8 +45,7 @@ export default function Practice() {
       title: t.practiceTab.writing,
       hint: t.practiceTab.writingHint,
       Icon: PencilLine,
-      disabled: true,
-      onPress: () => toast.info(t.practiceTab.writingSoon),
+      onPress: () => router.push("/(app)/practice/writing"),
     },
   ];
 

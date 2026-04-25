@@ -204,8 +204,8 @@ export const RU: Translations = {
     "listeningHint": "Аудио отрывки + быстрая викторина по пониманию · скоро",
     "listeningSoon": "Практика слушания будет следующей",
     "writing": "Письмо",
-    "writingHint": "Рисование порядка чертежа · требует холста Skia",
-    "writingSoon": "Практика письма появится с данными о чертах"
+    "writingSoon": "Практика письма появится с данными о чертах",
+    "writingHint": "Обводите каждый штрих — мгновенная обратная связь по порядку и точности"
   },
   "stats": {
     "section": "Прогресс",
@@ -533,5 +533,41 @@ export const RU: Translations = {
     "strokesOther": "{n} черт",
     "drawing": "рисование {n}/{total}",
     "unavailable": "Данные о чертах недоступны"
+  },
+  "writing": {
+    "headerLabel": "Письмо",
+    "pickerTitle": "Обведите штрихи",
+    "pickerHint": "Выберите символ и нарисуйте его штрих за штрихом. Тренер оценивает точность и показывает подсказки, когда вы застреваете.",
+    "sourceDeck": "Из вашей колоды",
+    "sourceDeckHint": "Слова, которые вы уже сохранили",
+    "sourceHsk": "Уровни HSK",
+    "sourceHskHint": "Отдельные символы по уровням",
+    "deckEmpty": "Пока нет сохранённых слов",
+    "deckEmptyHint": "Сохраните слово из любого списка и вернитесь сюда.",
+    "progress": "штрих {drawn} / {total}",
+    "allStrokesDone": "Все штрихи нарисованы!",
+    "mistakesOne": "{n} ошибка",
+    "mistakesOther": "{n} ошибки",
+    "hint": "Подсказка",
+    "restart": "Начать заново",
+    "skipStroke": "Пропустить",
+    "next": "Следующий символ",
+    "finish": "Завершить",
+    "counter": "{n} / {total}",
+    "summaryTitle": "Письмо завершено",
+    "summarySubtitle": "{characters} символов · {accuracy}% точности · {minutes} мин · +{xp} XP",
+    "summaryAccuracy": "Точность",
+    "summaryCharacters": "Символы",
+    "summaryMistakes": "Ошибки",
+    "practiceAgain": "Практиковаться снова",
+    "pickAnother": "Выберите что-то другое",
+    "showAnimation": "Сначала покажи мне",
+    "backToList": "Назад к списку",
+    "sessionEmpty": "Нечего практиковать",
+    "sessionEmptyHint": "В этом списке нет символов с данными о штрихах.",
+    "confirmExitTitle": "Выйти из письма?",
+    "confirmExitBody": "Ваш прогресс за эту сессию будет потерян.",
+    "confirmExitYes": "Выйти",
+    "confirmExitNo": "Продолжить"
   }
 };

@@ -204,8 +204,8 @@ export const ES: Translations = {
     "listeningHint": "Fragmentos de audio + cuestionario de comprensión rápida · disponible pronto",
     "listeningSoon": "La práctica de escucha viene a continuación",
     "writing": "Escritura",
-    "writingHint": "Dibujo de orden de trazos · necesita lienzo Skia",
-    "writingSoon": "La práctica de escritura llega con datos de trazos"
+    "writingSoon": "La práctica de escritura llega con datos de trazos",
+    "writingHint": "Traza cada trazo — retroalimentación instantánea sobre el orden y la precisión"
   },
   "stats": {
     "section": "Progreso",
@@ -533,5 +533,41 @@ export const ES: Translations = {
     "strokesOther": "{n} trazos",
     "drawing": "dibujando {n}/{total}",
     "unavailable": "Datos de trazos no disponibles"
+  },
+  "writing": {
+    "headerLabel": "Escritura",
+    "pickerTitle": "Traza los trazos",
+    "pickerHint": "Elige un carácter y dibújalo trazo a trazo. El entrenador puntúa la precisión y muestra pistas cuando te atascas.",
+    "sourceDeck": "De tu mazo",
+    "sourceDeckHint": "Palabras que ya has guardado",
+    "sourceHsk": "Niveles HSK",
+    "sourceHskHint": "Caracteres individuales por nivel",
+    "deckEmpty": "Aún no hay palabras guardadas",
+    "deckEmptyHint": "Guarda una palabra de cualquier lista y vuelve aquí.",
+    "progress": "trazo {drawn} / {total}",
+    "allStrokesDone": "¡Todos los trazos dibujados!",
+    "mistakesOne": "{n} error",
+    "mistakesOther": "{n} errores",
+    "hint": "Pista",
+    "restart": "Reiniciar",
+    "skipStroke": "Saltar",
+    "next": "Siguiente carácter",
+    "finish": "Terminar",
+    "counter": "{n} / {total}",
+    "summaryTitle": "Escritura completada",
+    "summarySubtitle": "{characters} caracteres · {accuracy}% de precisión · {minutes} min · +{xp} XP",
+    "summaryAccuracy": "Precisión",
+    "summaryCharacters": "Caracteres",
+    "summaryMistakes": "Errores",
+    "practiceAgain": "Practicar de nuevo",
+    "pickAnother": "Elige algo más",
+    "showAnimation": "Muéstrame primero",
+    "backToList": "Volver a la lista",
+    "sessionEmpty": "Nada que practicar",
+    "sessionEmptyHint": "Esta lista no tiene caracteres con datos de trazos.",
+    "confirmExitTitle": "¿Salir de la escritura?",
+    "confirmExitBody": "Tu progreso en esta sesión se perderá.",
+    "confirmExitYes": "Salir",
+    "confirmExitNo": "Seguir adelante"
   }
 };
