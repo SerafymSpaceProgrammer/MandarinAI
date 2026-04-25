@@ -5,6 +5,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { ToastProvider } from "@/components/ui";
+import { I18nProvider } from "@/i18n/i18n";
 import { useUserStore } from "@/stores/userStore";
 import { ThemeProvider, useTheme } from "@/theme";
 
@@ -12,15 +13,17 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <ThemeProvider>
-          <ToastProvider>
-            <AuthGate>
-              <Stack
-                screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }}
-              />
-            </AuthGate>
-          </ToastProvider>
-        </ThemeProvider>
+        <I18nProvider>
+          <ThemeProvider>
+            <ToastProvider>
+              <AuthGate>
+                <Stack
+                  screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }}
+                />
+              </AuthGate>
+            </ToastProvider>
+          </ThemeProvider>
+        </I18nProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

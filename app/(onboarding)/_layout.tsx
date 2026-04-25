@@ -3,6 +3,8 @@ import { Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Text } from "@/components/ui";
+import { fmt } from "@/i18n/strings";
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 /**
@@ -16,6 +18,7 @@ const SKIPPABLE: ReadonlySet<Step> = new Set(["notifications"]);
 
 export default function OnboardingLayout() {
   const theme = useTheme();
+  const t = useT();
   const insets = useSafeAreaInsets();
   const segments = useSegments() as string[];
 
@@ -68,7 +71,7 @@ export default function OnboardingLayout() {
             )}
 
             <Text variant="small" color="tertiary">
-              {stepIndex + 1} / {STEPS.length}
+              {fmt(t.onboarding.progress, { n: stepIndex + 1, total: STEPS.length })}
             </Text>
 
             {canSkip ? (
@@ -78,10 +81,10 @@ export default function OnboardingLayout() {
                   if (href) router.replace(href as never);
                 }}
                 hitSlop={16}
-                accessibilityLabel="Skip"
+                accessibilityLabel={t.common.skip}
               >
                 <Text variant="small" color="tertiary">
-                  Skip
+                  {t.common.skip}
                 </Text>
               </Pressable>
             ) : (

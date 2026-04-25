@@ -4,12 +4,14 @@ import { Pressable as RNPressable, ScrollView, View } from "react-native";
 
 import { signInWithPassword, signUpWithPassword } from "@/api";
 import { Button, Input, Screen, Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 type Mode = "signin" | "signup";
 
 export default function Login() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const [mode, setMode] = useState<Mode>("signin");
   const [email, setEmail] = useState("");
@@ -31,8 +33,7 @@ export default function Login() {
     setSubmitting(false);
 
     if (res.ok) {
-      toast.success(mode === "signup" ? "Account created" : "Welcome back");
-      // Routing is handled by the root layout once the session appears.
+      toast.success(mode === "signup" ? t.auth.toastAccountCreated : t.auth.toastWelcomeBack);
     } else {
       setError(res.error);
     }
@@ -48,13 +49,9 @@ export default function Login() {
         }}
       >
         <View style={{ gap: theme.spacing.sm }}>
-          <Text variant="h1">
-            {mode === "signin" ? "Welcome back" : "Create your account"}
-          </Text>
+          <Text variant="h1">{mode === "signin" ? t.auth.signInTitle : t.auth.signUpTitle}</Text>
           <Text variant="body" color="secondary">
-            {mode === "signin"
-              ? "Sign in to sync your vocabulary from ChineseLens."
-              : "Same account works in the ChineseLens extension."}
+            {mode === "signin" ? t.auth.signInSubtitle : t.auth.signUpSubtitle}
           </Text>
         </View>
 
@@ -84,11 +81,8 @@ export default function Login() {
                   backgroundColor: active ? theme.colors.bg : "transparent",
                 }}
               >
-                <Text
-                  variant="smallStrong"
-                  color={active ? "primary" : "tertiary"}
-                >
-                  {m === "signin" ? "Sign in" : "Create account"}
+                <Text variant="smallStrong" color={active ? "primary" : "tertiary"}>
+                  {m === "signin" ? t.auth.tabSignIn : t.auth.tabSignUp}
                 </Text>
               </RNPressable>
             );
@@ -97,30 +91,26 @@ export default function Login() {
 
         <View style={{ gap: theme.spacing.lg }}>
           <Input
-            label="Email"
+            label={t.auth.email}
             variant="email"
             value={email}
             onChangeText={setEmail}
-            placeholder="you@example.com"
+            placeholder={t.auth.emailPlaceholder}
             autoFocus
           />
           <Input
-            label="Password"
+            label={t.auth.password}
             variant="password"
             value={password}
             onChangeText={setPassword}
-            placeholder="••••••••"
-            helper={
-              mode === "signup"
-                ? "At least 6 characters."
-                : undefined
-            }
+            placeholder={t.auth.passwordPlaceholder}
+            helper={mode === "signup" ? t.auth.passwordHint : undefined}
             error={error ?? undefined}
           />
         </View>
 
         <Button
-          label={mode === "signin" ? "Sign in" : "Create account"}
+          label={mode === "signin" ? t.auth.tabSignIn : t.auth.tabSignUp}
           fullWidth
           loading={submitting}
           disabled={!isValid}
@@ -129,7 +119,7 @@ export default function Login() {
 
         <RNPressable onPress={() => router.back()} style={{ alignSelf: "center" }}>
           <Text variant="small" color="secondary">
-            ← Back
+            {t.auth.backArrow}
           </Text>
         </RNPressable>
       </ScrollView>

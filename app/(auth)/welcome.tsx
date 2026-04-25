@@ -2,10 +2,12 @@ import { router } from "expo-router";
 import { View } from "react-native";
 
 import { Button, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 export default function Welcome() {
   const theme = useTheme();
+  const t = useT();
 
   return (
     <Screen padded>
@@ -15,21 +17,21 @@ export default function Welcome() {
             中文
           </Text>
           <Text variant="h1" align="center">
-            MandarinAI
+            {t.auth.welcomeTitle}
           </Text>
           <Text variant="body" color="secondary" align="center">
-            Learn Mandarin the modern way — with AI that adapts to you.
+            {t.auth.welcomeBlurb}
           </Text>
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
           <Button
-            label="Continue with email"
+            label={t.auth.continueWithEmail}
             fullWidth
             onPress={() => router.push("/(auth)/login")}
           />
           <Text variant="small" color="tertiary" align="center" style={{ paddingHorizontal: theme.spacing.lg }}>
-            By continuing, you agree to the Terms and Privacy Policy.
+            {t.auth.terms}
           </Text>
         </View>
       </View>

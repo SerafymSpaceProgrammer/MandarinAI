@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import { ScrollView, View } from "react-native";
 
 import { Card, Screen, Text } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
 import { useOnboardingStore } from "@/stores/onboardingStore";
 import type { NativeLanguage } from "@/types";
 import { useTheme } from "@/theme";
@@ -21,6 +22,7 @@ const CHOICES: Choice[] = [
 
 export default function LanguageStep() {
   const theme = useTheme();
+  const t = useT();
   const selected = useOnboardingStore((s) => s.native_language);
   const setDraft = useOnboardingStore((s) => s.set);
 
@@ -33,9 +35,9 @@ export default function LanguageStep() {
     <Screen padded>
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.sm }}>
-          <Text variant="h1">What language do you speak?</Text>
+          <Text variant="h1">{t.onboarding.language.title}</Text>
           <Text variant="body" color="secondary">
-            We'll translate new words and explanations into your language.
+            {t.onboarding.language.hint}
           </Text>
         </View>
 

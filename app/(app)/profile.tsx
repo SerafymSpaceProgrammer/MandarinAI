@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ScrollView, View } from "react-native";
 
 import { deleteAccount, signOut } from "@/api";
+import { LanguagePicker } from "@/components/LanguagePicker";
 import { ThemePicker } from "@/components/ThemePicker";
 import {
   Button,
@@ -11,11 +12,14 @@ import {
   Text,
   useToast,
 } from "@/components/ui";
+import { fmt } from "@/i18n/strings";
+import { useT } from "@/i18n/i18n";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 export default function Profile() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const { session, profile } = useUserStore();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
@@ -33,7 +37,7 @@ export default function Profile() {
     const res = await deleteAccount();
     setBusy(false);
     setConfirmingDelete(false);
-    if (!res.ok) toast.info(res.error);
+    if (!res.ok) toast.info(t.profile.deleteContact);
   }
 
   return (
@@ -46,49 +50,64 @@ export default function Profile() {
       >
         <View style={{ gap: theme.spacing.xs }}>
           <Text variant="caption" color="tertiary">
-            Account
+            {t.profile.section}
           </Text>
-          <Text variant="h1">Profile</Text>
+          <Text variant="h1">{t.profile.title}</Text>
         </View>
 
         <Card>
           <Text variant="caption" color="tertiary">
-            Signed in as
+            {t.profile.signedInAs}
           </Text>
           <View style={{ height: 4 }} />
           <Text variant="bodyStrong">{session?.user.email ?? "—"}</Text>
           <View style={{ height: theme.spacing.sm }} />
           <Text variant="small" color="secondary">
-            User ID: {session?.user.id.slice(0, 8) ?? "—"}…
+            {fmt(t.profile.userId, { id: session?.user.id.slice(0, 8) ?? "—" })}
           </Text>
           <Text variant="small" color="secondary">
-            Onboarding: {profile?.onboarding_completed ? "done" : "not yet"}
+            {profile?.onboarding_completed
+              ? t.profile.onboardingDone
+              : t.profile.onboardingPending}
           </Text>
         </Card>
 
         <View style={{ gap: theme.spacing.md }}>
           <View style={{ gap: theme.spacing.xs }}>
             <Text variant="caption" color="tertiary">
-              Appearance
+              {t.profile.appearanceSection}
             </Text>
-            <Text variant="h3">Theme</Text>
+            <Text variant="h3">{t.profile.themeTitle}</Text>
             <Text variant="small" color="secondary">
-              System follows your device. Pick a specific one to stay put.
+              {t.profile.themeHint}
             </Text>
           </View>
           <ThemePicker />
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
+          <View style={{ gap: theme.spacing.xs }}>
+            <Text variant="caption" color="tertiary">
+              {t.profile.languageSection}
+            </Text>
+            <Text variant="h3">{t.profile.languageTitle}</Text>
+            <Text variant="small" color="secondary">
+              {t.profile.languageHint}
+            </Text>
+          </View>
+          <LanguagePicker />
+        </View>
+
+        <View style={{ gap: theme.spacing.md }}>
           <Button
-            label="Sign out"
+            label={t.profile.signOut}
             variant="secondary"
             fullWidth
             onPress={handleSignOut}
             loading={busy}
           />
           <Button
-            label="Delete account"
+            label={t.profile.deleteAccount}
             variant="danger"
             fullWidth
             onPress={() => setConfirmingDelete(true)}
@@ -99,22 +118,21 @@ export default function Profile() {
       <Modal
         visible={confirmingDelete}
         onClose={() => setConfirmingDelete(false)}
-        title="Delete your account?"
+        title={t.profile.deleteConfirmTitle}
       >
         <Text variant="body" color="secondary" style={{ marginBottom: theme.spacing.xl }}>
-          This permanently removes your account across MandarinAI and ChineseLens.
-          This can't be undone.
+          {t.profile.deleteConfirmBody}
         </Text>
         <View style={{ gap: theme.spacing.sm }}>
           <Button
-            label="Yes, delete"
+            label={t.profile.deleteYes}
             variant="danger"
             fullWidth
             loading={busy}
             onPress={handleDelete}
           />
           <Button
-            label="Cancel"
+            label={t.common.cancel}
             variant="ghost"
             fullWidth
             onPress={() => setConfirmingDelete(false)}

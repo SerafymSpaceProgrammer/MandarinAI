@@ -9,6 +9,7 @@ import {
 } from "lucide-react-native";
 import { Platform } from "react-native";
 
+import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
 
 type TabIconProps = {
@@ -36,6 +37,7 @@ function makeTabIcon(Icon: React.ComponentType<LucideProps>) {
  */
 export default function AppLayout() {
   const theme = useTheme();
+  const t = useT();
 
   return (
     <Tabs
@@ -57,11 +59,11 @@ export default function AppLayout() {
       }}
     >
       {/* Tabs */}
-      <Tabs.Screen name="index" options={{ title: "Home", tabBarIcon: makeTabIcon(HomeIcon) }} />
-      <Tabs.Screen name="learn" options={{ title: "Learn", tabBarIcon: makeTabIcon(GraduationCap) }} />
-      <Tabs.Screen name="practice" options={{ title: "Practice", tabBarIcon: makeTabIcon(Mic) }} />
-      <Tabs.Screen name="stats" options={{ title: "Stats", tabBarIcon: makeTabIcon(BarChart3) }} />
-      <Tabs.Screen name="profile" options={{ title: "Profile", tabBarIcon: makeTabIcon(User) }} />
+      <Tabs.Screen name="index" options={{ title: t.tabs.home, tabBarIcon: makeTabIcon(HomeIcon) }} />
+      <Tabs.Screen name="learn" options={{ title: t.tabs.learn, tabBarIcon: makeTabIcon(GraduationCap) }} />
+      <Tabs.Screen name="practice" options={{ title: t.tabs.practice, tabBarIcon: makeTabIcon(Mic) }} />
+      <Tabs.Screen name="stats" options={{ title: t.tabs.stats, tabBarIcon: makeTabIcon(BarChart3) }} />
+      <Tabs.Screen name="profile" options={{ title: t.tabs.profile, tabBarIcon: makeTabIcon(User) }} />
 
       {/* Hidden sub-routes — mapped but not shown in the tab bar */}
       <Tabs.Screen name="vocab" options={{ href: null }} />
