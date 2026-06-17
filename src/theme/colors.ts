@@ -59,12 +59,18 @@ const STATUS = {
   info: "#3B82F6",
 } as const;
 
+// Brand tone palette from the design system HTMLs (--t1..--t5).
+//   tone1 — high-level   → warm red    #C8102E
+//   tone2 — rising       → forest green #1F8A5B
+//   tone3 — dipping (V)  → brand purple #6A4C9C
+//   tone4 — falling      → calm blue    #3D6FB5
+//   toneNeutral          → warm grey    #8A847C
 const TONES_LIGHT = {
-  tone1: "#DC2626",
-  tone2: "#16A34A",
-  tone3: "#2563EB",
-  tone4: "#9333EA",
-  toneNeutral: "#6B7280",
+  tone1: "#C8102E",
+  tone2: "#1F8A5B",
+  tone3: "#6A4C9C",
+  tone4: "#3D6FB5",
+  toneNeutral: "#8A847C",
 } as const;
 
 const TONES_DARK = {
@@ -86,22 +92,28 @@ const light: AppTheme = {
   colors: {
     accent: "#E63946",
     accentHover: "#C92B38",
-    accentMuted: "#FCE8EA",
+    accentMuted: "#FFE2E4", // design --red-100
     onAccent: "#FFFFFF",
 
-    bg: "#FFFFFF",
-    surface: "#F9FAFB",
-    surfaceHover: "#F3F4F6",
-    border: "#E5E7EB",
+    // Brand palette pulled straight from the design system HTMLs:
+    //   --bg          #FAFAF7  off-white paper, the screen canvas
+    //   --surface     #FFFFFF  pure white for raised cards / sheet bodies
+    //   --bg-warm     #F5F1EA  warm beige fills (chips, numbered rows,
+    //                          secondary surfaces)
+    //   --border      #ECE7DE  warm-tinted divider line
+    bg: "#FAFAF7",
+    surface: "#FFFFFF",
+    surfaceHover: "#F5F1EA",
+    border: "#ECE7DE",
 
-    textPrimary: "#111827",
-    textSecondary: "#6B7280",
-    textTertiary: "#9CA3AF",
+    textPrimary: "#1A1614", // design --ink
+    textSecondary: "#524A42", // design --ink-2
+    textTertiary: "#8A847C", // design --ink-3
 
     ...TONES_LIGHT,
     ...STATUS,
 
-    overlay: "rgba(0, 0, 0, 0.4)",
+    overlay: "rgba(26, 22, 20, 0.4)",
   },
 };
 

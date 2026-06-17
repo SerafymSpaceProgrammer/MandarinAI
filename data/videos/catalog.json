@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "self-intro-podcast",
+      "title": "Знакомство в кафе",
+      "blurb": "Короткий диалог между двумя новыми друзьями.",
+      "description": "Слушайте, как Ли и Мария знакомятся в кафе. Простые HSK 1 фразы — приветствие, имена, страны.",
+      "hskLevel": 1,
+      "durationSec": 60,
+      "source": "audio",
+      "emoji": "☕",
+      "subtitleId": "self-intro-podcast",
+      "category": "podcast"
+    },
+    {
+      "id": "weekend-vlog",
+      "title": "Мои выходные",
+      "blurb": "Дневник: как студент проводит субботу.",
+      "description": "HSK 2 лексика. Утро, обед, прогулка в парке, вечер с друзьями.",
+      "hskLevel": 2,
+      "durationSec": 90,
+      "source": "audio",
+      "emoji": "📔",
+      "subtitleId": "weekend-vlog",
+      "category": "vlog"
+    },
+    {
+      "id": "demo-youtube",
+      "title": "Демо: видео с YouTube",
+      "blurb": "Шаблон записи для подключения реального YouTube-видео.",
+      "description": "Замените youtubeId в data/videos/catalog.json и subtitleId на путь к реальным субтитрам — раздел сразу заработает с настоящим видео.",
+      "hskLevel": 1,
+      "durationSec": 120,
+      "source": "youtube",
+      "youtubeId": "TODO_REPLACE_WITH_REAL_ID",
+      "emoji": "🎬",
+      "subtitleId": "demo-youtube-stub",
+      "category": "lesson"
+    }
+  ]
+}

@@ -46,6 +46,31 @@ export async function fetchDueCards(userId: string, limit = 20): Promise<SavedWo
 }
 
 /**
+ * Load a single word from the user's deck by hanzi. Used by the
+ * "Тренировать сейчас" path so the review screen can drill ONE specific
+ * card, regardless of whether it's due. Returns null when the word isn't
+ * in the deck (e.g. the user opened a CC-CEDICT entry that's never been
+ * saved).
+ */
+export async function fetchSavedWord(
+  userId: string,
+  hanzi: string,
+): Promise<SavedWord | null> {
+  const { data, error } = await supabase
+    .from("saved_words")
+    .select(WORD_COLUMNS)
+    .eq("user_id", userId)
+    .eq("hanzi", hanzi)
+    .maybeSingle();
+
+  if (error) {
+    logger.warn("fetchSavedWord error", error.message);
+    return null;
+  }
+  return (data as SavedWord | null) ?? null;
+}
+
+/**
  * All saved words for the user (for the browse deck screen). Newest first.
  */
 export async function fetchAllWords(userId: string): Promise<SavedWord[]> {

@@ -1,15 +1,18 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { ArrowLeft, BookmarkCheck, BookmarkPlus } from "lucide-react-native";
+import { ArrowLeft, BookmarkCheck, BookmarkPlus, Check, CheckSquare, Search, X } from "lucide-react-native";
 import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
   Pressable,
   ScrollView,
+  TextInput,
   View,
 } from "react-native";
 
 import { WordCard } from "@/components/cards/WordCard";
+import { BulkSaveToDeckSheet } from "@/components/cards/BulkSaveToDeckSheet";
+import { SaveToDeckSheet } from "@/components/cards/SaveToDeckSheet";
 import { WordDetailSheet, type WordDetail } from "@/components/cards/WordDetailSheet";
 import { Button, Screen, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
@@ -20,6 +23,7 @@ import {
   fetchCatalog,
   fetchSavedHanziSet,
   fetchTranslations,
+  normalizePinyin,
   type HskWord,
   type PosTag,
   type Syllabus,
@@ -62,9 +66,34 @@ export default function HskLevelList() {
   const [words, setWords] = useState<HskWord[]>([]);
   const [meanings, setMeanings] = useState<Record<string, string[]>>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  // Target for the deck-picker sheet — opened via the inline bookmark
+  // button on each list row. The modal's onFirstAdd path writes the row
+  // to saved_words before the first deck-membership is created.
+  const [saveTarget, setSaveTarget] = useState<HskWord | null>(null);
   const [detail, setDetail] = useState<WordDetail | null>(null);
   const [savingAll, setSavingAll] = useState(false);
   const [posFilter, setPosFilter] = useState<PosTag | null>(null);
+  const [query, setQuery] = useState("");
+  // Multi-select mode — when on, tapping rows toggles selection instead
+  // of opening the detail sheet, and a floating action bar offers
+  // "В колоду" for the selected hanzi.
+  const [selectMode, setSelectMode] = useState(false);
+  const [selectedHanzi, setSelectedHanzi] = useState<Set<string>>(new Set());
+  const [bulkSaveOpen, setBulkSaveOpen] = useState(false);
+
+  function toggleSelected(hanzi: string) {
+    setSelectedHanzi((prev) => {
+      const next = new Set(prev);
+      if (next.has(hanzi)) next.delete(hanzi);
+      else next.add(hanzi);
+      return next;
+    });
+  }
+
+  function exitSelectMode() {
+    setSelectMode(false);
+    setSelectedHanzi(new Set());
+  }
 
   // Pull catalog + saved set in parallel.
   useEffect(() => {
@@ -166,9 +195,22 @@ export default function HskLevelList() {
   }, [words]);
 
   const filteredWords = useMemo(() => {
-    if (!posFilter) return words;
-    return words.filter((w) => (w.pos ?? []).includes(posFilter));
-  }, [words, posFilter]);
+    const q = query.trim();
+    const qLower = q.toLowerCase();
+    const qNorm = normalizePinyin(q);
+    return words.filter((w) => {
+      if (posFilter && !(w.pos ?? []).includes(posFilter)) return false;
+      if (!q) return true;
+      // Match on hanzi (substring), pinyin (tone-insensitive normalize) or
+      // any of the cached meanings — covers the user typing in their UI
+      // language, in pinyin without diacritics, or by part of the glyph.
+      if (w.hanzi.includes(q)) return true;
+      if (normalizePinyin(w.pinyin).includes(qNorm)) return true;
+      const ms = meanings[w.hanzi];
+      if (ms && ms.some((m) => m.toLowerCase().includes(qLower))) return true;
+      return false;
+    });
+  }, [words, posFilter, query, meanings]);
 
   const unsavedCount = filteredWords.filter((w) => !saved.has(w.hanzi)).length;
 
@@ -193,9 +235,81 @@ export default function HskLevelList() {
           </Text>
           <Text variant="h3">{fmt(t.hsk.topicHskBadge, { n: level })}</Text>
         </View>
-        <Text variant="small" color="tertiary">
-          {posFilter ? `${filteredWords.length} / ${words.length}` : words.length}
-        </Text>
+        <Pressable
+          onPress={selectMode ? exitSelectMode : () => setSelectMode(true)}
+          accessibilityRole="button"
+          accessibilityLabel={selectMode ? "Готово" : "Выбрать"}
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 6,
+            paddingHorizontal: 12,
+            paddingVertical: 7,
+            borderRadius: 999,
+            backgroundColor: selectMode ? theme.colors.textPrimary : theme.colors.surface,
+            borderWidth: 1,
+            borderColor: selectMode ? theme.colors.textPrimary : theme.colors.border,
+          }}
+        >
+          <CheckSquare
+            color={selectMode ? "#FFFFFF" : theme.colors.textPrimary}
+            size={14}
+            strokeWidth={2.2}
+          />
+          <Text
+            style={{
+              color: selectMode ? "#FFFFFF" : theme.colors.textPrimary,
+              fontSize: 13,
+              lineHeight: 16,
+              fontWeight: "700",
+            }}
+          >
+            {selectMode ? "Готово" : "Выбрать"}
+          </Text>
+        </Pressable>
+      </View>
+
+      {/* Search input — matches hanzi / pinyin (tone-insensitive) / meaning */}
+      <View
+        style={{
+          paddingHorizontal: theme.spacing.lg,
+          paddingBottom: theme.spacing.sm,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: theme.spacing.sm,
+            paddingHorizontal: theme.spacing.md,
+            paddingVertical: 8,
+            borderRadius: theme.radii.md,
+            backgroundColor: theme.colors.surface,
+            borderWidth: 1,
+            borderColor: theme.colors.border,
+          }}
+        >
+          <Search color={theme.colors.textTertiary} size={16} strokeWidth={2} />
+          <TextInput
+            value={query}
+            onChangeText={setQuery}
+            placeholder="Поиск по hanzi / pinyin / значению"
+            placeholderTextColor={theme.colors.textTertiary}
+            autoCapitalize="none"
+            autoCorrect={false}
+            style={{
+              flex: 1,
+              fontSize: 14,
+              color: theme.colors.textPrimary,
+              padding: 0,
+            }}
+          />
+          {query.length > 0 ? (
+            <Pressable onPress={() => setQuery("")} hitSlop={8}>
+              <X color={theme.colors.textTertiary} size={16} strokeWidth={2.2} />
+            </Pressable>
+          ) : null}
+        </View>
       </View>
 
       {/* POS filter chip strip */}
@@ -250,18 +364,23 @@ export default function HskLevelList() {
               word={item}
               meaning={meanings[item.hanzi]?.[0]}
               isSaved={saved.has(item.hanzi)}
-              onSave={() => handleSave(item)}
+              onSave={() => setSaveTarget(item)}
+              selectMode={selectMode}
+              selected={selectedHanzi.has(item.hanzi)}
+              onToggleSelect={() => toggleSelected(item.hanzi)}
               onPress={() =>
-                setDetail({
-                  hanzi: item.hanzi,
-                  pinyin: item.pinyin,
-                  english: meanings[item.hanzi]?.[0] ?? "",
-                  meanings: meanings[item.hanzi],
-                  hskLevel: item.hsk_new ?? item.hsk_old,
-                  posLabel: item.pos?.[0]
-                    ? posLabel(t, item.pos[0] as PosTag)
-                    : null,
-                })
+                selectMode
+                  ? toggleSelected(item.hanzi)
+                  : setDetail({
+                      hanzi: item.hanzi,
+                      pinyin: item.pinyin,
+                      english: meanings[item.hanzi]?.[0] ?? "",
+                      meanings: meanings[item.hanzi],
+                      hskLevel: item.hsk_new ?? item.hsk_old,
+                      posLabel: item.pos?.[0]
+                        ? posLabel(t, item.pos[0] as PosTag)
+                        : null,
+                    })
               }
             />
           )}
@@ -274,19 +393,73 @@ export default function HskLevelList() {
         word={detail}
         isSaved={detail ? saved.has(detail.hanzi) : false}
         onSave={
-          detail
+          detail && !saved.has(detail.hanzi)
             ? () => {
                 const w = words.find((x) => x.hanzi === detail.hanzi);
-                if (w) handleSave(w);
-                setDetail(null);
+                if (w) void handleSave(w);
+              }
+            : undefined
+        }
+      />
+
+      {/* Deck picker for HSK rows — `onFirstAdd` only runs for unsaved
+          words so the existing handleSave (which writes to saved_words)
+          isn't called on words that are already in the master deck. */}
+      <SaveToDeckSheet
+        visible={saveTarget !== null}
+        onClose={() => setSaveTarget(null)}
+        hanzi={saveTarget?.hanzi ?? ""}
+        pinyin={saveTarget?.pinyin}
+        onFirstAdd={
+          saveTarget && !saved.has(saveTarget.hanzi)
+            ? async () => {
+                await handleSave(saveTarget);
               }
             : undefined
         }
       />
 
 
-      {/* Bottom action bar */}
-      {!loading ? (
+      {/* Bottom action bar — in select mode it morphs into a bulk-save
+          dock; otherwise the existing Practice / SaveAll dyad shows. */}
+      {!loading && selectMode ? (
+        <View
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: theme.colors.bg,
+            borderTopWidth: 1,
+            borderTopColor: theme.colors.border,
+            paddingHorizontal: theme.spacing.lg,
+            paddingTop: theme.spacing.md,
+            paddingBottom: theme.spacing.lg,
+            flexDirection: "row",
+            alignItems: "center",
+            gap: theme.spacing.sm,
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            <Text variant="bodyStrong">
+              {selectedHanzi.size} {pluralWordRu(selectedHanzi.size)}
+            </Text>
+            <Text variant="caption" color="tertiary">
+              выбрано
+            </Text>
+          </View>
+          <Button
+            label="Отмена"
+            variant="ghost"
+            onPress={exitSelectMode}
+          />
+          <Button
+            label="В колоду"
+            onPress={() => setBulkSaveOpen(true)}
+            disabled={selectedHanzi.size === 0}
+          />
+        </View>
+      ) : !loading ? (
         <View
           style={{
             position: "absolute",
@@ -321,8 +494,35 @@ export default function HskLevelList() {
         </View>
       ) : null}
 
+      {/* Bulk save — picks a deck (existing or new) for all selected words.
+          `onEnsureSaved` upserts saved_words for unsaved hanzi so deck
+          membership doesn't dangle past the master deck. */}
+      <BulkSaveToDeckSheet
+        visible={bulkSaveOpen}
+        onClose={() => setBulkSaveOpen(false)}
+        hanziList={Array.from(selectedHanzi)}
+        onEnsureSaved={async (hanziList) => {
+          const unsavedWords = hanziList
+            .map((h) => words.find((w) => w.hanzi === h))
+            .filter((w): w is HskWord => !!w && !saved.has(w.hanzi));
+          for (const w of unsavedWords) {
+            await handleSave(w);
+          }
+        }}
+        onSaved={() => {
+          exitSelectMode();
+        }}
+      />
     </Screen>
   );
+}
+
+function pluralWordRu(n: number): string {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return "слово";
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "слова";
+  return "слов";
 }
 
 function WordRow({
@@ -331,12 +531,18 @@ function WordRow({
   isSaved,
   onSave,
   onPress,
+  selectMode,
+  selected,
+  onToggleSelect,
 }: {
   word: HskWord;
   meaning: string | undefined;
   isSaved: boolean;
   onSave: () => void;
   onPress: () => void;
+  selectMode: boolean;
+  selected: boolean;
+  onToggleSelect: () => void;
 }) {
   const theme = useTheme();
   const t = useT();
@@ -365,22 +571,51 @@ function WordRow({
         ) : null
       }
       trailing={
-        <Pressable
-          onPress={(e) => {
-            e.stopPropagation?.();
-            if (!isSaved) onSave();
-          }}
-          disabled={isSaved}
-          hitSlop={8}
-          accessibilityLabel={isSaved ? t.vocab.add.title : fmt(t.hsk.listSavedToast, { hanzi: word.hanzi })}
-          style={{ padding: 4 }}
-        >
-          {isSaved ? (
-            <BookmarkCheck color={theme.colors.success} size={20} strokeWidth={2} />
-          ) : (
-            <BookmarkPlus color={theme.colors.accent} size={20} strokeWidth={2} />
-          )}
-        </Pressable>
+        selectMode ? (
+          // In select mode the trailing slot becomes a checkbox. Tapping
+          // anywhere on the row already toggles via onPress, but a clearly
+          // visible checkbox makes the state legible at a glance.
+          <Pressable
+            onPress={(e) => {
+              e.stopPropagation?.();
+              onToggleSelect();
+            }}
+            hitSlop={8}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: selected }}
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: 13,
+              backgroundColor: selected ? theme.colors.accent : "transparent",
+              borderWidth: selected ? 0 : 1.5,
+              borderColor: theme.colors.border,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {selected ? (
+              <Check color="#FFFFFF" size={14} strokeWidth={3} />
+            ) : null}
+          </Pressable>
+        ) : (
+          <Pressable
+            onPress={(e) => {
+              e.stopPropagation?.();
+              if (!isSaved) onSave();
+            }}
+            disabled={isSaved}
+            hitSlop={8}
+            accessibilityLabel={isSaved ? t.vocab.add.title : fmt(t.hsk.listSavedToast, { hanzi: word.hanzi })}
+            style={{ padding: 4 }}
+          >
+            {isSaved ? (
+              <BookmarkCheck color={theme.colors.success} size={20} strokeWidth={2} />
+            ) : (
+              <BookmarkPlus color={theme.colors.accent} size={20} strokeWidth={2} />
+            )}
+          </Pressable>
+        )
       }
     />
   );

@@ -5,6 +5,7 @@ export type ExerciseType =
   | "listen-and-pick"
   | "match-pairs"
   | "tone-id"
+  | "tone-pronounce"
   | "word-order"
   | "fill-blank";
 
@@ -32,6 +33,7 @@ export const EXERCISE_I18N_KEYS: Record<
       | "listenPickLabel"
       | "matchPairsLabel"
       | "toneIdLabel"
+      | "tonePronounceLabel"
       | "wordOrderLabel"
       | "fillBlankLabel";
     hint:
@@ -39,6 +41,7 @@ export const EXERCISE_I18N_KEYS: Record<
       | "listenPickHint"
       | "matchPairsHint"
       | "toneIdHint"
+      | "tonePronounceHint"
       | "wordOrderHint"
       | "fillBlankHint";
   }
@@ -47,6 +50,7 @@ export const EXERCISE_I18N_KEYS: Record<
   "listen-and-pick": { label: "listenPickLabel", hint: "listenPickHint" },
   "match-pairs": { label: "matchPairsLabel", hint: "matchPairsHint" },
   "tone-id": { label: "toneIdLabel", hint: "toneIdHint" },
+  "tone-pronounce": { label: "tonePronounceLabel", hint: "tonePronounceHint" },
   "word-order": { label: "wordOrderLabel", hint: "wordOrderHint" },
   "fill-blank": { label: "fillBlankLabel", hint: "fillBlankHint" },
 };
@@ -78,6 +82,13 @@ export const EXERCISE_META: Record<ExerciseType, ExerciseMeta> = {
     label: "Tone ID",
     emoji: "🎼",
     hint: "Hear the syllable, pick the tone",
+    minWords: 3,
+  },
+  "tone-pronounce": {
+    type: "tone-pronounce",
+    label: "Pronounce tone",
+    emoji: "🎙️",
+    hint: "Say it out loud — we score the tone on-device",
     minWords: 3,
   },
   "word-order": {
@@ -125,6 +136,19 @@ export type ToneIdQuestion = {
   tone: 1 | 2 | 3 | 4;
 };
 
+/**
+ * "Speak the tone" exercise — the user sees a single hanzi + its pinyin,
+ * records themselves saying it, and the on-device tone scorer evaluates
+ * the pitch contour. No multiple-choice options — feedback comes from the
+ * recorded audio analysis.
+ */
+export type TonePronounceQuestion = {
+  type: "tone-pronounce";
+  word: SavedWord;
+  /** Expected tone in 1..5 (5 = neutral). */
+  tone: 1 | 2 | 3 | 4 | 5;
+};
+
 export type WordOrderQuestion = {
   type: "word-order";
   word: SavedWord;
@@ -152,5 +176,6 @@ export type Question =
   | ListenPickQuestion
   | MatchPairsQuestion
   | ToneIdQuestion
+  | TonePronounceQuestion
   | WordOrderQuestion
   | FillBlankQuestion;

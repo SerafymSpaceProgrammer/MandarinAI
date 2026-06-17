@@ -10,6 +10,7 @@ import { Button, Screen, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { fmt } from "@/i18n/strings";
 import { recordActivity } from "@/features/activity/activity";
+import { recordLastSpeakingAttempt } from "@/features/practice/usePracticeData";
 import { findScenario, type Scenario, type ScenarioTurn } from "@/features/speaking/scenarios";
 import { scorePronunciation, type PronunciationResult } from "@/features/speaking/score";
 import { cancelActiveRecording, ensureMicPermission, startRecording } from "@/features/speaking/recorder";
@@ -75,12 +76,22 @@ export default function ScenarioSession() {
     return () => loop.stop();
   }, [phase.kind, pulse]);
 
-  if (!scenario || !current) {
+  // Only show the "not found" screen when the scenario itself is missing
+  // (bad/unknown id). `current` becomes undefined naturally when the user
+  // finishes the last turn (turnIdx === turns.length) — at that point the
+  // `finished` branch below renders the summary, which is the correct end
+  // state. The previous combined check sent the user straight to the
+  // "not found" page after every completed session.
+  if (!scenario) {
     return (
       <Screen padded>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: theme.spacing.md }}>
           <Text variant="h2" align="center">{t.speaking.sessionNotFound}</Text>
-          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
+          <Button
+            label={t.common.back}
+            variant="secondary"
+            onPress={() => router.replace("/(app)/practice/scenarios")}
+          />
         </View>
       </Screen>
     );
@@ -120,7 +131,12 @@ export default function ScenarioSession() {
       return;
     }
 
-    const res = await scorePronunciation(file.uri, file.mimeType, current.hanzi);
+    const res = await scorePronunciation(
+      file.uri,
+      file.mimeType,
+      current.hanzi,
+      current.pinyin,
+    );
     if (!res.ok) {
       setPhase({ kind: "idle" });
       const err = res.error;
@@ -168,6 +184,38 @@ export default function ScenarioSession() {
         const minutes = Math.max(1, Math.round((Date.now() - startedAt) / 60_000));
         recordActivity(session.user.id, { minutes_studied: minutes, conversations_completed: 1 });
       }
+      // Stash a snapshot of the best-scoring turn so the Practice tab can
+      // surface it as a "Last attempt" hero. Picking the best (not the most
+      // recent) makes the card feel rewarding rather than dunk-on-your-flubs.
+      const allOutcomes =
+        phase.kind === "revealed" && current?.speaker === "you"
+          ? [
+              ...outcomes,
+              {
+                turnIdx,
+                score: phase.result.score,
+                transcript: phase.result.transcript,
+              },
+            ]
+          : outcomes;
+      if (allOutcomes.length > 0) {
+        const best = allOutcomes.reduce((a, b) => (a.score >= b.score ? a : b));
+        const bestTurn = scenario.turns[best.turnIdx];
+        if (bestTurn) {
+          const avg = Math.round(
+            allOutcomes.reduce((s, o) => s + o.score, 0) / allOutcomes.length,
+          );
+          void recordLastSpeakingAttempt({
+            scenarioId: scenario.id,
+            scenarioTitle: scenario.title,
+            hskLevel: scenario.hskLevel,
+            hanzi: bestTurn.hanzi,
+            pinyin: bestTurn.pinyin,
+            score: avg,
+            timestamp: Date.now(),
+          });
+        }
+      }
       setTurnIdx(nextIdx);
       setPhase({ kind: "idle" });
       return;
@@ -185,8 +233,25 @@ export default function ScenarioSession() {
 
   // ────────────────────────── SUMMARY ──────────────────────────
   if (finished) {
-    return <SessionSummary scenario={scenario} outcomes={outcomes} />;
+    return (
+      <SessionSummary
+        scenario={scenario}
+        outcomes={outcomes}
+        onReplay={() => {
+          // Re-arm in place — restart at turn 0 with a fresh outcome list.
+          setOutcomes([]);
+          setPhase({ kind: "idle" });
+          setTurnIdx(0);
+        }}
+      />
+    );
   }
+
+  // After `finished` is handled, turnIdx < scenario.turns.length so
+  // `current` is guaranteed to exist. The narrowing helper makes TS see
+  // that — otherwise it can't infer the relationship between `finished`
+  // and the optional `current` lookup.
+  if (!current) return null;
 
   // ────────────────────────── IN-SESSION ──────────────────────────
   return (
@@ -423,6 +488,57 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
         ) : null}
       </View>
 
+      {result.toneAnalysis ? (
+        <View style={{ gap: 4 }}>
+          <Text variant="caption" color="tertiary">
+            {t.speaking.tonesLabel}
+          </Text>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
+            {result.toneAnalysis.perSyllable.map((s, i) => (
+              <View
+                key={i}
+                style={{
+                  paddingHorizontal: 6,
+                  paddingVertical: 3,
+                  borderRadius: 6,
+                  backgroundColor: s.correct
+                    ? "rgba(46, 139, 87, 0.16)"
+                    : "rgba(230, 57, 70, 0.14)",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 4,
+                }}
+              >
+                <Text
+                  chinese
+                  style={{
+                    fontSize: 16,
+                    fontWeight: "700",
+                    color: s.correct ? theme.colors.success : theme.colors.danger,
+                  }}
+                >
+                  {s.hanzi}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 11,
+                    fontWeight: "700",
+                    color: s.correct ? theme.colors.success : theme.colors.danger,
+                  }}
+                >
+                  {s.heard_tone}/{s.expected_tone}
+                </Text>
+              </View>
+            ))}
+          </View>
+          {result.toneAnalysis.notes ? (
+            <Text variant="small" color="secondary" style={{ marginTop: 2 }}>
+              {result.toneAnalysis.notes}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
+
       <Text variant="caption" color="tertiary">
         {fmt(t.speaking.targetLabel, { expected })}
       </Text>
@@ -431,7 +547,15 @@ function FeedbackCard({ expected, result }: { expected: string; result: Pronunci
 }
 
 // ────────────────────────── SUMMARY ──────────────────────────
-function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: TurnOutcome[] }) {
+function SessionSummary({
+  scenario,
+  outcomes,
+  onReplay,
+}: {
+  scenario: Scenario;
+  outcomes: TurnOutcome[];
+  onReplay: () => void;
+}) {
   const theme = useTheme();
   const t = useT();
 
@@ -516,7 +640,11 @@ function SessionSummary({ scenario, outcomes }: { scenario: Scenario; outcomes: 
             label={t.speaking.practiceAgain}
             size="lg"
             fullWidth
-            onPress={() => router.replace(`/(app)/practice/session?id=${scenario.id}`)}
+            // Reset state via the parent's callback instead of replacing
+            // the route — same URL replace doesn't re-mount the component,
+            // so turnIdx would stay past the end and the screen would
+            // bounce to "Session not found".
+            onPress={onReplay}
           />
           <Button
             label={t.speaking.pickAnother}

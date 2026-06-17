@@ -4,7 +4,7 @@
     "slug": "mandarinai",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon-red-1024.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": false,
     "splash": {
@@ -21,8 +21,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/app-icon-red-1024.png",
+        "backgroundColor": "#E63946"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" width="480" height="100">
+  <g transform="translate(0,5)">
+    <text x="45" y="60" text-anchor="middle" dominant-baseline="central" font-family="&#39;Noto Serif SC&#39;, &#39;Songti SC&#39;, &#39;STSong&#39;, &#39;SimSun&#39;, serif" font-weight="900" font-size="80" fill="#E63946" letter-spacing="-2">中</text>
+    <circle cx="74" cy="32" r="6" fill="#E63946"></circle>
+  </g>
+  <line x1="105" y1="20" x2="105" y2="80" stroke="#1A1614" stroke-opacity="0.18" stroke-width="1.5"></line>
+  <text x="125" y="68" font-family="-apple-system, &#39;Inter&#39;, system-ui, sans-serif" font-weight="800" font-size="48" letter-spacing="-1.2" fill="#1A1614">Mandarin</text>
+  <text x="357" y="68" font-family="-apple-system, &#39;Inter&#39;, system-ui, sans-serif" font-weight="800" font-size="48" letter-spacing="-2" fill="#E63946">AI</text>
+</svg>

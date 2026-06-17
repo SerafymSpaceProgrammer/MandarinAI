@@ -9,7 +9,17 @@ type ScreenProps = {
   style?: ViewStyle | ViewStyle[];
   /** Background surface. Defaults to theme bg. */
   surface?: "bg" | "surface";
-  /** Safe-area edges to respect. Default: top+bottom. */
+  /**
+   * Safe-area edges to respect. Default: top + horizontal (NO bottom).
+   *
+   * Bottom is intentionally omitted because almost every screen lives inside
+   * the bottom-tab navigator (`app/(app)/_layout.tsx`), and the tab bar
+   * already pads itself with `insets.bottom` to clear the system nav / home
+   * indicator. Adding bottom safe-area at the Screen level too leaves a
+   * visible empty strip ABOVE the tab bar — exactly the "обрезается выше
+   * таб-бара" bug. Screens that render OUTSIDE the tab navigator (auth,
+   * onboarding) should opt-in explicitly via `edges={["top","bottom",...]}`.
+   */
   edges?: Edge[];
   /** Disable keyboard avoiding (default: enabled on iOS). */
   noKeyboardAvoid?: boolean;
@@ -21,7 +31,7 @@ export function Screen({
   children,
   style,
   surface = "bg",
-  edges = ["top", "bottom", "left", "right"],
+  edges = ["top", "left", "right"],
   noKeyboardAvoid,
   padded,
 }: ScreenProps) {

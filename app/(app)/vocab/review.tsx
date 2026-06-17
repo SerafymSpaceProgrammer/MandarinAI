@@ -9,7 +9,12 @@ import { GradeButtons } from "@/features/vocab/components/GradeButtons";
 import { ListeningCard } from "@/features/vocab/components/ListeningCard";
 import { ProductionCard } from "@/features/vocab/components/ProductionCard";
 import { RecognitionCard } from "@/features/vocab/components/RecognitionCard";
-import { fetchDueCards, gradeCard, type SavedWord } from "@/features/vocab/vocab";
+import {
+  fetchDueCards,
+  fetchSavedWord,
+  gradeCard,
+  type SavedWord,
+} from "@/features/vocab/vocab";
 import {
   asEphemeralCard,
   fetchByTopic,
@@ -53,6 +58,7 @@ export default function ReviewSession() {
     syllabus?: string;
     level?: string;
     topic?: string;
+    hanzi?: string;
   }>();
 
   // Ephemeral practice modes pull words from the HSK catalog without
@@ -61,6 +67,11 @@ export default function ReviewSession() {
   const isHskLevelMode = params.mode === "hsk";
   const isHskTopicMode = params.mode === "hsk-topic";
   const isEphemeral = isHskLevelMode || isHskTopicMode;
+  // Single-word practice opened from the WordDetailSheet's "Тренировать
+  // сейчас" CTA. Loads just that one card from saved_words and ends after
+  // a single grade — the user came in expecting to drill THIS word, not
+  // the whole due queue.
+  const focusedHanzi = (params.hanzi ?? "").trim() || null;
 
   const hskSyllabus = (params.syllabus === "old" ? "old" : "new") as Syllabus;
   const hskLevel = Number(params.level ?? 0) || 1;
@@ -81,6 +92,23 @@ export default function ReviewSession() {
     let cancelled = false;
     setLoading(true);
     (async () => {
+      if (focusedHanzi) {
+        // Single-word path. Pull the one card and localize its meaning.
+        const card = await fetchSavedWord(session.user.id, focusedHanzi);
+        if (cancelled) return;
+        if (!card) {
+          setCards([]);
+          setLoading(false);
+          return;
+        }
+        const lang = profile?.native_language ?? "en";
+        const map = await fetchTranslations([card.hanzi], lang);
+        if (cancelled) return;
+        const translated = map[card.hanzi]?.[0];
+        setCards([translated ? { ...card, english: translated } : card]);
+        setLoading(false);
+        return;
+      }
       if (isEphemeral) {
         const lang = profile?.native_language ?? "en";
         const catalog = isHskTopicMode
@@ -122,7 +150,16 @@ export default function ReviewSession() {
     return () => {
       cancelled = true;
     };
-  }, [session, isEphemeral, isHskTopicMode, hskSyllabus, hskLevel, topicId, profile?.native_language]);
+  }, [
+    session,
+    isEphemeral,
+    isHskTopicMode,
+    hskSyllabus,
+    hskLevel,
+    topicId,
+    focusedHanzi,
+    profile?.native_language,
+  ]);
 
   async function handleGrade(grade: ReviewGrade) {
     if (!session || !current) return;

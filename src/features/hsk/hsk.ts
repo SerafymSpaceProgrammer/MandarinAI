@@ -44,6 +44,134 @@ export const POS_LABELS: Record<PosTag, { label: string; emoji: string }> = {
 };
 
 /**
+ * Find HSK words that contain the given single hanzi as a component. Used by
+ * the character detail page to show "Compounds" — i.e. real words where the
+ * character appears, so the learner sees how the building block is used in
+ * actual vocabulary.
+ *
+ * Sorted by HSK level ascending (cheapest = HSK 1) then by length and hanzi
+ * so the most pedagogically useful examples surface first.
+ */
+export async function fetchWordsContaining(
+  char: string,
+  limit = 12,
+): Promise<HskWord[]> {
+  if (!char || [...char].length !== 1) return [];
+  const { data, error } = await supabase
+    .from("hsk_words")
+    .select("hanzi, pinyin, hsk_old, hsk_new, pos")
+    .ilike("hanzi", `%${char}%`)
+    .neq("hanzi", char)
+    .limit(200);
+  if (error) {
+    logger.warn("fetchWordsContaining error", error.message);
+    return [];
+  }
+  // Defensive client-side filter: ilike is byte-level on some Postgres builds
+  // and could return false positives if the char has uppercase/lowercase
+  // ambiguity. Keep only rows that genuinely contain the char.
+  const filtered = ((data ?? []) as HskWord[]).filter(
+    (w) => [...w.hanzi].length > 1 && [...w.hanzi].includes(char),
+  );
+  filtered.sort((a, b) => {
+    const la = a.hsk_new ?? a.hsk_old ?? 9;
+    const lb = b.hsk_new ?? b.hsk_old ?? 9;
+    if (la !== lb) return la - lb;
+    if (a.hanzi.length !== b.hanzi.length) return a.hanzi.length - b.hanzi.length;
+    return a.hanzi.localeCompare(b.hanzi);
+  });
+  return filtered.slice(0, limit);
+}
+
+/**
+ * Pull the entire HSK catalog (both old + new syllabus rows) in one shot.
+ * The table is ~6,300 rows × small columns ≈ a few hundred KB, so doing this
+ * once per session is cheaper than streaming filtered queries for every
+ * keystroke in the word-browser search box.
+ *
+ * The result is cached in a module-level variable; subsequent callers get the
+ * already-resolved array. Callers that need a fresh fetch can pass `force`.
+ */
+let CATALOG_CACHE: HskWord[] | null = null;
+let CATALOG_INFLIGHT: Promise<HskWord[]> | null = null;
+export async function fetchAllCatalog(force = false): Promise<HskWord[]> {
+  if (!force && CATALOG_CACHE) return CATALOG_CACHE;
+  if (!force && CATALOG_INFLIGHT) return CATALOG_INFLIGHT;
+  CATALOG_INFLIGHT = (async () => {
+    const all: HskWord[] = [];
+    const pageSize = 1000;
+    let from = 0;
+    // Supabase caps a single select at 1000 rows by default; page until empty.
+    for (let i = 0; i < 20; i++) {
+      const { data, error } = await supabase
+        .from("hsk_words")
+        .select("hanzi, pinyin, hsk_old, hsk_new, pos")
+        .order("hanzi", { ascending: true })
+        .range(from, from + pageSize - 1);
+      if (error) {
+        logger.warn("fetchAllCatalog error", error.message);
+        break;
+      }
+      const rows = (data ?? []) as HskWord[];
+      all.push(...rows);
+      if (rows.length < pageSize) break;
+      from += pageSize;
+    }
+    CATALOG_CACHE = all;
+    return all;
+  })();
+  try {
+    return await CATALOG_INFLIGHT;
+  } finally {
+    CATALOG_INFLIGHT = null;
+  }
+}
+
+/**
+ * Normalise a pinyin string for substring matching. Strips combining tone
+ * marks (`nǐ` → `ni`), the `ü` ligature, removes spaces and tone digits, and
+ * lower-cases everything. Same function runs on both the user's query and on
+ * the catalog rows so the comparison is symmetric.
+ */
+export function normalizePinyin(s: string): string {
+  return s
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/ü/gi, "u")
+    .replace(/[0-9]/g, "")
+    .replace(/\s+/g, "")
+    .toLowerCase();
+}
+
+/**
+ * Rank an HSK row against the user's query. Higher = better match. Returns
+ * -1 when the row should be filtered out. Order of checks matches the user's
+ * mental model: exact hanzi > exact pinyin > prefix > substring > meaning.
+ *
+ * `meaningHits` lets the caller score by a separately-loaded translation map
+ * (we don't store meanings on `hsk_words`, so the caller is the translation
+ * fetcher).
+ */
+export function scoreHskMatch(
+  word: HskWord,
+  rawQuery: string,
+  normQuery: string,
+  meaningHits: boolean,
+): number {
+  if (rawQuery.length === 0) return 0;
+  const hanzi = word.hanzi;
+  const pinyin = normalizePinyin(word.pinyin);
+  if (hanzi === rawQuery) return 1000;
+  if (pinyin === normQuery) return 800;
+  if (hanzi.startsWith(rawQuery)) return 600;
+  if (pinyin.startsWith(normQuery)) return 500;
+  if (hanzi.includes(rawQuery)) return 400;
+  if (pinyin.includes(normQuery)) return 300;
+  if (meaningHits) return 200;
+  return -1;
+}
+
+/**
  * Pull the catalog filtered by HSK level + syllabus. Sorted by hanzi.
  */
 export async function fetchCatalog(

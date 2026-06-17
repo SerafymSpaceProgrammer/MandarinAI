@@ -3,7 +3,7 @@ import type { Profile, ProfileUpdate } from "@/types";
 import { logger } from "@/lib/logger";
 
 const PROFILE_COLUMNS =
-  "id, display_name, avatar_url, hsk_level, native_language, daily_goal_minutes, learning_goal, notification_time, notification_enabled, timezone, onboarding_completed, app_theme";
+  "id, display_name, avatar_url, hsk_level, native_language, daily_goal_minutes, learning_goal, notification_time, notification_enabled, timezone, onboarding_completed, app_theme, tier, status, current_period_end, ls_customer_id, ls_subscription_id, ls_variant_id";
 
 /**
  * Fetch the current user's profile. The row is auto-created by a DB trigger

@@ -1,7 +1,7 @@
 import { Flame, Sparkles, Trophy } from "lucide-react-native";
 import { RefreshControl, ScrollView, View } from "react-native";
 
-import { Card, Screen, Skeleton, Text } from "@/components/ui";
+import { Card, Screen, ScreenHeader, SectionLabel, Skeleton, Text } from "@/components/ui";
 import { Heatmap } from "@/components/stats/Heatmap";
 import { HskBars } from "@/components/stats/HskBars";
 import { SkillsGrid } from "@/components/stats/SkillsGrid";
@@ -20,8 +20,8 @@ export default function Stats() {
       <ScrollView
         contentContainerStyle={{
           paddingVertical: theme.spacing["2xl"],
-          gap: theme.spacing.xl,
-          paddingBottom: theme.spacing["5xl"],
+          gap: theme.spacing["2xl"],
+          paddingBottom: theme.spacing["6xl"],
         }}
         refreshControl={
           <RefreshControl
@@ -31,12 +31,11 @@ export default function Stats() {
           />
         }
       >
-        <View style={{ gap: theme.spacing.xs }}>
-          <Text variant="caption" color="tertiary">
-            {t.stats.section}
-          </Text>
-          <Text variant="h1">{t.stats.title}</Text>
-        </View>
+        <ScreenHeader
+          eyebrow={t.stats.section}
+          title={t.stats.title}
+          hanzi="数"
+        />
 
         <View style={{ flexDirection: "row", gap: theme.spacing.md }}>
           <HeroTile
@@ -107,12 +106,14 @@ export default function Stats() {
         </Card>
 
         <View style={{ gap: theme.spacing.md }}>
-          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "baseline" }}>
-            <Text variant="h3">{t.stats.activity}</Text>
-            <Text variant="small" color="tertiary">
-              {t.stats.activityWindow}
-            </Text>
-          </View>
+          <SectionLabel
+            label={t.stats.activity}
+            trailing={
+              <Text variant="small" color="tertiary">
+                {t.stats.activityWindow}
+              </Text>
+            }
+          />
           {stats.loading ? (
             <Skeleton height={110} />
           ) : (
@@ -121,7 +122,7 @@ export default function Stats() {
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
-          <Text variant="h3">{t.stats.hskMastery}</Text>
+          <SectionLabel label={t.stats.hskMastery} />
           {stats.loading ? (
             <Skeleton height={150} />
           ) : (
@@ -130,7 +131,7 @@ export default function Stats() {
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
-          <Text variant="h3">{t.stats.skills}</Text>
+          <SectionLabel label={t.stats.skills} />
           {stats.loading ? (
             <Skeleton height={150} />
           ) : (

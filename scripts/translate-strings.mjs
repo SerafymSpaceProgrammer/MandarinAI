@@ -29,6 +29,9 @@ const TARGET_LANGS = {
   pt: "Portuguese (European/standard)",
   ru: "Russian",
   zh: "Simplified Chinese (Mainland)",
+  uk: "Ukrainian",
+  de: "German",
+  pl: "Polish",
 };
 
 // Inline import the EN dict — Node ESM tsx loader isn't around so we eval the

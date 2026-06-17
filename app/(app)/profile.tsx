@@ -1,5 +1,7 @@
+import { router } from "expo-router";
+import { Crown, Sparkles } from "lucide-react-native";
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { Pressable, ScrollView, View } from "react-native";
 
 import { deleteAccount, signOut } from "@/api";
 import { LanguagePicker } from "@/components/LanguagePicker";
@@ -9,9 +11,12 @@ import {
   Card,
   Modal,
   Screen,
+  ScreenHeader,
+  SectionLabel,
   Text,
   useToast,
 } from "@/components/ui";
+import { isPro } from "@/features/subscription/subscription";
 import { fmt } from "@/i18n/strings";
 import { useT } from "@/i18n/i18n";
 import { useUserStore } from "@/stores/userStore";
@@ -37,7 +42,13 @@ export default function Profile() {
     const res = await deleteAccount();
     setBusy(false);
     setConfirmingDelete(false);
-    if (!res.ok) toast.info(t.profile.deleteContact);
+    if (res.ok) {
+      // signOut already happened inside deleteAccount; the auth gate will
+      // route us out. A short confirmation toast feels right before that.
+      toast.success(t.profile.deleteDone);
+    } else {
+      toast.error(res.error ?? t.profile.deleteContact);
+    }
   }
 
   return (
@@ -45,15 +56,15 @@ export default function Profile() {
       <ScrollView
         contentContainerStyle={{
           paddingVertical: theme.spacing["2xl"],
-          gap: theme.spacing.xl,
+          gap: theme.spacing["2xl"],
+          paddingBottom: theme.spacing["6xl"],
         }}
       >
-        <View style={{ gap: theme.spacing.xs }}>
-          <Text variant="caption" color="tertiary">
-            {t.profile.section}
-          </Text>
-          <Text variant="h1">{t.profile.title}</Text>
-        </View>
+        <ScreenHeader
+          eyebrow={t.profile.section}
+          title={t.profile.title}
+          hanzi="我"
+        />
 
         <Card>
           <Text variant="caption" color="tertiary">
@@ -72,29 +83,21 @@ export default function Profile() {
           </Text>
         </Card>
 
+        <SubscriptionRow profile={profile} t={t} />
+
         <View style={{ gap: theme.spacing.md }}>
-          <View style={{ gap: theme.spacing.xs }}>
-            <Text variant="caption" color="tertiary">
-              {t.profile.appearanceSection}
-            </Text>
-            <Text variant="h3">{t.profile.themeTitle}</Text>
-            <Text variant="small" color="secondary">
-              {t.profile.themeHint}
-            </Text>
-          </View>
+          <SectionLabel
+            label={t.profile.themeTitle}
+            hint={t.profile.themeHint}
+          />
           <ThemePicker />
         </View>
 
         <View style={{ gap: theme.spacing.md }}>
-          <View style={{ gap: theme.spacing.xs }}>
-            <Text variant="caption" color="tertiary">
-              {t.profile.languageSection}
-            </Text>
-            <Text variant="h3">{t.profile.languageTitle}</Text>
-            <Text variant="small" color="secondary">
-              {t.profile.languageHint}
-            </Text>
-          </View>
+          <SectionLabel
+            label={t.profile.languageTitle}
+            hint={t.profile.languageHint}
+          />
           <LanguagePicker />
         </View>
 
@@ -140,5 +143,93 @@ export default function Profile() {
         </View>
       </Modal>
     </Screen>
+  );
+}
+
+/**
+ * Compact subscription summary on the profile screen. Routes into the full
+ * subscription screen on tap. Reads `profile.tier` straight from the shared
+ * `profiles` row — the LemonSqueezy webhook keeps that column in sync so
+ * we never have to talk to LemonSqueezy from the device.
+ */
+function SubscriptionRow({
+  profile,
+  t,
+}: {
+  profile: ReturnType<typeof useUserStore.getState>["profile"];
+  t: ReturnType<typeof useT>;
+}) {
+  const theme = useTheme();
+  const pro = isPro(profile);
+  const tierLabel =
+    profile?.tier === "lifetime"
+      ? t.subscription.tierLifetime
+      : pro
+        ? t.subscription.tierPro
+        : t.subscription.tierFree;
+  const tone = pro ? theme.colors.accent : theme.colors.textSecondary;
+
+  return (
+    <View style={{ gap: theme.spacing.md }}>
+      <SectionLabel
+        label={t.subscription.title}
+        hint={
+          pro ? t.subscription.proHintShort : t.subscription.freeHintShort
+        }
+      />
+      <Pressable
+        onPress={() => router.push("/(app)/subscription")}
+        accessibilityRole="button"
+        accessibilityLabel={t.subscription.openTitle}
+        style={{
+          flexDirection: "row",
+          alignItems: "stretch",
+          backgroundColor: theme.colors.surface,
+          borderRadius: theme.radii.md,
+          borderWidth: 1,
+          borderColor: pro ? theme.colors.accent : theme.colors.border,
+          overflow: "hidden",
+        }}
+      >
+        <View style={{ width: 4, backgroundColor: theme.colors.accent }} />
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            gap: theme.spacing.md,
+            padding: theme.spacing.lg,
+          }}
+        >
+          <View
+            style={{
+              width: 44,
+              height: 44,
+              borderRadius: theme.radii.sm,
+              backgroundColor: theme.colors.accentMuted,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {pro ? (
+              <Crown color={theme.colors.accent} size={22} strokeWidth={2.2} />
+            ) : (
+              <Sparkles color={theme.colors.accent} size={22} strokeWidth={2.2} />
+            )}
+          </View>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text variant="bodyStrong" style={{ color: tone }}>
+              {tierLabel}
+            </Text>
+            <Text variant="small" color="secondary">
+              {pro ? t.subscription.proRowSub : t.subscription.freeRowSub}
+            </Text>
+          </View>
+          <Text variant="small" color="accent">
+            {pro ? t.subscription.manageShort : t.subscription.upgradeShort} ›
+          </Text>
+        </View>
+      </Pressable>
+    </View>
   );
 }

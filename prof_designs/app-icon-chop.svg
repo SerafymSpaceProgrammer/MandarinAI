@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" rx="229" fill="#FAFAF7"></rect>
+  <rect x="200" y="200" width="624" height="624" rx="40" fill="#7A1C1C"></rect>
+  <text x="512" y="512" text-anchor="middle" dominant-baseline="central" font-family="&#39;Noto Serif SC&#39;, &#39;Songti SC&#39;, &#39;STSong&#39;, &#39;SimSun&#39;, serif" font-weight="900" font-size="500" fill="#FAFAF7" letter-spacing="-12">中</text>
+  <circle cx="720" cy="316" r="32" fill="#FAFAF7"></circle>
+</svg>

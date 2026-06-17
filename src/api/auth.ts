@@ -62,20 +62,48 @@ export async function signOut(): Promise<void> {
 }
 
 /**
- * Delete the current account.
- *
- * Supabase doesn't expose user self-deletion on the client by design.
- * Until we add a `delete-account` edge function that uses service-role to
- * call `auth.admin.deleteUser()`, we sign the user out and surface a TODO.
+ * Delete the current account end-to-end via the `delete-account` edge
+ * function. Required for Apple App Review (Guideline 5.1.1(v)). The
+ * edge function purges public-schema data and then calls
+ * auth.admin.deleteUser; we sign out locally on success so the
+ * onAuthStateChange listener routes the user back to the auth screens.
  */
 export async function deleteAccount(): Promise<AuthResult> {
-  // TODO: Phase 1.7 — implement /functions/delete-account edge function.
+  const { data: sess } = await supabase.auth.getSession();
+  const token = sess.session?.access_token;
+  if (!token) {
+    return { ok: false, error: "Not signed in." };
+  }
+
+  const url = `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/delete-account`;
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        apikey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? "",
+      },
+    });
+  } catch (err) {
+    logger.warn("delete-account fetch error", err);
+    return { ok: false, error: "Network error. Please try again." };
+  }
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    logger.warn("delete-account failed", res.status, body);
+    return {
+      ok: false,
+      error: "Couldn't delete account. Please try again or contact support.",
+    };
+  }
+
+  // Server-side delete succeeded — the access token is now invalid. Sign
+  // out locally to clear cached session/profile and trigger the auth gate.
   await signOut();
-  return {
-    ok: false,
-    error:
-      "Account deletion isn't wired up yet. Please email support to remove your account.",
-  };
+  return { ok: true };
 }
 
 export async function sendPasswordReset(email: string): Promise<AuthResult> {

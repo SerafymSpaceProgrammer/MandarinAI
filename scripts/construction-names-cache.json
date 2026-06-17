@@ -1,0 +1,1370 @@
+{
+  "Отрицание «не» (для глаголов кроме 有 и для прилагательных)": {
+    "ru": "Отрицание «не» (для глаголов кроме 有 и для прилагательных)",
+    "en": "Negation \"not\"",
+    "de": "Negation „nicht“",
+    "es": "Negación \"no\"",
+    "pt": "Negação \"não\"",
+    "pl": "Negacja \"nie\"",
+    "uk": "Заперечення \"не\""
+  },
+  "Глагол-связка «быть/являться»": {
+    "ru": "Глагол-связка «быть/являться»",
+    "en": "copula \"to be\"",
+    "de": "Kopula „sein“",
+    "es": "cópula \"ser\"",
+    "pt": "cópula \"ser\"",
+    "pl": "kopuła „być“",
+    "uk": "копула «бути»"
+  },
+  "«Все/оба» — обобщение": {
+    "ru": "«Все/оба» — обобщение",
+    "en": "\"all\" generalization",
+    "de": "„alle“ Verallgemeinerung",
+    "es": "\"todos\" generalización",
+    "pt": "\"todos\" generalização",
+    "pl": "„wszyscy“ uogólnienie",
+    "uk": "\"всі\" узагальнення"
+  },
+  "«Слишком...» — восклицательная оценка": {
+    "ru": "«Слишком...» — восклицательная оценка",
+    "en": "too...",
+    "de": "zu...",
+    "es": "demasiado...",
+    "pt": "demais...",
+    "pl": "za...",
+    "uk": "занадто..."
+  },
+  "Отрицание «нет/не было» (для 有 и для прошедших действий)": {
+    "ru": "Отрицание «нет/не было» (для 有 и для прошедших действий)",
+    "en": "Negation \"no/not\" (for 有 and past actions)",
+    "de": "Negation „nein/nicht“ (für 有 und vergangene Handlungen)",
+    "es": "Negación \"no/no hubo\" (para 有 y acciones pasadas)",
+    "pt": "Negação \"não/não houve\" (para 有 e ações passadas)",
+    "pl": "Negacja „nie/nic” (dla 有 i przeszłych działań)",
+    "uk": "Заперечення \"ні/не було\" (для 有 та минулих дій)"
+  },
+  "«Очень» — обязательная связка перед прилагательным-сказуемым": {
+    "ru": "«Очень» — обязательная связка перед прилагательным-сказуемым",
+    "en": "\"Very\" - mandatory copula before predicate adjective",
+    "de": "„Sehr“ - obligatorische Kopula vor prädikativem Adjektiv",
+    "es": "\"Muy\" - copula obligatoria antes del adjetivo predicativo",
+    "pt": "\"Muito\" - cópula obrigatória antes do adjetivo predicativo",
+    "pl": "„Bardzo“ - obowiązkowa kopula przed przymiotnikiem orzeczowym",
+    "uk": "\"Дуже\" - обов'язкова зв'язка перед прикметником-присудком"
+  },
+  "«Находиться где-либо» / предлог места": {
+    "ru": "«Находиться где-либо» / предлог места",
+    "en": "\"to be\" somewhere / locative preposition",
+    "de": "„sein“ irgendwo / Ortspräposition",
+    "es": "\"estar\" en algún lugar / preposición de lugar",
+    "pt": "\"estar\" em algum lugar / preposição de lugar",
+    "pl": "„być“ gdzieś / przyimek miejsca",
+    "uk": "\"бути\" десь / прийменник місця"
+  },
+  "Притяжательная и атрибутивная частица": {
+    "ru": "Притяжательная и атрибутивная частица",
+    "en": "possessive and attributive particle",
+    "de": "besitz- und attributives Partikel",
+    "es": "partícula posesiva y atributiva",
+    "pt": "partícula possessiva e atributiva",
+    "pl": "cząstka dzierżawcza i atrybutywna",
+    "uk": "притяжальна та атрибутивна частка"
+  },
+  "Завершённое действие / изменение состояния": {
+    "ru": "Завершённое действие / изменение состояния",
+    "en": "completed action / change of state",
+    "de": "vollendete Handlung / Zustandsänderung",
+    "es": "acción completada / cambio de estado",
+    "pt": "ação completada / mudança de estado",
+    "pl": "zakończona czynność / zmiana stanu",
+    "uk": "завершена дія / зміна стану"
+  },
+  "«Уметь» (выученный навык) / «будет» (предсказание)": {
+    "ru": "«Уметь» (выученный навык) / «будет» (предсказание)",
+    "en": "\"to be able to\" / \"will\"",
+    "de": "„können“ / „werden“",
+    "es": "\"poder\" / \"will\"",
+    "pt": "\"poder\" / \"vai\"",
+    "pl": "\"umieć\" / \"będzie\"",
+    "uk": "\"вміти\" / \"буде\""
+  },
+  "«Мочь» (физическая возможность / разрешение)": {
+    "ru": "«Мочь» (физическая возможность / разрешение)",
+    "en": "\"to be able\" (physical ability/permission)",
+    "de": "„können“ (körperliche Fähigkeit/Erlaubnis)",
+    "es": "\"poder\" (capacidad física/permisión)",
+    "pt": "\"poder\" (capacidade física/permissão)",
+    "pl": "„móc“ (fizyczna możliwość/zezwolenie)",
+    "uk": "\"можу\" (фізична можливість/дозвіл)"
+  },
+  "«Хотеть» (желание сделать)": {
+    "ru": "«Хотеть» (желание сделать)",
+    "en": "\"to want\" (desire to do)",
+    "de": "\"wollen\" (Wunsch zu tun)",
+    "es": "\"querer\" (deseo de hacer)",
+    "pt": "\"querer\" (desejo de fazer)",
+    "pl": "\"chcieć\" (pragnienie zrobienia)",
+    "uk": "\"хотіти\" (бажання зробити)"
+  },
+  "Частица общего вопроса (да/нет)": {
+    "ru": "Частица общего вопроса (да/нет)",
+    "en": "yes/no question particle",
+    "de": "Fragepartikel für Ja/Nein",
+    "es": "partícula de pregunta general (sí/no)",
+    "pt": "partícula de pergunta geral (sim/não)",
+    "pl": "partykuła pytania ogólnego (tak/nie)",
+    "uk": "частка загального питання (так/ні)"
+  },
+  "«А ты?» (встречный вопрос) / «где ...?»": {
+    "ru": "«А ты?» (встречный вопрос) / «где ...?»",
+    "en": "X, right?",
+    "de": "X, oder?",
+    "es": "X, ¿y tú?",
+    "pt": "X, né?",
+    "pl": "X, a ty?",
+    "uk": "X, а ти?"
+  },
+  "«Иметь, есть в наличии»": {
+    "ru": "«Иметь, есть в наличии»",
+    "en": "\"to have\"",
+    "de": "„haben“",
+    "es": "\"tener\"",
+    "pt": "\"ter\"",
+    "pl": "\"mieć\"",
+    "uk": "\"мати\""
+  },
+  "«Кто?»": {
+    "ru": "«Кто?»",
+    "en": "\"Who?\"",
+    "de": "„Wer?“",
+    "es": "\"¿Quién?\"",
+    "pt": "\"Quem?\"",
+    "pl": "\"Kto?\"",
+    "uk": "\"Хто?\""
+  },
+  "«Какой / где?»": {
+    "ru": "«Какой / где?»",
+    "en": "\"Which\" / \"Where\"",
+    "de": "„Welcher“ / „Wo“",
+    "es": "\"Cuál\" / \"Dónde\"",
+    "pt": "\"Qual\" / \"Onde\"",
+    "pl": "„Który“ / „Gdzie“",
+    "uk": "„Який“ / „Де“"
+  },
+  "«Что? / какой?»": {
+    "ru": "«Что? / какой?»",
+    "en": "\"What?\" / \"which?\"",
+    "de": "„Was?“ / „welcher?“",
+    "es": "\"¿Qué?\" / \"¿cuál?\"",
+    "pt": "\"O que?\" / \"qual?\"",
+    "pl": "„Co?\" / „jaki?\"",
+    "uk": "„Що?\" / „який?\""
+  },
+  "«Как? / как (по поводу качества)?»": {
+    "ru": "«Как? / как (по поводу качества)?»",
+    "en": "How? / how (about quality)?",
+    "de": "Wie? / wie (in Bezug auf Qualität)?",
+    "es": "¿Cómo? / cómo (sobre calidad)?",
+    "pt": "Como? / como (sobre qualidade)?",
+    "pl": "Jak? / jak (w kwestii jakości)?",
+    "uk": "Як? / як (щодо якості)?"
+  },
+  "«Сколько» — 多少 для больших чисел, 几 для малых (<10) и со счётным словом": {
+    "ru": "«Сколько» — 多少 для больших чисел, 几 для малых (<10) и со счётным словом",
+    "en": "«how many»",
+    "de": "„wie viele“",
+    "es": "«cuántos»",
+    "pt": "«quantos»",
+    "pl": "„ile“",
+    "uk": "«скільки»"
+  },
+  "«Пожалуйста» — вежливая просьба": {
+    "ru": "«Пожалуйста» — вежливая просьба",
+    "en": "polite request",
+    "de": "höfliche Bitte",
+    "es": "petición educada",
+    "pt": "pedido educado",
+    "pl": "grzeczna prośba",
+    "uk": "ввічливе прохання"
+  },
+  "«И» — соединение существительных": {
+    "ru": "«И» — соединение существительных",
+    "en": "\"and\" - noun conjunction",
+    "de": "„und“ - Substantivverbindung",
+    "es": "\"y\" - conjunción de sustantivos",
+    "pt": "\"e\" - conjunção de substantivos",
+    "pl": "\"i\" - łączenie rzeczowników",
+    "uk": "\"і\" - з'єднання іменників"
+  },
+  "Время суток: часы и минуты": {
+    "ru": "Время суток: часы и минуты",
+    "en": "Time of day: hours and minutes",
+    "de": "Tageszeit: Stunden und Minuten",
+    "es": "Hora del día: horas y minutos",
+    "pt": "Hora do dia: horas e minutos",
+    "pl": "Czas dnia: godziny i minuty",
+    "uk": "Час доби: години та хвилини"
+  },
+  "Указательные «это / то»": {
+    "ru": "Указательные «это / то»",
+    "en": "Demonstrative \"this / that\"",
+    "de": "Demonstrativpronomen „dies / das“",
+    "es": "Demostrativo \"esto / eso\"",
+    "pt": "Demonstrativo \"isto / aquilo\"",
+    "pl": "Wskazujące „to / tamto\"",
+    "uk": "Вказівне «це / те»"
+  },
+  "Эмфаза прошлого: время, место, способ действия": {
+    "ru": "Эмфаза прошлого: время, место, способ действия",
+    "en": "Emphasis on the past: time, place, manner",
+    "de": "Betonung der Vergangenheit: Zeit, Ort, Art und Weise",
+    "es": "Énfasis en el pasado: tiempo, lugar, modo",
+    "pt": "Ênfase no passado: tempo, lugar, modo",
+    "pl": "Emfaza przeszłości: czas, miejsce, sposób",
+    "uk": "Емфаза минулого: час, місце, спосіб дії"
+  },
+  "Дата: год / месяц / число": {
+    "ru": "Дата: год / месяц / число",
+    "en": "Date: year / month / day",
+    "de": "Datum: Jahr / Monat / Tag",
+    "es": "Fecha: año / mes / día",
+    "pt": "Data: ano / mês / dia",
+    "pl": "Data: rok / miesiąc / dzień",
+    "uk": "Дата: рік / місяць / число"
+  },
+  "Счётные слова: 个 — универсальное, 本 — для книг": {
+    "ru": "Счётные слова: 个 — универсальное, 本 — для книг",
+    "en": "Measure words: \"个\" - universal, \"本\" - for books",
+    "de": "Zählwörter: „个“ - universell, „本“ - für Bücher",
+    "es": "Clasificadores: «个» - universal, «本» - para libros",
+    "pt": "Palavras de medida: «个» - universal, «本» - para livros",
+    "pl": "Słowa liczebne: „个” - uniwersalne, „本” - do książek",
+    "uk": "Лічильники: «个» - універсальне, «本» - для книг"
+  },
+  "Дни недели": {
+    "ru": "Дни недели",
+    "en": "Days of the week",
+    "de": "Wochentage",
+    "es": "Días de la semana",
+    "pt": "Dias da semana",
+    "pl": "Dni tygodnia",
+    "uk": "Дні тижня"
+  },
+  "Возраст («N лет»)": {
+    "ru": "Возраст («N лет»)",
+    "en": "Age (\"N years\")",
+    "de": "Alter (\"N Jahre\")",
+    "es": "Edad (\"N años\")",
+    "pt": "Idade (\"N anos\")",
+    "pl": "Wiek (\"N lat\")",
+    "uk": "Вік (\"N років\")"
+  },
+  "Счётное слово для денег (юань)": {
+    "ru": "Счётное слово для денег (юань)",
+    "en": "measure word for money (yuan)",
+    "de": "Zählwort für Geld (Yuan)",
+    "es": "clasificador para dinero (yuan)",
+    "pt": "classificador para dinheiro (yuan)",
+    "pl": "słowo klasyfikujące dla pieniędzy (yuan)",
+    "uk": "лічильник для грошей (юань)"
+  },
+  "Превосходная степень «самый»": {
+    "ru": "Превосходная степень «самый»",
+    "en": "superlative \"most\"",
+    "de": "Superlativ „am meisten“",
+    "es": "superlativo \"el más\"",
+    "pt": "superlativo \"o mais\"",
+    "pl": "stopień najwyższy „naj-”",
+    "uk": "вищий ступінь \"най-\""
+  },
+  "«Больше / более» — приблизительная оценка (Number + M + 多 / Number + 多 + M)": {
+    "ru": "«Больше / более» — приблизительная оценка (Number + M + 多 / Number + 多 + M)",
+    "en": "more / greater",
+    "de": "mehr / größer",
+    "es": "más / mayor",
+    "pt": "mais / maior",
+    "pl": "więcej / większy",
+    "uk": "більше / більший"
+  },
+  "Намерение / запрет: «(не) собираюсь / не делай»": {
+    "ru": "Намерение / запрет: «(не) собираюсь / не делай»",
+    "en": "Intention / prohibition: \"(not) going to / don't do\"",
+    "de": "Absicht / Verbot: „(nicht) vorhaben / tu es nicht“",
+    "es": "Intención / prohibición: \"(no) voy a / no hagas\"",
+    "pt": "Intenção / proibição: \"(não) vou / não faça\"",
+    "pl": "Zamiar / zakaz: „(nie) zamierzam / nie rób“",
+    "uk": "Намір / заборона: „(не) збираюся / не роби“"
+  },
+  "«Насколько» — вопрос о возрасте, размере и т.п.": {
+    "ru": "«Насколько» — вопрос о возрасте, размере и т.п.",
+    "en": "degree question",
+    "de": "Gradfrage",
+    "es": "pregunta de grado",
+    "pt": "pergunta de grau",
+    "pl": "pytanie o stopień",
+    "uk": "питання про ступінь"
+  },
+  "Альтернативный вопрос «верно ли что...?»": {
+    "ru": "Альтернативный вопрос «верно ли что...?»",
+    "en": "alternative question \"is it true that...?\"",
+    "de": "Alternativfrage „stimmt es, dass...?\"",
+    "es": "pregunta alternativa \"¿es cierto que...?\"",
+    "pt": "pergunta alternativa \"é verdade que...?\"",
+    "pl": "pytanie alternatywne „czy to prawda, że...?\"",
+    "uk": "альтернативне питання «чи правда, що...?\""
+  },
+  "«Каждый» — со счётным словом или с 都": {
+    "ru": "«Каждый» — со счётным словом или с 都",
+    "en": "\"Every\" with measure word or \"都\"",
+    "de": "„Jeder“ mit Zählwort oder „都“",
+    "es": "\"Cada\" con palabra contable o \"都\"",
+    "pt": "\"Cada\" com palavra de medida ou \"都\"",
+    "pl": "„Każdy“ z liczebnikiem lub „都“",
+    "uk": "\"Кожен\" з числівником або \"都\""
+  },
+  "Вопрос о количестве «сколько» (для малых чисел до 10) — со счётным словом": {
+    "ru": "Вопрос о количестве «сколько» (для малых чисел до 10) — со счётным словом",
+    "en": "Question about quantity \"how many\" (for small numbers up to 10) - with measure word",
+    "de": "Frage nach der Menge „wie viele“ (für kleine Zahlen bis 10) - mit Zählwort",
+    "es": "Pregunta sobre cantidad \"cuántos\" (para números pequeños hasta 10) - con palabra de medida",
+    "pt": "Pergunta sobre quantidade \"quantos\" (para números pequenos até 10) - com palavra de medida",
+    "pl": "Pytanie o ilość „ile” (dla małych liczb do 10) - ze słowem liczebnym",
+    "uk": "Запитання про кількість «скільки» (для малих чисел до 10) - зі словом-лічильником"
+  },
+  "«Когда ...» — обстоятельство времени": {
+    "ru": "«Когда ...» — обстоятельство времени",
+    "en": "time clause",
+    "de": "Zeitklausel",
+    "es": "cláusula temporal",
+    "pt": "cláusula temporal",
+    "pl": "zdanie czasowe",
+    "uk": "часове речення"
+  },
+  "Эмоциональная оценка: «реально / правда / по-настоящему» + adj": {
+    "ru": "Эмоциональная оценка: «реально / правда / по-настоящему» + adj",
+    "en": "emotional evaluation: \"really\" + adj",
+    "de": "emotionale Bewertung: „wirklich“ + adj",
+    "es": "evaluación emocional: \"realmente\" + adj",
+    "pt": "avaliação emocional: \"realmente\" + adj",
+    "pl": "ocena emocjonalna: „naprawdę” + adj",
+    "uk": "емоційна оцінка: «дійсно» + adj"
+  },
+  "Краткое / лёгкое действие: «немного, разок»": {
+    "ru": "Краткое / лёгкое действие: «немного, разок»",
+    "en": "brief action: \"a bit, once\"",
+    "de": "kurze Handlung: „ein bisschen, einmal“",
+    "es": "acción breve: \"un poco, una vez\"",
+    "pt": "ação breve: \"um pouco, uma vez\"",
+    "pl": "krótkie działanie: „trochę, raz“",
+    "uk": "коротка дія: «трохи, раз»"
+  },
+  "Сложное определение: «тот, кто...» / «который...» (V/adj + 的 + N)": {
+    "ru": "Сложное определение: «тот, кто...» / «который...» (V/adj + 的 + N)",
+    "en": "Complex modifier: \"who...\" / \"which...\" (V/adj + 的 + N)",
+    "de": "Komplexes Attribut: „der, der...“ / „der, der...“ (V/adj + 的 + N)",
+    "es": "Modificador complejo: \"quien...\" / \"el que...\" (V/adj + 的 + N)",
+    "pt": "Modificador complexo: \"quem...\" / \"o qual...\" (V/adj + 的 + N)",
+    "pl": "Złożony przydomek: „ten, kto...” / „który...” (V/adj + 的 + N)",
+    "uk": "Складний означник: «той, хто...» / «який...» (V/adj + 的 + N)"
+  },
+  "Эмфаза прошлого действия: время / место / способ": {
+    "ru": "Эмфаза прошлого действия: время / место / способ",
+    "en": "Emphasis on past action: time / place / manner",
+    "de": "Betonung der vergangenen Handlung: Zeit / Ort / Art",
+    "es": "Énfasis en la acción pasada: tiempo / lugar / modo",
+    "pt": "Ênfase na ação passada: tempo / lugar / modo",
+    "pl": "Emfaza przeszłej akcji: czas / miejsce / sposób",
+    "uk": "Емфаза минулої дії: час / місце / спосіб"
+  },
+  "«Сразу же / именно / тогда» — быстрое или подчёркнутое действие": {
+    "ru": "«Сразу же / именно / тогда» — быстрое или подчёркнутое действие",
+    "en": "immediate action",
+    "de": "sofortige Handlung",
+    "es": "acción inmediata",
+    "pt": "ação imediata",
+    "pl": "natychmiastowe działanie",
+    "uk": "негайна дія"
+  },
+  "«Уже» — действие/состояние свершилось": {
+    "ru": "«Уже» — действие/состояние свершилось",
+    "en": "\"already\" - completed action/state",
+    "de": "„schon“ - vollendete Handlung/Zustand",
+    "es": "\"ya\" - acción/estado completado",
+    "pt": "\"já\" - ação/estado completado",
+    "pl": "\"już\" - dokonana czynność/stanu",
+    "uk": "\"вже\" - завершена дія/стан"
+  },
+  "«Как / почему» — вопрос о способе или причине": {
+    "ru": "«Как / почему» — вопрос о способе или причине",
+    "en": "how/why",
+    "de": "„wie“/„warum“",
+    "es": "«cómo»/«por qué»",
+    "pt": "«como»/«por que»",
+    "pl": "„jak“/„dlaczego“",
+    "uk": "«як»/«чому»"
+  },
+  "«Ещё / всё ещё / тоже» — продолжение действия или дополнение": {
+    "ru": "«Ещё / всё ещё / тоже» — продолжение действия или дополнение",
+    "en": "\"still\" / \"also\"",
+    "de": "„noch“ / „auch“",
+    "es": "\"todavía\" / \"también\"",
+    "pt": "\"ainda\" / \"também\"",
+    "pl": "„jeszcze“ / „też“",
+    "uk": "\"ще\" / \"також\""
+  },
+  "«Немного» — обычно с негативным оттенком (перед adj)": {
+    "ru": "«Немного» — обычно с негативным оттенком (перед adj)",
+    "en": "\"a bit\" with negative connotation",
+    "de": "„ein bisschen“ mit negativer Konnotation",
+    "es": "\"un poco\" con connotación negativa",
+    "pt": "\"um pouco\" com conotação negativa",
+    "pl": "\"trochę\" z negatywnym odcieniem",
+    "uk": "\"трохи\" з негативним відтінком"
+  },
+  "«Потому что ... поэтому ...» — причина и следствие": {
+    "ru": "«Потому что ... поэтому ...» — причина и следствие",
+    "en": "\"because\"... \"therefore\"",
+    "de": "„weil“... „deshalb“",
+    "es": "\"porque\"... \"por eso\"",
+    "pt": "\"porque\"... \"portanto\"",
+    "pl": "\"ponieważ\"... \"więc\"",
+    "uk": "\"тому що\"... \"тому\""
+  },
+  "Предположение «должно быть / наверное» в конце предложения": {
+    "ru": "Предположение «должно быть / наверное» в конце предложения",
+    "en": "Assumption \"must be / probably\"",
+    "de": "Annahme „muss sein / wahrscheinlich“",
+    "es": "Suposición \"debe ser / probablemente\"",
+    "pt": "Suposição \"deve ser / provavelmente\"",
+    "pl": "Założenie „musi być / prawdopodobnie“",
+    "uk": "Припущення «має бути / напевно»"
+  },
+  "Тег-вопрос «..., хорошо?» — мягкое предложение": {
+    "ru": "Тег-вопрос «..., хорошо?» — мягкое предложение",
+    "en": "Tag-question «..., okay?»",
+    "de": "Tag-Frage „..., gut?“",
+    "es": "Etiqueta de pregunta «..., ¿bien?»",
+    "pt": "Etiqueta de pergunta «..., tudo bem?»",
+    "pl": "Etykieta pytająca «..., dobrze?»",
+    "uk": "Тег-питання «..., добре?»"
+  },
+  "«Снова / ещё раз / потом» — повтор будущего действия": {
+    "ru": "«Снова / ещё раз / потом» — повтор будущего действия",
+    "en": "future action \"again\"",
+    "de": "Zukunftshandlung „noch einmal“",
+    "es": "acción futura \"otra vez\"",
+    "pt": "ação futura \"novamente\"",
+    "pl": "przyszła akcja „jeszcze raz“",
+    "uk": "майбутня дія «знову»"
+  },
+  "Серийные глаголы: одно лицо выполняет несколько действий подряд": {
+    "ru": "Серийные глаголы: одно лицо выполняет несколько действий подряд",
+    "en": "Serial Verbs",
+    "de": "Serielle Verben",
+    "es": "Verbos en serie",
+    "pt": "Verbos em série",
+    "pl": "Czasowniki szeregowe",
+    "uk": "Серійні дієслова"
+  },
+  "Смягчение / краткость действия: V-V, V一V, AB → AABB": {
+    "ru": "Смягчение / краткость действия: V-V, V一V, AB → AABB",
+    "en": "Verb Reduplication",
+    "de": "Verbverdopplung",
+    "es": "Reduplicación verbal",
+    "pt": "Reduplicação verbal",
+    "pl": "Reduplikacja czasownika",
+    "uk": "Подвоєння дієслова"
+  },
+  "Результативное дополнение: завершённость / достижение результата": {
+    "ru": "Результативное дополнение: завершённость / достижение результата",
+    "en": "resultative complement",
+    "de": "resultatives Ergänzungswort",
+    "es": "complemento resultativo",
+    "pt": "complemento resultativo",
+    "pl": "uzupełnienie rezultatywne",
+    "uk": "результативне доповнення"
+  },
+  "«От ... до ...» — диапазон времени или пространства": {
+    "ru": "«От ... до ...» — диапазон времени или пространства",
+    "en": "from ... to ...",
+    "de": "von ... bis ...",
+    "es": "de ... a ...",
+    "pt": "de ... a ...",
+    "pl": "od ... do ...",
+    "uk": "від ... до ..."
+  },
+  "«Полезно для / помогает в ...»": {
+    "ru": "«Полезно для / помогает в ...»",
+    "en": "helpful for",
+    "de": "hilfreich für",
+    "es": "útil para",
+    "pt": "útil para",
+    "pl": "pomocny dla",
+    "uk": "корисно для"
+  },
+  "Расстояние / удалённость: «N1 далеко/близко от N2»": {
+    "ru": "Расстояние / удалённость: «N1 далеко/близко от N2»",
+    "en": "Distance: \"N1 far/close from N2\"",
+    "de": "Entfernung: „N1 weit/nah von N2“",
+    "es": "Distancia: \"N1 lejos/cerca de N2\"",
+    "pt": "Distância: \"N1 longe/perto de N2\"",
+    "pl": "Odległość: „N1 daleko/blisko od N2”",
+    "uk": "Відстань: «N1 далеко/близько від N2»"
+  },
+  "Порядковые числительные: «первый, второй ...»": {
+    "ru": "Порядковые числительные: «первый, второй ...»",
+    "en": "Ordinal Numbers: \"first, second ...\"",
+    "de": "Ordinalzahlen: „erste, zweite ...“",
+    "es": "Números ordinales: \"primero, segundo ...\"",
+    "pt": "Números ordinais: \"primeiro, segundo ...\"",
+    "pl": "Liczebniki: „pierwszy, drugi ...“",
+    "uk": "Порядкові числівники: «перший, другий ...»"
+  },
+  "Сравнение «A больше/меньше/... чем B» (включая 没有 и разницу)": {
+    "ru": "Сравнение «A больше/меньше/... чем B» (включая 没有 и разницу)",
+    "en": "Comparison \"A is bigger/smaller/... than B\"",
+    "de": "Vergleich „A ist größer/kleiner/... als B“",
+    "es": "Comparación \"A es mayor/menor/... que B\"",
+    "pt": "Comparação \"A é maior/menor/... que B\"",
+    "pl": "Porównanie „A jest większe/mniejsze/... niż B”",
+    "uk": "Порівняння «A більше/менше/... ніж B»"
+  },
+  "Прекращение действия: «перестань / больше не делай»": {
+    "ru": "Прекращение действия: «перестань / больше не делай»",
+    "en": "Action cessation: \"stop / don't do it anymore\"",
+    "de": "Handlungsbeendigung: „hör auf / mach es nicht mehr“",
+    "es": "Cese de acción: \"deja de / no lo hagas más\"",
+    "pt": "Cessação de ação: \"pare / não faça mais\"",
+    "pl": "Zaprzestanie działania: „przestań / nie rób tego więcej\"",
+    "uk": "Припинення дії: «перестань / більше не роби»"
+  },
+  "Длящееся состояние / положение: действие сохраняется": {
+    "ru": "Длящееся состояние / положение: действие сохраняется",
+    "en": "continuing state",
+    "de": "fortdauernder Zustand",
+    "es": "estado continuo",
+    "pt": "estado contínuo",
+    "pl": "stan trwający",
+    "uk": "тривалий стан"
+  },
+  "Степень / качество действия: «как именно делается»": {
+    "ru": "Степень / качество действия: «как именно делается»",
+    "en": "degree of action",
+    "de": "Grad der Handlung",
+    "es": "grado de acción",
+    "pt": "grau da ação",
+    "pl": "stopień działania",
+    "uk": "ступінь дії"
+  },
+  "«Возможно / может быть»": {
+    "ru": "«Возможно / может быть»",
+    "en": "possibility",
+    "de": "Möglichkeit",
+    "es": "posibilidad",
+    "pt": "possibilidade",
+    "pl": "możliwość",
+    "uk": "можливість"
+  },
+  "«Хотя ... но ...» — уступка": {
+    "ru": "«Хотя ... но ...» — уступка",
+    "en": "Although... but...",
+    "de": "Obwohl... aber...",
+    "es": "Aunque... pero...",
+    "pt": "Embora... mas...",
+    "pl": "Chociaż... to...",
+    "uk": "Хоча... але..."
+  },
+  "«Вот-вот / скоро» — близкое будущее": {
+    "ru": "«Вот-вот / скоро» — близкое будущее",
+    "en": "close future",
+    "de": "nahe Zukunft",
+    "es": "futuro cercano",
+    "pt": "futuro próximo",
+    "pl": "bliska przyszłość",
+    "uk": "незабаром"
+  },
+  "Опыт «когда-либо делал / был» — прошедший опыт": {
+    "ru": "Опыт «когда-либо делал / был» — прошедший опыт",
+    "en": "experience \"ever done / been\" - past experience",
+    "de": "Erfahrung „jemals getan / gewesen“ - vergangene Erfahrung",
+    "es": "experiencia \"alguna vez hecho / estado\" - experiencia pasada",
+    "pt": "experiência \"alguma vez fez / esteve\" - experiência passada",
+    "pl": "doświadczenie „kiedykolwiek robił / był” - doświadczenie przeszłe",
+    "uk": "досвід «коли-небудь робив / був» - минулий досвід"
+  },
+  "Риторический вопрос: «разве не...?» — мягкое утверждение": {
+    "ru": "Риторический вопрос: «разве не...?» — мягкое утверждение",
+    "en": "rhetorical question: \"isn't it...?\" - soft assertion",
+    "de": "rhetorische Frage: „ist es nicht...?\" - sanfte Behauptung",
+    "es": "pregunta retórica: \"¿no es...?\" - afirmación suave",
+    "pt": "pergunta retórica: \"não é...?\" - afirmação suave",
+    "pl": "pytanie retoryczne: „czyż nie...?” - łagodne stwierdzenie",
+    "uk": "риторичне питання: «хіба не...?» - м'яке твердження"
+  },
+  "Направление: «(идти/ехать) в сторону X»": {
+    "ru": "Направление: «(идти/ехать) в сторону X»",
+    "en": "Direction: \"(to go/to travel) towards X\"",
+    "de": "Richtung: „(gehen/fahren) in Richtung X“",
+    "es": "Dirección: \"(ir/viajar) hacia X\"",
+    "pt": "Direção: \"(ir/viajar) em direção a X\"",
+    "pl": "Kierunek: „(iść/jechać) w stronę X“",
+    "uk": "Напрямок: „(іти/їхати) в сторону X“"
+  },
+  "Эмоциональное «уже / целых» — длительность или количество подчёркнуто": {
+    "ru": "Эмоциональное «уже / целых» — длительность или количество подчёркнуто",
+    "en": "emotional \"already / whole\"",
+    "de": "emotionales „schon / ganz“",
+    "es": "emotivo \"ya / entero\"",
+    "pt": "emocional \"já / inteiro\"",
+    "pl": "emocjonalne „już / całe“",
+    "uk": "емоційне \"вже / ціле\""
+  },
+  "Счётное слово для разов: «N раз» (с глаголом и/или объектом)": {
+    "ru": "Счётное слово для разов: «N раз» (с глаголом и/или объектом)",
+    "en": "measure word for times: \"N times\" (with verb and/or object)",
+    "de": "Zählwort für Male: „N Mal“ (mit Verb und/oder Objekt)",
+    "es": "palabra contable para veces: \"N veces\" (con verbo y/o objeto)",
+    "pt": "classificador para vezes: \"N vezes\" (com verbo e/ou objeto)",
+    "pl": "słowo klasyfikujące dla razy: „N razy” (z czasownikiem i/lub obiektem)",
+    "uk": "лічильне слово для раз: «N раз» (з дієсловом та/або об'єктом)"
+  },
+  "Результативная морфема «好» — действие доведено до завершённого, готового состояния": {
+    "ru": "Результативная морфема «好» — действие доведено до завершённого, готового состояния",
+    "en": "resultative morpheme \"好\"",
+    "de": "resultative Morphem „好“",
+    "es": "morfema resultativo \"好\"",
+    "pt": "morfema resultativo \"好\"",
+    "pl": "morfem rezultatywny „好“",
+    "uk": "результативна морфема «好»"
+  },
+  "Усиленное отрицание «ни одного / ни капли не» (с настоящим/общим временем)": {
+    "ru": "Усиленное отрицание «ни одного / ни капли не» (с настоящим/общим временем)",
+    "en": "intensified negation \"not a single / not a drop\"",
+    "de": "verstärkte Negation „nicht ein / keinen Tropfen“",
+    "es": "negación intensificada \"ni uno / ni una gota\"",
+    "pt": "negação intensificada \"nem um / nem uma gota\"",
+    "pl": "wzmocniona negacja „ani jednego / ani kropli”",
+    "uk": "посилене заперечення «ні одного / ні краплі»"
+  },
+  "Категорическое отрицание для существительного: «совсем ничего / нисколько»": {
+    "ru": "Категорическое отрицание для существительного: «совсем ничего / нисколько»",
+    "en": "categorical negation for noun: \"not at all / nothing\"",
+    "de": "kategoriale Negation für Substantiv: „überhaupt nichts / nichts“",
+    "es": "negación categórica para sustantivo: \"nada en absoluto / nada\"",
+    "pt": "negação categórica para substantivo: \"nada / nenhum\"",
+    "pl": "kategoryczne zaprzeczenie dla rzeczownika: „wcale nic / ani trochę”",
+    "uk": "категоричне заперечення для іменника: «зовсім нічого / ніскільки»"
+  },
+  "Категорическое отрицание признака: «совсем не / ничуть не …»": {
+    "ru": "Категорическое отрицание признака: «совсем не / ничуть не …»",
+    "en": "categorical negation of adjective: \"not at all / not in the least ...\"",
+    "de": "kategorische Negation des Adjektivs: „überhaupt nicht / gar nicht ...“",
+    "es": "negación categórica del adjetivo: \"no ... en absoluto / nada ...\"",
+    "pt": "negação categórica do adjetivo: \"de jeito nenhum / nem um pouco ...\"",
+    "pl": "kategoryczna negacja przymiotnika: „wcale nie / ani trochę ...“",
+    "uk": "категоричне заперечення прикметника: «зовсім не / ніскільки не ...»"
+  },
+  "Связка между репликами в диалоге: «тогда …» — следствие из реплики собеседника": {
+    "ru": "Связка между репликами в диалоге: «тогда …» — следствие из реплики собеседника",
+    "en": "dialogue connector: \"then ...\"",
+    "de": "Dialogverbindung: „dann ...“",
+    "es": "conector de diálogo: \"entonces ...\"",
+    "pt": "conector de diálogo: \"então ...\"",
+    "pl": "łącznik dialogowy: „wtedy ...“",
+    "uk": "з'єднувач діалогу: «тоді ...»"
+  },
+  "Простое направление движения: «идти/двигаться сюда» (来) или «туда» (去)": {
+    "ru": "Простое направление движения: «идти/двигаться сюда» (来) или «туда» (去)",
+    "en": "directional movement: \"come\" or \"go\"",
+    "de": "Richtungsbewegung: „kommen“ oder „gehen“",
+    "es": "movimiento direccional: \"venir\" o \"ir\"",
+    "pt": "movimento direcional: \"vir\" ou \"ir\"",
+    "pl": "ruch kierunkowy: „przyjść“ lub „iść“",
+    "uk": "направлення руху: «приходити» або «йти»"
+  },
+  "Два действия одного субъекта подряд: «как только сделал A, сразу B»": {
+    "ru": "Два действия одного субъекта подряд: «как только сделал A, сразу B»",
+    "en": "consecutive actions",
+    "de": "aufeinanderfolgende Handlungen",
+    "es": "acciones consecutivas",
+    "pt": "ações consecutivas",
+    "pl": "działania następujące po sobie",
+    "uk": "послідовні дії"
+  },
+  "Направление движения с указанием места: «пойти/прийти в …»": {
+    "ru": "Направление движения с указанием места: «пойти/прийти в …»",
+    "en": "Direction of movement with place: \"go/come to ...\"",
+    "de": "Richtung der Bewegung mit Ort: „gehen/kommen nach ...“",
+    "es": "Dirección de movimiento con lugar: \"ir/venir a ...\"",
+    "pt": "Direção do movimento com lugar: \"ir/vir para ...\"",
+    "pl": "Kierunek ruchu z miejscem: „iść/przyjść do ...“",
+    "uk": "Напрямок руху з місцем: «йти/приходити до ...»"
+  },
+  "Риторический вопрос «разве можно (не) …?» — констатация неизбежного следствия": {
+    "ru": "Риторический вопрос «разве можно (не) …?» — констатация неизбежного следствия",
+    "en": "rhetorical question \"can (not) ...?\"",
+    "de": "rhetorische Frage „kann (nicht) ...?“",
+    "es": "pregunta retórica \"¿se puede (no) ...?\"",
+    "pt": "pergunta retórica \"pode (não) ...?\"",
+    "pl": "pytanie retoryczne „czy można (nie) ...?\"",
+    "uk": "риторичне питання «чи можна (не) ...?»"
+  },
+  "Перемещение предмета к/от говорящего: «принести / унести что-то»": {
+    "ru": "Перемещение предмета к/от говорящего: «принести / унести что-то»",
+    "en": "Movement of an object to/from the speaker: \"bring/take something\"",
+    "de": "Bewegung eines Objekts zu/vom Sprecher: „bringen/nehmen etwas“",
+    "es": "Movimiento de un objeto hacia/desde el hablante: \"traer/llevar algo\"",
+    "pt": "Movimento de um objeto para/de o falante: \"trazer/levar algo\"",
+    "pl": "Ruch przedmiotu do/od mówiącego: „przynieść/zabrać coś“",
+    "uk": "Переміщення предмета до/від мовця: «принести/забрати щось»"
+  },
+  "Союз «или» в утвердительных предложениях — выбор между равноценными вариантами": {
+    "ru": "Союз «или» в утвердительных предложениях — выбор между равноценными вариантами",
+    "en": "conjunction \"or\" in affirmative sentences",
+    "de": "Konjunktion „oder“ in bejahenden Sätzen",
+    "es": "conjunción \"o\" en oraciones afirmativas",
+    "pt": "conjunção \"ou\" em frases afirmativas",
+    "pl": "spójnik „lub“ w zdaniach twierdzących",
+    "uk": "сполучник \"або\" в стверджувальних реченнях"
+  },
+  "Два действия двух разных субъектов: «как только S1 сделал A, S2 сделает B»": {
+    "ru": "Два действия двух разных субъектов: «как только S1 сделал A, S2 сделает B»",
+    "en": "Two actions of different subjects: \"as soon as S1 does A, S2 will do B\"",
+    "de": "Zwei Handlungen verschiedener Subjekte: „sobald S1 A macht, wird S2 B machen“",
+    "es": "Dos acciones de sujetos diferentes: \"tan pronto como S1 haga A, S2 hará B\"",
+    "pt": "Duas ações de sujeitos diferentes: \"assim que S1 fizer A, S2 fará B\"",
+    "pl": "Dwa działania różnych podmiotów: „gdy tylko S1 zrobi A, S2 zrobi B”",
+    "uk": "Дві дії різних суб'єктів: «як тільки S1 зробить A, S2 зробить B»"
+  },
+  "Союз «или» в вопросах с выбором: «A или B?»": {
+    "ru": "Союз «или» в вопросах с выбором: «A или B?»",
+    "en": "Choice conjunction \"or\" in questions: \"A or B?\"",
+    "de": "Konjunktion „oder“ in Auswahlfragen: „A oder B?“",
+    "es": "Conjunción \"o\" en preguntas de elección: \"¿A o B?\"",
+    "pt": "Conjunção \"ou\" em perguntas de escolha: \"A ou B?\"",
+    "pl": "Spójnik „lub” w pytaniach wyboru: „A czy B?”",
+    "uk": "Сполучник «або» у питаннях вибору: «A чи B?»"
+  },
+  "«…, A или B …» — выражение неуверенности внутри утверждения, после 不知道 / 不清楚 и т. п.": {
+    "ru": "«…, A или B …» — выражение неуверенности внутри утверждения, после 不知道 / 不清楚 и т. п.",
+    "en": "..., A or B ...",
+    "de": "..., A oder B ...",
+    "es": "..., A o B ...",
+    "pt": "..., A ou B ...",
+    "pl": "..., A albo B ...",
+    "uk": "..., A чи B ..."
+  },
+  "Усиленное отрицание «ни одного не …» в прошедшем времени (с 没)": {
+    "ru": "Усиленное отрицание «ни одного не …» в прошедшем времени (с 没)",
+    "en": "intensified negation \"not a single ...\" in past tense (with 没)",
+    "de": "verstärkte Negation „nicht ein ...“ in der Vergangenheit (mit 没)",
+    "es": "negación intensificada \"ni uno ...\" en pasado (con 没)",
+    "pt": "negação intensificada \"nenhum ...\" no passado (com 没)",
+    "pl": "wzmocniona negacja „ani jednego ...” w czasie przeszłym (z 没)",
+    "uk": "посилене заперечення «жодного ...» у минулому часі (з 没)"
+  },
+  "Модальный «会» в значении «вероятно / будет (так)» — оценка вероятности или будущего": {
+    "ru": "Модальный «会» в значении «вероятно / будет (так)» — оценка вероятности или будущего",
+    "en": "modal \"会\" for probability",
+    "de": "modal \"会\" für Wahrscheinlichkeit",
+    "es": "modal \"会\" de probabilidad",
+    "pt": "modal \"会\" de probabilidade",
+    "pl": "modalne „会” dla prawdopodobieństwa",
+    "uk": "модальний «会» для ймовірності"
+  },
+  "Конструкция существования: «в/на … есть / нет …»": {
+    "ru": "Конструкция существования: «в/на … есть / нет …»",
+    "en": "Existential construction: \"there is/there isn't ... in/on ...\"",
+    "de": "Existenzkonstruktion: „es gibt/es gibt nicht ... in/auf ...“",
+    "es": "Construcción existencial: \"hay/no hay ... en/sobre ...\"",
+    "pt": "Construção existencial: \"há/não há ... em/sobre ...\"",
+    "pl": "Konstrukcja egzystencjalna: „jest/nie ma ... w/na ...“",
+    "uk": "Екзистенційна конструкція: «є/немає ... в/на ...»"
+  },
+  "Перечисление одновременных признаков: «и …, и …»": {
+    "ru": "Перечисление одновременных признаков: «и …, и …»",
+    "en": "simultaneous attributes: \"both ... and ...\"",
+    "de": "gleichzeitige Eigenschaften: „sowohl ... als auch ...“",
+    "es": "atributos simultáneos: \"tanto ... como ...\"",
+    "pt": "atributos simultâneos: \"tanto ... quanto ...\"",
+    "pl": "jednoczesne cechy: „i ... i ...“",
+    "uk": "одночасні ознаки: «і ... і ...»"
+  },
+  "Возможный результативный комплемент в утверждении: «удаётся / получается + результат»": {
+    "ru": "Возможный результативный комплемент в утверждении: «удаётся / получается + результат»",
+    "en": "resultative complement",
+    "de": "resultativer Komplement",
+    "es": "complemento resultativo",
+    "pt": "complemento resultativo",
+    "pl": "komplement wynikowy",
+    "uk": "результативний комплемент"
+  },
+  "Финальное «了» в значении «теперь стало / уже» — изменение состояния, новая ситуация": {
+    "ru": "Финальное «了» в значении «теперь стало / уже» — изменение состояния, новая ситуация",
+    "en": "Final \"了\" for change of state",
+    "de": "Finales „了“ für Zustandsänderung",
+    "es": "Final \"了\" para cambio de estado",
+    "pt": "Final \"了\" para mudança de estado",
+    "pl": "Końcowe „了” dla zmiany stanu",
+    "uk": "Фінальне «了» для зміни стану"
+  },
+  "Сопутствующее действие/способ: «делая A, делать B»": {
+    "ru": "Сопутствующее действие/способ: «делая A, делать B»",
+    "en": "Accompanying action/method: \"doing A, doing B\"",
+    "de": "Begleitende Handlung/Methode: „A tun, B tun“",
+    "es": "Acción/método acompañante: \"haciendo A, haciendo B\"",
+    "pt": "Ação/método acompanhante: \"fazendo A, fazendo B\"",
+    "pl": "Działanie/metoda towarzysząca: „robiąc A, robić B”",
+    "uk": "Супутня дія/метод: «роблячи A, робити B»"
+  },
+  "Вопрос о возможности результата: «можешь ли разобрать / понять / расслышать?»": {
+    "ru": "Вопрос о возможности результата: «можешь ли разобрать / понять / расслышать?»",
+    "en": "possibility question",
+    "de": "Möglichkeitsfrage",
+    "es": "pregunta de posibilidad",
+    "pt": "pergunta de possibilidade",
+    "pl": "pytanie o możliwość",
+    "uk": "питання про можливість"
+  },
+  "Подхватывающий вопрос «а …?» — обращает тот же вопрос к собеседнику или новому объекту": {
+    "ru": "Подхватывающий вопрос «а …?» — обращает тот же вопрос к собеседнику или новому объекту",
+    "en": "follow-up question \"and ...?\"",
+    "de": "Nachfrage „und ...?“",
+    "es": "pregunta de seguimiento \"y ...?\"",
+    "pt": "pergunta de acompanhamento \"e ...?\"",
+    "pl": "pytanie uzupełniające „a ...?”",
+    "uk": "додаткове питання «а ...?»"
+  },
+  "«Всё … и …» — постепенное нарастание признака": {
+    "ru": "«Всё … и …» — постепенное нарастание признака",
+    "en": "increasingly ...",
+    "de": "immer ...",
+    "es": "cada vez más ...",
+    "pt": "cada vez mais ...",
+    "pl": "coraz ...",
+    "uk": "все ... і ..."
+  },
+  "Отрицательный потенциальный комплемент: «не получается / не удаётся + результат»": {
+    "ru": "Отрицательный потенциальный комплемент: «не получается / не удаётся + результат»",
+    "en": "Negative Potential Complement: \"cannot achieve + result\"",
+    "de": "Negativer potenzieller Komplement: „nicht erreichen + Ergebnis“",
+    "es": "Complemento Potencial Negativo: \"no se puede lograr + resultado\"",
+    "pt": "Complemento Potencial Negativo: \"não consegue + resultado\"",
+    "pl": "Negatywny potencjalny komplement: „nie można osiągnąć + rezultat”",
+    "uk": "Негативний потенційний комплемент: «не вдається + результат»"
+  },
+  "«Только что …» — действие закончилось буквально только что (наречие при глаголе)": {
+    "ru": "«Только что …» — действие закончилось буквально только что (наречие при глаголе)",
+    "en": "\"just\" - action just finished",
+    "de": "„gerade“ - Handlung gerade beendet",
+    "es": "\"justo\" - acción acabada justo ahora",
+    "pt": "\"acabou de\" - ação acabada há pouco",
+    "pl": "„dopiero“ - czynność właśnie zakończona",
+    "uk": "\"щойно\" - дія щойно закінчилась"
+  },
+  "Краткий вопрос о местоположении предмета: «А где …?»": {
+    "ru": "Краткий вопрос о местоположении предмета: «А где …?»",
+    "en": "Location question: \"Where ...?\"",
+    "de": "Standortfrage: „Wo ...?“",
+    "es": "Pregunta de ubicación: \"¿Dónde ...?\"",
+    "pt": "Pergunta de localização: \"Onde ...?\"",
+    "pl": "Pytanie o lokalizację: „Gdzie ...?”",
+    "uk": "Питання про місцезнаходження: «А де ...?»"
+  },
+  "«Только что / минуту назад» — указатель времени в начале фразы": {
+    "ru": "«Только что / минуту назад» — указатель времени в начале фразы",
+    "en": "\"just now\" time marker",
+    "de": "„gerade eben“ Zeitmarker",
+    "es": "\"justo ahora\" marcador temporal",
+    "pt": "\"agora há pouco\" marcador temporal",
+    "pl": "„dopiero co“ znacznik czasu",
+    "uk": "\"тільки що\" маркер часу"
+  },
+  "Время «полчаса»: …点半 = «половина (после такого-то часа)»": {
+    "ru": "Время «полчаса»: …点半 = «половина (после такого-то часа)»",
+    "en": "Time \"half past\"",
+    "de": "Zeit „halb\"",
+    "es": "Hora \"y media\"",
+    "pt": "Hora \"meia\"",
+    "pl": "Czas „wpół do\"",
+    "uk": "Час \"пів\""
+  },
+  "Время «четверть»: 一刻 = 15 минут, 三刻 = 45 минут": {
+    "ru": "Время «четверть»: 一刻 = 15 минут, 三刻 = 45 минут",
+    "en": "time \"quarter\"",
+    "de": "Zeit „Viertel“",
+    "es": "tiempo \"cuarto\"",
+    "pt": "tempo \"quarto\"",
+    "pl": "czas \"kwartał\"",
+    "uk": "час \"четверть\""
+  },
+  "Время «без …»: «без N минут такой-то час»": {
+    "ru": "Время «без …»: «без N минут такой-то час»",
+    "en": "Time \"to\"",
+    "de": "Zeit „vor“",
+    "es": "Hora \"para\"",
+    "pt": "Hora \"para\"",
+    "pl": "Czas „do”",
+    "uk": "Час \"до\""
+  },
+  "Длительность завершённого действия: «делал что-то столько-то времени»": {
+    "ru": "Длительность завершённого действия: «делал что-то столько-то времени»",
+    "en": "Duration of completed action: \"did something for a certain time\"",
+    "de": "Dauer der abgeschlossenen Handlung: „etwas für eine bestimmte Zeit gemacht“",
+    "es": "Duración de la acción completada: \"hice algo durante cierto tiempo\"",
+    "pt": "Duração da ação completada: \"fiz algo por um certo tempo\"",
+    "pl": "Czas trwania zakończonej czynności: „robiłem coś przez określony czas”",
+    "uk": "Тривалість завершеної дії: «робив щось певний час»"
+  },
+  "«Иметь / не иметь интерес к …»: вариант с 有/没有": {
+    "ru": "«Иметь / не иметь интерес к …»: вариант с 有/没有",
+    "en": "having/not having interest in",
+    "de": "Interesse haben/nicht haben an",
+    "es": "tener/no tener interés en",
+    "pt": "ter/não ter interesse em",
+    "pl": "mieć/nie mieć zainteresowania w",
+    "uk": "мати/не мати інтерес до"
+  },
+  "«Интересоваться чем-либо»: 对 + объект + 感兴趣 (либо отрицание 不感兴趣)": {
+    "ru": "«Интересоваться чем-либо»: 对 + объект + 感兴趣 (либо отрицание 不感兴趣)",
+    "en": "\"to be interested in\"",
+    "de": "„interessiert sein an“",
+    "es": "\"interesarse por\"",
+    "pt": "\"interessar-se por\"",
+    "pl": "\"interesować się\"",
+    "uk": "\"цікавитися\""
+  },
+  "Длительность действия, которое всё ещё продолжается: «уже столько-то делаем»": {
+    "ru": "Длительность действия, которое всё ещё продолжается: «уже столько-то делаем»",
+    "en": "Duration of ongoing action: \"doing for a while\"",
+    "de": "Dauer der fortdauernden Handlung: „schon seit einiger Zeit machen“",
+    "es": "Duración de la acción continua: \"haciendo desde hace un tiempo\"",
+    "pt": "Duração da ação em andamento: \"fazendo há um tempo\"",
+    "pl": "Czas trwania trwającej akcji: „robimy już od jakiegoś czasu”",
+    "uk": "Тривалість дії, що триває: «робимо вже деякий час»"
+  },
+  "«Снова сделал …» — действие, повторившееся в прошлом": {
+    "ru": "«Снова сделал …» — действие, повторившееся в прошлом",
+    "en": "\"again\" + V (past repetition)",
+    "de": "„noch einmal“ + V (Vergangenheit)",
+    "es": "\"de nuevo\" + V (repetición pasada)",
+    "pt": "\"novamente\" + V (repetição passada)",
+    "pl": "„znowu“ + V (powtórzenie w przeszłości)",
+    "uk": "\"знову\" + V (повтор в минулому)"
+  },
+  "«Ещё / снова сделать …» — повтор действия в будущем": {
+    "ru": "«Ещё / снова сделать …» — повтор действия в будущем",
+    "en": "\"to do\" again",
+    "de": "„nochmal machen“",
+    "es": "\"hacer\" de nuevo",
+    "pt": "\"fazer\" novamente",
+    "pl": "„zrobić“ jeszcze raz",
+    "uk": "\"зробити\" знову"
+  },
+  "Использование вопросительного слова в утверждении: «когда/кто/где угодно — то …»": {
+    "ru": "Использование вопросительного слова в утверждении: «когда/кто/где угодно — то …»",
+    "en": "Use of question word in statement",
+    "de": "Verwendung des Frageworts in der Aussage",
+    "es": "Uso de la palabra interrogativa en la afirmación",
+    "pt": "Uso da palavra interrogativa na afirmação",
+    "pl": "Użycie słowa pytającego w zdaniu",
+    "uk": "Використання питального слова в ствердженні"
+  },
+  "«Чем …, тем …» — связь двух нарастающих признаков": {
+    "ru": "«Чем …, тем …» — связь двух нарастающих признаков",
+    "en": "the more... the more...",
+    "de": "je ... desto ...",
+    "es": "cuanto más ... más ...",
+    "pt": "quanto mais ... mais ...",
+    "pl": "im więcej ... tym więcej ...",
+    "uk": "чим більше ..., тим більше ..."
+  },
+  "Сравнение «A такой же …, как B»": {
+    "ru": "Сравнение «A такой же …, как B»",
+    "en": "Comparison \"A is as ... as B\"",
+    "de": "Vergleich „A ist so ... wie B“",
+    "es": "Comparación \"A es tan ... como B\"",
+    "pt": "Comparação \"A é tão ... quanto B\"",
+    "pl": "Porównanie „A jest tak ... jak B\"",
+    "uk": "Порівняння «A такий же ... як B»"
+  },
+  "Согласование двух действий по вопросительному слову: «где S1 …, там S2 тоже …»": {
+    "ru": "Согласование двух действий по вопросительному слову: «где S1 …, там S2 тоже …»",
+    "en": "Agreement of two actions by question word",
+    "de": "Übereinstimmung zweier Handlungen nach Fragewort",
+    "es": "Acuerdo de dos acciones por palabra interrogativa",
+    "pt": "Acordo de duas ações por palavra interrogativa",
+    "pl": "Zgoda dwóch działań według słowa pytającego",
+    "uk": "Угода двох дій за питальним словом"
+  },
+  "Отрицание сравнения «A отличается от B / не такой же, как B»": {
+    "ru": "Отрицание сравнения «A отличается от B / не такой же, как B»",
+    "en": "Negation of Comparison",
+    "de": "Negation des Vergleichs",
+    "es": "Negación de la comparación",
+    "pt": "Negação da comparação",
+    "pl": "Negacja porównania",
+    "uk": "Заперечення порівняння"
+  },
+  "Приблизительное число — два соседних числительных подряд: «три-четыре», «пять-шесть»": {
+    "ru": "Приблизительное число — два соседних числительных подряд: «три-четыре», «пять-шесть»",
+    "en": "Approximate number",
+    "de": "Ungefähre Zahl",
+    "es": "Número aproximado",
+    "pt": "Número aproximado",
+    "pl": "Przybliżona liczba",
+    "uk": "Приблизне число"
+  },
+  "Отрицательное сравнение: «A не настолько …, как B»": {
+    "ru": "Отрицательное сравнение: «A не настолько …, как B»",
+    "en": "Negative comparison: \"A is not as ... as B\"",
+    "de": "Negative Vergleich: „A ist nicht so ... wie B“",
+    "es": "Comparación negativa: \"A no es tan ... como B\"",
+    "pt": "Comparação negativa: \"A não é tão ... quanto B\"",
+    "pl": "Porównanie negatywne: „A nie jest tak ... jak B“",
+    "uk": "Негативне порівняння: «A не такий ... як B»"
+  },
+  "Сравнение с указанием на размер разницы: «A немного / гораздо …, чем B»": {
+    "ru": "Сравнение с указанием на размер разницы: «A немного / гораздо …, чем B»",
+    "en": "Comparison with degree of difference",
+    "de": "Vergleich mit Angabe des Unterschieds",
+    "es": "Comparación con indicación del tamaño de la diferencia",
+    "pt": "Comparação com indicação do tamanho da diferença",
+    "pl": "Porównanie z określeniem wielkości różnicy",
+    "uk": "Порівняння з вказівкою на розмір різниці"
+  },
+  "Базовая 把-конструкция: «взять и сделать что-то с объектом» — действие на конкретный объект, доведённое до завершения": {
+    "ru": "Базовая 把-конструкция: «взять и сделать что-то с объектом» — действие на конкретный объект, доведённое до завершения",
+    "en": "Basic \"ba\" construction",
+    "de": "Grundlegende „ba“-Konstruktion",
+    "es": "Construcción básica \"ba\"",
+    "pt": "Construção básica \"ba\"",
+    "pl": "Podstawowa konstrukcja „ba“",
+    "uk": "Базова конструкція «ba»"
+  },
+  "Приблизительная величина: «около / приблизительно столько-то»": {
+    "ru": "Приблизительная величина: «около / приблизительно столько-то»",
+    "en": "Approximate quantity: \"about / approximately\"",
+    "de": "Ungefähre Menge: „ungefähr / etwa“",
+    "es": "Cantidad aproximada: \"alrededor de / aproximadamente\"",
+    "pt": "Quantidade aproximada: \"cerca de / aproximadamente\"",
+    "pl": "Przybliżona ilość: „około / mniej więcej”",
+    "uk": "Приблизна кількість: «близько / приблизно»"
+  },
+  "«Только тогда / лишь сейчас …» — действие произошло позже ожидаемого": {
+    "ru": "«Только тогда / лишь сейчас …» — действие произошло позже ожидаемого",
+    "en": "Only then / just now ...",
+    "de": "Erst dann / gerade jetzt ...",
+    "es": "Solo entonces / justo ahora ...",
+    "pt": "Apenas então / só agora ...",
+    "pl": "Dopiero wtedy / dopiero teraz ...",
+    "uk": "Тільки тоді / лише зараз ..."
+  },
+  "Отрицательная 把-конструкция: 没 / 不 ставится ПЕРЕД 把": {
+    "ru": "Отрицательная 把-конструкция: 没 / 不 ставится ПЕРЕД 把",
+    "en": "Negative 把-construction: 没 / 不 before 把",
+    "de": "Negative 把-Konstruktion: 没 / 不 vor 把",
+    "es": "Construcción negativa 把: 没 / 不 antes de 把",
+    "pt": "Construção negativa 把: 没 / 不 antes de 把",
+    "pl": "Negatywna konstrukcja 把: 没 / 不 przed 把",
+    "uk": "Негативна конструкція 把: 没 / 不 перед 把"
+  },
+  "«Уже / так скоро …» — действие произошло раньше ожидаемого (часто с 这么早 / 那么)": {
+    "ru": "«Уже / так скоро …» — действие произошло раньше ожидаемого (часто с 这么早 / 那么)",
+    "en": "\"Already\" / \"So soon\"",
+    "de": "„Bereits“ / „So früh“",
+    "es": "\"Ya\" / \"Tan pronto\"",
+    "pt": "\"Já\" / \"Tão cedo\"",
+    "pl": "\"Już\" / \"Tak wcześnie\"",
+    "uk": "\"Вже\" / \"Так скоро\""
+  },
+  "Переместить объект куда-либо: «переместить … в …»": {
+    "ru": "Переместить объект куда-либо: «переместить … в …»",
+    "en": "Move object to location: \"move ... to ...\"",
+    "de": "Objekt an Ort bewegen: „... nach ... bewegen“",
+    "es": "Mover objeto a lugar: \"mover ... a ...\"",
+    "pt": "Mover objeto para local: \"mover ... para ...\"",
+    "pl": "Przenieść obiekt do miejsca: „przenieść ... do ...”",
+    "uk": "Перемістити об'єкт куди-небудь: «перемістити ... в ...»"
+  },
+  "Передать объект кому-то: «отдать / подарить … кому-то»": {
+    "ru": "Передать объект кому-то: «отдать / подарить … кому-то»",
+    "en": "give object to someone",
+    "de": "Objekt an jemanden geben",
+    "es": "dar objeto a alguien",
+    "pt": "dar objeto a alguém",
+    "pl": "dać obiekt komuś",
+    "uk": "передати об'єкт комусь"
+  },
+  "Поместить объект куда-либо: «положить / поставить … на …»": {
+    "ru": "Поместить объект куда-либо: «положить / поставить … на …»",
+    "en": "Place object somewhere: \"to put / to set ... on ...\"",
+    "de": "Objekt irgendwo platzieren: „legen / stellen ... auf ...“",
+    "es": "Colocar objeto en algún lugar: \"poner / colocar ... en ...\"",
+    "pt": "Colocar objeto em algum lugar: \"colocar / pôr ... em ...\"",
+    "pl": "Umieścić obiekt gdzieś: „położyć / postawić ... na ...“",
+    "uk": "Помістити об'єкт кудись: «покласти / поставити ... на ...»"
+  },
+  "Направительный комплемент «出来 / 出去» — движение наружу относительно говорящего": {
+    "ru": "Направительный комплемент «出来 / 出去» — движение наружу относительно говорящего",
+    "en": "Directional complement \"出来 / 出去\"",
+    "de": "Richtungs-Komplement „出来 / 出去“",
+    "es": "Complemento direccional «出来 / 出去»",
+    "pt": "Complemento direcional «出来 / 出去»",
+    "pl": "Kierunkowy dopełniacz „出来 / 出去“",
+    "uk": "Направний комплемент «出来 / 出去»"
+  },
+  "Направительный комплемент «下去 / 下来» — движение сверху вниз": {
+    "ru": "Направительный комплемент «下去 / 下来» — движение сверху вниз",
+    "en": "Directional complement \"下去 / 下来\"",
+    "de": "Richtungs-komplement „下去 / 下来“",
+    "es": "Complemento direccional \"下去 / 下来\"",
+    "pt": "Complemento direcional \"下去 / 下来\"",
+    "pl": "Komplement kierunkowy „下去 / 下来“",
+    "uk": "Направний комплемент «下去 / 下来»"
+  },
+  "Два одновременных действия одного субъекта: «делая A, одновременно делать B»": {
+    "ru": "Два одновременных действия одного субъекта: «делая A, одновременно делать B»",
+    "en": "simultaneous actions",
+    "de": "gleichzeitige Handlungen",
+    "es": "acciones simultáneas",
+    "pt": "ações simultâneas",
+    "pl": "działania jednoczesne",
+    "uk": "одночасні дії"
+  },
+  "«Достать / вынуть»: 出来 как направительный комплемент с прямым дополнением": {
+    "ru": "«Достать / вынуть»: 出来 как направительный комплемент с прямым дополнением",
+    "en": "\"to take out\" as directional complement with direct object",
+    "de": "„herausnehmen“ als richtungsbezogenes Komplement mit direktem Objekt",
+    "es": "\"sacar\" como complemento direccional con objeto directo",
+    "pt": "\"tirar\" como complemento direcional com objeto direto",
+    "pl": "„wyciągnąć“ jako dopełnienie kierunkowe z dopełnieniem bezpośrednim",
+    "uk": "\"вийняти\" як напрямковий комплемент з прямим доповненням"
+  },
+  "把-конструкция с результативным комплементом: «сделать что-то с объектом до результата»": {
+    "ru": "把-конструкция с результативным комплементом: «сделать что-то с объектом до результата»",
+    "en": "Ba-construction with resultative complement",
+    "de": "Ba-Konstruktion mit resultativer Ergänzung",
+    "es": "Construcción Ba con complemento resultativo",
+    "pt": "Construção Ba com complemento resultativo",
+    "pl": "Konstrukcja Ba z dopełnieniem rezultatywnym",
+    "uk": "Конструкція Ba з результативним комплементом"
+  },
+  "Исключение из множества: «кроме … все …»": {
+    "ru": "Исключение из множества: «кроме … все …»",
+    "en": "Exception from a set: \"besides ... all ...\"",
+    "de": "Ausnahme aus einer Menge: „außer ... alle ...“",
+    "es": "Excepción de un conjunto: \"además de ... todos ...\"",
+    "pt": "Exceção de um conjunto: \"exceto ... todos ...\"",
+    "pl": "Wyjątek z zbioru: „oprócz ... wszyscy ...\"",
+    "uk": "Виключення з множини: «крім ... всі ...»"
+  },
+  "Последовательность действий: «сначала …, затем …, потом …»": {
+    "ru": "Последовательность действий: «сначала …, затем …, потом …»",
+    "en": "Sequence of actions: \"first ..., then ..., after that ...\"",
+    "de": "Ablauf von Handlungen: „zuerst ..., dann ..., danach ...“",
+    "es": "Secuencia de acciones: \"primero ..., luego ..., después ...\"",
+    "pt": "Sequência de ações: \"primeiro ..., depois ..., em seguida ...\"",
+    "pl": "Sekwencja działań: „najpierw ..., potem ..., a następnie ...\"",
+    "uk": "Послідовність дій: «спочатку ..., потім ..., після цього ...»"
+  },
+  "把-конструкция с направительным комплементом «出来»: «достать / вытащить …»": {
+    "ru": "把-конструкция с направительным комплементом «出来»: «достать / вытащить …»",
+    "en": "把-construction with directional complement \"出来\"",
+    "de": "把-Konstruktion mit richtungsweisendem Komplement \"出来\"",
+    "es": "Construcción 把 con complemento direccional \"出来\"",
+    "pt": "Construção 把 com complemento direcional \"出来\"",
+    "pl": "Konstrukcja 把 z dopełnieniem kierunkowym \"出来\"",
+    "uk": "Конструкція 把 з напрямковим доповненням \"出来\""
+  },
+  "Употребление вопросительных слов в утверждении в значении «что-нибудь / какой-нибудь / любой»": {
+    "ru": "Употребление вопросительных слов в утверждении в значении «что-нибудь / какой-нибудь / любой»",
+    "en": "Use of question words in statements",
+    "de": "Verwendung von Fragewörtern in Aussagen",
+    "es": "Uso de palabras interrogativas en afirmaciones",
+    "pt": "Uso de palavras interrogativas em afirmações",
+    "pl": "Użycie słów pytających w zdaniach",
+    "uk": "Вживання питальних слів в ствердженнях"
+  },
+  "Добавление к множеству: «кроме … ещё / также …»": {
+    "ru": "Добавление к множеству: «кроме … ещё / также …»",
+    "en": "Addition to a set: \"besides ... also ...\"",
+    "de": "Ergänzung zu einer Menge: „außer ... auch ...“",
+    "es": "Adición a un conjunto: \"además de ... también ...\"",
+    "pt": "Adição a um conjunto: \"além de ... também ...\"",
+    "pl": "Dodatek do zbioru: „oprócz ... także ...“",
+    "uk": "Додавання до множини: «крім ... ще ...»"
+  },
+  "Усиление прилагательного: «крайне / в высшей степени …»": {
+    "ru": "Усиление прилагательного: «крайне / в высшей степени …»",
+    "en": "Intensifier for Adjectives: \"extremely ...\"",
+    "de": "Intensivierung von Adjektiven: „äußerst ...“",
+    "es": "Intensificador de Adjetivos: \"extremadamente ...\"",
+    "pt": "Intensificador de Adjetivos: \"extremamente ...\"",
+    "pl": "Wzmocnienie przymiotników: „skrajnie ...“",
+    "uk": "Посилення прикметників: «вкрай ...»"
+  },
+  "Условное предложение «если …, то …» — стандартный порядок": {
+    "ru": "Условное предложение «если …, то …» — стандартный порядок",
+    "en": "Conditional sentence \"if ..., then ...\"",
+    "de": "Bedingungssatz „wenn ..., dann ...“",
+    "es": "Oración condicional \"si ..., entonces ...\"",
+    "pt": "Frase condicional \"se ..., então ...\"",
+    "pl": "Zdanie warunkowe „jeśli ..., to ...”",
+    "uk": "Умовне речення «якщо ..., то ...»"
+  },
+  "Условное предложение, где 如果 стоит после подлежащего: «S1, если …, S2 тогда …»": {
+    "ru": "Условное предложение, где 如果 стоит после подлежащего: «S1, если …, S2 тогда …»",
+    "en": "conditional sentence with \"如果\"",
+    "de": "Bedingungssatz mit „如果“",
+    "es": "oración condicional con \"如果\"",
+    "pt": "frase condicional com \"如果\"",
+    "pl": "zdanie warunkowe z „如果“",
+    "uk": "умовне речення з «如果»"
+  },
+  "Удвоение качественного прилагательного с 的 для смягчения и живости: «такой …-…»": {
+    "ru": "Удвоение качественного прилагательного с 的 для смягчения и живости: «такой …-…»",
+    "en": "Adjective Reduplication",
+    "de": "Adjektivverdopplung",
+    "es": "Reduplicación de adjetivos",
+    "pt": "Reduplicação de adjetivos",
+    "pl": "Reduplikacja przymiotników",
+    "uk": "Подвоєння прикметників"
+  },
+  "Степень признака с придаточным: «настолько …, что …»": {
+    "ru": "Степень признака с придаточным: «настолько …, что …»",
+    "en": "Degree of adjective with clause: \"so ... that ...\"",
+    "de": "Grad des Adjektivs mit Nebensatz: „so ... dass ...“",
+    "es": "Grado del adjetivo con cláusula: \"tan ... que ...\"",
+    "pt": "Grau do adjetivo com oração: \"tão ... que ...\"",
+    "pl": "Stopień przymiotnika z zdaniem podrzędnym: „tak ... że ...“",
+    "uk": "Ступінь прикметника з підрядним реченням: «так ... що ...»"
+  },
+  "Удвоение двусложного глагола ABAB — «немного / разок что-то сделать»": {
+    "ru": "Удвоение двусложного глагола ABAB — «немного / разок что-то сделать»",
+    "en": "Verb Reduplication (ABAB)",
+    "de": "Verbverdopplung (ABAB)",
+    "es": "Reduplicación verbal (ABAB)",
+    "pt": "Reduplicação verbal (ABAB)",
+    "pl": "Reduplikacja czasownika (ABAB)",
+    "uk": "Подвоєння дієслова (ABAB)"
+  },
+  "«Относительно / насчёт / по поводу …» — топик в начале предложения": {
+    "ru": "«Относительно / насчёт / по поводу …» — топик в начале предложения",
+    "en": "\"Regarding\" + N",
+    "de": "„Bezüglich“ + N",
+    "es": "\"Respecto a\" + N",
+    "pt": "\"Sobre\" + N",
+    "pl": "„Odnośnie“ + N",
+    "uk": "\"Щодо\" + N"
+  },
+  "Универсальное «везде / всюду / никто / нигде» — Q-слово в утверждении с 都": {
+    "ru": "Универсальное «везде / всюду / никто / нигде» — Q-слово в утверждении с 都",
+    "en": "Universal Q-word with \"all\"",
+    "de": "Universelles Q-Wort mit „alle“",
+    "es": "Q-palabra universal con \"todo\"",
+    "pt": "Q-palavra universal com \"todos\"",
+    "pl": "Uniwersalne Q-słowo z „wszystkimi\"",
+    "uk": "Універсальне Q-слово з «усіма»"
+  },
+  "Достаточное условие: «достаточно лишь …, как … / стоит только …, и …»": {
+    "ru": "Достаточное условие: «достаточно лишь …, как … / стоит только …, и …»",
+    "en": "sufficient condition: \"as long as ... then ...\"",
+    "de": "ausreichende Bedingung: „es genügt, wenn ... dann ...“",
+    "es": "condición suficiente: \"basta con que ... para que ...\"",
+    "pt": "condição suficiente: \"basta ... para ...\"",
+    "pl": "warunek wystarczający: „wystarczy, że ... to ...\"",
+    "uk": "достатня умова: «досить лише ... і ...»"
+  },
+  "Достаточное условие с двумя субъектами: «достаточно, чтобы S1 …, и тогда S2 …»": {
+    "ru": "Достаточное условие с двумя субъектами: «достаточно, чтобы S1 …, и тогда S2 …»",
+    "en": "sufficient condition with two subjects",
+    "de": "ausreichende Bedingung mit zwei Subjekten",
+    "es": "condición suficiente con dos sujetos",
+    "pt": "condição suficiente com dois sujeitos",
+    "pl": "wystarczający warunek z dwoma podmiotami",
+    "uk": "достатня умова з двома суб'єктами"
+  },
+  "Каузативная конструкция: «A заставляет/делает B каким-либо или B что-то делать»": {
+    "ru": "Каузативная конструкция: «A заставляет/делает B каким-либо или B что-то делать»",
+    "en": "Causative construction",
+    "de": "Kausativkonstruktion",
+    "es": "Construcción causativa",
+    "pt": "Construção causativa",
+    "pl": "Konstrukcja kauzatywna",
+    "uk": "Каузаційна конструкція"
+  },
+  "«Выглядит / кажется …» — оценка по внешнему виду": {
+    "ru": "«Выглядит / кажется …» — оценка по внешнему виду",
+    "en": "\"looks like\" / \"seems\"",
+    "de": "„sieht aus wie“ / „scheint“",
+    "es": "\"parece\" / \"se ve\"",
+    "pt": "\"parece\" / \"se vê\"",
+    "pl": "„wygląda jak“ / „wydaje się“",
+    "uk": "\"виглядає як\" / \"здається\""
+  },
+  "Направительный комплемент «出来» в значении «понять / распознать / различить»": {
+    "ru": "Направительный комплемент «出来» в значении «понять / распознать / различить»",
+    "en": "directional complement \"出来\" meaning \"to understand / to recognize / to distinguish\"",
+    "de": "Richtungs-Komplement „出来“ im Sinne von „verstehen / erkennen / unterscheiden“",
+    "es": "complemento direccional \"出来\" en el sentido de \"entender / reconocer / distinguir\"",
+    "pt": "complemento direcional \"出来\" no sentido de \"entender / reconhecer / distinguir\"",
+    "pl": "komplement kierunkowy „出来“ w znaczeniu „rozumieć / rozpoznać / odróżnić\"",
+    "uk": "направний комплемент «出来» в значенні «зрозуміти / розпізнати / відрізнити»"
+  },
+  "Направительный комплемент «起来» в значении «вспомнить / прийти на ум»": {
+    "ru": "Направительный комплемент «起来» в значении «вспомнить / прийти на ум»",
+    "en": "Directional complement \"起来\" meaning \"to remember / come to mind\"",
+    "de": "Richtungs-Komplement „起来“ im Sinne von „sich erinnern / einfallen“",
+    "es": "Complemento direccional «起来» en el sentido de «recordar / venir a la mente»",
+    "pt": "Complemento direcional \"起来\" no sentido de \"lembrar / vir à mente\"",
+    "pl": "Kierunkowy komplement „起来” w znaczeniu „przypomnieć sobie / przyjść na myśl”",
+    "uk": "Направний комплемент «起来» в значенні «згадати / прийти на думку»"
+  },
+  "Направительный комплемент «出来» в значении «довести действие до результата»": {
+    "ru": "Направительный комплемент «出来» в значении «довести действие до результата»",
+    "en": "Directional complement \"出来\" for achieving a result",
+    "de": "Richtungs-Komplement „出来“ zur Erzielung eines Ergebnisses",
+    "es": "Complemento direccional \"出来\" para lograr un resultado",
+    "pt": "Complemento direcional \"出来\" para alcançar um resultado",
+    "pl": "Kierunkowy dopełniacz „出来” w znaczeniu „osiągnąć rezultat”",
+    "uk": "Направний комплемент «出来» для досягнення результату"
+  },
+  "Пассивная конструкция «被»: «A было сделано (с ним что-то) со стороны B»": {
+    "ru": "Пассивная конструкция «被»: «A было сделано (с ним что-то) со стороны B»",
+    "en": "Passive construction \"被\"",
+    "de": "Passivkonstruktion „被“",
+    "es": "Construcción pasiva \"被\"",
+    "pt": "Construção passiva \"被\"",
+    "pl": "Konstrukcja pasywna „被“",
+    "uk": "Пасивна конструкція \"被\""
+  },
+  "Направительный комплемент «下来» в значении «стало (тише, спокойнее) / зафиксировалось»": {
+    "ru": "Направительный комплемент «下来» в значении «стало (тише, спокойнее) / зафиксировалось»",
+    "en": "Directional complement \"下来\" meaning \"became (quieter, calmer) / settled\"",
+    "de": "Richtungs-komplement „下来“ mit der Bedeutung „wurde (ruhiger, gelassener) / fixiert“",
+    "es": "Complemento direccional «下来» en el sentido de «se volvió (más tranquilo, sereno) / se fijó»",
+    "pt": "Complemento direcional \"下来\" com o significado de \"ficou (mais calmo, tranquilo) / se fixou\"",
+    "pl": "Kierunkowy komplement „下来“ w znaczeniu „stało się (ciszej, spokojniej) / ustabilizowało się\"",
+    "uk": "Направний комплемент «下来» у значенні «стало (тише, спокійніше) / зафіксувалося»"
+  },
+  "Отрицание пассива «被»: «A ещё не было сделано»": {
+    "ru": "Отрицание пассива «被»: «A ещё не было сделано»",
+    "en": "Negation of Passive \"被\"",
+    "de": "Negation des Passivs „被“",
+    "es": "Negación del pasivo \"被\"",
+    "pt": "Negação do passivo \"被\"",
+    "pl": "Negacja pasywu „被“",
+    "uk": "Заперечення пасива \"被\""
+  },
+  "Единственное условие: «только … — лишь тогда … / только при условии …»": {
+    "ru": "Единственное условие: «только … — лишь тогда … / только при условии …»",
+    "en": "Only condition: \"only ... — only then ... / only if ...\"",
+    "de": "Einzige Bedingung: „nur ... — nur dann ... / nur unter der Bedingung ...“",
+    "es": "Única condición: \"solo ... — solo entonces ... / solo si ...\"",
+    "pt": "Única condição: \"somente ... — somente então ... / somente sob a condição ...\"",
+    "pl": "Jedyna zasada: „tylko ... — tylko wtedy ... / tylko pod warunkiem ...\"",
+    "uk": "Єдина умова: «тільки ... — лише тоді ... / тільки за умови ...»"
+  }
+}

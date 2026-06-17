@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" rx="229" fill="#FAFAF7"></rect>
+  <text x="512" y="512" text-anchor="middle" dominant-baseline="central" font-family="&#39;Noto Serif SC&#39;, &#39;Songti SC&#39;, &#39;STSong&#39;, &#39;SimSun&#39;, serif" font-weight="900" font-size="680" fill="#E63946" letter-spacing="-20">中</text>
+  <circle cx="780" cy="244" r="48" fill="#1A1614"></circle>
+</svg>

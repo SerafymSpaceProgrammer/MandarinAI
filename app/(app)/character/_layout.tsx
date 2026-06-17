@@ -7,6 +7,7 @@ export default function CharacterLayout() {
         headerShown: false,
         contentStyle: { backgroundColor: "transparent" },
         animation: "slide_from_right",
+        animationDuration: 180,
       }}
     />
   );

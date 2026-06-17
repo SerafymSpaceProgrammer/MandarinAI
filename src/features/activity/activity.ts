@@ -114,6 +114,30 @@ export async function fetchRecentActivity(
 }
 
 /**
+ * Fetch today's `daily_activity` row (or null if the user hasn't logged
+ * anything yet). Used by surface dashboards that show "Сегодня освоено +N"
+ * style nudges without pulling the full streak window.
+ */
+export async function fetchTodayActivity(
+  userId: string,
+): Promise<DailyActivityRow | null> {
+  const { data, error } = await supabase
+    .from("daily_activity")
+    .select(
+      "date, minutes_studied, words_reviewed, words_learned, characters_learned, conversations_completed, exercises_completed, xp_earned",
+    )
+    .eq("user_id", userId)
+    .eq("date", todayISO())
+    .maybeSingle();
+
+  if (error) {
+    logger.warn("fetchTodayActivity error", error.message);
+    return null;
+  }
+  return (data as DailyActivityRow | null) ?? null;
+}
+
+/**
  * Count consecutive days with activity ending at today (or yesterday if
  * today is empty — so the streak doesn't die at midnight).
  */

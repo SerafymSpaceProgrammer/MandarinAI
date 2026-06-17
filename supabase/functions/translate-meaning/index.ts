@@ -14,7 +14,16 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-const SUPPORTED_LANGS = new Set(["en", "es", "pt", "ru", "zh"]);
+const SUPPORTED_LANGS = new Set([
+  "en",
+  "es",
+  "pt",
+  "ru",
+  "zh",
+  "uk",
+  "de",
+  "pl",
+]);
 
 function corsHeaders() {
   return {
@@ -104,6 +113,31 @@ async function googleTranslate(hanzi: string, lang: string): Promise<string[] | 
   }
 }
 
+/**
+ * Translate an arbitrary English sentence into the user's language. Used for
+ * character mnemonics, which are stored only in EN in characters_dict and
+ * need to be localised on read. The Google `gtx` endpoint accepts plain text
+ * just fine; we don't bother caching here because the call site already
+ * caches per (hanzi, lang) on the client.
+ */
+async function googleTranslateText(text: string, lang: string): Promise<string | null> {
+  const url =
+    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${encodeURIComponent(lang)}&dt=t&q=${encodeURIComponent(text)}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = (await res.json()) as unknown[];
+    const segments = (data[0] as Array<[string, string]>) ?? [];
+    const joined = segments
+      .map((s) => (Array.isArray(s) ? String(s[0] ?? "") : ""))
+      .join("")
+      .trim();
+    return joined || null;
+  } catch {
+    return null;
+  }
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders() });
@@ -116,7 +150,7 @@ Deno.serve(async (req) => {
   if (!user) return jsonResponse({ error: "unauthorized" }, 401);
 
   const body = await req.json().catch(() => null) as
-    | { hanzi?: string; lang?: string; hanzis?: string[] }
+    | { hanzi?: string; lang?: string; hanzis?: string[]; text?: string }
     | null;
 
   if (!body) return jsonResponse({ error: "invalid_payload" }, 400);
@@ -124,6 +158,21 @@ Deno.serve(async (req) => {
   const lang = (body.lang ?? "en").toLowerCase();
   if (!SUPPORTED_LANGS.has(lang)) {
     return jsonResponse({ error: "unsupported_lang", lang }, 400);
+  }
+
+  // Text mode: caller passed text: string — translate as one piece, no
+  // per-hanzi cache. Used for character mnemonics. The client caches the
+  // result by (hanzi, lang) so this stays a single round-trip per detail
+  // screen.
+  if (typeof body.text === "string" && body.text.trim()) {
+    if (lang === "en") {
+      return jsonResponse({ text: body.text, translated: body.text, lang });
+    }
+    const translated = await googleTranslateText(body.text, lang);
+    if (!translated) {
+      return jsonResponse({ error: "translation_failed", lang }, 502);
+    }
+    return jsonResponse({ text: body.text, translated, lang });
   }
 
   // Batch mode: caller passed hanzis: string[]

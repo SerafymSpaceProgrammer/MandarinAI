@@ -1,6 +1,8 @@
 import * as Haptics from "expo-haptics";
+import * as Speech from "expo-speech";
+import { Volume2 } from "lucide-react-native";
 import { useState } from "react";
-import { TextInput, View } from "react-native";
+import { Pressable, TextInput, View } from "react-native";
 
 import { Button, Text } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
@@ -100,6 +102,29 @@ export function ProductionCard({ card, onRevealed }: Props) {
           <Text variant="small" color={correct ? "success" : "danger"}>
             {correct ? t.vocab.review.exactMatch : t.vocab.review.notQuite}
           </Text>
+          <Pressable
+            onPress={() => {
+              Speech.stop().catch(() => {});
+              Speech.speak(card.hanzi, { language: "zh-CN", rate: 0.9 });
+            }}
+            hitSlop={10}
+            accessibilityLabel="Озвучить"
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 6,
+              marginTop: theme.spacing.sm,
+              paddingVertical: 6,
+              paddingHorizontal: 12,
+              borderRadius: theme.radii.full,
+              backgroundColor: theme.colors.accentMuted,
+            }}
+          >
+            <Volume2 color={theme.colors.accent} size={14} strokeWidth={2.2} />
+            <Text variant="small" color="accent">
+              Озвучить
+            </Text>
+          </Pressable>
         </View>
       ) : (
         <Button label={t.vocab.review.check} onPress={check} fullWidth disabled={value.trim().length === 0} />

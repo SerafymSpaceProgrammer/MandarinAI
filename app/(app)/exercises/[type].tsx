@@ -12,6 +12,7 @@ import { FillBlankCard } from "@/features/exercises/components/FillBlankCard";
 import { ListenPickCard } from "@/features/exercises/components/ListenPickCard";
 import { MatchPairsCard } from "@/features/exercises/components/MatchPairsCard";
 import { ToneIdCard } from "@/features/exercises/components/ToneIdCard";
+import { TonePronounceCard } from "@/features/exercises/components/TonePronounceCard";
 import { TranslateCard } from "@/features/exercises/components/TranslateCard";
 import { WordOrderCard } from "@/features/exercises/components/WordOrderCard";
 import { generateExercises } from "@/features/exercises/generator";
@@ -21,8 +22,13 @@ import {
   type ExerciseType,
   type Question,
 } from "@/features/exercises/types";
-import { fetchTranslations } from "@/features/hsk/hsk";
-import { fetchAllWords, type SavedWord } from "@/features/vocab/vocab";
+import {
+  fetchExampleSentences,
+  loadExercisePool,
+  usePoolMode,
+  type PoolMode,
+} from "@/features/exercises/usePool";
+import { type SavedWord } from "@/features/vocab/vocab";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
@@ -44,35 +50,55 @@ export default function ExerciseRunner() {
 
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [actualMode, setActualMode] = useState<PoolMode>("hsk");
   const [index, setIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [finished, setFinished] = useState(false);
   const [startedAt] = useState(() => Date.now());
+  const { mode, setMode, hydrated: modeHydrated } = usePoolMode();
 
   useEffect(() => {
-    if (!session || !type) return;
+    if (!session || !type || !modeHydrated) return;
     let cancelled = false;
-    const lang = profile?.native_language ?? "en";
+    setLoading(true);
     (async () => {
-      const words = await fetchAllWords(session.user.id);
+      const { words, actualMode: used } = await loadExercisePool({
+        mode,
+        userId: session.user.id,
+        lang: profile?.native_language ?? "en",
+        hskLevel: profile?.hsk_level ?? 1,
+      });
       if (cancelled) return;
+      setActualMode(used);
 
-      // saved_words.english may have been stored in any language depending on
-      // when/where it was saved (extension defaults to native, mobile add page
-      // accepts free text, older saves are English). Re-translate to the
-      // user's current native_language so all six exercise types display the
-      // meaning they expect to see.
-      const localized = await localizeMeanings(words, lang);
-      if (cancelled) return;
+      // word-order and fill-blank need a `context_sentence`. Saved words
+      // often have one; HSK/dictionary pool entries never do. For words
+      // without context, ask dict-examples (cached) to generate one.
+      let augmented = words;
+      if (EXERCISE_META[type].needsContext) {
+        const missing = words.filter((w) => !w.context_sentence).slice(0, 20);
+        if (missing.length > 0) {
+          const map = await fetchExampleSentences(missing.map((w) => w.hanzi));
+          if (cancelled) return;
+          augmented = words.map((w) => {
+            const s = map[w.hanzi];
+            return s ? { ...w, context_sentence: s } : w;
+          });
+        }
+      }
 
-      const qs = generateExercises(type, localized, QUESTION_COUNT);
-      setQuestions(qs);
+      // Reset the run when source changes so we don't carry index past the
+      // new question count.
+      setIndex(0);
+      setCorrectCount(0);
+      setFinished(false);
+      setQuestions(generateExercises(type, augmented, QUESTION_COUNT));
       setLoading(false);
     })();
     return () => {
       cancelled = true;
     };
-  }, [session, type, profile?.native_language]);
+  }, [session, type, profile?.native_language, profile?.hsk_level, mode, modeHydrated]);
 
   function handleResult(correct: boolean) {
     if (correct) setCorrectCount((c) => c + 1);
@@ -98,7 +124,11 @@ export default function ExerciseRunner() {
       <Screen padded>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: theme.spacing.md }}>
           <Text variant="h2">{t.common.error}</Text>
-          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
+          <Button
+            label={t.common.back}
+            variant="secondary"
+            onPress={() => router.replace("/(app)/learn")}
+          />
         </View>
       </Screen>
     );
@@ -116,6 +146,11 @@ export default function ExerciseRunner() {
     );
   }
 
+  // Only word-order + fill-blank truly require context sentences (they're
+  // built from each word's `context_sentence`). Other types now always have
+  // a pool to draw from (HSK level fallback in usePool) so questions.length
+  // shouldn't be 0 — but if it is, give the user the mode picker so they
+  // can switch source instead of bouncing back.
   if (questions.length === 0) {
     return (
       <Screen padded>
@@ -131,7 +166,16 @@ export default function ExerciseRunner() {
               ? t.exercises.runnerNeedsContext
               : fmt(t.exercises.runnerNeedsWords, { n: meta.minWords })}
           </Text>
-          <Button label={t.common.back} variant="secondary" onPress={() => router.back()} />
+          <PoolModeChips
+            current={mode}
+            hskLevel={profile?.hsk_level ?? 1}
+            onChange={setMode}
+          />
+          <Button
+            label={t.common.back}
+            variant="secondary"
+            onPress={() => router.replace("/(app)/learn")}
+          />
         </View>
       </Screen>
     );
@@ -145,16 +189,29 @@ export default function ExerciseRunner() {
         type={meta.type}
         correct={correctCount}
         total={questions.length}
-        onReplay={() => {
+        onReplay={async () => {
           setIndex(0);
           setCorrectCount(0);
           setFinished(false);
-          // Regenerate fresh questions
-          if (session) {
-            fetchAllWords(session.user.id).then((words) => {
-              setQuestions(generateExercises(meta.type, words, QUESTION_COUNT));
-            });
+          if (!session || !type) return;
+          const { words } = await loadExercisePool({
+            mode,
+            userId: session.user.id,
+            lang: profile?.native_language ?? "en",
+            hskLevel: profile?.hsk_level ?? 1,
+          });
+          let augmented = words;
+          if (EXERCISE_META[type].needsContext) {
+            const missing = words.filter((w) => !w.context_sentence).slice(0, 20);
+            if (missing.length > 0) {
+              const map = await fetchExampleSentences(missing.map((w) => w.hanzi));
+              augmented = words.map((w) => {
+                const s = map[w.hanzi];
+                return s ? { ...w, context_sentence: s } : w;
+              });
+            }
           }
+          setQuestions(generateExercises(type, augmented, QUESTION_COUNT));
         }}
       />
     );
@@ -174,7 +231,16 @@ export default function ExerciseRunner() {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-          <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.close}>
+          <Pressable
+            // Multiple visits to /exercises/<type> accumulate inside the
+            // exercises Stack; `router.back()` would pop to whatever
+            // exercise the user last had open. Replace straight to Learn
+            // so closing X always lands on the library, not a sibling
+            // exercise.
+            onPress={() => router.replace("/(app)/learn")}
+            hitSlop={16}
+            accessibilityLabel={t.common.close}
+          >
             <X color={theme.colors.textSecondary} size={24} strokeWidth={2} />
           </Pressable>
           <Text variant="small" color="tertiary">
@@ -203,6 +269,18 @@ export default function ExerciseRunner() {
             }}
           />
         </View>
+        <PoolModeChips
+          current={mode}
+          hskLevel={profile?.hsk_level ?? 1}
+          onChange={setMode}
+        />
+        {mode !== actualMode ? (
+          <Text variant="caption" color="tertiary" align="center">
+            {actualMode === "any"
+              ? t.exercises.poolFellBackToAny
+              : fmt(t.exercises.poolFellBackToHsk, { n: profile?.hsk_level ?? 1 })}
+          </Text>
+        ) : null}
       </View>
 
       <ScrollView
@@ -219,23 +297,57 @@ export default function ExerciseRunner() {
 }
 
 /**
- * Patch each saved word's `english` field with a fresh translation in the
- * user's current native language. We hit fetchTranslations once for the
- * whole batch (it caches per-language in supabase) so the cost is one
- * round-trip, not N. Words missing a translation keep whatever was in
- * saved_words.
+ * Three-chip selector at the top of the runner: Saved / HSK N / Any.
+ * Persists across sessions via `usePoolMode` so the user's preference is
+ * remembered between visits.
  */
-async function localizeMeanings(words: SavedWord[], lang: string): Promise<SavedWord[]> {
-  if (words.length === 0) return words;
-  const map = await fetchTranslations(
-    words.map((w) => w.hanzi),
-    lang,
+function PoolModeChips({
+  current,
+  hskLevel,
+  onChange,
+}: {
+  current: PoolMode;
+  hskLevel: number;
+  onChange: (m: PoolMode) => void;
+}) {
+  const theme = useTheme();
+  const t = useT();
+  const items: { id: PoolMode; label: string }[] = [
+    { id: "saved", label: t.exercises.poolSaved },
+    { id: "hsk", label: fmt(t.exercises.poolHsk, { n: hskLevel }) },
+    { id: "any", label: t.exercises.poolAny },
+  ];
+  return (
+    <View style={{ flexDirection: "row", gap: 6, alignSelf: "center" }}>
+      {items.map((it) => {
+        const active = it.id === current;
+        return (
+          <Pressable
+            key={it.id}
+            onPress={() => onChange(it.id)}
+            accessibilityRole="button"
+            accessibilityState={{ selected: active }}
+            style={{
+              paddingVertical: 4,
+              paddingHorizontal: 10,
+              borderRadius: theme.radii.full,
+              backgroundColor: active ? theme.colors.accent : theme.colors.surface,
+              borderWidth: 1,
+              borderColor: active ? theme.colors.accent : theme.colors.border,
+            }}
+          >
+            <Text
+              variant="caption"
+              color={active ? "onAccent" : "secondary"}
+              style={{ letterSpacing: 0 }}
+            >
+              {it.label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
   );
-  return words.map((w) => {
-    const translated = map[w.hanzi]?.[0];
-    if (!translated) return w;
-    return { ...w, english: translated };
-  });
 }
 
 function QuestionView({
@@ -254,6 +366,8 @@ function QuestionView({
       return <MatchPairsCard question={question} onResult={onResult} />;
     case "tone-id":
       return <ToneIdCard question={question} onResult={onResult} />;
+    case "tone-pronounce":
+      return <TonePronounceCard question={question} onResult={onResult} />;
     case "word-order":
       return <WordOrderCard question={question} onResult={onResult} />;
     case "fill-blank":

@@ -1,0 +1,29 @@
+{
+  "videoId": "demo-youtube-stub",
+  "lines": [
+    {
+      "start": 0,
+      "end": 3,
+      "zh": "你好，欢迎学习汉语。",
+      "translations": {
+        "ru": "Привет, добро пожаловать в изучение китайского.",
+        "en": "Hello, welcome to learning Chinese.",
+        "uk": "Привіт, ласкаво просимо вивчати китайську.",
+        "de": "Hallo, willkommen beim Chinesischlernen.",
+        "pl": "Cześć, witamy w nauce chińskiego."
+      }
+    },
+    {
+      "start": 3,
+      "end": 7,
+      "zh": "替换 catalog.json 里的 youtubeId。",
+      "translations": {
+        "ru": "Замените youtubeId в catalog.json.",
+        "en": "Replace youtubeId in catalog.json.",
+        "uk": "Замініть youtubeId у catalog.json.",
+        "de": "Ersetze youtubeId in catalog.json.",
+        "pl": "Zastąp youtubeId w catalog.json."
+      }
+    }
+  ]
+}

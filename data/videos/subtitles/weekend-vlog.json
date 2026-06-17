@@ -1,0 +1,149 @@
+{
+  "videoId": "weekend-vlog",
+  "lines": [
+    {
+      "start": 0,
+      "end": 4,
+      "zh": "今天是星期六，我没去上课。",
+      "translations": {
+        "ru": "Сегодня суббота, я не пошёл на занятия.",
+        "en": "Today is Saturday, I didn't go to class.",
+        "uk": "Сьогодні субота, я не пішов на заняття.",
+        "de": "Heute ist Samstag, ich bin nicht zum Unterricht gegangen.",
+        "pl": "Dziś jest sobota, nie poszedłem na zajęcia."
+      }
+    },
+    {
+      "start": 4,
+      "end": 8,
+      "zh": "早上九点，我起床了。",
+      "translations": {
+        "ru": "В девять утра я встал.",
+        "en": "I got up at nine in the morning.",
+        "uk": "О дев'ятій ранку я встав.",
+        "de": "Um neun Uhr morgens bin ich aufgestanden.",
+        "pl": "Wstałem o dziewiątej rano."
+      }
+    },
+    {
+      "start": 8,
+      "end": 13,
+      "zh": "我在家里吃了早饭。",
+      "translations": {
+        "ru": "Я позавтракал дома.",
+        "en": "I had breakfast at home.",
+        "uk": "Я поснідав удома.",
+        "de": "Ich habe zu Hause gefrühstückt.",
+        "pl": "Zjadłem śniadanie w domu."
+      }
+    },
+    {
+      "start": 13,
+      "end": 18,
+      "zh": "中午我和朋友去公园。",
+      "translations": {
+        "ru": "В обед мы с другом пошли в парк.",
+        "en": "At noon I went to the park with a friend.",
+        "uk": "Опівдні я з другом пішов у парк.",
+        "de": "Mittags bin ich mit einem Freund in den Park gegangen.",
+        "pl": "W południe poszedłem do parku z przyjacielem."
+      }
+    },
+    {
+      "start": 18,
+      "end": 23,
+      "zh": "公园里有很多人。",
+      "translations": {
+        "ru": "В парке было много людей.",
+        "en": "There were lots of people in the park.",
+        "uk": "У парку було багато людей.",
+        "de": "Im Park waren viele Leute.",
+        "pl": "W parku było dużo ludzi."
+      }
+    },
+    {
+      "start": 23,
+      "end": 28,
+      "zh": "天气很好，不太冷。",
+      "translations": {
+        "ru": "Погода хорошая, не очень холодно.",
+        "en": "The weather is nice, not too cold.",
+        "uk": "Погода гарна, не дуже холодно.",
+        "de": "Das Wetter ist schön, nicht zu kalt.",
+        "pl": "Pogoda jest dobra, nie jest za zimno."
+      }
+    },
+    {
+      "start": 28,
+      "end": 33,
+      "zh": "我们看见一只可爱的小狗。",
+      "translations": {
+        "ru": "Мы увидели милую собачку.",
+        "en": "We saw a cute little dog.",
+        "uk": "Ми побачили милу собачку.",
+        "de": "Wir haben einen süßen kleinen Hund gesehen.",
+        "pl": "Zobaczyliśmy uroczego małego psa."
+      }
+    },
+    {
+      "start": 33,
+      "end": 38,
+      "zh": "下午我去咖啡店喝咖啡。",
+      "translations": {
+        "ru": "После обеда я пошёл в кофейню выпить кофе.",
+        "en": "In the afternoon I went to a café for coffee.",
+        "uk": "Після обіду я пішов до кав'ярні випити кави.",
+        "de": "Nachmittags bin ich ins Café einen Kaffee trinken gegangen.",
+        "pl": "Po południu poszedłem do kawiarni na kawę."
+      }
+    },
+    {
+      "start": 38,
+      "end": 43,
+      "zh": "晚上我和家人吃饭。",
+      "translations": {
+        "ru": "Вечером я ужинал с семьёй.",
+        "en": "In the evening I had dinner with family.",
+        "uk": "Увечері я вечеряв з родиною.",
+        "de": "Abends habe ich mit der Familie gegessen.",
+        "pl": "Wieczorem zjadłem kolację z rodziną."
+      }
+    },
+    {
+      "start": 43,
+      "end": 48,
+      "zh": "妈妈做的菜真好吃！",
+      "translations": {
+        "ru": "Мамина еда очень вкусная!",
+        "en": "Mom's cooking is really delicious!",
+        "uk": "Мамина їжа дуже смачна!",
+        "de": "Mamas Essen ist wirklich lecker!",
+        "pl": "Jedzenie mamy jest naprawdę smaczne!"
+      }
+    },
+    {
+      "start": 48,
+      "end": 54,
+      "zh": "饭后我们看了一会儿电视。",
+      "translations": {
+        "ru": "После ужина мы немного смотрели телевизор.",
+        "en": "After dinner we watched TV for a while.",
+        "uk": "Після вечері ми трохи дивилися телевізор.",
+        "de": "Nach dem Essen haben wir eine Weile ferngesehen.",
+        "pl": "Po kolacji oglądaliśmy chwilę telewizję."
+      }
+    },
+    {
+      "start": 54,
+      "end": 60,
+      "zh": "今天的周末非常开心。",
+      "translations": {
+        "ru": "Сегодняшние выходные были очень весёлыми.",
+        "en": "Today's weekend was really fun.",
+        "uk": "Сьогоднішні вихідні були дуже веселими.",
+        "de": "Das heutige Wochenende war sehr schön.",
+        "pl": "Dzisiejszy weekend był bardzo udany."
+      }
+    }
+  ]
+}

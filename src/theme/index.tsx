@@ -1,5 +1,6 @@
-import { createContext, useContext, useMemo, type ReactNode } from "react";
-import { useColorScheme } from "react-native";
+import * as NavigationBar from "expo-navigation-bar";
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from "react";
+import { Platform, useColorScheme } from "react-native";
 
 import { useUserStore } from "@/stores/userStore";
 import type { AppThemeId } from "@/types";
@@ -67,6 +68,19 @@ export function ThemeProvider({ children, forceThemeId }: ThemeProviderProps) {
     const app = resolveAppTheme(preferenceId, systemScheme);
     return buildTheme(app, preferenceId);
   }, [preferenceId, systemScheme]);
+
+  // Push the active surface colour and matching button tint into the
+  // Android system navigation bar so the strip below the tab bar matches
+  // the theme. Without this, the nav bar stays white on a dark theme and
+  // breaks the otherwise unified palette. iOS has no equivalent (the
+  // home-indicator area inherits the bg automatically via SafeAreaView).
+  useEffect(() => {
+    if (Platform.OS !== "android") return;
+    NavigationBar.setBackgroundColorAsync(value.colors.bg).catch(() => {});
+    NavigationBar.setButtonStyleAsync(value.scheme === "dark" ? "light" : "dark").catch(
+      () => {},
+    );
+  }, [value.colors.bg, value.scheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

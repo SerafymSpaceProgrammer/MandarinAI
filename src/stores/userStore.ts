@@ -4,6 +4,7 @@ import { create } from "zustand";
 import { fetchOrCreateProfile, supabase } from "@/api";
 import type { Profile } from "@/types";
 import { logger } from "@/lib/logger";
+import { identifyRevenueCat, unidentifyRevenueCat } from "@/lib/revenuecat";
 
 type UserState = {
   /** true while we boot and read the persisted session from AsyncStorage. */
@@ -33,6 +34,11 @@ export const useUserStore = create<UserState>((set, get) => ({
 
     const session = data.session ?? null;
     const profile = session ? await fetchOrCreateProfile(session.user.id) : null;
+    if (session) {
+      // Identify the RevenueCat user so any subsequent purchase ties to
+      // our Supabase user id (and the webhook can route it correctly).
+      await identifyRevenueCat(session.user.id);
+    }
     set({ session, profile, initializing: false });
 
     supabase.auth.onAuthStateChange(async (event, nextSession) => {
@@ -40,6 +46,7 @@ export const useUserStore = create<UserState>((set, get) => ({
 
       if (!nextSession) {
         set({ session: null, profile: null });
+        await unidentifyRevenueCat();
         return;
       }
 
@@ -49,6 +56,10 @@ export const useUserStore = create<UserState>((set, get) => ({
       const needsProfile = !get().profile || userChanged;
 
       set({ session: nextSession });
+
+      if (userChanged || !prev) {
+        await identifyRevenueCat(nextSession.user.id);
+      }
 
       if (needsProfile) {
         const profile = await fetchOrCreateProfile(nextSession.user.id);

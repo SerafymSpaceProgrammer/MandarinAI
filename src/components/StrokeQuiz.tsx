@@ -1,4 +1,4 @@
-import { useImperativeHandle, useRef, useState, forwardRef } from "react";
+import { useEffect, useImperativeHandle, useRef, useState, forwardRef } from "react";
 import { Pressable, View } from "react-native";
 import { WebView, type WebViewMessageEvent } from "react-native-webview";
 import { Lightbulb, RotateCcw } from "lucide-react-native";
@@ -21,6 +21,28 @@ type Props = {
   onComplete: (info: { mistakes: number; totalStrokes: number }) => void;
   /** Fired any time hanzi-writer can't render the character (no data, etc.). */
   onUnavailable?: (message: string) => void;
+  /**
+   * Live progress updates so a parent can render its own chrome (stroke
+   * counter, per-stroke chips, mistake tally). Fires on every state change.
+   */
+  onProgress?: (info: {
+    strokesDrawn: number;
+    totalStrokes: number;
+    mistakes: number;
+    done: boolean;
+    ready: boolean;
+  }) => void;
+  /**
+   * Hide the built-in progress text + hint/restart buttons + bordered box.
+   * The parent owns the surrounding UI (used by the redesigned Write step,
+   * which wraps the bare canvas in a paper card with its own controls).
+   */
+  chromeless?: boolean;
+  /** Canvas background passed to the HTML body. "transparent" lets a grid
+   *  drawn behind the WebView show through. Defaults to theme surface. */
+  canvasBg?: string;
+  /** Draw a faint mi-zi-ge (米字格) guide grid behind the character. */
+  showGrid?: boolean;
 };
 
 export type StrokeQuizHandle = {
@@ -39,7 +61,16 @@ export type StrokeQuizHandle = {
  * version do the heavy lifting and just relay events back to RN.
  */
 export const StrokeQuiz = forwardRef<StrokeQuizHandle, Props>(function StrokeQuiz(
-  { hanzi, size = 300, onComplete, onUnavailable },
+  {
+    hanzi,
+    size = 300,
+    onComplete,
+    onUnavailable,
+    onProgress,
+    chromeless = false,
+    canvasBg,
+    showGrid = false,
+  },
   ref,
 ) {
   const theme = useTheme();
@@ -51,15 +82,31 @@ export const StrokeQuiz = forwardRef<StrokeQuizHandle, Props>(function StrokeQui
   const [mistakes, setMistakes] = useState(0);
   const [done, setDone] = useState(false);
 
+  // Keep the latest onProgress in a ref so the emit effect doesn't re-fire
+  // just because the parent passed a fresh inline callback.
+  const onProgressRef = useRef(onProgress);
+  onProgressRef.current = onProgress;
+  useEffect(() => {
+    onProgressRef.current?.({
+      strokesDrawn,
+      totalStrokes: strokeCount ?? 0,
+      mistakes,
+      done,
+      ready,
+    });
+  }, [strokesDrawn, strokeCount, mistakes, done, ready]);
+
   const html = buildQuizHtml({
     hanzi,
-    bg: theme.colors.surface,
+    bg: canvasBg ?? theme.colors.surface,
     stroke: theme.colors.textPrimary,
     radical: theme.colors.accent,
     outline: theme.colors.border,
     highlight: theme.colors.accent,
     mistake: theme.colors.danger,
     drawing: theme.colors.accent,
+    showGrid,
+    gridColor: "#F1C7CB",
   });
 
   function send(command: "restart" | "hint") {
@@ -110,6 +157,33 @@ export const StrokeQuiz = forwardRef<StrokeQuizHandle, Props>(function StrokeQui
     }
   }
 
+  const webview = (
+    <WebView
+      ref={webviewRef}
+      source={{ html, baseUrl: "https://cdn.jsdelivr.net/" }}
+      originWhitelist={["*"]}
+      onMessage={onMessage}
+      javaScriptEnabled
+      domStorageEnabled
+      scrollEnabled={false}
+      bounces={false}
+      androidLayerType="hardware"
+      mixedContentMode="always"
+      style={{ backgroundColor: "transparent", width: size, height: size }}
+    />
+  );
+
+  // Chromeless: just the bare canvas. The parent (redesigned Write step)
+  // renders its own paper card, stats row, stroke chips and controls and
+  // drives hint/restart through the ref + progress through onProgress.
+  if (chromeless) {
+    return (
+      <View style={{ width: size, height: size, overflow: "hidden" }}>
+        {webview}
+      </View>
+    );
+  }
+
   return (
     <View style={{ alignItems: "center", gap: theme.spacing.md }}>
       <View
@@ -123,19 +197,7 @@ export const StrokeQuiz = forwardRef<StrokeQuizHandle, Props>(function StrokeQui
           overflow: "hidden",
         }}
       >
-        <WebView
-          ref={webviewRef}
-          source={{ html, baseUrl: "https://cdn.jsdelivr.net/" }}
-          originWhitelist={["*"]}
-          onMessage={onMessage}
-          javaScriptEnabled
-          domStorageEnabled
-          scrollEnabled={false}
-          bounces={false}
-          androidLayerType="hardware"
-          mixedContentMode="always"
-          style={{ backgroundColor: "transparent", width: size, height: size }}
-        />
+        {webview}
       </View>
 
       <View style={{ alignItems: "center", gap: theme.spacing.xs }}>
@@ -229,8 +291,35 @@ function buildQuizHtml(opts: {
   highlight: string;
   mistake: string;
   drawing: string;
+  showGrid?: boolean;
+  gridColor?: string;
 }): string {
-  const { hanzi, bg, stroke, radical, outline, highlight, mistake, drawing } = opts;
+  const {
+    hanzi,
+    bg,
+    stroke,
+    radical,
+    outline,
+    highlight,
+    mistake,
+    drawing,
+    showGrid = false,
+    gridColor = "#F1C7CB",
+  } = opts;
+  // mi-zi-ge (米字格): outer square + center cross + both diagonals, dashed.
+  // Drawn as an SVG that exactly overlays the hanzi-writer target so the
+  // guide lines stay aligned with the character at any size.
+  const gridSvg = showGrid
+    ? `<svg id="grid" viewBox="0 0 100 100" preserveAspectRatio="none"
+         style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+         <rect x="1.5" y="1.5" width="97" height="97" fill="none"
+               stroke="${gridColor}" stroke-width="0.6" stroke-dasharray="2 2"/>
+         <line x1="50" y1="0" x2="50" y2="100" stroke="${gridColor}" stroke-width="0.6" stroke-dasharray="2 2"/>
+         <line x1="0" y1="50" x2="100" y2="50" stroke="${gridColor}" stroke-width="0.6" stroke-dasharray="2 2"/>
+         <line x1="0" y1="0" x2="100" y2="100" stroke="${gridColor}" stroke-width="0.6" stroke-dasharray="2 2"/>
+         <line x1="100" y1="0" x2="0" y2="100" stroke="${gridColor}" stroke-width="0.6" stroke-dasharray="2 2"/>
+       </svg>`
+    : "";
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -250,12 +339,16 @@ function buildQuizHtml(opts: {
       -webkit-tap-highlight-color: transparent;
       touch-action: none;
     }
-    #target { width: 92%; height: 92%; touch-action: none; }
+    #stage { position: relative; width: 92%; height: 92%; touch-action: none; }
+    #target { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
     #target svg { touch-action: none; }
   </style>
 </head>
 <body>
-  <div id="target"></div>
+  <div id="stage">
+    ${gridSvg}
+    <div id="target"></div>
+  </div>
   <script>
     function post(payload) {
       try { window.ReactNativeWebView.postMessage(JSON.stringify(payload)); } catch (e) {}

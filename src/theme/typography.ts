@@ -15,6 +15,18 @@ const systemChinese = Platform.select({
 export const fonts = {
   latin: systemSans as string,
   chinese: systemChinese as string,
+  // Brand fonts loaded in app/_layout.tsx via @expo-google-fonts. Use these
+  // for surfaces that demand the design's tonal hierarchy:
+  //   • chineseSerif — large display hanzi (word detail, flashcards)
+  //   • pinyinMono   — pinyin / numeric labels
+  //   • ui           — Inter for headings + bold UI copy
+  chineseSerif: "NotoSerifSC_700Bold",
+  chineseSerifBlack: "NotoSerifSC_900Black",
+  pinyinMono: "JetBrainsMono_500Medium",
+  ui: "Inter_700Bold",
+  uiBold: "Inter_800ExtraBold",
+  uiMedium: "Inter_500Medium",
+  uiSemiBold: "Inter_600SemiBold",
 } as const;
 
 export const typography = {

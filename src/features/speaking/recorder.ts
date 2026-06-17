@@ -1,5 +1,6 @@
 import { Audio } from "expo-av";
 
+import { restorePlaybackMode } from "@/lib/audioMode";
 import { logger } from "@/lib/logger";
 
 export type RecordingHandle = {
@@ -84,9 +85,9 @@ export async function startRecording(): Promise<RecordingHandle> {
       const uri = recording.getURI();
       if (!uri) return null;
 
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: false,
-      });
+      // Flip the audio session back to playback mode — otherwise the next
+      // Speech.speak() routes through the iPhone earpiece (very quiet).
+      await restorePlaybackMode();
 
       const status = recording._finalDurationMillis;
       void status;

@@ -1,15 +1,56 @@
+import {
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+} from "@expo-google-fonts/inter";
+import { JetBrainsMono_500Medium } from "@expo-google-fonts/jetbrains-mono";
+import {
+  NotoSerifSC_700Bold,
+  NotoSerifSC_900Black,
+} from "@expo-google-fonts/noto-serif-sc";
+import { useFonts } from "expo-font";
 import { Stack, usePathname, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
-import { ActivityIndicator, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { ToastProvider } from "@/components/ui";
+import { BrandLoader, ToastProvider } from "@/components/ui";
 import { I18nProvider } from "@/i18n/i18n";
+import { configurePlaybackMode } from "@/lib/audioMode";
+import { initRevenueCat } from "@/lib/revenuecat";
+import { applyScrollDefaults } from "@/lib/scrollDefaults";
 import { useUserStore } from "@/stores/userStore";
 import { ThemeProvider, useTheme } from "@/theme";
 
+// Hide all native scroll indicators app-wide. Runs once at module load so
+// every ScrollView / FlatList rendered below picks up the new default.
+applyScrollDefaults();
+
 export default function RootLayout() {
+  // Load the brand fonts before anything renders. The design uses Inter for
+  // UI, Noto Serif SC for the big hanzi shown on detail / flashcard surfaces,
+  // and JetBrains Mono for pinyin and numbers. RN gracefully falls back to
+  // system fonts while the assets are loading on first launch.
+  const [fontsLoaded] = useFonts({
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+    JetBrainsMono_500Medium,
+    NotoSerifSC_700Bold,
+    NotoSerifSC_900Black,
+  });
+
+  useEffect(() => {
+    void configurePlaybackMode();
+    void initRevenueCat();
+  }, []);
+
+  // Render-block while fonts load on the very first launch. Subsequent
+  // launches resolve `fontsLoaded` synchronously from the cached fonts.
+  if (!fontsLoaded) return null;
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
@@ -72,12 +113,12 @@ function AuthGate({ children }: { children: React.ReactNode }) {
   }, [initializing, session, profile, segments, pathname, router]);
 
   if (initializing) {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: theme.colors.bg }}>
-        <ActivityIndicator color={theme.colors.accent} />
-      </View>
-    );
+    return <BrandLoader />;
   }
 
+  // theme is still needed for the rest of the tree to consume — referenced
+  // by useTheme() elsewhere. We just don't render anything theme-bound here
+  // anymore now that BrandLoader pulls its own theme.
+  void theme;
   return <>{children}</>;
 }

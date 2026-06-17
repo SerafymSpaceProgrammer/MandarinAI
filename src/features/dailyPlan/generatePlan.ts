@@ -1,3 +1,4 @@
+import { fmt, type Translations } from "@/i18n/strings";
 import type { Profile } from "@/types";
 
 export type PlanItemType =
@@ -25,6 +26,7 @@ export type PlanItem = {
 };
 
 export type PlanInput = {
+  t: Translations;
   profile: Profile;
   dueCount: number;
   savedWordsTotal: number;
@@ -40,9 +42,13 @@ export type PlanInput = {
  * The generator tries to respect the user's `daily_goal_minutes` budget —
  * items are appended in priority order until the budget is roughly filled.
  * Due reviews always lead; they're the one thing that decays if skipped.
+ *
+ * All user-facing strings come from the i18n dictionary so the home screen
+ * renders in the user's chosen language (en/es/pt/de/pl/ru/uk/zh).
  */
 export function generatePlan(input: PlanInput): PlanItem[] {
   const {
+    t,
     profile,
     dueCount,
     savedWordsTotal,
@@ -60,8 +66,11 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     items.push({
       id: "vocab_review",
       type: "vocab_review",
-      title: "Review vocabulary",
-      subtitle: `${dueCount} ${dueCount === 1 ? "card" : "cards"} due`,
+      title: t.home.planVocabReviewTitle,
+      subtitle: fmt(
+        dueCount === 1 ? t.home.planVocabReviewSubtitleOne : t.home.planVocabReviewSubtitle,
+        { n: dueCount },
+      ),
       emoji: "🃏",
       durationMin: Math.min(Math.max(5, Math.ceil(target / 4)), 20),
       priority: 100,
@@ -76,12 +85,14 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     items.push({
       id: "new_vocab",
       type: "new_vocab",
-      title: "Learn new words",
-      subtitle: `HSK ${profile.hsk_level} · 5 fresh words`,
+      title: t.home.planNewVocabTitle,
+      subtitle: fmt(t.home.planNewVocabSubtitle, { hsk: profile.hsk_level }),
       emoji: "📚",
       durationMin: 5,
       priority: 80,
-      href: null, // wired up in Phase 4
+      // Land on the HSK catalog filtered to the user's current level — the
+      // most natural place to discover new words.
+      href: "/(app)/hsk",
       progress: 0,
     });
   }
@@ -90,8 +101,8 @@ export function generatePlan(input: PlanInput): PlanItem[] {
   items.push({
     id: "character_new",
     type: "character_new",
-    title: "Practice characters",
-    subtitle: "Strokes + mnemonics",
+    title: t.home.planCharacterTitle,
+    subtitle: t.home.planCharacterSubtitle,
     emoji: "字",
     durationMin: 5,
     priority: 60,
@@ -99,16 +110,20 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     progress: 0,
   });
 
-  // ── 4. Grammar — keep patterns fresh.
+  // ── 4. Grammar — drill one construction. Routes to the Pattern Sprints
+  //    index, where the user picks an HSK construction and runs through
+  //    ~25 example phrases on a timer. The subtitle calls out a level-
+  //    appropriate suggested pattern so the user knows roughly what's in
+  //    store before tapping.
   items.push({
     id: "grammar",
     type: "grammar",
-    title: "One grammar pattern",
-    subtitle: levelAppropriatePattern(profile.hsk_level),
+    title: t.home.planGrammarTitle,
+    subtitle: levelAppropriatePattern(profile.hsk_level, t),
     emoji: "📐",
     durationMin: 4,
     priority: 55,
-    href: null,
+    href: "/(app)/grammar",
     progress: 0,
   });
 
@@ -117,8 +132,8 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     items.push({
       id: "speaking",
       type: "speaking",
-      title: "Speaking scenario",
-      subtitle: "5-minute conversation",
+      title: t.home.planSpeakingTitle,
+      subtitle: t.home.planSpeakingSubtitle,
       emoji: "🗣️",
       durationMin: 5,
       priority: 50,
@@ -132,12 +147,12 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     items.push({
       id: "listening",
       type: "listening",
-      title: "Listening snippet",
-      subtitle: "Short audio + quiz",
+      title: t.home.planListeningTitle,
+      subtitle: t.home.planListeningSubtitle,
       emoji: "🎧",
       durationMin: 5,
       priority: 40,
-      href: null,
+      href: "/(app)/practice/listening",
       progress: 0,
     });
   }
@@ -147,12 +162,12 @@ export function generatePlan(input: PlanInput): PlanItem[] {
     items.push({
       id: "reading",
       type: "reading",
-      title: "Read a short story",
-      subtitle: "Tap unknown words",
+      title: t.home.planReadingTitle,
+      subtitle: t.home.planReadingSubtitle,
       emoji: "📖",
       durationMin: 7,
       priority: 30,
-      href: null,
+      href: "/(app)/reading",
       progress: 0,
     });
   }
@@ -173,18 +188,18 @@ export function generatePlan(input: PlanInput): PlanItem[] {
   return trimmed;
 }
 
-function levelAppropriatePattern(level: number): string {
+function levelAppropriatePattern(level: number, t: Translations): string {
   switch (level) {
     case 1:
     case 2:
-      return "Basic sentence order: S + V + O";
+      return t.home.planGrammarBasic;
     case 3:
-      return "是…的 emphasis";
+      return t.home.planGrammarShi;
     case 4:
-      return "把 construction";
+      return t.home.planGrammarBa;
     case 5:
-      return "Resultative complements";
+      return t.home.planGrammarResultative;
     default:
-      return "Nuance: 也许 vs 可能";
+      return t.home.planGrammarNuance;
   }
 }

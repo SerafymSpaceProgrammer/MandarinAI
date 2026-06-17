@@ -17,7 +17,10 @@ const CHOICES: Choice[] = [
   { code: "en", flag: "🇺🇸", label: "English" },
   { code: "es", flag: "🇪🇸", label: "Español" },
   { code: "pt", flag: "🇵🇹", label: "Português" },
+  { code: "de", flag: "🇩🇪", label: "Deutsch" },
+  { code: "pl", flag: "🇵🇱", label: "Polski" },
   { code: "ru", flag: "🇷🇺", label: "Русский" },
+  { code: "uk", flag: "🇺🇦", label: "Українська" },
 ];
 
 export default function LanguageStep() {
@@ -32,7 +35,7 @@ export default function LanguageStep() {
   }
 
   return (
-    <Screen padded>
+    <Screen padded edges={["top", "bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.sm }}>
           <Text variant="h1">{t.onboarding.language.title}</Text>

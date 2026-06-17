@@ -10,7 +10,7 @@ export default function Welcome() {
   const t = useT();
 
   return (
-    <Screen padded>
+    <Screen padded edges={["top", "bottom", "left", "right"]}>
       <View style={{ flex: 1, justifyContent: "space-between", paddingVertical: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.md, marginTop: theme.spacing["4xl"] }}>
           <Text variant="display" chinese align="center" style={{ color: theme.colors.accent }}>

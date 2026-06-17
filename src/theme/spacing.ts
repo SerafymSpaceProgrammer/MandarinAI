@@ -32,17 +32,17 @@ type ShadowToken = {
 export const shadows: Record<"sm" | "md" | "lg" | "xl", ShadowToken> = {
   sm: {
     shadowColor: "#000000",
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 1 },
-    elevation: 1,
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   md: {
     shadowColor: "#000000",
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 3,
+    shadowOpacity: 0.1,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 4,
   },
   lg: {
     shadowColor: "#000000",

@@ -70,7 +70,7 @@ export default function DoneStep() {
   }
 
   return (
-    <Screen padded>
+    <Screen padded edges={["top", "bottom", "left", "right"]}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: theme.spacing.xl }}>
         <Animated.View style={{ transform: [{ scale }], opacity: fade }}>
           <View

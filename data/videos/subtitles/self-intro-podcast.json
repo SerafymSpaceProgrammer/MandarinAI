@@ -1,0 +1,201 @@
+{
+  "videoId": "self-intro-podcast",
+  "lines": [
+    {
+      "start": 0,
+      "end": 3,
+      "zh": "你好！",
+      "translations": {
+        "ru": "Привет!",
+        "en": "Hello!",
+        "uk": "Привіт!",
+        "de": "Hallo!",
+        "pl": "Cześć!",
+        "es": "¡Hola!",
+        "pt": "Olá!"
+      }
+    },
+    {
+      "start": 3,
+      "end": 6.5,
+      "zh": "你好，我叫李明。",
+      "translations": {
+        "ru": "Привет, меня зовут Ли Мин.",
+        "en": "Hi, my name is Li Ming.",
+        "uk": "Привіт, мене звати Лі Мін.",
+        "de": "Hallo, ich heiße Li Ming.",
+        "pl": "Cześć, nazywam się Li Ming.",
+        "es": "Hola, me llamo Li Ming.",
+        "pt": "Olá, meu nome é Li Ming."
+      }
+    },
+    {
+      "start": 6.5,
+      "end": 10,
+      "zh": "我叫玛丽亚。",
+      "translations": {
+        "ru": "Меня зовут Мария.",
+        "en": "My name is Maria.",
+        "uk": "Мене звати Марія.",
+        "de": "Ich heiße Maria.",
+        "pl": "Nazywam się Maria.",
+        "es": "Me llamo María.",
+        "pt": "Meu nome é Maria."
+      }
+    },
+    {
+      "start": 10,
+      "end": 14,
+      "zh": "你是哪国人？",
+      "translations": {
+        "ru": "Из какой ты страны?",
+        "en": "What country are you from?",
+        "uk": "З якої ти країни?",
+        "de": "Aus welchem Land kommst du?",
+        "pl": "Z jakiego jesteś kraju?",
+        "es": "¿De qué país eres?",
+        "pt": "De que país você é?"
+      }
+    },
+    {
+      "start": 14,
+      "end": 18,
+      "zh": "我是中国人。",
+      "translations": {
+        "ru": "Я китаец.",
+        "en": "I'm Chinese.",
+        "uk": "Я китаєць.",
+        "de": "Ich bin Chinese.",
+        "pl": "Jestem Chińczykiem.",
+        "es": "Soy chino.",
+        "pt": "Eu sou chinês."
+      }
+    },
+    {
+      "start": 18,
+      "end": 22,
+      "zh": "你呢？",
+      "translations": {
+        "ru": "А ты?",
+        "en": "And you?",
+        "uk": "А ти?",
+        "de": "Und du?",
+        "pl": "A ty?",
+        "es": "¿Y tú?",
+        "pt": "E você?"
+      }
+    },
+    {
+      "start": 22,
+      "end": 27,
+      "zh": "我是俄罗斯人。",
+      "translations": {
+        "ru": "Я из России.",
+        "en": "I'm Russian.",
+        "uk": "Я з Росії.",
+        "de": "Ich bin Russin.",
+        "pl": "Jestem Rosjanką.",
+        "es": "Soy rusa.",
+        "pt": "Eu sou russa."
+      }
+    },
+    {
+      "start": 27,
+      "end": 32,
+      "zh": "你做什么工作？",
+      "translations": {
+        "ru": "Кем ты работаешь?",
+        "en": "What do you do?",
+        "uk": "Ким ти працюєш?",
+        "de": "Was machst du beruflich?",
+        "pl": "Czym się zajmujesz?",
+        "es": "¿A qué te dedicas?",
+        "pt": "O que você faz?"
+      }
+    },
+    {
+      "start": 32,
+      "end": 36,
+      "zh": "我是学生。",
+      "translations": {
+        "ru": "Я студент.",
+        "en": "I'm a student.",
+        "uk": "Я студент.",
+        "de": "Ich bin Studentin.",
+        "pl": "Jestem studentką.",
+        "es": "Soy estudiante.",
+        "pt": "Eu sou estudante."
+      }
+    },
+    {
+      "start": 36,
+      "end": 40,
+      "zh": "我学习汉语。",
+      "translations": {
+        "ru": "Я изучаю китайский.",
+        "en": "I study Chinese.",
+        "uk": "Я вивчаю китайську.",
+        "de": "Ich lerne Chinesisch.",
+        "pl": "Uczę się chińskiego.",
+        "es": "Estudio chino.",
+        "pt": "Estudo chinês."
+      }
+    },
+    {
+      "start": 40,
+      "end": 44,
+      "zh": "你的中文真好！",
+      "translations": {
+        "ru": "У тебя отличный китайский!",
+        "en": "Your Chinese is really good!",
+        "uk": "Твоя китайська чудова!",
+        "de": "Dein Chinesisch ist wirklich gut!",
+        "pl": "Twój chiński jest naprawdę dobry!",
+        "es": "¡Tu chino es muy bueno!",
+        "pt": "Seu chinês é muito bom!"
+      }
+    },
+    {
+      "start": 44,
+      "end": 48,
+      "zh": "谢谢，你也是。",
+      "translations": {
+        "ru": "Спасибо, у тебя тоже.",
+        "en": "Thanks, you too.",
+        "uk": "Дякую, у тебе теж.",
+        "de": "Danke, du auch.",
+        "pl": "Dziękuję, ty też.",
+        "es": "Gracias, tú también.",
+        "pt": "Obrigada, você também."
+      }
+    },
+    {
+      "start": 48,
+      "end": 53,
+      "zh": "认识你很高兴！",
+      "translations": {
+        "ru": "Очень приятно познакомиться!",
+        "en": "Nice to meet you!",
+        "uk": "Дуже приємно познайомитися!",
+        "de": "Schön, dich kennenzulernen!",
+        "pl": "Miło cię poznać!",
+        "es": "¡Mucho gusto en conocerte!",
+        "pt": "Prazer em conhecê-la!"
+      }
+    },
+    {
+      "start": 53,
+      "end": 58,
+      "zh": "我也是，再见！",
+      "translations": {
+        "ru": "Мне тоже, до свидания!",
+        "en": "Me too, goodbye!",
+        "uk": "Мені теж, до побачення!",
+        "de": "Mir auch, tschüss!",
+        "pl": "Mnie też, do widzenia!",
+        "es": "Igualmente, ¡adiós!",
+        "pt": "Igualmente, tchau!"
+      }
+    }
+  ]
+}

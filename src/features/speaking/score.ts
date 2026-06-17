@@ -8,6 +8,20 @@ export type PronunciationResult = {
   score: number;
   perChar: Array<{ char: string; matched: boolean }>;
   verdict: "excellent" | "good" | "try_again" | "unclear";
+  /**
+   * Tone-by-tone audit from gpt-4o-mini-audio-preview. Present only when
+   * the audio model accepted the recording — see edge fn `analyzeTones`.
+   */
+  toneAnalysis?: {
+    toneAccuracy: number;
+    perSyllable: Array<{
+      hanzi: string;
+      expected_tone: number;
+      heard_tone: number;
+      correct: boolean;
+    }>;
+    notes?: string;
+  };
 };
 
 export type ScoreError =
@@ -27,6 +41,7 @@ export async function scorePronunciation(
   audioUri: string,
   mimeType: string,
   expected: string,
+  expectedPinyin = "",
 ): Promise<{ ok: true; result: PronunciationResult } | { ok: false; error: ScoreError }> {
   const { data: sess } = await supabase.auth.getSession();
   const token = sess.session?.access_token;
@@ -58,6 +73,7 @@ export async function scorePronunciation(
       },
       body: JSON.stringify({
         expected,
+        expectedPinyin,
         audioBase64: base64,
         mime: mimeType,
       }),

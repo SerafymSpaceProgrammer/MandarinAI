@@ -9,6 +9,7 @@ import type {
   MatchPairsQuestion,
   Question,
   ToneIdQuestion,
+  TonePronounceQuestion,
   TranslateQuestion,
   WordOrderQuestion,
 } from "./types";
@@ -111,9 +112,24 @@ function buildMatchPairs(pool: SavedWord[]): MatchPairsQuestion | null {
 }
 
 function buildToneId(word: SavedWord): ToneIdQuestion | null {
+  // Tone-id is single-syllable training: the card plays one TTS sample and
+  // asks the user to pick one of four tones. A multi-character word like
+  // "你好" plays two distinct tones — confusing when there's only one slot
+  // to answer. Restrict to single-hanzi entries so the audio matches the
+  // question.
+  if ([...word.hanzi].length !== 1) return null;
   const tone = primaryToneOf(word.hanzi) ?? primaryToneOf(word.pinyin);
   if (!tone) return null;
   return { type: "tone-id", word, tone };
+}
+
+function buildTonePronounce(word: SavedWord): TonePronounceQuestion | null {
+  // Same single-syllable constraint as buildToneId — the on-device tone
+  // scorer classifies the contour of one syllable only.
+  if ([...word.hanzi].length !== 1) return null;
+  const tone = primaryToneOf(word.hanzi) ?? primaryToneOf(word.pinyin);
+  if (!tone) return null;
+  return { type: "tone-pronounce", word, tone };
 }
 
 function buildWordOrder(word: SavedWord): WordOrderQuestion | null {
@@ -207,6 +223,9 @@ export function generateExercises(
         break;
       case "tone-id":
         q = buildToneId(word);
+        break;
+      case "tone-pronounce":
+        q = buildTonePronounce(word);
         break;
       case "word-order":
         q = buildWordOrder(word);

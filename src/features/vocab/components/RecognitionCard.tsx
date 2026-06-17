@@ -1,4 +1,5 @@
-import { PenTool } from "lucide-react-native";
+import * as Speech from "expo-speech";
+import { PenTool, Volume2 } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 
@@ -28,6 +29,11 @@ export function RecognitionCard({ card, onRevealed }: Props) {
     if (revealed) return;
     setRevealed(true);
     onRevealed();
+  }
+
+  function speak() {
+    Speech.stop().catch(() => {});
+    Speech.speak(card.hanzi, { language: "zh-CN", rate: 0.9 });
   }
 
   return (
@@ -84,30 +90,60 @@ export function RecognitionCard({ card, onRevealed }: Props) {
               </Text>
             ) : null}
 
-            <Pressable
-              onPress={(e) => {
-                e.stopPropagation?.();
-                setShowStrokes(true);
-              }}
-              hitSlop={10}
-              accessibilityLabel={t.strokes.title}
+            <View
               style={{
                 flexDirection: "row",
-                alignItems: "center",
-                gap: 6,
+                gap: theme.spacing.sm,
                 marginTop: theme.spacing.sm,
-                paddingVertical: 6,
-                paddingHorizontal: 12,
-                borderRadius: theme.radii.full,
-                borderWidth: 1,
-                borderColor: theme.colors.border,
               }}
             >
-              <PenTool color={theme.colors.accent} size={14} strokeWidth={2.2} />
-              <Text variant="small" color="accent">
-                {t.strokes.title}
-              </Text>
-            </Pressable>
+              <Pressable
+                onPress={(e) => {
+                  e.stopPropagation?.();
+                  speak();
+                }}
+                hitSlop={10}
+                accessibilityLabel="Озвучить"
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 6,
+                  paddingVertical: 6,
+                  paddingHorizontal: 12,
+                  borderRadius: theme.radii.full,
+                  backgroundColor: theme.colors.accentMuted,
+                }}
+              >
+                <Volume2 color={theme.colors.accent} size={14} strokeWidth={2.2} />
+                <Text variant="small" color="accent">
+                  Озвучить
+                </Text>
+              </Pressable>
+
+              <Pressable
+                onPress={(e) => {
+                  e.stopPropagation?.();
+                  setShowStrokes(true);
+                }}
+                hitSlop={10}
+                accessibilityLabel={t.strokes.title}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 6,
+                  paddingVertical: 6,
+                  paddingHorizontal: 12,
+                  borderRadius: theme.radii.full,
+                  borderWidth: 1,
+                  borderColor: theme.colors.border,
+                }}
+              >
+                <PenTool color={theme.colors.accent} size={14} strokeWidth={2.2} />
+                <Text variant="small" color="accent">
+                  {t.strokes.title}
+                </Text>
+              </Pressable>
+            </View>
           </View>
         ) : (
           <Text variant="small" color="tertiary">

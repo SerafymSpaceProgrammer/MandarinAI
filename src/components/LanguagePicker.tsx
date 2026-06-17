@@ -14,7 +14,10 @@ const OPTIONS: Array<{ code: NativeLanguage; flag: string; native: string }> = [
   { code: "en", flag: "🇺🇸", native: "English" },
   { code: "es", flag: "🇪🇸", native: "Español" },
   { code: "pt", flag: "🇵🇹", native: "Português" },
+  { code: "de", flag: "🇩🇪", native: "Deutsch" },
+  { code: "pl", flag: "🇵🇱", native: "Polski" },
   { code: "ru", flag: "🇷🇺", native: "Русский" },
+  { code: "uk", flag: "🇺🇦", native: "Українська" },
   { code: "zh", flag: "🇨🇳", native: "中文" },
 ];
 

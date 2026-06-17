@@ -1,9 +1,11 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   Animated,
   Dimensions,
   Easing,
+  Keyboard,
   Modal as RNModal,
+  Platform,
   Pressable,
   StyleSheet,
   View,
@@ -45,6 +47,30 @@ export function Modal({
   // exit. backdrop opacity shares `backdrop`, sheet uses its own `slide`.
   const backdrop = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
+
+  // Lift the sheet above the on-screen keyboard so TextInputs inside the
+  // sheet stay visible. iOS fires `keyboardWillShow` before the keyboard
+  // animates in; Android only fires `keyboardDidShow`. Using "will" on iOS
+  // matches the keyboard's own animation so the sheet doesn't lag.
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+  useEffect(() => {
+    if (!visible) {
+      setKeyboardHeight(0);
+      return;
+    }
+    const showEvent = Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
+    const hideEvent = Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide";
+    const show = Keyboard.addListener(showEvent, (e) => {
+      setKeyboardHeight(e.endCoordinates?.height ?? 0);
+    });
+    const hide = Keyboard.addListener(hideEvent, () => {
+      setKeyboardHeight(0);
+    });
+    return () => {
+      show.remove();
+      hide.remove();
+    };
+  }, [visible]);
 
   useEffect(() => {
     if (visible) {
@@ -141,6 +167,12 @@ export function Modal({
           style={[
             presentation === "sheet" ? styles.sheetWrapper : styles.centerWrapper,
             { transform: [{ translateY }], opacity: slide },
+            // Push the sheet up by the keyboard height when it's showing,
+            // so TextInputs inside the sheet aren't covered. No-op when
+            // keyboardHeight === 0 or for non-sheet presentations.
+            presentation === "sheet" && keyboardHeight > 0
+              ? { bottom: keyboardHeight }
+              : null,
           ]}
         >
           <View

@@ -1,9 +1,12 @@
 import type { NativeLanguage } from "@/types";
 
+import { DE } from "./strings.de";
 import { EN, type Translations } from "./strings.en";
 import { ES } from "./strings.es";
+import { PL } from "./strings.pl";
 import { PT } from "./strings.pt";
 import { RU } from "./strings.ru";
+import { UK } from "./strings.uk";
 import { ZH } from "./strings.zh";
 
 export type { Translations };
@@ -14,6 +17,9 @@ export const STRINGS: Record<NativeLanguage, Translations> = {
   pt: PT,
   ru: RU,
   zh: ZH,
+  uk: UK,
+  de: DE,
+  pl: PL,
 };
 
 /**

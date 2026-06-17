@@ -54,7 +54,7 @@ export default function NotificationsStep() {
   }
 
   return (
-    <Screen padded>
+    <Screen padded edges={["top", "bottom", "left", "right"]}>
       <ScrollView contentContainerStyle={{ paddingVertical: theme.spacing.xl, gap: theme.spacing["2xl"] }}>
         <View style={{ gap: theme.spacing.sm }}>
           <Text variant="h1">{t.onboarding.notifications.title}</Text>

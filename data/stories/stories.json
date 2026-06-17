@@ -1,0 +1,5972 @@
+{
+  "version": 2,
+  "stories": [
+    {
+      "id": "hsk1-my-day",
+      "hskLevel": 1,
+      "emoji": "🌞",
+      "titleZh": "我的一天",
+      "pinyinTitle": "Wǒ de yī tiān",
+      "summaryEn": "A simple day in the life of a student named Xiaoming.",
+      "durationMin": 2,
+      "bodyZh": "我叫小明。我七点起床。我吃早饭，喝牛奶。我八点去学校。中午我和朋友吃饭。下午我学中文。我喜欢中文。晚上我看书，听音乐。我十点睡觉。",
+      "comprehension": [
+        {
+          "q": "What time does Xiaoming wake up?",
+          "a": "7 AM",
+          "distractors": [
+            "6 AM",
+            "8 AM",
+            "9 AM"
+          ]
+        },
+        {
+          "q": "What does Xiaoming drink with breakfast?",
+          "a": "Milk",
+          "distractors": [
+            "Tea",
+            "Coffee",
+            "Water"
+          ]
+        },
+        {
+          "q": "What time does Xiaoming go to bed?",
+          "a": "10 PM",
+          "distractors": [
+            "9 PM",
+            "11 PM",
+            "Midnight"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-my-family",
+      "hskLevel": 1,
+      "emoji": "👨‍👩‍👧",
+      "titleZh": "我的家",
+      "pinyinTitle": "Wǒ de jiā",
+      "summaryEn": "Meet a family of four and their little cat Mimi.",
+      "durationMin": 2,
+      "bodyZh": "我家有四个人：爸爸、妈妈、姐姐和我。爸爸是医生。妈妈是老师。姐姐二十岁，她在大学。我十二岁，我是学生。我们家有一只小猫。它的名字叫米米。我们都很爱它。",
+      "comprehension": [
+        {
+          "q": "How many people are in the narrator's family?",
+          "a": "Four",
+          "distractors": [
+            "Three",
+            "Five",
+            "Six"
+          ]
+        },
+        {
+          "q": "What does the father do for work?",
+          "a": "Doctor",
+          "distractors": [
+            "Teacher",
+            "Engineer",
+            "Driver"
+          ]
+        },
+        {
+          "q": "What is the cat's name?",
+          "a": "Mimi",
+          "distractors": [
+            "Mao",
+            "Lulu",
+            "Beibei"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-restaurant",
+      "hskLevel": 1,
+      "emoji": "🍚",
+      "titleZh": "在饭馆",
+      "pinyinTitle": "Zài fànguǎn",
+      "summaryEn": "Lunch with a friend at a small restaurant.",
+      "durationMin": 2,
+      "bodyZh": "今天我和朋友去饭馆。我们点了米饭、鸡蛋和水果。我喝茶，他喝水。饭很好吃。我们吃了一个小时。我说：「谢谢你！」他说：「不客气。」我们一起回家。",
+      "comprehension": [
+        {
+          "q": "Who does the narrator go to the restaurant with?",
+          "a": "A friend",
+          "distractors": [
+            "Family",
+            "Mother",
+            "Classmates"
+          ]
+        },
+        {
+          "q": "What does the narrator drink?",
+          "a": "Tea",
+          "distractors": [
+            "Water",
+            "Coffee",
+            "Juice"
+          ]
+        },
+        {
+          "q": "How long did they eat?",
+          "a": "One hour",
+          "distractors": [
+            "Half an hour",
+            "Two hours",
+            "Three hours"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-friend",
+      "hskLevel": 2,
+      "emoji": "🏀",
+      "titleZh": "我的朋友",
+      "pinyinTitle": "Wǒ de péngyǒu",
+      "summaryEn": "Spending Sunday with a childhood friend at the park.",
+      "durationMin": 3,
+      "bodyZh": "我有一个好朋友，他叫小李。我们从小学开始就认识了。他比我大两岁，但是他常常帮助我。小李喜欢踢足球，我喜欢看书。我们的爱好不一样，但是我们一起的时候，总是很开心。上个星期天，我们去公园玩了一天。我们打篮球，吃冰淇淋，还照了很多照片。",
+      "comprehension": [
+        {
+          "q": "How long has the narrator known Xiao Li?",
+          "a": "Since elementary school",
+          "distractors": [
+            "A few months",
+            "Since high school",
+            "Since college"
+          ]
+        },
+        {
+          "q": "How much older is Xiao Li than the narrator?",
+          "a": "Two years",
+          "distractors": [
+            "One year",
+            "Three years",
+            "Five years"
+          ]
+        },
+        {
+          "q": "What did they do together last Sunday?",
+          "a": "Played basketball, ate ice cream, took photos",
+          "distractors": [
+            "Studied at the library",
+            "Watched a movie",
+            "Went hiking"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-shopping",
+      "hskLevel": 2,
+      "emoji": "🛒",
+      "titleZh": "去买东西",
+      "pinyinTitle": "Qù mǎi dōngxī",
+      "summaryEn": "Mum and I go shopping. On the way home, it starts to rain.",
+      "durationMin": 3,
+      "bodyZh": "昨天下午，妈妈和我一起去商店。妈妈想买水果，我想买一本新书。商店里人很多，但是不太热闹。妈妈买了苹果、香蕉和橘子。我找到了我喜欢的书。我们一共花了一百块钱。回家的时候，下雨了。我们没有带伞，所以跑回家。到家以后，我帮妈妈做饭。",
+      "comprehension": [
+        {
+          "q": "What did mum buy?",
+          "a": "Apples, bananas, and oranges",
+          "distractors": [
+            "Vegetables and bread",
+            "Eggs and milk",
+            "Watermelon and grapes"
+          ]
+        },
+        {
+          "q": "How much did they spend in total?",
+          "a": "100 yuan",
+          "distractors": [
+            "50 yuan",
+            "200 yuan",
+            "1000 yuan"
+          ]
+        },
+        {
+          "q": "Why did they run home?",
+          "a": "It started to rain and they had no umbrella",
+          "distractors": [
+            "They were late for dinner",
+            "A dog was chasing them",
+            "To get exercise"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-studying-chinese",
+      "hskLevel": 2,
+      "emoji": "📚",
+      "titleZh": "学中文",
+      "pinyinTitle": "Xué zhōngwén",
+      "summaryEn": "Three years of learning Chinese — from frustration to joy.",
+      "durationMin": 3,
+      "bodyZh": "我学中文已经三年了。开始的时候，我觉得中文很难。汉字、声调、语法，每个都让我觉得累。但是慢慢地，我开始喜欢中文。我每天看一点中文的书，听一点中文的歌。现在我可以和中国朋友说话了。我希望以后可以去中国旅游。",
+      "comprehension": [
+        {
+          "q": "How long has the narrator been studying Chinese?",
+          "a": "Three years",
+          "distractors": [
+            "One year",
+            "Two years",
+            "Five years"
+          ]
+        },
+        {
+          "q": "What did the narrator find difficult at first?",
+          "a": "Characters, tones, and grammar",
+          "distractors": [
+            "Speaking",
+            "Listening",
+            "Vocabulary"
+          ]
+        },
+        {
+          "q": "What does the narrator hope to do in the future?",
+          "a": "Travel to China",
+          "distractors": [
+            "Move to China",
+            "Become a translator",
+            "Teach Chinese"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-colleague",
+      "hskLevel": 3,
+      "emoji": "☕",
+      "titleZh": "我的同事",
+      "pinyinTitle": "Wǒ de tóngshì",
+      "summaryEn": "A new colleague from Shanghai slowly becomes the heart of the office.",
+      "durationMin": 4,
+      "bodyZh": "上个月我们公司来了一个新同事，她叫王丽。她是从上海来的，刚毕业不久。开始的时候，王丽不太说话，看起来有点紧张。我请她一起去吃午饭，问她对北京的看法。她说：「北京比上海冷多了，但是我喜欢这里的同事。」慢慢地，她变得更加放松。现在王丽已经成了我们办公室的开心果。她每天早上都给大家带咖啡，办公室的气氛比以前好多了。",
+      "comprehension": [
+        {
+          "q": "Where is Wang Li from?",
+          "a": "Shanghai",
+          "distractors": [
+            "Beijing",
+            "Guangzhou",
+            "Shenzhen"
+          ]
+        },
+        {
+          "q": "How does Wang Li compare Beijing to Shanghai?",
+          "a": "Beijing is much colder",
+          "distractors": [
+            "Beijing is warmer",
+            "Beijing is louder",
+            "Beijing is more expensive"
+          ]
+        },
+        {
+          "q": "What does Wang Li do every morning now?",
+          "a": "Brings coffee for everyone",
+          "distractors": [
+            "Cleans the office",
+            "Cooks breakfast",
+            "Sends emails"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-first-flight",
+      "hskLevel": 3,
+      "emoji": "✈️",
+      "titleZh": "第一次坐飞机",
+      "pinyinTitle": "Dì yī cì zuò fēijī",
+      "summaryEn": "An unforgettable first flight from a small town to Beijing.",
+      "durationMin": 4,
+      "bodyZh": "去年夏天，我第一次坐飞机。那时候我又紧张又兴奋。爸爸告诉我不要担心，飞机很安全。飞机起飞的时候，我从窗户外面看下面的城市，越来越小。云像棉花一样，白白的、软软的。飞机上的服务员给我们送饭。我吃了米饭和鸡肉，还喝了果汁。坐了大概三个小时，我们到了北京。北京的机场很大，比我想的还要大。这次旅行让我永远忘不了。",
+      "comprehension": [
+        {
+          "q": "When was this flight?",
+          "a": "Last summer",
+          "distractors": [
+            "Last winter",
+            "This spring",
+            "Two years ago"
+          ]
+        },
+        {
+          "q": "What did the narrator eat on the plane?",
+          "a": "Rice and chicken",
+          "distractors": [
+            "Noodles and beef",
+            "Salad and fish",
+            "Sandwiches"
+          ]
+        },
+        {
+          "q": "How long was the flight?",
+          "a": "About three hours",
+          "distractors": [
+            "One hour",
+            "Two hours",
+            "Five hours"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-morning-routine",
+      "hskLevel": 3,
+      "emoji": "🏃",
+      "titleZh": "早上的习惯",
+      "pinyinTitle": "Zǎoshang de xíguàn",
+      "summaryEn": "A two-year-old morning routine that shapes a quiet, disciplined life.",
+      "durationMin": 4,
+      "bodyZh": "我有一个特别的早上习惯。每天六点半，我就起床。我先喝一杯热水，然后开窗户让新鲜空气进来。七点，我开始跑步。我已经跑了两年了，下雨也不停。跑步的时候，我喜欢听音乐或者播客。跑完步以后，我洗澡、吃早饭。我的早饭一般是面包、鸡蛋和牛奶。八点钟，我准备好上班。朋友们说我太认真了，但是我觉得，只要每天努力一点点，时间长了就会有大变化。",
+      "comprehension": [
+        {
+          "q": "What time does the narrator wake up?",
+          "a": "6:30 AM",
+          "distractors": [
+            "6 AM",
+            "7 AM",
+            "7:30 AM"
+          ]
+        },
+        {
+          "q": "How long has the narrator been running every morning?",
+          "a": "Two years",
+          "distractors": [
+            "One year",
+            "Three years",
+            "Six months"
+          ]
+        },
+        {
+          "q": "What does the narrator usually have for breakfast?",
+          "a": "Bread, eggs, and milk",
+          "distractors": [
+            "Rice and chicken",
+            "Coffee only",
+            "Fruit and yogurt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-airport-arrival",
+      "hskLevel": 1,
+      "emoji": "🛬",
+      "titleZh": "到机场找出租车",
+      "pinyinTitle": "Dào Jīchǎng Zhǎo Chūzūchē",
+      "summaryEn": "Wang Ming arrives at the airport and finds a taxi to go home.",
+      "durationMin": 1,
+      "bodyZh": "王明到机场。他的飞机很晚。王明在机场等了很久。现在他想回家。他看见很多出租车。王明走过去，叫了一辆出租车。司机很友好，问他去哪儿。王明说：“我去北方。”出租车很快就开了。王明觉得很开心。",
+      "comprehension": [
+        {
+          "q": "What does Wang Ming want to do at the airport?",
+          "a": "Go home",
+          "distractors": [
+            "Eat food",
+            "Buy a ticket",
+            "Take a bus"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel when the taxi starts driving?",
+          "a": "Happy",
+          "distractors": [
+            "Angry",
+            "Tired",
+            "Bored"
+          ]
+        },
+        {
+          "q": "What did the taxi driver ask Wang Ming?",
+          "a": "Where to go",
+          "distractors": [
+            "How much",
+            "What time",
+            "Who is he"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-birthday",
+      "hskLevel": 1,
+      "emoji": "🎂",
+      "titleZh": "庆祝生日",
+      "pinyinTitle": "Qìng Zhù Shēng Rì",
+      "summaryEn": "Li Hua celebrates his birthday happily with friends at home.",
+      "durationMin": 1,
+      "bodyZh": "今天是李华的生日。李华的朋友们来他家庆祝。大家一起吃饭，喝水，玩游戏。李华的妈妈做了很多好吃的。朋友们给李华送了生日礼物，李华很开心。他们一起唱歌，笑着度过了快乐的一天。",
+      "comprehension": [
+        {
+          "q": "What is the occasion in the story?",
+          "a": "Li Hua's birthday",
+          "distractors": [
+            "A wedding",
+            "A festival",
+            "A holiday"
+          ]
+        },
+        {
+          "q": "What did Li Hua's mom make?",
+          "a": "Delicious food",
+          "distractors": [
+            "Cake",
+            "Ice cream",
+            "Cookies"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel during the celebration?",
+          "a": "Very happy",
+          "distractors": [
+            "Sad",
+            "Angry",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-bookstore",
+      "hskLevel": 1,
+      "emoji": "📖",
+      "titleZh": "书店的乐趣",
+      "pinyinTitle": "Shū Diàn De Lè Qù",
+      "summaryEn": "Wang Ming enjoys browsing and finds a special book in a small store.",
+      "durationMin": 1,
+      "bodyZh": "王明喜欢去小书店。他在书店里看书，觉得很有趣。他看到一本书，书名是《小猫的故事》。王明很喜欢小猫。他买了这本书，开心地回家了。",
+      "comprehension": [
+        {
+          "q": "What is the name of the book Wang Ming finds?",
+          "a": "小猫的故事",
+          "distractors": [
+            "大狗的故事",
+            "小鸟的故事",
+            "小狗的故事"
+          ]
+        },
+        {
+          "q": "Where does Wang Ming like to go?",
+          "a": "小书店",
+          "distractors": [
+            "公园",
+            "学校",
+            "超市"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel when he buys the book?",
+          "a": "开心",
+          "distractors": [
+            "难过",
+            "生气",
+            "无聊"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-buying-fruit",
+      "hskLevel": 1,
+      "emoji": "🍎",
+      "titleZh": "买水果",
+      "pinyinTitle": "Mǎi Shuǐguǒ",
+      "summaryEn": "Li Wei goes to the market to buy some fruit.",
+      "durationMin": 1,
+      "bodyZh": "今天，李伟去市场买水果。他看见很多苹果和香蕉。李伟喜欢苹果，买了五个。他还买了一些梨。最后，他给老板钱，开心地回家了。",
+      "comprehension": [
+        {
+          "q": "What fruit did Li Wei buy the most?",
+          "a": "apples",
+          "distractors": [
+            "pears",
+            "bananas",
+            "oranges"
+          ]
+        },
+        {
+          "q": "How many apples did Li Wei buy?",
+          "a": "five",
+          "distractors": [
+            "three",
+            "four",
+            "six"
+          ]
+        },
+        {
+          "q": "What was Li Wei's feeling when he went home?",
+          "a": "happy",
+          "distractors": [
+            "sad",
+            "angry",
+            "tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-coffee-shop",
+      "hskLevel": 1,
+      "emoji": "☕",
+      "titleZh": "咖啡店学习",
+      "pinyinTitle": "Kā fēi diàn Xué xí",
+      "summaryEn": "Li Hua enjoys studying in a coffee shop with friends.",
+      "durationMin": 1,
+      "bodyZh": "李华和朋友们一起去咖啡店学习。咖啡店里有很多桌子，环境很安静。李华喜欢喝茶，朋友们喜欢喝咖啡。他们在桌子上写字，听音乐，聊得很开心。学习的时候，他们也吃了点心。李华觉得在咖啡店学习很好，能放松心情。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua like to drink?",
+          "a": "Tea",
+          "distractors": [
+            "Coffee",
+            "Juice",
+            "Water"
+          ]
+        },
+        {
+          "q": "Where do Li Hua and his friends study?",
+          "a": "Coffee shop",
+          "distractors": [
+            "Library",
+            "Home",
+            "School"
+          ]
+        },
+        {
+          "q": "What do they eat while studying?",
+          "a": "Snacks",
+          "distractors": [
+            "Rice",
+            "Bread",
+            "Fruit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-cooking-noodles",
+      "hskLevel": 1,
+      "emoji": "🍝",
+      "titleZh": "学做面条",
+      "pinyinTitle": "Xué Zuò Miàn Tiáo",
+      "summaryEn": "Li Hua learns how to cook noodles for the first time.",
+      "durationMin": 1,
+      "bodyZh": "李华今天想学做面条。他去商店买面和水。回家后，他先把水放在锅里，等水热了。他再把面放进去，煮了几分钟。面条熟了，李华很高兴。他加了一些菜和肉，最后吃了自己做的面条，味道很好！",
+      "comprehension": [
+        {
+          "q": "What did Li Hua buy at the store?",
+          "a": "noodles",
+          "distractors": [
+            "water",
+            "vegetables",
+            "meat"
+          ]
+        },
+        {
+          "q": "How long did he cook the noodles?",
+          "a": "a few minutes",
+          "distractors": [
+            "one hour",
+            "five seconds",
+            "ten minutes"
+          ]
+        },
+        {
+          "q": "What did Li Hua add to the noodles?",
+          "a": "vegetables and meat",
+          "distractors": [
+            "sauce",
+            "cheese",
+            "fruit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-doctor-visit",
+      "hskLevel": 1,
+      "emoji": "🩺",
+      "titleZh": "看医生",
+      "pinyinTitle": "Kàn Yīshēng",
+      "summaryEn": "Wang Ming visits the doctor for a routine check-up.",
+      "durationMin": 1,
+      "bodyZh": "王明今天去看医生。他觉得有点不舒服。医生问他：“你哪里不舒服？”王明说：“我头有点痛。”医生检查了王明，给他开了药。医生说：“你要多休息，多喝水。”王明点点头，感谢医生。",
+      "comprehension": [
+        {
+          "q": "Who visits the doctor?",
+          "a": "Wang Ming",
+          "distractors": [
+            "Zhang Wei",
+            "Xiao Hong",
+            "Liang Yu"
+          ]
+        },
+        {
+          "q": "What is Wang Ming's symptom?",
+          "a": "Head pain",
+          "distractors": [
+            "Stomach ache",
+            "Fever",
+            "Cough"
+          ]
+        },
+        {
+          "q": "What does the doctor advise Wang Ming?",
+          "a": "Rest and drink water",
+          "distractors": [
+            "Eat fruit",
+            "Take a walk",
+            "Visit a friend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-exam-day",
+      "hskLevel": 1,
+      "emoji": "📝",
+      "titleZh": "考试前一天",
+      "pinyinTitle": "Kǎo shì qián yī tiān",
+      "summaryEn": "A student prepares for an important exam the next day.",
+      "durationMin": 1,
+      "bodyZh": "小红明天有一个重要的考试。今天，她在家里复习书。她喝了很多水，吃了苹果。晚上，她的朋友来找她。朋友问：\"你准备好了吗？\"小红说：\"我在努力学习。\"朋友说：\"别紧张，放松一点。\"小红点点头，继续复习。她希望明天能考得好。",
+      "comprehension": [
+        {
+          "q": "What does Xiao Hong have tomorrow?",
+          "a": "An important exam",
+          "distractors": [
+            "A party",
+            "A meeting",
+            "A concert"
+          ]
+        },
+        {
+          "q": "What does Xiao Hong eat while studying?",
+          "a": "An apple",
+          "distractors": [
+            "A banana",
+            "A cake",
+            "A sandwich"
+          ]
+        },
+        {
+          "q": "What does her friend tell her to do?",
+          "a": "Relax a little",
+          "distractors": [
+            "Study more",
+            "Go to bed",
+            "Call her mom"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-family-dinner",
+      "hskLevel": 1,
+      "emoji": "🥢",
+      "titleZh": "家里的晚饭",
+      "pinyinTitle": "Jiā lǐ de wǎn fàn",
+      "summaryEn": "A family dinner brings joy and laughter to three generations.",
+      "durationMin": 1,
+      "bodyZh": "今天是星期天，王明的家里很热闹。他的爸爸、妈妈、爷爷和奶奶都来了。晚饭有很多好吃的，米饭、菜和汤。王明的奶奶做了她最喜欢的鱼。大家一起吃饭，聊得很开心。王明的爷爷说：“我爱你们！”王明笑了，觉得很幸福。",
+      "comprehension": [
+        {
+          "q": "Who cooked the fish for dinner?",
+          "a": "Grandma",
+          "distractors": [
+            "Dad",
+            "Mom",
+            "Grandpa"
+          ]
+        },
+        {
+          "q": "What day of the week is it?",
+          "a": "Sunday",
+          "distractors": [
+            "Monday",
+            "Saturday",
+            "Friday"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel during dinner?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Bored",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-first-day-work",
+      "hskLevel": 1,
+      "emoji": "💼",
+      "titleZh": "第一天上班",
+      "pinyinTitle": "Dì Yī Tiān Shàng Bān",
+      "summaryEn": "A story about Li Ming's first day at work.",
+      "durationMin": 2,
+      "bodyZh": "李明今天是第一天上班。他很兴奋，也有点紧张。早上，他七点就起床了，吃了一个苹果。然后，他穿上新衣服，坐车去公司。到了公司，他见到了很多同事。大家都很友好，问他问题。李明在办公室里工作，学到了很多新东西。晚上，他回家时很开心。",
+      "comprehension": [
+        {
+          "q": "What time did Li Ming wake up?",
+          "a": "Seven o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Six o'clock",
+            "Nine o'clock"
+          ]
+        },
+        {
+          "q": "What did Li Ming eat for breakfast?",
+          "a": "An apple",
+          "distractors": [
+            "A banana",
+            "Some bread",
+            "Rice"
+          ]
+        },
+        {
+          "q": "How did Li Ming feel at the end of the day?",
+          "a": "Happy",
+          "distractors": [
+            "Tired",
+            "Sad",
+            "Angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-first-snow",
+      "hskLevel": 1,
+      "emoji": "🌨️",
+      "titleZh": "第一场雪",
+      "pinyinTitle": "Dì Yī Chǎng Xuě",
+      "summaryEn": "Wang Ming enjoys the first snow of the season with friends.",
+      "durationMin": 2,
+      "bodyZh": "今天是冬天的第一场雪。王明和他的朋友们在学校里玩雪。他们喜欢打雪仗，做雪人。王明说：“雪真好！”朋友们都笑了。雪慢慢地覆盖了地面，大家的心情也很高兴。放学后，他们一起走回家，看到很多白色的雪在树上。这个雪天真快乐！",
+      "comprehension": [
+        {
+          "q": "What season is it in the story?",
+          "a": "Winter",
+          "distractors": [
+            "Spring",
+            "Summer",
+            "Autumn"
+          ]
+        },
+        {
+          "q": "What do Wang Ming and his friends do in the snow?",
+          "a": "Play with snow",
+          "distractors": [
+            "Read books",
+            "Go shopping",
+            "Watch a movie"
+          ]
+        },
+        {
+          "q": "How do they feel about the snow?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Angry",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-first-snow-kids",
+      "hskLevel": 1,
+      "emoji": "⛄",
+      "titleZh": "孩子们的第一场雪",
+      "pinyinTitle": "Hái Zi Men De Dì Yī Chǎng Xuě",
+      "summaryEn": "Kids enjoy playing in the first snow of the year.",
+      "durationMin": 1,
+      "bodyZh": "今天是冬天的第一场雪。小红和她的朋友们在外面玩。她们在雪地里打雪仗，笑得很开心。小红还做了一个雪人，雪人很大，头上有一个红色的围巾。小朋友们都喜欢这场雪，他们在雪地里跑来跑去，玩得不想回家。",
+      "comprehension": [
+        {
+          "q": "What did Xiaohong and her friends do in the snow?",
+          "a": "They played in the snow.",
+          "distractors": [
+            "They went shopping.",
+            "They watched a movie.",
+            "They stayed inside."
+          ]
+        },
+        {
+          "q": "What did Xiaohong make in the snow?",
+          "a": "A snowman.",
+          "distractors": [
+            "A snowball.",
+            "A snow fort.",
+            "A snow angel."
+          ]
+        },
+        {
+          "q": "What color is the scarf on the snowman?",
+          "a": "Red.",
+          "distractors": [
+            "Blue.",
+            "Green.",
+            "Yellow."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-garden-flowers",
+      "hskLevel": 1,
+      "emoji": "🌷",
+      "titleZh": "种花",
+      "pinyinTitle": "Zhòng Huā",
+      "summaryEn": "Li Hua enjoys planting flowers in her small garden.",
+      "durationMin": 1,
+      "bodyZh": "李华在家里有一个小花园。她喜欢种花。今天，李华买了几种花。她先把土弄松，然后把花种下。李华给花浇水。她很开心，觉得花很美。她希望花能快点长大。",
+      "comprehension": [
+        {
+          "q": "Who is planting flowers?",
+          "a": "Li Hua",
+          "distractors": [
+            "Zhang Wei",
+            "Xiao Hong",
+            "Wang Ming"
+          ]
+        },
+        {
+          "q": "What does Li Hua do first with the soil?",
+          "a": "Loosens it",
+          "distractors": [
+            "Digs it",
+            "Covers it",
+            "Picks it"
+          ]
+        },
+        {
+          "q": "How does Li Hua feel about the flowers?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Angry",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-grandma-cooks",
+      "hskLevel": 1,
+      "emoji": "👵",
+      "titleZh": "奶奶教家常菜",
+      "pinyinTitle": "Nǎinai Jiāo Jiācháng Cài",
+      "summaryEn": "A grandmother teaches her family a special recipe with love.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华和奶奶在厨房。奶奶要教李华做家常菜。她说：“我们要用新鲜的菜和米。”李华听了，觉得很有趣。奶奶在锅里加了水，开始煮米饭。李华问：“奶奶，米饭怎么做好？”奶奶笑着说：“米饭要热，水要多。”李华认真记下。最后，菜做好了，大家都很开心，李华觉得很幸福。",
+      "comprehension": [
+        {
+          "q": "Who is teaching the recipe?",
+          "a": "grandmother",
+          "distractors": [
+            "father",
+            "sister",
+            "brother"
+          ]
+        },
+        {
+          "q": "What does Li Hua think is interesting?",
+          "a": "cooking",
+          "distractors": [
+            "reading",
+            "watching",
+            "sleeping"
+          ]
+        },
+        {
+          "q": "What is cooked with water in the story?",
+          "a": "rice",
+          "distractors": [
+            "noodles",
+            "soup",
+            "vegetables"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-haircut",
+      "hskLevel": 1,
+      "emoji": "💇",
+      "titleZh": "李华剪头发",
+      "pinyinTitle": "Lǐ Huá Jiǎn Tóu Fā",
+      "summaryEn": "Li Hua gets a haircut and enjoys the new look.",
+      "durationMin": 1,
+      "bodyZh": "今天，李华去理发店。他想剪短头发。理发师问他：‘你要什么样的？’李华说：‘简单一点。’理发师开始工作。李华在镜子前看着，觉得很好。剪完后，李华很高兴，付了钱，走出店外。",
+      "comprehension": [
+        {
+          "q": "Where does Li Hua go today?",
+          "a": "barber shop",
+          "distractors": [
+            "supermarket",
+            "school",
+            "park"
+          ]
+        },
+        {
+          "q": "What does Li Hua want to do with his hair?",
+          "a": "cut it short",
+          "distractors": [
+            "color it",
+            "grow it",
+            "style it"
+          ]
+        },
+        {
+          "q": "How does Li Hua feel after the haircut?",
+          "a": "happy",
+          "distractors": [
+            "sad",
+            "angry",
+            "tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-homework-help",
+      "hskLevel": 1,
+      "emoji": "✏️",
+      "titleZh": "帮弟弟做作业",
+      "pinyinTitle": "Bāng Dì Dì Zuò Zuò Yè",
+      "summaryEn": "An older brother helps his younger brother with homework.",
+      "durationMin": 1,
+      "bodyZh": "今天，张伟在家。他的弟弟小明有很多作业。小明在写作业时很难。张伟看到后，决定帮助他。张伟先教小明数学。小明听了，觉得很简单。接着，张伟帮小明写汉字。小明写得很好。最后，他们一起吃了水果，开心地聊天。",
+      "comprehension": [
+        {
+          "q": "Who helps 小明 with his homework?",
+          "a": "张伟",
+          "distractors": [
+            "小红",
+            "李华",
+            "王明"
+          ]
+        },
+        {
+          "q": "What subject does 张伟 teach 小明 first?",
+          "a": "数学",
+          "distractors": [
+            "英语",
+            "科学",
+            "艺术"
+          ]
+        },
+        {
+          "q": "What do they eat at the end?",
+          "a": "水果",
+          "distractors": [
+            "面条",
+            "米饭",
+            "蛋糕"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-library-visit",
+      "hskLevel": 1,
+      "emoji": "📚",
+      "titleZh": "图书馆的下午",
+      "pinyinTitle": "Tú Shū Guǎn de Xià Wǔ",
+      "summaryEn": "Wang Ming enjoys a quiet afternoon reading at the library.",
+      "durationMin": 1,
+      "bodyZh": "王明今天去图书馆。他喜欢在图书馆看书。书很多，王明找到了他的最爱。下午，外面有雨，图书馆里很安静。王明坐在桌子旁，喝了一杯茶，读了一本书。时间过得很快，王明觉得很开心。",
+      "comprehension": [
+        {
+          "q": "Where did Wang Ming go today?",
+          "a": "the library",
+          "distractors": [
+            "the park",
+            "the school",
+            "the store"
+          ]
+        },
+        {
+          "q": "What did Wang Ming drink?",
+          "a": "tea",
+          "distractors": [
+            "coffee",
+            "water",
+            "juice"
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel in the library?",
+          "a": "happy",
+          "distractors": [
+            "tired",
+            "bored",
+            "angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-lost-in-city",
+      "hskLevel": 1,
+      "emoji": "🗺️",
+      "titleZh": "小红迷路了",
+      "pinyinTitle": "Xiǎo Hóng Mí Lù Le",
+      "summaryEn": "Xiao Hong gets lost in a new city and finds her way.",
+      "durationMin": 1,
+      "bodyZh": "小红今天去北京。她想去一个商店。可是，她走错了路。小红在街上，看着很多人。她很着急，不知道怎么回家。小红问一个人：‘请问，商店在哪里？’那个人笑着说：‘往前走，然后左转。’小红谢谢他，继续走。最后，她找到了商店，她很高兴。",
+      "comprehension": [
+        {
+          "q": "Where did Xiao Hong go today?",
+          "a": "Beijing",
+          "distractors": [
+            "Shanghai",
+            "Guangzhou",
+            "Chengdu"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong want to find?",
+          "a": "a store",
+          "distractors": [
+            "a park",
+            "a school",
+            "a restaurant"
+          ]
+        },
+        {
+          "q": "What did the person tell Xiao Hong to do?",
+          "a": "walk forward and turn left",
+          "distractors": [
+            "go back home",
+            "wait for a bus",
+            "call a friend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-lost-keys",
+      "hskLevel": 1,
+      "emoji": "🔑",
+      "titleZh": "找钥匙",
+      "pinyinTitle": "Zhǎo Yàoshi",
+      "summaryEn": "Li Hua searches for his lost keys at home.",
+      "durationMin": 1,
+      "bodyZh": "李华今天在家找钥匙。他在桌子上找了，没找到。他又去沙发那儿，还是没有钥匙。最后，他在衣服口袋里找到了钥匙，心里很开心。",
+      "comprehension": [
+        {
+          "q": "Where did Li Hua first look for his keys?",
+          "a": "on the table",
+          "distractors": [
+            "under the bed",
+            "in the kitchen",
+            "in the garden"
+          ]
+        },
+        {
+          "q": "What did Li Hua find the keys in?",
+          "a": "clothes pocket",
+          "distractors": [
+            "on the floor",
+            "in the drawer",
+            "on the sofa"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel when he found the keys?",
+          "a": "happy",
+          "distractors": [
+            "sad",
+            "angry",
+            "worried"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-lost-wallet",
+      "hskLevel": 1,
+      "emoji": "👛",
+      "titleZh": "找钱包",
+      "pinyinTitle": "Zhǎo Qián Bāo",
+      "summaryEn": "A boy named Li Wei finds a lost wallet and returns it.",
+      "durationMin": 2,
+      "bodyZh": "今天，李伟在公园里玩。他看到一个钱包在草地上。李伟捡起钱包，里面有很多钱和一张卡。他想，钱包一定是一个人丢的。李伟在公园里找，看见一个女士在找东西。李伟走过去，把钱包给她。女士很高兴，谢了李伟。她说，她丢了钱包很久。李伟觉得很开心。",
+      "comprehension": [
+        {
+          "q": "Where did Li Wei find the wallet?",
+          "a": "in the park",
+          "distractors": [
+            "at school",
+            "in a store",
+            "on the street"
+          ]
+        },
+        {
+          "q": "What was inside the wallet?",
+          "a": "money and a card",
+          "distractors": [
+            "pictures and notes",
+            "keys and coins",
+            "a phone and a ticket"
+          ]
+        },
+        {
+          "q": "How did the lady feel when she got her wallet back?",
+          "a": "happy",
+          "distractors": [
+            "angry",
+            "sad",
+            "surprised"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-morning-market",
+      "hskLevel": 1,
+      "emoji": "🥬",
+      "titleZh": "早上的菜市场",
+      "pinyinTitle": "Zǎo Shàng De Cài Shì Chǎng",
+      "summaryEn": "A morning visit to the vegetable market brings joy to the characters.",
+      "durationMin": 1,
+      "bodyZh": "今天早上，张伟和小红去菜市场。市场里有很多新鲜的菜。张伟喜欢吃西红柿，小红喜欢吃胡萝卜。他们在一个摊位前停下来，买了一些菜。张伟说：“这些菜真好！”小红点点头，笑着说：“是啊，今天的菜很新鲜！”",
+      "comprehension": [
+        {
+          "q": "What vegetables do Zhang Wei and Xiao Hong like?",
+          "a": "Tomatoes and carrots",
+          "distractors": [
+            "Potatoes and onions",
+            "Cucumbers and peppers",
+            "Lettuce and beets"
+          ]
+        },
+        {
+          "q": "Where do Zhang Wei and Xiao Hong go in the morning?",
+          "a": "Vegetable market",
+          "distractors": [
+            "Grocery store",
+            "School",
+            "Park"
+          ]
+        },
+        {
+          "q": "What do they think about the vegetables?",
+          "a": "They are fresh",
+          "distractors": [
+            "They are old",
+            "They are expensive",
+            "They are small"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-morning-run",
+      "hskLevel": 1,
+      "emoji": "🏃",
+      "titleZh": "早上的跑步",
+      "pinyinTitle": "Zǎo Shàng De Pǎo Bù",
+      "summaryEn": "Wang Ming enjoys his morning run in the neighborhood.",
+      "durationMin": 1,
+      "bodyZh": "王明每天早上六点起床。他喜欢在附近跑步。今天，天气很好，阳光明亮。王明在公园跑步，看到很多人。有人在跑步，有人在喝水，还有人在聊天。王明跑了三公里，觉得很开心。跑步后，他喝了一杯水，准备开始新的一天。",
+      "comprehension": [
+        {
+          "q": "What time does Wang Ming wake up?",
+          "a": "six o'clock",
+          "distractors": [
+            "seven o'clock",
+            "five o'clock",
+            "eight o'clock"
+          ]
+        },
+        {
+          "q": "How far does Wang Ming run?",
+          "a": "three kilometers",
+          "distractors": [
+            "two kilometers",
+            "four kilometers",
+            "five kilometers"
+          ]
+        },
+        {
+          "q": "What does Wang Ming drink after running?",
+          "a": "a cup of water",
+          "distractors": [
+            "a cup of tea",
+            "a cup of coffee",
+            "a cup of juice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-movie-night",
+      "hskLevel": 1,
+      "emoji": "🎬",
+      "titleZh": "一个安静的电影夜",
+      "pinyinTitle": "Yī Gè Ān Jìng De Diàn Yǐng Yè",
+      "summaryEn": "A quiet movie night at home brings joy to friends.",
+      "durationMin": 1,
+      "bodyZh": "张伟和小红在家里看电影。外面下雨，他们很高兴。张伟准备了一些水果和饮料。小红坐在沙发上，喜欢这部电影。他们一起笑，一起吃。电影结束后，他们聊了很多。他们觉得这个晚上很快乐。",
+      "comprehension": [
+        {
+          "q": "Who are the main characters in the story?",
+          "a": "Zhang Wei and Xiao Hong",
+          "distractors": [
+            "Li Hua and Zhang Wei",
+            "Xiao Hong and Li Wei",
+            "Zhang Wei and Li Hua"
+          ]
+        },
+        {
+          "q": "What did Zhang Wei prepare for the movie night?",
+          "a": "Fruits and drinks",
+          "distractors": [
+            "Popcorn and candy",
+            "Chips and soda",
+            "Pizza and salad"
+          ]
+        },
+        {
+          "q": "How did they feel about the movie night?",
+          "a": "Happy",
+          "distractors": [
+            "Bored",
+            "Tired",
+            "Anxious"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-moving-house",
+      "hskLevel": 1,
+      "emoji": "📦",
+      "titleZh": "搬家那天",
+      "pinyinTitle": "Bān Jiā Nà Tiān",
+      "summaryEn": "Wang Ming moves into his new home and enjoys a warm welcome.",
+      "durationMin": 1,
+      "bodyZh": "今天是王明搬家的日子。他早上六点起床，吃了早饭。然后，他和朋友们一起去新家。新家在一个大楼里，王明很高兴。朋友们帮助他搬东西，大家一起笑着说话。晚上，王明请朋友们吃饭，喝茶。大家都很开心，王明觉得新家很好。",
+      "comprehension": [
+        {
+          "q": "What time did Wang Ming wake up?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Eight o'clock",
+            "Five o'clock"
+          ]
+        },
+        {
+          "q": "Who helped Wang Ming move?",
+          "a": "His friends",
+          "distractors": [
+            "His family",
+            "His neighbors",
+            "His coworkers"
+          ]
+        },
+        {
+          "q": "What did Wang Ming serve for dinner?",
+          "a": "Tea",
+          "distractors": [
+            "Coffee",
+            "Juice",
+            "Beer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-music-class",
+      "hskLevel": 1,
+      "emoji": "🎵",
+      "titleZh": "音乐课",
+      "pinyinTitle": "Yīn Yuè Kè",
+      "summaryEn": "A student enjoys a fun music class at school.",
+      "durationMin": 1,
+      "bodyZh": "今天，王明在学校的音乐课上。他和同学们一起唱歌，觉得很开心。老师教他们用简单的乐器。大家都很喜欢这个课，王明说：“我想学更多的音乐！”",
+      "comprehension": [
+        {
+          "q": "What class is Wang Ming attending?",
+          "a": "music class",
+          "distractors": [
+            "art class",
+            "math class",
+            "PE class"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about the music class?",
+          "a": "happy",
+          "distractors": [
+            "bored",
+            "sad",
+            "angry"
+          ]
+        },
+        {
+          "q": "What does Wang Ming want to learn more about?",
+          "a": "music",
+          "distractors": [
+            "math",
+            "art",
+            "sports"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-neighbor-favor",
+      "hskLevel": 1,
+      "emoji": "🚪",
+      "titleZh": "小红求帮忙",
+      "pinyinTitle": "Xiǎo Hóng Qiú Bāng Máng",
+      "summaryEn": "Xiao Hong asks her neighbor for a small favor.",
+      "durationMin": 1,
+      "bodyZh": "小红今天有事。她想去商店买东西。可是，她的车坏了。小红去邻居家，敲门。邻居是张伟。小红说：“张伟，能帮我吗？我需要借你的车。”张伟笑着说：“可以，我的车在楼下。”小红很开心，感谢张伟。",
+      "comprehension": [
+        {
+          "q": "What does Xiao Hong need to borrow?",
+          "a": "a car",
+          "distractors": [
+            "a bike",
+            "money",
+            "food"
+          ]
+        },
+        {
+          "q": "Who does Xiao Hong ask for help?",
+          "a": "Zhang Wei",
+          "distractors": [
+            "Li Hua",
+            "Wang Ming",
+            "Xiao Li"
+          ]
+        },
+        {
+          "q": "Where is Zhang Wei's car?",
+          "a": "downstairs",
+          "distractors": [
+            "in the garage",
+            "on the street",
+            "in the shop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-new-pet",
+      "hskLevel": 1,
+      "emoji": "🐱",
+      "titleZh": "新宠物",
+      "pinyinTitle": "Xīn Chǒngwù",
+      "summaryEn": "A family adopts a new pet, bringing joy and excitement.",
+      "durationMin": 1,
+      "bodyZh": "今天，王明的家里来了一个新成员。王明的妈妈说：‘我们要养一只狗。’王明很高兴。他喜欢狗。狗在家里跑来跑去，大家都笑了。王明的爸爸给狗起了名字，叫‘小白’。小白很可爱，喜欢吃米和喝水。王明每天和小白玩，真开心！",
+      "comprehension": [
+        {
+          "q": "What type of pet does Wang Ming's family adopt?",
+          "a": "a dog",
+          "distractors": [
+            "a cat",
+            "a rabbit",
+            "a bird"
+          ]
+        },
+        {
+          "q": "What is the dog's name?",
+          "a": "Xiao Bai",
+          "distractors": [
+            "Da Hei",
+            "Xiao Hong",
+            "Xiao Lan"
+          ]
+        },
+        {
+          "q": "What do they feed the dog?",
+          "a": "rice",
+          "distractors": [
+            "bread",
+            "meat",
+            "fish"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-old-friend",
+      "hskLevel": 1,
+      "emoji": "👫",
+      "titleZh": "久别重逢",
+      "pinyinTitle": "Jiǔ Bié Zhòng Féng",
+      "summaryEn": "Two old friends meet again after a long time.",
+      "durationMin": 1,
+      "bodyZh": "小红和张伟是好朋友。他们很久没见面了。今天，小红在公园里散步，突然看见张伟。张伟也很高兴。他们一起坐在长椅上，聊了很多事情。小红说：“你最近好吗？”张伟回答：“我很好，工作很忙。”他们都很开心，决定下次再见面。",
+      "comprehension": [
+        {
+          "q": "Where did 小红 see 张伟?",
+          "a": "in the park",
+          "distractors": [
+            "at home",
+            "in the school",
+            "at the store"
+          ]
+        },
+        {
+          "q": "What did 小红 and 张伟 do together?",
+          "a": "sat on a bench",
+          "distractors": [
+            "went to eat",
+            "played basketball",
+            "watched a movie"
+          ]
+        },
+        {
+          "q": "How did 张伟 feel about his recent work?",
+          "a": "busy",
+          "distractors": [
+            "tired",
+            "happy",
+            "easy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-park-walk",
+      "hskLevel": 1,
+      "emoji": "🌳",
+      "titleZh": "王明的下午散步",
+      "pinyinTitle": "Wáng Míng de Xiàwǔ Sànbù",
+      "summaryEn": "Wang Ming enjoys a peaceful afternoon walk in the park.",
+      "durationMin": 1,
+      "bodyZh": "今天，王明在公园散步。他看见很多人。他们在跑步、聊天和吃东西。王明觉得公园很大，草很绿。天气很好，王明喜欢这样的日子。他在长椅上坐了一会儿，喝了一杯水。然后，他继续走，听到鸟在唱歌。王明觉得生活很快乐。",
+      "comprehension": [
+        {
+          "q": "What is Wang Ming doing today?",
+          "a": "walking in the park",
+          "distractors": [
+            "running a race",
+            "reading a book",
+            "eating lunch"
+          ]
+        },
+        {
+          "q": "What does Wang Ming see in the park?",
+          "a": "many people",
+          "distractors": [
+            "only trees",
+            "a dog",
+            "a cat"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about the day?",
+          "a": "happy",
+          "distractors": [
+            "tired",
+            "angry",
+            "bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-phone-call",
+      "hskLevel": 1,
+      "emoji": "📞",
+      "titleZh": "一个重要电话",
+      "pinyinTitle": "Yī Gè Zhòng Yào Diàn Huà",
+      "summaryEn": "Wang Ming receives an important phone call about a job.",
+      "durationMin": 1,
+      "bodyZh": "王明在家里。他的手机响了。是一个重要电话。王明听着，心里有点紧张。电话里有一个人说：‘你好，王明！你得到了工作！’王明很高兴，马上说：‘谢谢！我很高兴！’他知道，这个工作对他很重要。",
+      "comprehension": [
+        {
+          "q": "Where is Wang Ming when he receives the call?",
+          "a": "At home",
+          "distractors": [
+            "At school",
+            "At the park",
+            "In the store"
+          ]
+        },
+        {
+          "q": "What does the call inform Wang Ming about?",
+          "a": "A job",
+          "distractors": [
+            "A school",
+            "A meeting",
+            "A friend"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about the job?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Nervous",
+            "Angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-post-office",
+      "hskLevel": 1,
+      "emoji": "📮",
+      "titleZh": "王明去邮局",
+      "pinyinTitle": "Wáng Míng qù Yóu Jú",
+      "summaryEn": "Wang Ming visits the post office to send a package.",
+      "durationMin": 2,
+      "bodyZh": "今天，王明要去邮局。他有一个包裹要寄。王明在家里准备好包裹，然后出门。他在路上遇到朋友小红。小红问他：“你要去哪里？”王明说：“我去邮局寄包裹。”小红也想去，于是他们一起走到邮局。到了邮局，王明排队等候。他看到很多人也在这里。王明觉得有点紧张。终于轮到他了，王明把包裹给工作人员。工作人员说：“谢谢！”王明很高兴，完成了任务。",
+      "comprehension": [
+        {
+          "q": "What does Wang Ming want to send?",
+          "a": "a package",
+          "distractors": [
+            "a letter",
+            "a gift",
+            "a book"
+          ]
+        },
+        {
+          "q": "Who does Wang Ming meet on the way?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "his father"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel at the post office?",
+          "a": "nervous",
+          "distractors": [
+            "happy",
+            "angry",
+            "bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-rainy-day",
+      "hskLevel": 1,
+      "emoji": "🌧️",
+      "titleZh": "雨天的活动",
+      "pinyinTitle": "Yǔ Tiān De Huó Dòng",
+      "summaryEn": "Wang Ming enjoys a fun day indoors when it rains.",
+      "durationMin": 2,
+      "bodyZh": "今天下雨，王明在家里。他想做什么呢？王明先喝了一杯热茶，然后看了一部电影。电影很好看，王明很开心。看完电影后，他开始写作业。写作业的时候，外面还在下雨。最后，王明和朋友们一起玩游戏，大家都很高兴。虽然下雨，但王明的日子很快乐。",
+      "comprehension": [
+        {
+          "q": "What does Wang Ming drink?",
+          "a": "hot tea",
+          "distractors": [
+            "cold water",
+            "fruit juice",
+            "coffee"
+          ]
+        },
+        {
+          "q": "What does Wang Ming do after the movie?",
+          "a": "does homework",
+          "distractors": [
+            "sleeps",
+            "cooks",
+            "cleans"
+          ]
+        },
+        {
+          "q": "Who does Wang Ming play games with?",
+          "a": "friends",
+          "distractors": [
+            "family",
+            "classmates",
+            "neighbors"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-running-late",
+      "hskLevel": 1,
+      "emoji": "⏰",
+      "titleZh": "张伟迟到了",
+      "pinyinTitle": "Zhāng Wěi Chídào Le",
+      "summaryEn": "Zhang Wei rushes to an important meeting but arrives late.",
+      "durationMin": 2,
+      "bodyZh": "今天，张伟有一个重要的会。他早上九点出门，但路上很堵。张伟心里很着急。他想，‘我不能迟到！’他跑着去车站。到了车站，他发现车已经走了。张伟很失望，觉得自己没办法参加这个会。最后，他坐上下一班车，心里想着下次要早点出门。",
+      "comprehension": [
+        {
+          "q": "What time did Zhang Wei leave home?",
+          "a": "Nine o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Ten o'clock",
+            "Seven o'clock"
+          ]
+        },
+        {
+          "q": "What did Zhang Wei want to avoid?",
+          "a": "Being late",
+          "distractors": [
+            "Missing the bus",
+            "Getting lost",
+            "Being tired"
+          ]
+        },
+        {
+          "q": "What did Zhang Wei think about next time?",
+          "a": "To leave earlier",
+          "distractors": [
+            "To take a taxi",
+            "To sleep longer",
+            "To eat breakfast"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-school-day",
+      "hskLevel": 1,
+      "emoji": "🎒",
+      "titleZh": "学校的一天",
+      "pinyinTitle": "Xué Xiào De Yī Tiān",
+      "summaryEn": "A day in school from morning to afternoon.",
+      "durationMin": 2,
+      "bodyZh": "今天是星期一，王明早上七点起床。他吃了一个苹果和一杯水。八点，他在学校见到了他的朋友小红。老师在教室里等他们。上课时，王明和小红学习了汉字。中午，他们一起在学校吃饭，王明吃了米饭和菜。下午，王明在操场上和朋友们玩。他们一起快乐地玩了两个小时。放学后，王明回家，准备明天的课。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming eat for breakfast?",
+          "a": "an apple",
+          "distractors": [
+            "rice",
+            "noodles",
+            "bread"
+          ]
+        },
+        {
+          "q": "Who did Wang Ming meet at school?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Liu Mei"
+          ]
+        },
+        {
+          "q": "What did they do during lunch?",
+          "a": "ate together",
+          "distractors": [
+            "played games",
+            "studied books",
+            "went home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-shopping-mall",
+      "hskLevel": 1,
+      "emoji": "🛍️",
+      "titleZh": "一个下午在商场",
+      "pinyinTitle": "Yī gè xiàwǔ zài shāngchǎng",
+      "summaryEn": "Li Wei enjoys a fun afternoon shopping with friends.",
+      "durationMin": 1,
+      "bodyZh": "今天，李伟和朋友在商场。他们先去书店，李伟买了一本书。然后，他们去吃饭，点了很多好吃的菜。吃完后，他们又去看电影。电影很好，大家都很开心。最后，他们坐在椅子上，聊了很多话，度过了一个愉快的下午。",
+      "comprehension": [
+        {
+          "q": "What did Li Wei buy?",
+          "a": "a book",
+          "distractors": [
+            "a toy",
+            "a shirt",
+            "a game"
+          ]
+        },
+        {
+          "q": "What did they eat for lunch?",
+          "a": "delicious dishes",
+          "distractors": [
+            "fast food",
+            "soup",
+            "snacks"
+          ]
+        },
+        {
+          "q": "What did they do after eating?",
+          "a": "watched a movie",
+          "distractors": [
+            "went shopping",
+            "played games",
+            "visited a friend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-snowy-morning",
+      "hskLevel": 1,
+      "emoji": "❄️",
+      "titleZh": "雪天的早上",
+      "pinyinTitle": "Xuě Tiān De Zǎo Shàng",
+      "summaryEn": "A boy enjoys a snowy morning with his friends.",
+      "durationMin": 1,
+      "bodyZh": "今天天气很冷，雪在外面下着。小明和他的朋友们在家里喝热茶。然后，他们一起出门。外面有很多雪，他们开心地玩雪。小明说：“我们来堆雪人吧！”大家都很高兴。雪人很大，大家一起笑着。",
+      "comprehension": [
+        {
+          "q": "What is the weather like today?",
+          "a": "It is cold and snowy.",
+          "distractors": [
+            "It is hot and sunny.",
+            "It is rainy and warm.",
+            "It is windy and cloudy."
+          ]
+        },
+        {
+          "q": "What do the kids drink at home?",
+          "a": "Hot tea.",
+          "distractors": [
+            "Cold water.",
+            "Juice.",
+            "Milk."
+          ]
+        },
+        {
+          "q": "What do they decide to build in the snow?",
+          "a": "A snowman.",
+          "distractors": [
+            "A snow fort.",
+            "A sled.",
+            "A snow angel."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-sports-day",
+      "hskLevel": 1,
+      "emoji": "⚽",
+      "titleZh": "学校运动会",
+      "pinyinTitle": "Xuéxiào Yùndònghuì",
+      "summaryEn": "A student enjoys the excitement of school sports day.",
+      "durationMin": 1,
+      "bodyZh": "今天是学校的运动会。小红和她的朋友们很高兴。他们在操场上，看到很多同学在比赛。小红参加了跑步比赛。她跑得很快，最后得了第一名。大家都为她欢呼，给她喝水。小红觉得很开心。",
+      "comprehension": [
+        {
+          "q": "Who was excited about the school sports day?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Wang Ming"
+          ]
+        },
+        {
+          "q": "What event did Xiao Hong participate in?",
+          "a": "Running race",
+          "distractors": [
+            "Long jump",
+            "Relay race",
+            "Ball throw"
+          ]
+        },
+        {
+          "q": "What did everyone do for Xiao Hong after her race?",
+          "a": "Cheered and gave her water",
+          "distractors": [
+            "Gave her snacks",
+            "Took photos",
+            "Sang a song"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-subway-ride",
+      "hskLevel": 1,
+      "emoji": "🚇",
+      "titleZh": "高峰期的地铁",
+      "pinyinTitle": "Gāo Fēng Qī De Dì Tiě",
+      "summaryEn": "A busy subway ride during rush hour brings unexpected moments.",
+      "durationMin": 2,
+      "bodyZh": "王明今天在北京上班。他在早上八点坐地铁。地铁很挤，很多人都在车里。王明站在一个角落，手上拿着一本书。他想在车上看书，但太多人了，没办法看。车到站后，王明下了车，看到朋友小红。小红也坐地铁上班，他们一起去公司。虽然很挤，但他们很开心。",
+      "comprehension": [
+        {
+          "q": "What time did Wang Ming take the subway?",
+          "a": "Eight o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Nine o'clock",
+            "Ten o'clock"
+          ]
+        },
+        {
+          "q": "Who did Wang Ming see after getting off the subway?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Liu Jun"
+          ]
+        },
+        {
+          "q": "What did Wang Ming want to do on the subway?",
+          "a": "Read a book",
+          "distractors": [
+            "Listen to music",
+            "Sleep",
+            "Eat"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-subway-stranger",
+      "hskLevel": 1,
+      "emoji": "🚉",
+      "titleZh": "帮陌生人找火车",
+      "pinyinTitle": "Bāng Mò Shēng Rén Zhǎo Huǒ Chē",
+      "summaryEn": "A kind person helps a stranger find the right train.",
+      "durationMin": 1,
+      "bodyZh": "今天，张伟在火车站。他看到一个陌生人，那个生人看起来很着急。张伟走过去，问：‘你要找什么？’陌生人说：‘我找四号火车。’张伟想了想，告诉他：‘四号火车在东边。’陌生人说：‘谢谢！’张伟微笑着，继续走。",
+      "comprehension": [
+        {
+          "q": "Where is the train station?",
+          "a": "In the city",
+          "distractors": [
+            "At the school",
+            "In the park",
+            "Near the hospital"
+          ]
+        },
+        {
+          "q": "Which train does the stranger want?",
+          "a": "Train number four",
+          "distractors": [
+            "Train number two",
+            "Train number one",
+            "Train number three"
+          ]
+        },
+        {
+          "q": "What direction does Zhang Wei say the train is?",
+          "a": "East",
+          "distractors": [
+            "West",
+            "North",
+            "South"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-summer-trip",
+      "hskLevel": 1,
+      "emoji": "🏖️",
+      "titleZh": "王明的海边旅行",
+      "pinyinTitle": "Wáng Míng de Hǎi Biān Lǚ Xíng",
+      "summaryEn": "Wang Ming enjoys a fun trip to the seaside with friends.",
+      "durationMin": 1,
+      "bodyZh": "王明和朋友们去海边。天气很好，大家很高兴。他们吃了很多水果，喝了茶。王明在沙子上跑来跑去，朋友们在水里玩。晚上，他们坐在桌子旁，听海的声音。王明说：“我爱这个地方！”",
+      "comprehension": [
+        {
+          "q": "Who went to the seaside?",
+          "a": "Wang Ming and friends",
+          "distractors": [
+            "Wang Ming and family",
+            "Only Wang Ming",
+            "Wang Ming and his dog"
+          ]
+        },
+        {
+          "q": "What did they eat at the seaside?",
+          "a": "Fruits",
+          "distractors": [
+            "Ice cream",
+            "Pizza",
+            "Noodles"
+          ]
+        },
+        {
+          "q": "What did Wang Ming say about the place?",
+          "a": "I love this place!",
+          "distractors": [
+            "It's too hot.",
+            "I want to go home.",
+            "It's boring."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-supermarket",
+      "hskLevel": 1,
+      "emoji": "🛒",
+      "titleZh": "小红的购物",
+      "pinyinTitle": "Xiǎo Hóng de Gòu Wù",
+      "summaryEn": "Xiao Hong enjoys her weekly trip to the supermarket.",
+      "durationMin": 1,
+      "bodyZh": "小红每个星期去市场。她喜欢买水果和蔬菜。上个星期，她买了苹果、香蕉和西红柿。小红还买了一些米和饮料。她在市场里很开心，觉得很有趣。回来时，她的手里提着大袋子。",
+      "comprehension": [
+        {
+          "q": "What does Xiao Hong like to buy?",
+          "a": "fruits and vegetables",
+          "distractors": [
+            "meat and fish",
+            "books and toys",
+            "clothes and shoes"
+          ]
+        },
+        {
+          "q": "What fruits did she buy last week?",
+          "a": "apples and bananas",
+          "distractors": [
+            "oranges and grapes",
+            "pears and peaches",
+            "kiwis and lemons"
+          ]
+        },
+        {
+          "q": "How did she feel at the market?",
+          "a": "happy",
+          "distractors": [
+            "tired",
+            "bored",
+            "angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-taxi-trip",
+      "hskLevel": 1,
+      "emoji": "🚕",
+      "titleZh": "短短的出租车旅程",
+      "pinyinTitle": "Duǎn duǎn de chū zū chē lǚ chéng",
+      "summaryEn": "A quick taxi ride leads to an unexpected adventure.",
+      "durationMin": 1,
+      "bodyZh": "小红昨天坐出租车去商店。她在家等了十分钟。司机是个好人，开车很快。小红在车里听音乐，感觉很好。车子很快到了商店。小红给司机钱，司机说：“谢谢！”小红微笑着下车，心里很开心。",
+      "comprehension": [
+        {
+          "q": "Where did Xiao Hong go in the taxi?",
+          "a": "The store",
+          "distractors": [
+            "The park",
+            "The school",
+            "The hospital"
+          ]
+        },
+        {
+          "q": "How long did Xiao Hong wait for the taxi?",
+          "a": "Ten minutes",
+          "distractors": [
+            "Five minutes",
+            "Fifteen minutes",
+            "Twenty minutes"
+          ]
+        },
+        {
+          "q": "What did the driver say to Xiao Hong?",
+          "a": "Thank you",
+          "distractors": [
+            "Goodbye",
+            "See you",
+            "Hello"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-tea-with-friend",
+      "hskLevel": 1,
+      "emoji": "🍵",
+      "titleZh": "和朋友喝茶",
+      "pinyinTitle": "Hé Péngyǒu Hē Chá",
+      "summaryEn": "Two friends enjoy a relaxing tea time together.",
+      "durationMin": 1,
+      "bodyZh": "小红和她的朋友在家里喝茶。小红泡了热茶，茶香很好。她们坐在桌子旁，聊了很多事情。小红说：“这个茶很不错！”朋友笑着说：“是的，真好喝！”她们一起享受这个快乐的时光。",
+      "comprehension": [
+        {
+          "q": "Who is drinking tea with 小红?",
+          "a": "her friend",
+          "distractors": [
+            "her brother",
+            "her mother",
+            "her teacher"
+          ]
+        },
+        {
+          "q": "What did 小红 say about the tea?",
+          "a": "it's very good",
+          "distractors": [
+            "it's too hot",
+            "it's too sweet",
+            "it's too bitter"
+          ]
+        },
+        {
+          "q": "Where are they drinking tea?",
+          "a": "at home",
+          "distractors": [
+            "at school",
+            "at a cafe",
+            "in the park"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-train-station",
+      "hskLevel": 1,
+      "emoji": "🚆",
+      "titleZh": "忙车站的等待",
+      "pinyinTitle": "Máng Chēzhàn de Děngdài",
+      "summaryEn": "Wang Ming waits for his train at a busy station.",
+      "durationMin": 1,
+      "bodyZh": "王明在车站等他的火车。车站很忙，有很多人。王明坐在椅子上，喝水。他看着人们，有的在走，有的在吃东西。王明觉得时间很慢。过了一会儿，火车来了，王明站起来，准备上车。",
+      "comprehension": [
+        {
+          "q": "What is Wang Ming doing at the train station?",
+          "a": "Waiting for his train",
+          "distractors": [
+            "Drinking tea",
+            "Reading a book",
+            "Eating food"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about the time?",
+          "a": "Time is slow",
+          "distractors": [
+            "Time is fast",
+            "Time is normal",
+            "Time is boring"
+          ]
+        },
+        {
+          "q": "What does Wang Ming do when the train arrives?",
+          "a": "Stands up",
+          "distractors": [
+            "Sits down",
+            "Runs away",
+            "Sleeps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-village-visit",
+      "hskLevel": 1,
+      "emoji": "🏘️",
+      "titleZh": "看爷爷奶奶",
+      "pinyinTitle": "Kàn Yéye Nǎinai",
+      "summaryEn": "Wang Ming visits his grandparents and enjoys a simple village life.",
+      "durationMin": 2,
+      "bodyZh": "王明上个星期去了他的爷爷和奶奶家。他们住在一个小地方。王明很高兴，因为他在那儿可以吃很多好吃的。他们一起在田里走，看到很多花和树。王明的爷爷给他讲有趣的故事，奶奶给他做了好吃的饭。王明觉得在这里的生活很快乐。",
+      "comprehension": [
+        {
+          "q": "Who did Wang Ming visit?",
+          "a": "his grandparents",
+          "distractors": [
+            "his friends",
+            "his parents",
+            "his teachers"
+          ]
+        },
+        {
+          "q": "What did Wang Ming's grandma make for him?",
+          "a": "delicious food",
+          "distractors": [
+            "tea",
+            "dessert",
+            "juice"
+          ]
+        },
+        {
+          "q": "Where do Wang Ming's grandparents live?",
+          "a": "a small place",
+          "distractors": [
+            "a big city",
+            "a school",
+            "a park"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-wedding-day",
+      "hskLevel": 1,
+      "emoji": "💒",
+      "titleZh": "朋友的婚礼",
+      "pinyinTitle": "Péng Yǒu De Hūn Lǐ",
+      "summaryEn": "Wang Ming attends a friend's wedding and enjoys the celebration.",
+      "durationMin": 1,
+      "bodyZh": "今天，王明去朋友的婚礼。婚礼在一个大房子里。王明很开心，朋友也很高兴。大家一起吃饭，喝茶。王明还送了一个礼物给朋友。晚上，他们一起跳舞，乐声很大。王明觉得这一天很快乐。",
+      "comprehension": [
+        {
+          "q": "Where did Wang Ming's friend have the wedding?",
+          "a": "in a big house",
+          "distractors": [
+            "at a park",
+            "in a restaurant",
+            "on the street"
+          ]
+        },
+        {
+          "q": "What did Wang Ming give to his friend?",
+          "a": "a gift",
+          "distractors": [
+            "a card",
+            "a flower",
+            "a letter"
+          ]
+        },
+        {
+          "q": "What did they do at the wedding?",
+          "a": "dance",
+          "distractors": [
+            "sing",
+            "play games",
+            "tell stories"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-weekend",
+      "hskLevel": 1,
+      "emoji": "🛌",
+      "titleZh": "一个轻松的家",
+      "pinyinTitle": "Yī Gè Qīng Sōng De Jiā",
+      "summaryEn": "Wang Ming enjoys a calm weekend at home with his family.",
+      "durationMin": 1,
+      "bodyZh": "王明的家在北方。这个周末，王明在家。他和家人一起喝茶，吃水果。王明的妈妈做了很多菜，大家都喜欢吃。王明的爸爸看书，王明和妹妹在玩游戏。晚上，他们一起看电影，觉得很快乐。",
+      "comprehension": [
+        {
+          "q": "Where does Wang Ming live?",
+          "a": "In the north",
+          "distractors": [
+            "In the south",
+            "In the east",
+            "In the west"
+          ]
+        },
+        {
+          "q": "What did Wang Ming's mom make?",
+          "a": "Food",
+          "distractors": [
+            "Tea",
+            "Games",
+            "Movies"
+          ]
+        },
+        {
+          "q": "What do they do in the evening?",
+          "a": "Watch a movie",
+          "distractors": [
+            "Play games",
+            "Drink tea",
+            "Read books"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk1-yoga-class",
+      "hskLevel": 1,
+      "emoji": "🧘",
+      "titleZh": "初学者的瑜伽课",
+      "pinyinTitle": "Chū Xué Zhě De Yú Jiā Kè",
+      "summaryEn": "A beginner's yoga class brings joy and relaxation to a young student.",
+      "durationMin": 1,
+      "bodyZh": "今天，张伟去上瑜伽课。他很兴奋。他的朋友小红也来了。课上，老师教大家怎么放松。张伟跟着老师的动作，感觉很好。小红在一旁，笑着说：“这很简单！”课结束后，张伟和小红喝茶，聊了很多。他们都很开心。",
+      "comprehension": [
+        {
+          "q": "Who went to the yoga class?",
+          "a": "Zhang Wei",
+          "distractors": [
+            "Xiao Hong",
+            "Li Hua",
+            "Wang Ming"
+          ]
+        },
+        {
+          "q": "What did Zhang Wei and Xiao Hong drink after class?",
+          "a": "Tea",
+          "distractors": [
+            "Water",
+            "Juice",
+            "Coffee"
+          ]
+        },
+        {
+          "q": "How did Zhang Wei feel during the class?",
+          "a": "Good",
+          "distractors": [
+            "Bad",
+            "Tired",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-airport-arrival",
+      "hskLevel": 2,
+      "emoji": "🛬",
+      "titleZh": "王明到达机场",
+      "pinyinTitle": "Wáng Míng Dàoshì Jīchǎng",
+      "summaryEn": "Wang Ming arrives at the airport and finds a taxi.",
+      "durationMin": 2,
+      "bodyZh": "王明今天早上到达机场。他的航班很准时。王明从飞机上下来，走到行李提取的地方。他等了一会儿，终于找到了他的行李。然后，他出去找出租车。外面有很多出租车。王明看到一个司机在等他。司机说：‘你好，您要去哪里？’王明回答：‘我想去酒店。’司机点头，王明上了车。车子开得很快，王明很高兴。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming do after getting off the plane?",
+          "a": "He went to get his luggage.",
+          "distractors": [
+            "He went to a restaurant.",
+            "He took a bus.",
+            "He called a friend."
+          ]
+        },
+        {
+          "q": "What did Wang Ming want to do?",
+          "a": "Go to the hotel.",
+          "distractors": [
+            "Go to the park.",
+            "Visit a museum.",
+            "Meet a friend."
+          ]
+        },
+        {
+          "q": "Who helped Wang Ming find a taxi?",
+          "a": "The taxi driver.",
+          "distractors": [
+            "A police officer.",
+            "A friend.",
+            "A hotel staff."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-birthday",
+      "hskLevel": 2,
+      "emoji": "🎂",
+      "titleZh": "李小红的生日派对",
+      "pinyinTitle": "Lǐ Xiǎo Hóng De Shēng Rì Pài Duì",
+      "summaryEn": "Li Xiaohong celebrates her birthday with friends and has a wonderful time.",
+      "durationMin": 2,
+      "bodyZh": "今天是李小红的生日。她邀请了很多朋友来家里。大家都很高兴，特别是小红。她准备了很多好吃的，像蛋糕和水果。朋友们给她唱生日歌，还送了漂亮的礼物。小红开心地说：“谢谢你们！”大家一起吃蛋糕，玩游戏，聊得很开心。晚上，他们一起拍了很多照片，留下了美好的回忆。",
+      "comprehension": [
+        {
+          "q": "Who celebrated a birthday?",
+          "a": "Li Xiaohong",
+          "distractors": [
+            "Her friends",
+            "Li Wei",
+            "Zhang Ming"
+          ]
+        },
+        {
+          "q": "What did Li Xiaohong's friends give her?",
+          "a": "Pretty gifts",
+          "distractors": [
+            "Books",
+            "Food",
+            "Toys"
+          ]
+        },
+        {
+          "q": "What did they do in the evening?",
+          "a": "Took many photos",
+          "distractors": [
+            "Watched a movie",
+            "Went out to eat",
+            "Sang songs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-bookstore",
+      "hskLevel": 2,
+      "emoji": "📖",
+      "titleZh": "小红的书店之旅",
+      "pinyinTitle": "Xiǎo Hóng de Shū Diàn Zhī Lǚ",
+      "summaryEn": "Xiao Hong enjoys a delightful visit to a small bookstore.",
+      "durationMin": 2,
+      "bodyZh": "今天，小红去了一家小书店。书店里有很多书，有的在桌子上，有的在架子上。小红先看了一本书，书的名字是《快乐的生活》。她觉得这本书很有趣，就买了下来。然后，她看到一杯咖啡，决定喝一杯。店员很友好，给了她一杯热咖啡。小红坐在窗边，慢慢地喝咖啡，看书，心里觉得很开心。",
+      "comprehension": [
+        {
+          "q": "What book did Xiao Hong buy?",
+          "a": "The Happy Life",
+          "distractors": [
+            "The Cold Winter",
+            "The Great Adventure",
+            "The Lost Dog"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong drink in the bookstore?",
+          "a": "Hot coffee",
+          "distractors": [
+            "Cold tea",
+            "Orange juice",
+            "Milkshake"
+          ]
+        },
+        {
+          "q": "Where did Xiao Hong sit while reading?",
+          "a": "By the window",
+          "distractors": [
+            "At the door",
+            "In the back",
+            "On the floor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-buying-fruit",
+      "hskLevel": 2,
+      "emoji": "🍎",
+      "titleZh": "买水果",
+      "pinyinTitle": "Mǎi Shuǐguǒ",
+      "summaryEn": "Li Hua enjoys buying fresh fruit at the market.",
+      "durationMin": 2,
+      "bodyZh": "李华今天去市场买水果。她喜欢吃水果，特别是苹果和香蕉。市场上有很多水果，红色的苹果和黄色的香蕉看起来很新鲜。李华问摊主：‘这个苹果多少钱？’摊主说：‘每个三块钱。’李华想了想，买了五个苹果。然后，她又看到了香蕉。‘这个香蕉呢？’李华问。摊主回答：‘每个两块钱。’李华也买了三个香蕉。最后，她很高兴地回家，心里想着：‘今天的水果真好！’",
+      "comprehension": [
+        {
+          "q": "What fruit does Li Hua especially like?",
+          "a": "Apples and bananas",
+          "distractors": [
+            "Oranges and grapes",
+            "Peaches and pears",
+            "Cherries and lemons"
+          ]
+        },
+        {
+          "q": "How much does each apple cost?",
+          "a": "Three yuan",
+          "distractors": [
+            "Two yuan",
+            "Four yuan",
+            "Five yuan"
+          ]
+        },
+        {
+          "q": "How many bananas did Li Hua buy?",
+          "a": "Three",
+          "distractors": [
+            "Two",
+            "Four",
+            "Five"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-coffee-shop",
+      "hskLevel": 2,
+      "emoji": "☕",
+      "titleZh": "咖啡店学习",
+      "pinyinTitle": "Kā fēi diàn Xué xí",
+      "summaryEn": "Li Hua enjoys studying at the coffee shop with friends.",
+      "durationMin": 2,
+      "bodyZh": "李华喜欢在咖啡店学习。昨天，他和朋友们去了一家新咖啡店。这家店很大，有很多桌子。李华点了一杯咖啡，朋友们点了茶。他们坐在窗边，阳光照进来，感觉很好。李华在桌子上写作业，朋友们在旁边聊天。过了一会儿，李华说：“我们来看看电影吧！”朋友们都同意了。于是，他们喝完饮料，开心地走出咖啡店。",
+      "comprehension": [
+        {
+          "q": "Where does Li Hua like to study?",
+          "a": "at the coffee shop",
+          "distractors": [
+            "at home",
+            "in the library",
+            "at school"
+          ]
+        },
+        {
+          "q": "What did Li Hua order?",
+          "a": "a cup of coffee",
+          "distractors": [
+            "a sandwich",
+            "a cup of tea",
+            "a dessert"
+          ]
+        },
+        {
+          "q": "What did they decide to do after studying?",
+          "a": "watch a movie",
+          "distractors": [
+            "go shopping",
+            "play sports",
+            "eat dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-cooking-noodles",
+      "hskLevel": 2,
+      "emoji": "🍝",
+      "titleZh": "学做面条",
+      "pinyinTitle": "Xué Zuò Miàn Tiáo",
+      "summaryEn": "Li Hua learns to cook noodles for the first time.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华想学做面条。他去超市买了面和菜。回到家，他先把水放在锅里。水热了，他把面条放进去。面条在水里煮了一会儿，李华想，\"我该放什么呢？\"他想了想，放了一些鸡蛋和菜。最后，他把面条盛出来，觉得很好吃！李华很高兴，因为他学会了做面条。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua buy at the supermarket?",
+          "a": "Noodles and vegetables",
+          "distractors": [
+            "Rice and chicken",
+            "Bread and fruit",
+            "Fish and meat"
+          ]
+        },
+        {
+          "q": "What did Li Hua add to the noodles?",
+          "a": "Eggs and vegetables",
+          "distractors": [
+            "Salt and sugar",
+            "Milk and cheese",
+            "Pepper and onion"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel after cooking?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Tired",
+            "Angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-doctor-visit",
+      "hskLevel": 2,
+      "emoji": "🩺",
+      "titleZh": "李华看医生",
+      "pinyinTitle": "Lǐ Huá Kàn Yī Shēng",
+      "summaryEn": "Li Hua visits the doctor for a routine check-up.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华去医院看医生。他在早上八点到达医院。医生问他，\"你感觉怎么样？\"李华说，\"我有点累，头有点痛。\"医生让他坐下，检查了他的身体。之后，医生说，\"你需要多喝水，吃点水果。\"李华点头，感谢医生。然后，他去药店买了一些药。回家的路上，李华觉得轻松多了。",
+      "comprehension": [
+        {
+          "q": "What time did Li Hua arrive at the hospital?",
+          "a": "Eight o'clock",
+          "distractors": [
+            "Nine o'clock",
+            "Seven o'clock",
+            "Ten o'clock"
+          ]
+        },
+        {
+          "q": "What symptoms did Li Hua mention?",
+          "a": "Tiredness and headache",
+          "distractors": [
+            "Cough and fever",
+            "Stomach pain",
+            "Back pain"
+          ]
+        },
+        {
+          "q": "What did the doctor advise Li Hua to do?",
+          "a": "Drink more water and eat fruit",
+          "distractors": [
+            "Rest and sleep",
+            "Exercise more",
+            "Take a walk outside"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-exam-day",
+      "hskLevel": 2,
+      "emoji": "📝",
+      "titleZh": "重要考试前的准备",
+      "pinyinTitle": "Zhòngyào Kǎoshì Qián de Zhǔnbèi",
+      "summaryEn": "Li Hua prepares carefully for an important exam the next day.",
+      "durationMin": 2,
+      "bodyZh": "明天是李华的重要考试。今天，他在家复习。李华坐在桌子前，桌子上有很多书和笔。他认真地看书，还做了一些练习题。李华的朋友小红来找他。小红说：“你准备好了吗？”李华笑了笑，回答：“我还在复习。”小红给他带了一杯茶。李华觉得很开心。晚上，他复习到很晚，准备得很好。李华希望明天能考得好。",
+      "comprehension": [
+        {
+          "q": "What is Li Hua preparing for?",
+          "a": "an important exam",
+          "distractors": [
+            "a birthday party",
+            "a vacation",
+            "a music concert"
+          ]
+        },
+        {
+          "q": "Who visited Li Hua while he was studying?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Zhang Wei",
+            "Wang Ming",
+            "Li Jie"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong bring for Li Hua?",
+          "a": "a cup of tea",
+          "distractors": [
+            "a snack",
+            "a book",
+            "a gift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-first-snow",
+      "hskLevel": 2,
+      "emoji": "🌨️",
+      "titleZh": "第一场雪",
+      "pinyinTitle": "Dì Yī Chǎng Xuě",
+      "summaryEn": "A boy enjoys the beauty of the first snow of the season.",
+      "durationMin": 2,
+      "bodyZh": "今天是冬天的第一场雪。小明早上起床时，看到窗外白白的雪。雪在树上、屋顶上，都很美。小明很高兴，他穿上外套，跑到外面。外面很冷，但小明不在乎。他和朋友们一起打雪仗，堆雪人。他们笑着、玩着，忘记了寒冷。雪一直下到晚上，天上有很多星星。小明回到家，喝了热茶，觉得特别幸福。",
+      "comprehension": [
+        {
+          "q": "What did Xiao Ming see when he woke up?",
+          "a": "White snow",
+          "distractors": [
+            "Stars",
+            "Rain",
+            "Sunshine"
+          ]
+        },
+        {
+          "q": "What did Xiao Ming and his friends build?",
+          "a": "Snowman",
+          "distractors": [
+            "Sandcastle",
+            "Fire",
+            "Treehouse"
+          ]
+        },
+        {
+          "q": "What did Xiao Ming drink at home?",
+          "a": "Hot tea",
+          "distractors": [
+            "Cold water",
+            "Juice",
+            "Milk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-first-snow-kids",
+      "hskLevel": 2,
+      "emoji": "⛄",
+      "titleZh": "孩子们的第一次雪",
+      "pinyinTitle": "Hái Zi Men De Dì Yī Xuě",
+      "summaryEn": "Children enjoy playing in the first snow of the year.",
+      "durationMin": 2,
+      "bodyZh": "今天是冬天的第一场雪，王明和他的朋友们在外面玩。他们高兴地跑出来，看到地上白白的雪。王明说：“我们来打雪仗吧！”大家都同意了。小红用雪做了一个雪人，李华给雪人画了一个笑脸。大家玩得很开心，笑声在空中回荡。雪越来越大，王明的手冷了，但他还是不想回家。他觉得今天真快乐！",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming and his friends want to do in the snow?",
+          "a": "Have a snowball fight",
+          "distractors": [
+            "Make a snowman",
+            "Go inside",
+            "Drink hot chocolate"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong make with the snow?",
+          "a": "A snowman",
+          "distractors": [
+            "A snowball",
+            "A snow fort",
+            "A snow angel"
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel about the day?",
+          "a": "Happy",
+          "distractors": [
+            "Cold",
+            "Bored",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-garden-flowers",
+      "hskLevel": 2,
+      "emoji": "🌷",
+      "titleZh": "种花的小花园",
+      "pinyinTitle": "Zhòng Huā De Xiǎo Huāyuán",
+      "summaryEn": "A young girl delights in planting flowers in her small garden.",
+      "durationMin": 2,
+      "bodyZh": "小红喜欢花。她的家有一个小花园。春天来了，她想种花。小红去商店买了很多花种。她买了红色、黄色和白色的花。回到家，小红开始种花。她先把土弄松，然后把种子放进土里。小红每天都来浇水，看看花。过了几周，花开始长出来了。小红非常开心，花园变得五颜六色。她和朋友们一起在花园里玩。大家都说小红的花园真美！",
+      "comprehension": [
+        {
+          "q": "What colors of flowers did Xiaohong plant?",
+          "a": "Red, yellow, and white",
+          "distractors": [
+            "Blue, green, and purple",
+            "Pink, orange, and brown",
+            "Black, grey, and gold"
+          ]
+        },
+        {
+          "q": "What season did Xiaohong start planting flowers?",
+          "a": "Spring",
+          "distractors": [
+            "Summer",
+            "Autumn",
+            "Winter"
+          ]
+        },
+        {
+          "q": "Who did Xiaohong play with in the garden?",
+          "a": "Her friends",
+          "distractors": [
+            "Her parents",
+            "Her dog",
+            "Her brother"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-grandma-cooks",
+      "hskLevel": 2,
+      "emoji": "👵",
+      "titleZh": "奶奶教家常菜",
+      "pinyinTitle": "Nǎi Nái Jiāo Jiā Cháng Cài",
+      "summaryEn": "Grandmother teaches the family recipe for a special dish.",
+      "durationMin": 2,
+      "bodyZh": "今天，王明和他的家人去奶奶家。奶奶说：“我今天要教你们做我最喜欢的菜。”大家都很高兴。奶奶准备了很多材料，米、菜和肉。她先洗米，然后把米放进锅里。接着，奶奶切菜和肉，放进锅里煮。王明和他的妹妹小红也帮忙，他们学得很快。最后，菜做好了，大家一起吃。王明觉得奶奶的菜最好吃，他希望下次还能学更多菜。",
+      "comprehension": [
+        {
+          "q": "What dish does grandmother teach the family to make?",
+          "a": "A special dish",
+          "distractors": [
+            "A dessert",
+            "A soup",
+            "A salad"
+          ]
+        },
+        {
+          "q": "Who helps grandmother in the kitchen?",
+          "a": "Wang Ming and Xiao Hong",
+          "distractors": [
+            "Wang Ming and his father",
+            "Xiao Hong and her friend",
+            "Wang Ming and his cousin"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about grandmother's cooking?",
+          "a": "It's the best",
+          "distractors": [
+            "It's too salty",
+            "It's not good",
+            "It's too spicy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-haircut",
+      "hskLevel": 2,
+      "emoji": "💇",
+      "titleZh": "李华理发",
+      "pinyinTitle": "Lǐ Huá Lǐ Fà",
+      "summaryEn": "Li Hua visits a barber for a new haircut.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华想理发。他的头发长了很多。早上，他去了一家理发店。店员是一个年轻的女孩。李华问她：“我可以剪短吗？”她笑着说：“当然可以！”李华坐在椅子上，女孩开始工作。她先洗了头，然后剪了头发。李华觉得很舒服。理发后，他看着镜子，觉得自己很帅。李华感谢女孩，付了钱，然后高高兴兴地回家了。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua want to do today?",
+          "a": "Get a haircut",
+          "distractors": [
+            "Buy a new shirt",
+            "Go to school",
+            "Visit a friend"
+          ]
+        },
+        {
+          "q": "Who is the worker at the barber shop?",
+          "a": "A young girl",
+          "distractors": [
+            "An old man",
+            "A boy",
+            "An old woman"
+          ]
+        },
+        {
+          "q": "How does Li Hua feel after the haircut?",
+          "a": "Handsome",
+          "distractors": [
+            "Sad",
+            "Tired",
+            "Hungry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-homework-help",
+      "hskLevel": 2,
+      "emoji": "✏️",
+      "titleZh": "李华帮妹妹做作业",
+      "pinyinTitle": "Lǐ Huá Bāng Mèi Mei Zuò Zuò Yè",
+      "summaryEn": "Li Hua helps his younger sister with her homework after school.",
+      "durationMin": 2,
+      "bodyZh": "今天放学后，李华回家。妹妹在桌子上写作业。她看起来很烦恼。李华走过去问：“你怎么了？”妹妹说：“我不会做数学题。”李华坐下来，给她讲解题目。过了一会儿，妹妹的脸上露出了笑容。她说：“谢谢哥哥！我懂了！”李华也很高兴，因为他帮助了妹妹。",
+      "comprehension": [
+        {
+          "q": "What subject did Li Hua help his sister with?",
+          "a": "math",
+          "distractors": [
+            "Chinese",
+            "English",
+            "science"
+          ]
+        },
+        {
+          "q": "How did Li Hua's sister feel at first?",
+          "a": "worried",
+          "distractors": [
+            "happy",
+            "excited",
+            "bored"
+          ]
+        },
+        {
+          "q": "What did Li Hua's sister say after understanding the homework?",
+          "a": "Thank you, brother!",
+          "distractors": [
+            "I don't need help.",
+            "This is too hard.",
+            "I want to play."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-library-visit",
+      "hskLevel": 2,
+      "emoji": "📚",
+      "titleZh": "一个下午在图书馆",
+      "pinyinTitle": "Yī gè xiàwǔ zài túshūguǎn",
+      "summaryEn": "Li Hua enjoys a quiet afternoon reading at the library.",
+      "durationMin": 2,
+      "bodyZh": "李华今天下午去图书馆。他喜欢在图书馆看书。图书馆很安静，李华找了一个舒适的位子坐下。他看了一本关于动物的书，书里有很多有趣的图片。李华看得很认真，忘了时间。过了一会儿，他喝了一杯茶，继续阅读。外面阳光明媚，李华觉得非常开心。他想，这样的下午真好！",
+      "comprehension": [
+        {
+          "q": "What type of book did Li Hua read?",
+          "a": "A book about animals",
+          "distractors": [
+            "A book about history",
+            "A book about cooking",
+            "A book about travel"
+          ]
+        },
+        {
+          "q": "What did Li Hua drink while reading?",
+          "a": "A cup of tea",
+          "distractors": [
+            "A cup of coffee",
+            "A glass of water",
+            "A bottle of juice"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel about his afternoon?",
+          "a": "Very happy",
+          "distractors": [
+            "Very tired",
+            "Very bored",
+            "Very hungry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-lost-in-city",
+      "hskLevel": 2,
+      "emoji": "🗺️",
+      "titleZh": "迷路的李明",
+      "pinyinTitle": "Mí Lù De Lǐ Míng",
+      "summaryEn": "Li Ming gets lost in a new city and learns to ask for help.",
+      "durationMin": 2,
+      "bodyZh": "李明是一个学生。他这周去北京旅游。一天，他想去一个新地方。可是，他在路上迷路了。李明很着急，不知道该怎么办。他看看周围，看到一个商店。于是，他走进去，问店员：‘请问，怎么去天安门？’店员微笑着说：‘你向右走，走到第一个路口，然后左转。’李明谢谢店员，按照指示走了。在路上，他看到了很多有趣的地方，最后他终于找到了天安门。李明很高兴，他觉得迷路也有快乐。",
+      "comprehension": [
+        {
+          "q": "Where did Li Ming go for travel?",
+          "a": "Beijing",
+          "distractors": [
+            "Shanghai",
+            "Guangzhou",
+            "Chengdu"
+          ]
+        },
+        {
+          "q": "What did Li Ming ask the shopkeeper?",
+          "a": "How to go to Tiananmen",
+          "distractors": [
+            "Where is the bus station?",
+            "What time is it?",
+            "How much is this?"
+          ]
+        },
+        {
+          "q": "How did Li Ming feel after finding Tiananmen?",
+          "a": "Happy",
+          "distractors": [
+            "Angry",
+            "Sad",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-lost-wallet",
+      "hskLevel": 2,
+      "emoji": "👛",
+      "titleZh": "找钱包",
+      "pinyinTitle": "Zhǎo Qiánbāo",
+      "summaryEn": "Li Wei searches for his lost wallet in the park.",
+      "durationMin": 2,
+      "bodyZh": "李伟今天去公园散步。他走着走着，发现自己的钱包不见了。李伟很着急。他回到刚才坐的长椅，找了找，但钱包没在那儿。李伟想：‘我在哪儿丢的呢？’他想起自己去买咖啡时，把钱包放在口袋里。于是，他去咖啡店问服务员。服务员说：‘你钱包在这里！’李伟很高兴，感谢服务员。他拿回钱包，心里松了一口气。",
+      "comprehension": [
+        {
+          "q": "Where did Li Wei lose his wallet?",
+          "a": "In the park",
+          "distractors": [
+            "At home",
+            "In the coffee shop",
+            "On the bus"
+          ]
+        },
+        {
+          "q": "Who did Li Wei ask about his wallet?",
+          "a": "The server",
+          "distractors": [
+            "A friend",
+            "A stranger",
+            "A police officer"
+          ]
+        },
+        {
+          "q": "How did Li Wei feel when he found his wallet?",
+          "a": "Happy",
+          "distractors": [
+            "Angry",
+            "Sad",
+            "Nervous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-morning-market",
+      "hskLevel": 2,
+      "emoji": "🥬",
+      "titleZh": "早上的菜市场",
+      "pinyinTitle": "Zǎo Shàng De Cài Shì Chǎng",
+      "summaryEn": "A young girl enjoys her visit to the morning vegetable market.",
+      "durationMin": 3,
+      "bodyZh": "小红早上七点去菜市场。市场里有很多新鲜的蔬菜和水果。小红看到有红色的西红柿、绿色的黄瓜和黄色的胡萝卜。她很喜欢这些颜色。小红走到一个摊位，买了两斤西红柿和一斤黄瓜。卖菜的阿姨对小红笑着说：“今天的菜很新鲜！”小红高兴地回答：“谢谢，我要做汤！”她把菜放进袋子里，然后继续走去别的摊位。她还买了一些苹果和香蕉。小红觉得早上的菜市场很热闹，她喜欢这里的气氛。回家的路上，她想着晚上要做的美味菜肴。",
+      "comprehension": [
+        {
+          "q": "What time did 小红 go to the market?",
+          "a": "Seven o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Six o'clock",
+            "Nine o'clock"
+          ]
+        },
+        {
+          "q": "What vegetables did 小红 buy?",
+          "a": "Tomatoes and cucumbers",
+          "distractors": [
+            "Carrots and apples",
+            "Potatoes and bananas",
+            "Peppers and onions"
+          ]
+        },
+        {
+          "q": "What did 小红 want to make with the vegetables?",
+          "a": "Soup",
+          "distractors": [
+            "Salad",
+            "Smoothie",
+            "Stir-fry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-morning-run",
+      "hskLevel": 2,
+      "emoji": "🏃",
+      "titleZh": "早晨跑步",
+      "pinyinTitle": "Zǎo Chén Pǎo Bù",
+      "summaryEn": "A young man enjoys a refreshing morning run in his neighborhood.",
+      "durationMin": 2,
+      "bodyZh": "王明每天早上六点起床。他喜欢在附近跑步。今天天气很好，阳光明媚。他穿好鞋子，出门跑步。沿着街道，他看到很多人。有的人在吃早餐，有的人在散步。王明跑到公园，看到很多小朋友在玩。他觉得很开心。跑步结束后，王明喝了一杯水，准备开始新的一天。",
+      "comprehension": [
+        {
+          "q": "What time does Wang Ming wake up?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Five o'clock",
+            "Eight o'clock"
+          ]
+        },
+        {
+          "q": "What does Wang Ming see in the park?",
+          "a": "Children playing",
+          "distractors": [
+            "Dogs running",
+            "People sleeping",
+            "Old men reading"
+          ]
+        },
+        {
+          "q": "What does Wang Ming drink after running?",
+          "a": "Water",
+          "distractors": [
+            "Tea",
+            "Juice",
+            "Coffee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-movie-night",
+      "hskLevel": 2,
+      "emoji": "🎬",
+      "titleZh": "安静的电影夜",
+      "pinyinTitle": "Ān jìng de Diàn yǐng Yè",
+      "summaryEn": "A quiet movie night at home leads to unexpected fun.",
+      "durationMin": 2,
+      "bodyZh": "今天晚上，李华和他的朋友小红在家看电影。李华准备了很多零食，有水果、饼干和饮料。他们坐在沙发上，打开了电视。电影开始了，他们非常专注。小红喜欢这个电影，她笑得很开心。李华也觉得很有趣。电影结束后，他们讨论了电影的情节。这样的晚上很安静，也很快乐。",
+      "comprehension": [
+        {
+          "q": "What snacks did Li Hua prepare?",
+          "a": "Fruits and cookies",
+          "distractors": [
+            "Chips and candy",
+            "Popcorn and soda",
+            "Cake and ice cream"
+          ]
+        },
+        {
+          "q": "Who watched the movie with Li Hua?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Zhang Wei",
+            "Wang Ming",
+            "Li Mei"
+          ]
+        },
+        {
+          "q": "How did Xiao Hong feel about the movie?",
+          "a": "Happy",
+          "distractors": [
+            "Bored",
+            "Angry",
+            "Confused"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-moving-house",
+      "hskLevel": 2,
+      "emoji": "📦",
+      "titleZh": "新家搬家",
+      "pinyinTitle": "Xīn Jiā Bān Jiā",
+      "summaryEn": "Li Hua enjoys a busy and happy day moving into his new home.",
+      "durationMin": 2,
+      "bodyZh": "今天是李华搬家的日子。他很高兴，因为他的新家很大。早上，李华和他的朋友们一起搬东西。他们把家具从旧家搬到新家。李华的朋友们帮忙搬沙发、桌子和椅子。中午，他们在新家吃了午饭。大家都很累，但很开心。搬完家后，李华看着新家，觉得这里真好。他希望朋友们可以常来玩。",
+      "comprehension": [
+        {
+          "q": "What is the main activity in the story?",
+          "a": "Moving into a new home",
+          "distractors": [
+            "Going to a party",
+            "Buying furniture",
+            "Visiting friends"
+          ]
+        },
+        {
+          "q": "Who helps Li Hua move?",
+          "a": "His friends",
+          "distractors": [
+            "His family",
+            "Strangers",
+            "Neighbors"
+          ]
+        },
+        {
+          "q": "What do they eat for lunch?",
+          "a": "Lunch",
+          "distractors": [
+            "Dinner",
+            "Breakfast",
+            "Snacks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-music-class",
+      "hskLevel": 2,
+      "emoji": "🎵",
+      "titleZh": "音乐课",
+      "pinyinTitle": "Yīn Yuè Kè",
+      "summaryEn": "A student enjoys a fun music class at school.",
+      "durationMin": 2,
+      "bodyZh": "今天，李明在学校的音乐课上。老师是小张，教他们唱歌。李明和同学们一起坐在教室里。小张说：“我们来学一首新歌！”同学们都很高兴。李明喜欢这首歌，觉得很好听。老师让他们分组练习。李明和小红在一起唱，他们唱得很快乐。课后，李明对小红说：“我们下次再一起唱！”",
+      "comprehension": [
+        {
+          "q": "Who is the teacher in the music class?",
+          "a": "小张",
+          "distractors": [
+            "李明",
+            "小红",
+            "王伟"
+          ]
+        },
+        {
+          "q": "What activity do the students do in groups?",
+          "a": "singing",
+          "distractors": [
+            "dancing",
+            "drawing",
+            "playing games"
+          ]
+        },
+        {
+          "q": "How does Li Ming feel about the new song?",
+          "a": "happy",
+          "distractors": [
+            "bored",
+            "angry",
+            "tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-my-day",
+      "hskLevel": 2,
+      "emoji": "🌞",
+      "titleZh": "王明的一天",
+      "pinyinTitle": "Wáng Míng De Yī Tiān",
+      "summaryEn": "Wang Ming enjoys a busy but fulfilling day in his life.",
+      "durationMin": 2,
+      "bodyZh": "王明每天六点起床。他洗脸，吃早饭，然后去上班。今天他在公司工作得很忙，已经完成了三个项目。中午，他和同事们一起去餐馆吃饭，吃了米饭和鸡肉。下午，他有一个重要的会议。在会议上，王明告诉大家他的想法。下班后，他去健身房锻炼。他喜欢跑步和举重。晚上，王明回到家，看了会儿电视，然后准备明天的工作。他觉得今天很充实。",
+      "comprehension": [
+        {
+          "q": "What time does Wang Ming wake up?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Five o'clock",
+            "Eight o'clock"
+          ]
+        },
+        {
+          "q": "What did Wang Ming eat for lunch?",
+          "a": "Rice and chicken",
+          "distractors": [
+            "Noodles and beef",
+            "Fish and vegetables",
+            "Bread and cheese"
+          ]
+        },
+        {
+          "q": "What does Wang Ming do after work?",
+          "a": "Go to the gym",
+          "distractors": [
+            "Go shopping",
+            "Meet friends",
+            "Read a book"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-neighbor-favor",
+      "hskLevel": 2,
+      "emoji": "🚪",
+      "titleZh": "邻居的帮助",
+      "pinyinTitle": "Lín Jū De Bāng Zhù",
+      "summaryEn": "A neighbor helps out with a small favor in a friendly exchange.",
+      "durationMin": 2,
+      "bodyZh": "一天，王明在家里忙着做饭。他想喝茶，但茶叶没了。王明想到了邻居小红。小红喜欢喝茶，也总是乐于助人。于是，王明走到小红的家，轻轻敲门。小红打开门，笑着问：“王明，你有什么事？”王明说：“小红，我想喝茶，可以借我一些茶叶吗？”小红点点头，回答：“当然可以，等一下。”她很快拿出一些茶叶，递给王明。王明高兴地说：“谢谢你，小红！”小红笑着说：“不客气，随时来找我！”",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming want to borrow from his neighbor?",
+          "a": "tea leaves",
+          "distractors": [
+            "sugar",
+            "coffee",
+            "milk"
+          ]
+        },
+        {
+          "q": "Who is Wang Ming's neighbor?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Liu Mei"
+          ]
+        },
+        {
+          "q": "How did Xiao Hong respond to Wang Ming's request?",
+          "a": "she agreed",
+          "distractors": [
+            "she refused",
+            "she was busy",
+            "she forgot"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-new-pet",
+      "hskLevel": 2,
+      "emoji": "🐱",
+      "titleZh": "王明的新朋友",
+      "pinyinTitle": "Wáng Míng de Xīn Péngyǒu",
+      "summaryEn": "Wang Ming's family adopts a playful puppy.",
+      "durationMin": 2,
+      "bodyZh": "王明的家里有一个新朋友。这个朋友是一只小狗。王明和他的家人很喜欢这只小狗。小狗的名字叫乐乐。乐乐喜欢在家里跑来跑去，玩球。王明每天都带乐乐去公园。乐乐在公园里很开心，常常和其他小狗玩。王明的妈妈说，乐乐是他们的好伙伴。王明也觉得乐乐让家里更快乐了。",
+      "comprehension": [
+        {
+          "q": "What is the name of Wang Ming's new pet?",
+          "a": "Lele",
+          "distractors": [
+            "Xiaohong",
+            "Didi",
+            "Bobo"
+          ]
+        },
+        {
+          "q": "Where does Wang Ming take Lele every day?",
+          "a": "Park",
+          "distractors": [
+            "School",
+            "Supermarket",
+            "Friend's house"
+          ]
+        },
+        {
+          "q": "How does Lele make the family feel?",
+          "a": "Happier",
+          "distractors": [
+            "Sadder",
+            "Tired",
+            "Angrier"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-old-friend",
+      "hskLevel": 2,
+      "emoji": "👫",
+      "titleZh": "久别重逢",
+      "pinyinTitle": "Jiǔ Bié Chóng Féng",
+      "summaryEn": "Li Ming meets his old friend after many years apart.",
+      "durationMin": 2,
+      "bodyZh": "今天，李明去公园。他在公园里走着，看到一个熟悉的脸。那是他的老朋友张伟。李明高兴地叫：“张伟！好久不见！”张伟也很开心。他们坐在长椅上，聊了很多事情。李明问：“你现在在做什么？”张伟说：“我在一家公司工作。”李明说：“我在学校教书。”他们一起回忆以前的快乐时光，也谈论未来的计划。时间过得很快，最后他们互相约好下次见面。",
+      "comprehension": [
+        {
+          "q": "Where did Li Ming go today?",
+          "a": "the park",
+          "distractors": [
+            "the school",
+            "the store",
+            "the library"
+          ]
+        },
+        {
+          "q": "What does Zhang Wei do now?",
+          "a": "works at a company",
+          "distractors": [
+            "teaches at a school",
+            "sells coffee",
+            "plays basketball"
+          ]
+        },
+        {
+          "q": "What did they do on the bench?",
+          "a": "talked about many things",
+          "distractors": [
+            "played games",
+            "ate lunch",
+            "sang songs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-park-walk",
+      "hskLevel": 2,
+      "emoji": "🌳",
+      "titleZh": "下午在公园散步",
+      "pinyinTitle": "Xiàwǔ Zài Gōngyuán Sàn Bù",
+      "summaryEn": "Wang Ming enjoys a peaceful afternoon walk in the park.",
+      "durationMin": 2,
+      "bodyZh": "王明今天下午去公园散步。天气很好，阳光明亮。他看到很多人和狗在玩。王明走到一个小湖边，坐下来休息。他喝了一杯水，看着水里的鱼游来游去。然后，他看到一只小鸟在树上唱歌。王明觉得这很有趣，心情很好。散步后，他回家准备晚饭。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming do this afternoon?",
+          "a": "He walked in the park.",
+          "distractors": [
+            "He played basketball.",
+            "He went shopping.",
+            "He visited a friend."
+          ]
+        },
+        {
+          "q": "What did Wang Ming see by the lake?",
+          "a": "Fish swimming.",
+          "distractors": [
+            "People swimming.",
+            "Cats playing.",
+            "Dogs barking."
+          ]
+        },
+        {
+          "q": "What did Wang Ming drink while resting?",
+          "a": "A cup of water.",
+          "distractors": [
+            "A cup of tea.",
+            "A glass of juice.",
+            "A bottle of soda."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-post-office",
+      "hskLevel": 2,
+      "emoji": "📮",
+      "titleZh": "小红寄包裹",
+      "pinyinTitle": "Xiǎo Hóng Jì Bāo Guǒ",
+      "summaryEn": "Xiao Hong sends a package at the post office with a little help.",
+      "durationMin": 2,
+      "bodyZh": "小红要寄一个包裹。她走到邮局。邮局里有很多人。小红在前面等着。她看到一个姐姐在帮她。姐姐说：“请把包裹放在这里。”小红把包裹放好，姐姐帮她写地址。小红很高兴，因为她的包裹很快就寄走了。她说：“谢谢你！”姐姐笑着说：“不客气！”",
+      "comprehension": [
+        {
+          "q": "What does Xiao Hong want to send?",
+          "a": "a package",
+          "distractors": [
+            "a letter",
+            "a book",
+            "a gift"
+          ]
+        },
+        {
+          "q": "Who helps Xiao Hong at the post office?",
+          "a": "an older sister",
+          "distractors": [
+            "a friend",
+            "a worker",
+            "a teacher"
+          ]
+        },
+        {
+          "q": "How does Xiao Hong feel after sending the package?",
+          "a": "happy",
+          "distractors": [
+            "sad",
+            "angry",
+            "nervous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-rainy-day",
+      "hskLevel": 2,
+      "emoji": "🌧️",
+      "titleZh": "雨天的乐趣",
+      "pinyinTitle": "Yǔ Tiān De Lè Qù",
+      "summaryEn": "A rainy day brings fun activities for a young boy.",
+      "durationMin": 2,
+      "bodyZh": "今天，王明在家里。他看外面，雨下得很大。王明觉得无聊。于是，他决定做一些有趣的事情。首先，王明拿出他的书，坐在椅子上看书。他看得很开心。然后，他想起了他的玩具。他把玩具车拿出来，和它们一起玩。王明还给他的狗狗喂食。狗狗非常高兴。最后，王明和妈妈一起做了美味的饼干。虽然外面在下雨，但他们的家里很温暖，王明觉得非常快乐。",
+      "comprehension": [
+        {
+          "q": "What does Wang Ming do first on a rainy day?",
+          "a": "He reads a book.",
+          "distractors": [
+            "He plays basketball.",
+            "He goes outside.",
+            "He rides a bike."
+          ]
+        },
+        {
+          "q": "What does Wang Ming feed during the rainy day?",
+          "a": "His dog.",
+          "distractors": [
+            "His cat.",
+            "His friend.",
+            "A bird."
+          ]
+        },
+        {
+          "q": "Who helps Wang Ming make cookies?",
+          "a": "His mom.",
+          "distractors": [
+            "His dad.",
+            "His sister.",
+            "His friend."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-restaurant",
+      "hskLevel": 2,
+      "emoji": "🍜",
+      "titleZh": "点菜",
+      "pinyinTitle": "Diǎn Cài",
+      "summaryEn": "Wang Ming orders food at a restaurant with his friend.",
+      "durationMin": 2,
+      "bodyZh": "王明和他的朋友小红在一家餐馆里。服务员来问他们想吃什么。王明说：“我想要一碗牛肉面。”小红说：“我喜欢吃鸡肉饭。”服务员写下他们的订单，然后问：“你们要喝什么？”王明回答：“我想要一杯水。”小红说：“我要一杯茶。”服务员点头，笑着说：“好的，马上来。”不久后，他们的食物就上来了，王明和小红都很高兴。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming order?",
+          "a": "beef noodles",
+          "distractors": [
+            "chicken rice",
+            "vegetable soup",
+            "pork dumplings"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong want to eat?",
+          "a": "chicken rice",
+          "distractors": [
+            "beef noodles",
+            "fish soup",
+            "noodles with vegetables"
+          ]
+        },
+        {
+          "q": "What did they drink?",
+          "a": "water and tea",
+          "distractors": [
+            "coffee and juice",
+            "soda and milk",
+            "beer and lemonade"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-running-late",
+      "hskLevel": 2,
+      "emoji": "⏰",
+      "titleZh": "迟到的会议",
+      "pinyinTitle": "Chídào De Huìyì",
+      "summaryEn": "Li Hua rushes to an important meeting and faces challenges along the way.",
+      "durationMin": 2,
+      "bodyZh": "李华今天有一个重要的会议。他早上起晚了，匆忙吃了早餐。吃完后，他跑去车站。可是，车站很远，他走得很快。到了车站，他发现火车已经开了。李华很着急，他想：‘我怎么能迟到呢？’他决定打车。车来了，司机很快把他送到公司。可是，会议已经开始了。李华轻轻地走进会议室，他的心跳得很快。大家都在等他。他说：‘对不起，我来晚了。’大家都笑了，会议继续进行。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua have today?",
+          "a": "an important meeting",
+          "distractors": [
+            "a birthday party",
+            "a lunch date",
+            "a sports event"
+          ]
+        },
+        {
+          "q": "What did Li Hua do after breakfast?",
+          "a": "went to the train station",
+          "distractors": [
+            "went home",
+            "went shopping",
+            "went to a friend's house"
+          ]
+        },
+        {
+          "q": "How did Li Hua get to the company?",
+          "a": "by taxi",
+          "distractors": [
+            "by bus",
+            "by bicycle",
+            "on foot"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-school-day",
+      "hskLevel": 2,
+      "emoji": "🎒",
+      "titleZh": "学校的一天",
+      "pinyinTitle": "Xué Xiào De Yī Tiān",
+      "summaryEn": "A student experiences a typical school day from morning to afternoon.",
+      "durationMin": 2,
+      "bodyZh": "王明今天很早起床。他吃了早饭，喝了牛奶。然后，他去学校。到学校后，他和同学们一起上课。第一节课是数学，老师教了数字和简单的算式。中午，王明和朋友们在学校的食堂吃饭。他们吃了米饭和鸡肉。午饭后，他们一起去操场玩。王明很喜欢打篮球。下午，王明的最后一节课是英语。他在课堂上学习了新单词。放学后，王明回家，觉得今天很开心。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming eat for breakfast?",
+          "a": "milk",
+          "distractors": [
+            "bread",
+            "tea",
+            "fruit"
+          ]
+        },
+        {
+          "q": "What sport does Wang Ming like to play?",
+          "a": "basketball",
+          "distractors": [
+            "soccer",
+            "table tennis",
+            "volleyball"
+          ]
+        },
+        {
+          "q": "What subject did Wang Ming learn in the last class?",
+          "a": "English",
+          "distractors": [
+            "math",
+            "science",
+            "art"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-shopping-mall",
+      "hskLevel": 2,
+      "emoji": "🛍️",
+      "titleZh": "购物中心的下午",
+      "pinyinTitle": "Gòu Wù Zhòng Xīn De Xià Wǔ",
+      "summaryEn": "A fun afternoon at the shopping mall with friends.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华和他的朋友们去购物中心。天气很好，阳光明媚。李华想买一件新衣服。朋友们一起走进一家服装店。店里的衣服很多，颜色也很漂亮。李华试了几件，最后选择了一件蓝色的衬衫。大家都说很好看。然后，他们去咖啡馆喝咖啡。李华点了一杯热咖啡，朋友们点了冰咖啡。他们坐在窗边，聊天很开心。下午过得很快，李华和朋友们都很满意。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua want to buy?",
+          "a": "a new shirt",
+          "distractors": [
+            "a pair of shoes",
+            "a hat",
+            "a bag"
+          ]
+        },
+        {
+          "q": "Where did they sit to drink coffee?",
+          "a": "by the window",
+          "distractors": [
+            "at the entrance",
+            "in the back",
+            "outside"
+          ]
+        },
+        {
+          "q": "What type of coffee did Li Hua order?",
+          "a": "hot coffee",
+          "distractors": [
+            "iced coffee",
+            "tea",
+            "juice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-snowy-morning",
+      "hskLevel": 2,
+      "emoji": "❄️",
+      "titleZh": "雪天的早晨",
+      "pinyinTitle": "Xuě Tiān De Zǎo Chén",
+      "summaryEn": "A boy enjoys a snowy winter morning with his friends.",
+      "durationMin": 2,
+      "bodyZh": "今天早上，王明起床，看到外面下雪了。他很高兴，立刻穿好衣服，跑出去玩。外面的雪很白，像棉花一样。王明的朋友小红也来了，他们一起堆雪人。小红说：“我们来比赛，看谁的雪人更高！”王明同意了，他们开始忙着堆雪。过了一会儿，他们的雪人就做好了，王明笑着说：“真好玩！”然后，他们一起打雪仗，玩得很开心。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming see when he woke up?",
+          "a": "Snow",
+          "distractors": [
+            "Rain",
+            "Sunshine",
+            "Wind"
+          ]
+        },
+        {
+          "q": "What did Wang Ming and Xiao Hong build?",
+          "a": "Snowman",
+          "distractors": [
+            "Snow fort",
+            "Ice sculpture",
+            "Sandcastle"
+          ]
+        },
+        {
+          "q": "What game did they play after building the snowman?",
+          "a": "Snowball fight",
+          "distractors": [
+            "Hide and seek",
+            "Tag",
+            "Catch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-sports-day",
+      "hskLevel": 2,
+      "emoji": "⚽",
+      "titleZh": "学校运动会",
+      "pinyinTitle": "Xué Xiào Yùn Dòng Huì",
+      "summaryEn": "A student enjoys the excitement of the school sports day.",
+      "durationMin": 3,
+      "bodyZh": "今天是学校的运动会，李明很高兴。他和同学们在操场上热闹地准备。首先是短跑，李明和他的朋友们都很紧张。比赛开始了，大家都跑得很快。李明跑在前面，最后他得了第一名！同学们为他欢呼。接下来是接力赛，李明也参加了。他们的队伍一起努力，最后赢了比赛。大家都很开心，李明觉得今天真的很有趣。运动会结束后，老师给每个同学发了小奖品。李明拿到了一本书，他很喜欢这一天。",
+      "comprehension": [
+        {
+          "q": "What event did Li Ming participate in first?",
+          "a": "sprint",
+          "distractors": [
+            "long jump",
+            "relay race",
+            "basketball"
+          ]
+        },
+        {
+          "q": "What did Li Ming receive at the end of the sports day?",
+          "a": "a book",
+          "distractors": [
+            "a trophy",
+            "a medal",
+            "a certificate"
+          ]
+        },
+        {
+          "q": "How did Li Ming feel about the sports day?",
+          "a": "very happy",
+          "distractors": [
+            "very tired",
+            "bored",
+            "nervous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-subway-ride",
+      "hskLevel": 2,
+      "emoji": "🚇",
+      "titleZh": "地铁的拥挤",
+      "pinyinTitle": "Dì tiě de yōng jǐ",
+      "summaryEn": "A busy subway ride brings unexpected events for Li Wei.",
+      "durationMin": 2,
+      "bodyZh": "李伟今天早上坐地铁去上班。地铁很拥挤，很多人站着。李伟站在门口，手里拿着手机。他看到一个小女孩在哭。小女孩的妈妈在车厢里，不能来帮她。李伟走过去，问她怎么了。小女孩说她的玩具掉了。李伟帮她找到了玩具。小女孩笑了，李伟也很开心。地铁到了站，大家都下车。李伟觉得，虽然地铁很挤，但能帮到别人，让他很高兴。",
+      "comprehension": [
+        {
+          "q": "Who is the main character in the story?",
+          "a": "Li Wei",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Xiao Hong"
+          ]
+        },
+        {
+          "q": "What problem does the little girl have?",
+          "a": "Her toy is lost",
+          "distractors": [
+            "She is hungry",
+            "She is tired",
+            "She wants to go home"
+          ]
+        },
+        {
+          "q": "How does Li Wei feel after helping the girl?",
+          "a": "Happy",
+          "distractors": [
+            "Angry",
+            "Tired",
+            "Sad"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-subway-stranger",
+      "hskLevel": 2,
+      "emoji": "🚉",
+      "titleZh": "帮陌生人找火车",
+      "pinyinTitle": "Bāng Mòshēngrén Zhǎo Huǒchē",
+      "summaryEn": "Li Wei helps a stranger find the right train.",
+      "durationMin": 2,
+      "bodyZh": "一天，李伟在火车站等火车。他看到一个陌生人，那个陌生人看起来很着急。李伟走过去问：‘你在找什么吗？’陌生人说：‘我在找去北京的火车，可是我找不到。’李伟想了想，然后说：‘北京的火车在六号站台。’陌生人说：‘谢谢你！’李伟笑了笑，看到陌生人跑去六号站台。李伟觉得很高兴，因为他帮助了别人。",
+      "comprehension": [
+        {
+          "q": "Where was Li Wei waiting?",
+          "a": "At the train station",
+          "distractors": [
+            "At the bus station",
+            "At home",
+            "At the airport"
+          ]
+        },
+        {
+          "q": "What train was the stranger looking for?",
+          "a": "Train to Beijing",
+          "distractors": [
+            "Train to Shanghai",
+            "Train to Guangzhou",
+            "Train to Xi'an"
+          ]
+        },
+        {
+          "q": "Which platform was the train to Beijing on?",
+          "a": "Platform six",
+          "distractors": [
+            "Platform two",
+            "Platform three",
+            "Platform five"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-summer-trip",
+      "hskLevel": 2,
+      "emoji": "🏖️",
+      "titleZh": "小红的夏天旅行",
+      "pinyinTitle": "Xiǎo Hóng de Xiàtiān Lǚxíng",
+      "summaryEn": "Xiao Hong enjoys a fun summer trip to the seaside with friends.",
+      "durationMin": 2,
+      "bodyZh": "这个夏天，小红和她的朋友们去海边玩。她们早上九点出发，带了很多水和食物。到了海边，她们看到很多人。小红和朋友们在水里游泳，玩得很开心。中午，她们坐在桌子旁，吃了水果和三明治。下午，小红和朋友们在沙滩上捡了很多小石头。她们还在阳光下晒太阳，享受这个快乐的时光。晚上，她们看了美丽的日落，然后一起回家。",
+      "comprehension": [
+        {
+          "q": "What time did Xiao Hong and her friends leave for the seaside?",
+          "a": "Nine o'clock",
+          "distractors": [
+            "Ten o'clock",
+            "Eight o'clock",
+            "Eleven o'clock"
+          ]
+        },
+        {
+          "q": "What did they eat for lunch?",
+          "a": "Fruits and sandwiches",
+          "distractors": [
+            "Pizza and soda",
+            "Noodles and rice",
+            "Chicken and salad"
+          ]
+        },
+        {
+          "q": "What did they collect on the beach?",
+          "a": "Small stones",
+          "distractors": [
+            "Shells",
+            "Seaweed",
+            "Sand"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-supermarket",
+      "hskLevel": 2,
+      "emoji": "🛒",
+      "titleZh": "每周去超市",
+      "pinyinTitle": "Měi Zhōu Qù Chāo Shì",
+      "summaryEn": "Li Hua enjoys his weekly trips to the supermarket.",
+      "durationMin": 2,
+      "bodyZh": "李华每周日去超市买东西。今天，他很早就出门了。超市里有很多人，李华先去水果区。他买了苹果、香蕉和橙子。接着，他去菜区，买了一些菜和肉。李华觉得这些东西很好。最后，他去结账，花了很多钱。回家的路上，李华想：下周我还要来超市。",
+      "comprehension": [
+        {
+          "q": "What day does Li Hua go to the supermarket?",
+          "a": "Sunday",
+          "distractors": [
+            "Monday",
+            "Friday",
+            "Saturday"
+          ]
+        },
+        {
+          "q": "What fruit did Li Hua buy?",
+          "a": "Apple",
+          "distractors": [
+            "Grape",
+            "Peach",
+            "Watermelon"
+          ]
+        },
+        {
+          "q": "What does Li Hua think about his purchases?",
+          "a": "They are good",
+          "distractors": [
+            "They are bad",
+            "They are expensive",
+            "They are heavy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-taxi-trip",
+      "hskLevel": 2,
+      "emoji": "🚕",
+      "titleZh": "李华的出租车旅程",
+      "pinyinTitle": "Lǐ Huá de Chūzūchē Lǚchéng",
+      "summaryEn": "Li Hua takes a short taxi trip across town.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华要去朋友家。他在街上等出租车。等了五分钟，车来了。司机是个高个子，笑着问：\"你去哪儿？\"李华说：\"我去西区的咖啡店。\"司机点了点头，车就开了。路上，李华看到很多店和人，心情很好。十分钟后，他们到了咖啡店。李华给了司机钱，感谢他。司机微笑着说：\"下次再见！\"李华开心地走进咖啡店。",
+      "comprehension": [
+        {
+          "q": "Where does Li Hua go?",
+          "a": "a coffee shop",
+          "distractors": [
+            "a bookstore",
+            "a restaurant",
+            "a friend's house"
+          ]
+        },
+        {
+          "q": "How long did Li Hua wait for the taxi?",
+          "a": "five minutes",
+          "distractors": [
+            "ten minutes",
+            "three minutes",
+            "one minute"
+          ]
+        },
+        {
+          "q": "What did the driver say at the end?",
+          "a": "See you next time!",
+          "distractors": [
+            "Have a good day!",
+            "Drive safely!",
+            "Come again soon!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-tea-with-friend",
+      "hskLevel": 2,
+      "emoji": "🍵",
+      "titleZh": "喝茶的朋友",
+      "pinyinTitle": "Hē Chá De Péng Yǒu",
+      "summaryEn": "Li Hua enjoys a relaxing tea time with his good friend.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华和他的好朋友张伟在家里喝茶。李华泡了一壶绿茶，茶香很浓。张伟说：“这个茶真好喝！你是怎么泡的？”李华笑着回答：“很简单，我用热水泡了三分钟。”他们一边喝茶，一边聊着生活和工作。时间过得很快，李华感到很开心。他们喝完茶时，已经是下午三点了。张伟说：“下次我们再一起喝茶。”李华点点头，笑着说：“好的！”",
+      "comprehension": [
+        {
+          "q": "What type of tea did Li Hua brew?",
+          "a": "green tea",
+          "distractors": [
+            "black tea",
+            "herbal tea",
+            "oolong tea"
+          ]
+        },
+        {
+          "q": "How long did Li Hua brew the tea?",
+          "a": "three minutes",
+          "distractors": [
+            "two minutes",
+            "five minutes",
+            "ten minutes"
+          ]
+        },
+        {
+          "q": "What time was it when they finished drinking tea?",
+          "a": "three o'clock",
+          "distractors": [
+            "two o'clock",
+            "four o'clock",
+            "five o'clock"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-train-station",
+      "hskLevel": 2,
+      "emoji": "🚆",
+      "titleZh": "在忙碌的火车站",
+      "pinyinTitle": "Zài Mánglù De Huǒchē Zhàn",
+      "summaryEn": "Li Wei experiences a busy day at the train station.",
+      "durationMin": 2,
+      "bodyZh": "今天，李伟在火车站等他的朋友。火车站很忙，有很多人。李伟坐在椅子上，看着来来往往的人。有的人在聊天，有的人在吃东西。李伟觉得等得有点久，心里有点着急。过了一会儿，他的朋友终于来了。李伟高兴地站起来，和朋友打招呼。然后，他们一起去喝咖啡。",
+      "comprehension": [
+        {
+          "q": "Who is waiting at the train station?",
+          "a": "Li Wei",
+          "distractors": [
+            "Li Ming",
+            "Zhang Wei",
+            "Xiao Hong"
+          ]
+        },
+        {
+          "q": "What does Li Wei do while waiting?",
+          "a": "Sits on a chair",
+          "distractors": [
+            "Plays a game",
+            "Reads a book",
+            "Takes a nap"
+          ]
+        },
+        {
+          "q": "What do Li Wei and his friend do after meeting?",
+          "a": "Go drink coffee",
+          "distractors": [
+            "Go to eat",
+            "Leave the station",
+            "Buy tickets"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-village-visit",
+      "hskLevel": 2,
+      "emoji": "🏘️",
+      "titleZh": "回家看爷爷奶奶",
+      "pinyinTitle": "Huí Jiā Kàn Yé Ye Nǎi Nai",
+      "summaryEn": "Wang Ming visits his grandparents and enjoys a warm day together.",
+      "durationMin": 2,
+      "bodyZh": "王明上个周末回家看爷爷奶奶。他坐火车到一个小地方。爷爷和奶奶很高兴，给他准备了很多好吃的。王明吃了米饭、鸡肉和水果。饭后，大家一起去院子里玩。王明和奶奶一起种花，爷爷在一旁看着。他们聊了很多有趣的事情。晚上，王明和爷爷奶奶一起看星星，觉得很开心。",
+      "comprehension": [
+        {
+          "q": "How did Wang Ming travel to see his grandparents?",
+          "a": "By train",
+          "distractors": [
+            "By car",
+            "By bus",
+            "By plane"
+          ]
+        },
+        {
+          "q": "What did Wang Ming eat at his grandparents' house?",
+          "a": "Rice and chicken",
+          "distractors": [
+            "Noodles and fish",
+            "Bread and butter",
+            "Salad and soup"
+          ]
+        },
+        {
+          "q": "What did they do in the yard?",
+          "a": "Plant flowers",
+          "distractors": [
+            "Play games",
+            "Cook food",
+            "Read books"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-wedding-day",
+      "hskLevel": 2,
+      "emoji": "💒",
+      "titleZh": "朋友的婚礼",
+      "pinyinTitle": "Péng Yǒu De Hūn Lǐ",
+      "summaryEn": "Wang Ming attends his friend's joyful wedding celebration.",
+      "durationMin": 2,
+      "bodyZh": "王明的朋友小红今天结婚。王明很高兴，早上就起床准备礼物。他买了一些水果和一杯茶。到了婚礼，场地很大，有很多人。王明看见小红穿着漂亮的衣服，笑得很开心。婚礼开始时，大家坐在椅子上，听到音乐。小红和她的丈夫在台上，大家为他们祝福。王明也给他们送上了祝福。婚礼结束后，大家一起吃饭，王明觉得今天非常快乐。",
+      "comprehension": [
+        {
+          "q": "Who is getting married?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Wang Ming",
+            "Wang Ming's mother",
+            "Xiao Hong's friend"
+          ]
+        },
+        {
+          "q": "What did Wang Ming buy as a gift?",
+          "a": "Fruits and tea",
+          "distractors": [
+            "A book",
+            "A toy",
+            "Some flowers"
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel at the wedding?",
+          "a": "Very happy",
+          "distractors": [
+            "Very tired",
+            "A little sad",
+            "Nervous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-weekend",
+      "hskLevel": 2,
+      "emoji": "🛌",
+      "titleZh": "一个轻松的周末",
+      "pinyinTitle": "Yī Gè Qīngsōng De Zhōumò",
+      "summaryEn": "Li Hua enjoys a relaxing weekend at home with his friend.",
+      "durationMin": 2,
+      "bodyZh": "李华的周末很轻松。他在家里休息，喝茶，看书。星期六，他的朋友小红来访。他们一起聊天，吃水果。李华给小红泡了茶，小红说茶很好喝。下午，他们一起看了一部电影。电影很好笑，他们都笑了。晚上，李华做了晚饭，吃了牛肉和菜。周末过得很快，他们很开心！",
+      "comprehension": [
+        {
+          "q": "What did Li Hua do on Saturday?",
+          "a": "Rest at home",
+          "distractors": [
+            "Go shopping",
+            "Visit a park",
+            "Play sports"
+          ]
+        },
+        {
+          "q": "What did Li Hua and Xiao Hong eat?",
+          "a": "Fruit",
+          "distractors": [
+            "Pizza",
+            "Ice cream",
+            "Noodles"
+          ]
+        },
+        {
+          "q": "What type of movie did they watch?",
+          "a": "A comedy",
+          "distractors": [
+            "A horror movie",
+            "A documentary",
+            "A romance movie"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk2-yoga-class",
+      "hskLevel": 2,
+      "emoji": "🧘",
+      "titleZh": "小红的瑜伽课",
+      "pinyinTitle": "Xiǎo Hóng de Yújiā Kè",
+      "summaryEn": "Xiao Hong enjoys her first yoga class and feels relaxed.",
+      "durationMin": 2,
+      "bodyZh": "小红昨天去上了瑜伽课。她很紧张，但也很兴奋。老师叫她放松，慢慢地做每一个动作。小红看到很多朋友在一起练习，大家都很开心。课上，老师教大家怎么呼吸。小红觉得越来越放松，心情也变好了。最后，老师说：“大家做得很好！”。小红笑着说：“我想再来！”",
+      "comprehension": [
+        {
+          "q": "What did Xiao Hong feel before the yoga class?",
+          "a": "Nervous but excited",
+          "distractors": [
+            "Very tired",
+            "Bored and sleepy",
+            "Angry at the teacher"
+          ]
+        },
+        {
+          "q": "What did the teacher teach the students during the class?",
+          "a": "How to breathe",
+          "distractors": [
+            "How to dance",
+            "How to sing",
+            "How to run"
+          ]
+        },
+        {
+          "q": "How did Xiao Hong feel at the end of the class?",
+          "a": "Relaxed and happy",
+          "distractors": [
+            "Sad and tired",
+            "Confused and angry",
+            "Bored and sleepy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-airport-arrival",
+      "hskLevel": 3,
+      "emoji": "🛬",
+      "titleZh": "到达机场找出租车",
+      "pinyinTitle": "Dào Zhá Jī Chǎng Zhǎo Chū Zū Chē",
+      "summaryEn": "Li Hua arrives at the airport and looks for a taxi.",
+      "durationMin": 3,
+      "bodyZh": "李华今天到达机场。他的飞机准时到达。走出飞机，李华看到很多人。他拿着行李，慢慢走到出口。外面有很多出租车。李华觉得很高兴，因为天气很好。 \n\n李华走到一个出租车旁边，司机是一个友好的阿姨。她问：“你好，您要去哪儿？”李华说：“我想去市中心。”阿姨点头，帮他把行李放进车里。车子开动了，李华看到窗外的风景。他觉得新城市很美。 \n\n十分钟后，他们到了市中心。李华给了阿姨钱，感谢她的帮助。然后，他拿着行李，微笑着走进酒店。李华感到很开心，因为他开始了新的旅程。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua do when he arrives at the airport?",
+          "a": "He looks for a taxi.",
+          "distractors": [
+            "He goes to a restaurant.",
+            "He sleeps in the terminal.",
+            "He waits for a friend."
+          ]
+        },
+        {
+          "q": "Who is the taxi driver?",
+          "a": "A friendly aunt.",
+          "distractors": [
+            "A young man.",
+            "A police officer.",
+            "A businessman."
+          ]
+        },
+        {
+          "q": "Where does Li Hua want to go?",
+          "a": "City center.",
+          "distractors": [
+            "The airport lounge.",
+            "A shopping mall.",
+            "A park."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-birthday",
+      "hskLevel": 3,
+      "emoji": "🎂",
+      "titleZh": "生日聚会",
+      "pinyinTitle": "Shēng Rì Jù Huì",
+      "summaryEn": "Wang Ming celebrates his birthday with friends and enjoys a fun party.",
+      "durationMin": 3,
+      "bodyZh": "今天是王明的生日，他很高兴。他邀请了很多朋友来家里庆祝。朋友们在厨房里准备食物，做了蛋糕和水果。王明的妈妈也帮忙，她做了好吃的菜。 \n聚会开始时，朋友们送了王明很多礼物。有的朋友送了书，有的朋友送了玩具。王明非常喜欢这些礼物。大家一起唱生日歌，然后切蛋糕。 \n王明许下了一个愿望，大家都很期待。聚会结束时，每个人都很开心。王明感谢朋友们，并说：“明年我们再聚会！”",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming's friends prepare for the party?",
+          "a": "Food",
+          "distractors": [
+            "Drinks",
+            "Games",
+            "Decorations"
+          ]
+        },
+        {
+          "q": "What type of gifts did Wang Ming receive?",
+          "a": "Books and toys",
+          "distractors": [
+            "Clothes",
+            "Shoes",
+            "Food"
+          ]
+        },
+        {
+          "q": "What did Wang Ming do before cutting the cake?",
+          "a": "Made a wish",
+          "distractors": [
+            "Sang a song",
+            "Opened gifts",
+            "Took a photo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-bookstore",
+      "hskLevel": 3,
+      "emoji": "📖",
+      "titleZh": "小红的书店之旅",
+      "pinyinTitle": "Xiǎo Hóng de Shūdiàn zhī Lǚ",
+      "summaryEn": "Xiao Hong enjoys exploring a small bookstore filled with interesting books.",
+      "durationMin": 2,
+      "bodyZh": "小红喜欢去书店。今天，她去了一家小书店。书店很安静，里面有很多书。小红看到了一本关于动物的书，她很高兴。她喜欢狗和猫。书店的老板是一个和蔼的阿姨，她问小红想找什么。小红说她想看动物的书。阿姨笑着给她推荐了几本书。小红认真地看了每一本书，觉得都很有趣。最后，她决定买那本关于猫的书。小红付了钱，走出书店，心里很快乐。她期待着回家阅读这本书。",
+      "comprehension": [
+        {
+          "q": "What type of book did Xiao Hong buy?",
+          "a": "a book about cats",
+          "distractors": [
+            "a book about dogs",
+            "a book about cars",
+            "a book about cooking"
+          ]
+        },
+        {
+          "q": "Who is the owner of the bookstore?",
+          "a": "an old lady",
+          "distractors": [
+            "a young man",
+            "a middle-aged man",
+            "a teenager"
+          ]
+        },
+        {
+          "q": "How did Xiao Hong feel when she left the bookstore?",
+          "a": "happy",
+          "distractors": [
+            "sad",
+            "angry",
+            "bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-buying-fruit",
+      "hskLevel": 3,
+      "emoji": "🍎",
+      "titleZh": "买水果",
+      "pinyinTitle": "Mǎi Shuǐguǒ",
+      "summaryEn": "Li Hua enjoys buying fresh fruit at the market.",
+      "durationMin": 4,
+      "bodyZh": "今天，李华去市场买水果。市场里有很多水果，苹果、香蕉、橙子都有。李华先去买苹果。他看到一个漂亮的红苹果，价格是三块钱。他问摊主：‘这个苹果新鲜吗？’摊主说：‘非常新鲜！’李华觉得这个苹果很好，就买了两个。\n\n然后，李华去买香蕉。他喜欢香蕉，因为香蕉又甜又好吃。摊主说：‘这些香蕉只要五块钱。’李华很开心，买了三根香蕉。最后，他想买一些橙子。橙子的颜色很漂亮，李华问：‘橙子多少钱一斤？’摊主回答：‘八块钱。’李华买了半斤橙子，心里很高兴。\n\n李华买完水果，带着这些新鲜的水果回家了。他想今晚和朋友一起吃水果，大家一定会很喜欢。",
+      "comprehension": [
+        {
+          "q": "What fruit did Li Hua buy first?",
+          "a": "apples",
+          "distractors": [
+            "bananas",
+            "oranges",
+            "pears"
+          ]
+        },
+        {
+          "q": "How much did Li Hua pay for the bananas?",
+          "a": "five yuan",
+          "distractors": [
+            "three yuan",
+            "eight yuan",
+            "ten yuan"
+          ]
+        },
+        {
+          "q": "What does Li Hua plan to do with the fruit?",
+          "a": "share with friends",
+          "distractors": [
+            "eat alone",
+            "make juice",
+            "give to the market owner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-coffee-shop",
+      "hskLevel": 3,
+      "emoji": "☕",
+      "titleZh": "在咖啡馆学习",
+      "pinyinTitle": "Zài Kāfēi Guǎn Xuéxí",
+      "summaryEn": "Li Hua enjoys studying in a cozy coffee shop near his home.",
+      "durationMin": 3,
+      "bodyZh": "李华是一个喜欢喝咖啡的人。他常常去附近的咖啡馆学习。今天，天气很好，阳光明媚。李华在咖啡馆里点了一杯拿铁，找了一个靠窗的座位。这里的环境很安静，适合学习。\n\n李华拿出书和笔，开始复习他的中文。咖啡的香味让他觉得很放松。他看到很多人也在学习，有的人在写作业，有的人在看书。李华觉得和他们一起学习很有动力。\n\n过了一个小时，李华喝完了咖啡，复习了很多内容。他心里很高兴，因为他觉得今天的学习很有效。李华决定下次还要来这里学习。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua usually order at the coffee shop?",
+          "a": "Latte",
+          "distractors": [
+            "Tea",
+            "Juice",
+            "Water"
+          ]
+        },
+        {
+          "q": "What does Li Hua do in the coffee shop?",
+          "a": "Study",
+          "distractors": [
+            "Chat",
+            "Eat",
+            "Sleep"
+          ]
+        },
+        {
+          "q": "How does Li Hua feel about studying in the coffee shop?",
+          "a": "Happy",
+          "distractors": [
+            "Bored",
+            "Tired",
+            "Angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-cooking-noodles",
+      "hskLevel": 3,
+      "emoji": "🍝",
+      "titleZh": "学做面条",
+      "pinyinTitle": "Xué Zuò Miàn Tiáo",
+      "summaryEn": "Li Wei learns to cook noodles for the first time with his mother.",
+      "durationMin": 3,
+      "bodyZh": "李伟今天想学做面条。他对妈妈说：“妈妈，我想自己做面条，可以教我吗？”妈妈笑着说：“当然可以！我们先准备一些面粉和水。”李伟兴奋地点头。\n\n妈妈开始教他。她先把面粉放在桌子上，然后慢慢加水。李伟用手把面粉和水混合在一起，感觉很有趣。接着，他们一起把面团搓成条，李伟觉得这很简单。\n\n然后，妈妈把水烧开。他们把面条放进锅里，李伟闻到面条的香味。他们等了几分钟，面条就熟了。最后，妈妈把面条捞出来，放在碗里，撒上一些调料。\n\n李伟尝了一口，开心地说：“好吃！我喜欢学做面条！”",
+      "comprehension": [
+        {
+          "q": "What does Li Wei want to learn to cook?",
+          "a": "noodles",
+          "distractors": [
+            "rice",
+            "dumplings",
+            "soup"
+          ]
+        },
+        {
+          "q": "Who teaches Li Wei to cook?",
+          "a": "his mother",
+          "distractors": [
+            "his father",
+            "his sister",
+            "his friend"
+          ]
+        },
+        {
+          "q": "What does Li Wei feel while cooking?",
+          "a": "fun",
+          "distractors": [
+            "boredom",
+            "tiredness",
+            "confusion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-doctor-visit",
+      "hskLevel": 3,
+      "emoji": "🩺",
+      "titleZh": "看医生",
+      "pinyinTitle": "Kàn Yīshēng",
+      "summaryEn": "Li Hua visits the doctor for a routine check-up.",
+      "durationMin": 2,
+      "bodyZh": "李华今天去医院看医生。他的朋友告诉他，定期检查很重要。早上，李华吃了早餐，然后去医院。医院里人很多，他得等了一会儿。医生叫他进去，问他感觉怎么样。李华说他最近有点累，但没有生病。医生给他检查了身体，测量了血压和体温。检查完后，医生告诉他要多休息，多喝水。李华听了医生的话，感到放心。他感谢医生，然后高高兴兴地回家了。",
+      "comprehension": [
+        {
+          "q": "Why did Li Hua visit the doctor?",
+          "a": "For a routine check-up",
+          "distractors": [
+            "Because he was very sick",
+            "To get a vaccine",
+            "To see a specialist"
+          ]
+        },
+        {
+          "q": "What did the doctor check?",
+          "a": "Blood pressure and temperature",
+          "distractors": [
+            "Heart rate and weight",
+            "Vision and hearing",
+            "Height and cholesterol"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel after the check-up?",
+          "a": "Reassured",
+          "distractors": [
+            "Worried",
+            "Angry",
+            "Confused"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-exam-day",
+      "hskLevel": 3,
+      "emoji": "📝",
+      "titleZh": "重要考试前一天",
+      "pinyinTitle": "Zhòngyào Kǎoshì Qián Yītiān",
+      "summaryEn": "Li Hua prepares for an important exam the next day.",
+      "durationMin": 3,
+      "bodyZh": "李华今天很紧张。明天是重要的考试。他今早去图书馆复习，图书馆里很安静。李华看了很多书，做了许多练习题。中午，他和朋友张伟一起吃了午饭。张伟也要参加考试，他们聊了很多考试的内容。李华觉得有些问题很难。下午，李华继续复习。他喝了一杯咖啡，精神很好。晚上，他回到家里，吃了晚饭，复习了一会儿。他觉得准备得差不多了。临睡前，李华告诉自己：“明天要放松，不要紧张。”",
+      "comprehension": [
+        {
+          "q": "What does Li Hua do in the library?",
+          "a": "Reviews books",
+          "distractors": [
+            "Sleeps",
+            "Plays games",
+            "Draws pictures"
+          ]
+        },
+        {
+          "q": "Who does Li Hua have lunch with?",
+          "a": "Zhang Wei",
+          "distractors": [
+            "Xiao Hong",
+            "Wang Ming",
+            "Li Jie"
+          ]
+        },
+        {
+          "q": "What does Li Hua drink in the afternoon?",
+          "a": "Coffee",
+          "distractors": [
+            "Tea",
+            "Juice",
+            "Water"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-family-dinner",
+      "hskLevel": 3,
+      "emoji": "🥢",
+      "titleZh": "家族晚餐",
+      "pinyinTitle": "Jiā Zú Wǎn Cān",
+      "summaryEn": "A family dinner brings joy and memories across generations.",
+      "durationMin": 4,
+      "bodyZh": "今天晚上，王明的家里有一个特别的晚餐。王明的爷爷和奶奶从农村来了，王明的爸爸和妈妈也在家。晚餐上，有很多好吃的菜，比如鸡肉、鱼和蔬菜。王明的妹妹小红喜欢吃鱼，她总是问：“爷爷，这条鱼怎么做的？”爷爷笑着说：“这是我用新鲜的材料做的。”\n\n晚餐时，大家聊得很开心。王明的爸爸给大家讲了一个故事。故事里有一个小男孩，他也爱吃鱼。王明听得很入迷，爷爷和奶奶也笑了。\n\n吃完饭后，王明和小红帮忙收拾桌子。奶奶说：“小红，给你讲一个故事。”小红高兴地点头，期待着奶奶的故事。这个晚餐让每个人都感到快乐，家人们在一起是最好的时光。",
+      "comprehension": [
+        {
+          "q": "Who came to the family dinner from the countryside?",
+          "a": "Grandpa and Grandma",
+          "distractors": [
+            "Uncle and Aunt",
+            "Cousins",
+            "Friends"
+          ]
+        },
+        {
+          "q": "What dish did Xiao Hong like to eat?",
+          "a": "Fish",
+          "distractors": [
+            "Chicken",
+            "Vegetables",
+            "Noodles"
+          ]
+        },
+        {
+          "q": "What did Wang Ming's father do during dinner?",
+          "a": "Told a story",
+          "distractors": [
+            "Sang a song",
+            "Cooked food",
+            "Played a game"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-first-day-work",
+      "hskLevel": 3,
+      "emoji": "💼",
+      "titleZh": "第一天上班",
+      "pinyinTitle": "Dì Yī Tiān Shàng Bān",
+      "summaryEn": "A young man experiences his first day at a new job.",
+      "durationMin": 3,
+      "bodyZh": "李华刚刚找到了一份新工作。他今天是第一天上班。他很兴奋，也有点紧张。早上八点，李华到了公司。他看到很多新同事在忙碌。李华的经理叫王老师。王老师笑着对他说：“欢迎你，李华！我们一起去开会吧。”会议上，大家介绍了自己。李华很快认识了几位同事。中午，李华和同事们一起去吃饭。他们聊得很开心，李华觉得很放松。午饭后，李华开始学习他的工作。王老师给他解释了工作内容。虽然有些难，但李华很努力。他希望能在这个新公司做好工作。下午五点，李华下班回家。他很高兴，觉得第一天非常成功。",
+      "comprehension": [
+        {
+          "q": "Who is the manager of Li Hua?",
+          "a": "Wang Laoshi",
+          "distractors": [
+            "Zhang Wei",
+            "Xiao Hong",
+            "Li Ming"
+          ]
+        },
+        {
+          "q": "What time did Li Hua arrive at the company?",
+          "a": "Eight o'clock",
+          "distractors": [
+            "Nine o'clock",
+            "Seven o'clock",
+            "Ten o'clock"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel about his first day?",
+          "a": "Very successful",
+          "distractors": [
+            "Very bad",
+            "Very boring",
+            "Very difficult"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-first-snow",
+      "hskLevel": 3,
+      "emoji": "🌨️",
+      "titleZh": "第一场雪",
+      "pinyinTitle": "Dì Yī Chǎng Xuě",
+      "summaryEn": "Li Hua experiences the joy of the first snow of the season.",
+      "durationMin": 2,
+      "bodyZh": "今天是冬天的第一场雪。李华很高兴，因为他喜欢雪。早上，他起床后，看到窗外的雪花飘落。他穿上厚厚的衣服，跑到外面。街道上，雪白的世界让人惊讶。李华和他的朋友们在雪地里打雪仗，笑声在空中回荡。大家还一起堆雪人，雪人穿着红色的围巾，看起来很可爱。中午，他们去一家咖啡馆，喝热巧克力，吃蛋糕。外面的雪越来越大，李华觉得今天非常快乐。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua see when he wakes up?",
+          "a": "Snowflakes",
+          "distractors": [
+            "Rain",
+            "Sunshine",
+            "Clouds"
+          ]
+        },
+        {
+          "q": "What do Li Hua and his friends do in the snow?",
+          "a": "Have a snowball fight",
+          "distractors": [
+            "Go skiing",
+            "Build a fire",
+            "Ride bikes"
+          ]
+        },
+        {
+          "q": "What do they drink at the coffee shop?",
+          "a": "Hot chocolate",
+          "distractors": [
+            "Tea",
+            "Juice",
+            "Coffee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-first-snow-kids",
+      "hskLevel": 3,
+      "emoji": "⛄",
+      "titleZh": "初雪的快乐",
+      "pinyinTitle": "Chū Xuě De Kuài Lè",
+      "summaryEn": "Children enjoy playing in the first snow of the year.",
+      "durationMin": 2,
+      "bodyZh": "今天是冬天的第一场雪。小红和她的朋友们在外面玩。雪花在空中飞舞，地上变白了。小红说：“我们来打雪仗吧！”朋友们都很开心，马上就开始了。小明和小华在一边堆雪人，雪人很大，还有两个胡萝卜做鼻子。大家玩得很开心，笑声在空中回响。天慢慢黑了，朋友们都回家了。小红看着天空，想着明天会不会再下雪。",
+      "comprehension": [
+        {
+          "q": "What did the children want to do in the snow?",
+          "a": "Have a snowball fight",
+          "distractors": [
+            "Build a snowman",
+            "Go sledding",
+            "Make a snow angel"
+          ]
+        },
+        {
+          "q": "What did they use for the snowman's nose?",
+          "a": "Carrots",
+          "distractors": [
+            "Sticks",
+            "Buttons",
+            "Snowballs"
+          ]
+        },
+        {
+          "q": "How did the children feel while playing in the snow?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Tired",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-garden-flowers",
+      "hskLevel": 3,
+      "emoji": "🌷",
+      "titleZh": "小红的花园",
+      "pinyinTitle": "Xiǎo Hóng De Huā Yuán",
+      "summaryEn": "Xiao Hong enjoys planting flowers in her small garden.",
+      "durationMin": 2,
+      "bodyZh": "小红喜欢花。她想在家里种花。今天，她去商店买了种子。她买了红色和黄色的花。回到家后，小红准备土。她用铲子把土翻了一下。然后，她把种子放进土里。小红浇水，花的种子开始发芽。她每天都来看她的花。小红很开心，因为花很快就会开。她期待着看到美丽的花。",
+      "comprehension": [
+        {
+          "q": "What colors of flowers did Xiao Hong buy?",
+          "a": "Red and yellow",
+          "distractors": [
+            "Blue and green",
+            "Pink and white",
+            "Orange and purple"
+          ]
+        },
+        {
+          "q": "What does Xiao Hong use to prepare the soil?",
+          "a": "A shovel",
+          "distractors": [
+            "A rake",
+            "A hoe",
+            "A spade"
+          ]
+        },
+        {
+          "q": "What does Xiao Hong do every day?",
+          "a": "She looks at her flowers",
+          "distractors": [
+            "She waters her plants",
+            "She picks vegetables",
+            "She cleans the garden"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-grandma-cooks",
+      "hskLevel": 3,
+      "emoji": "👵",
+      "titleZh": "奶奶教家常菜",
+      "pinyinTitle": "Nǎi Nái Jiāo Jiā Cháng Cài",
+      "summaryEn": "A grandmother teaches her family how to make a special dish.",
+      "durationMin": 3,
+      "bodyZh": "王明的奶奶会做很多好吃的菜。每个周末，王明和家人都去奶奶家。奶奶常常教他们做家常菜。今天，奶奶要教王明做她最喜欢的菜。她说，这道菜很简单。首先，她让王明准备一些米和水。接着，奶奶告诉他怎么洗米。王明认真地洗米，奶奶在旁边微笑。然后，奶奶教王明怎么煮米饭。她说，米饭要在锅里煮十五分钟。王明听了奶奶的话，等了十五分钟。米饭做好了，香香的。王明和家人都很高兴，大家一起吃米饭。奶奶的菜真好吃！",
+      "comprehension": [
+        {
+          "q": "What does Wang Ming's grandmother teach him to cook?",
+          "a": "Rice",
+          "distractors": [
+            "Noodles",
+            "Soup",
+            "Vegetables"
+          ]
+        },
+        {
+          "q": "How long does Wang Ming cook the rice?",
+          "a": "Fifteen minutes",
+          "distractors": [
+            "Ten minutes",
+            "Twenty minutes",
+            "Five minutes"
+          ]
+        },
+        {
+          "q": "How does Wang Ming feel about the food?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Angry",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-haircut",
+      "hskLevel": 3,
+      "emoji": "💇",
+      "titleZh": "王明的理发",
+      "pinyinTitle": "Wáng Míng de Lǐfǎ",
+      "summaryEn": "Wang Ming visits a barbershop for a new hairstyle.",
+      "durationMin": 3,
+      "bodyZh": "王明今天决定去理发店。他的头发太长了，感觉很热。他在家里想了很多种发型，最后决定剪短一些。王明走进理发店，看到许多人在等候。他跟店员说：“你好，我想剪头发。”店员问：“你想要什么样的发型？”王明说：“我希望能清爽一点。”店员笑了，开始为他剪发。剪发的时候，王明感觉很放松。他听到旁边有人在聊天，也看到窗外的阳光。过了一会儿，头发剪好了。王明看着镜子，觉得很满意。他感谢店员，走出理发店，心里想着：“今天真是一个好日子！”",
+      "comprehension": [
+        {
+          "q": "Why did Wang Ming go to the barbershop?",
+          "a": "His hair was too long.",
+          "distractors": [
+            "He wanted to buy a hat.",
+            "He needed to meet a friend.",
+            "He was looking for a new job."
+          ]
+        },
+        {
+          "q": "What kind of hairstyle did Wang Ming want?",
+          "a": "A refreshing one.",
+          "distractors": [
+            "A very long one.",
+            "A colorful one.",
+            "A messy one."
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel during the haircut?",
+          "a": "Relaxed.",
+          "distractors": [
+            "Bored.",
+            "Nervous.",
+            "Angry."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-homework-help",
+      "hskLevel": 3,
+      "emoji": "✏️",
+      "titleZh": "帮弟弟做作业",
+      "pinyinTitle": "Bāng Dì Dì Zuò Zuò Yè",
+      "summaryEn": "Li Hua helps his younger brother with his homework.",
+      "durationMin": 3,
+      "bodyZh": "今天，李华在家里。他的弟弟小明放学回来，脸上有点儿着急。李华问：\"怎么了？\"小明说：\"我有很多作业，做不完。\"李华决定帮助他。 \n\n他们坐在桌子前，李华先看小明的数学作业。小明有几个问题不懂，李华耐心地解释。他说：\"这个问题很简单，我们先一起做。\"小明点点头，开始认真听。 \n\n过了一会儿，他们完成了数学作业。接下来是语文作业。李华帮助小明写几个句子。小明很高兴，慢慢地做得很好。 \n\n最后，小明说：\"谢谢哥哥！你真好！\"李华笑着说：\"没关系，做作业很有趣。\"",
+      "comprehension": [
+        {
+          "q": "Who helps Xiao Ming with his homework?",
+          "a": "Li Hua",
+          "distractors": [
+            "Zhang Wei",
+            "Wang Ming",
+            "Li Mei"
+          ]
+        },
+        {
+          "q": "What subject did they work on first?",
+          "a": "Math",
+          "distractors": [
+            "Chinese",
+            "English",
+            "Science"
+          ]
+        },
+        {
+          "q": "How did Xiao Ming feel after finishing his homework?",
+          "a": "Happy",
+          "distractors": [
+            "Sad",
+            "Angry",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-library-visit",
+      "hskLevel": 3,
+      "emoji": "📚",
+      "titleZh": "在图书馆的下午",
+      "pinyinTitle": "Zài Túshūguǎn De Xiàwǔ",
+      "summaryEn": "Li Hua enjoys a peaceful afternoon reading at the library.",
+      "durationMin": 3,
+      "bodyZh": "李华今天下午去图书馆。图书馆很安静，很多人都在看书。李华喜欢在这里学习。他找了一个舒服的椅子，坐下后，开始看一本关于历史的书。书里的故事很有趣，让他忘记了时间。过了一会儿，他听见旁边有一个小女孩在哭。李华站起来，走过去问她发生了什么事。小女孩说她找不到她的妈妈。李华安慰她，并帮助她在图书馆里找妈妈。最后，他们找到了小女孩的妈妈。小女孩非常高兴，李华也觉得很快乐。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua do at the library?",
+          "a": "Read a book",
+          "distractors": [
+            "Helped a small girl",
+            "Slept on a chair",
+            "Drew pictures"
+          ]
+        },
+        {
+          "q": "What type of book did Li Hua read?",
+          "a": "A history book",
+          "distractors": [
+            "A science book",
+            "A storybook",
+            "A magazine"
+          ]
+        },
+        {
+          "q": "Who was crying in the library?",
+          "a": "A small girl",
+          "distractors": [
+            "An old man",
+            "Li Hua",
+            "A librarian"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-lost-in-city",
+      "hskLevel": 3,
+      "emoji": "🗺️",
+      "titleZh": "迷路的李华",
+      "pinyinTitle": "Mí Lù De Lǐ Huá",
+      "summaryEn": "Li Hua gets lost in a new city but finds help from a kind stranger.",
+      "durationMin": 4,
+      "bodyZh": "李华今天去北京旅行。他很兴奋，因为这是他第一次来这个城市。早上，他在酒店吃了早餐，然后决定去看长城。李华拿着地图，走到地铁站。他坐地铁，过了几站后，到了一个陌生的地方。李华看了看地图，但他不知道怎么走。 \n\n他开始走，但路很复杂。他走了十分钟，还是找不到去长城的路。李华有点紧张。正当他不知道怎么办时，一位好心的阿姨看到他。她问：“你在找什么？”李华说：“我想去长城。” \n\n阿姨笑了笑，告诉他应该坐哪条公交车。她还说：“你要在第二站下车，然后往西走。”李华非常感谢阿姨，听了她的话，顺利找到了公交车。一路上，他看到很多有趣的地方，心情也变好了。最后，他终于到达了长城，欣赏到了美丽的风景。",
+      "comprehension": [
+        {
+          "q": "Where did Li Hua travel to?",
+          "a": "Beijing",
+          "distractors": [
+            "Shanghai",
+            "Guangzhou",
+            "Hong Kong"
+          ]
+        },
+        {
+          "q": "What did Li Hua struggle to find?",
+          "a": "The Great Wall",
+          "distractors": [
+            "His hotel",
+            "A restaurant",
+            "The subway station"
+          ]
+        },
+        {
+          "q": "Who helped Li Hua when he was lost?",
+          "a": "A kind lady",
+          "distractors": [
+            "A taxi driver",
+            "A shopkeeper",
+            "A tourist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-lost-keys",
+      "hskLevel": 3,
+      "emoji": "🔑",
+      "titleZh": "找钥匙",
+      "pinyinTitle": "Zhǎo Yàoshi",
+      "summaryEn": "Li Hua searches everywhere at home for his lost keys.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华回到家，想打开门，但他发现钥匙不见了。他在沙发上找，没找到。他又去厨房，查看桌子和柜子，还是没有看到钥匙。李华觉得很着急，想：\"我刚才还在用它，怎么就不见了呢？\"他决定再仔细找一遍。李华回到客厅，发现地上有一个包。他打开包，看看里面，突然看到了他的钥匙！李华松了一口气，笑着说：\"真是太好了！\"",
+      "comprehension": [
+        {
+          "q": "Where did Li Hua first look for his keys?",
+          "a": "On the sofa",
+          "distractors": [
+            "In the kitchen",
+            "Under the table",
+            "In his bag"
+          ]
+        },
+        {
+          "q": "What did Li Hua find his keys in?",
+          "a": "His bag",
+          "distractors": [
+            "On the floor",
+            "In the kitchen",
+            "On the sofa"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel when he found his keys?",
+          "a": "Relieved",
+          "distractors": [
+            "Angry",
+            "Sad",
+            "Confused"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-lost-wallet",
+      "hskLevel": 3,
+      "emoji": "👛",
+      "titleZh": "找钱包",
+      "pinyinTitle": "Zhǎo Qiánbāo",
+      "summaryEn": "A man searches for his lost wallet and learns a lesson about honesty.",
+      "durationMin": 4,
+      "bodyZh": "王明今天去商店买东西。他买了许多食物和饮料。付完钱后，他发现钱包不见了。王明很着急。他回到商店，问店员。店员说：“我没有看到你的钱包。”王明跑到外面，想找钱包。 \n  \n 他在街上找了很久，但没有找到。王明很失望。突然，他看到一个小女孩在玩一个钱包。王明走过去，问：“这个钱包是你的？”小女孩说：“不是，这是我妈妈的。” \n  \n 王明心里很高兴，因为他知道那是他的钱包。他说：“请把钱包还给我。”小女孩把钱包还给了王明。王明感谢小女孩，心里很感动。 \n  \n 王明学到了一个重要的道理：诚实是最重要的。无论发生什么事情，诚实总会带来好结果。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming buy at the store?",
+          "a": "Food and drinks",
+          "distractors": [
+            "Clothes and shoes",
+            "Books and toys",
+            "Flowers and gifts"
+          ]
+        },
+        {
+          "q": "Who found Wang Ming's wallet?",
+          "a": "A little girl",
+          "distractors": [
+            "A shop assistant",
+            "A police officer",
+            "A man on the street"
+          ]
+        },
+        {
+          "q": "What lesson did Wang Ming learn?",
+          "a": "Honesty is important",
+          "distractors": [
+            "Money is not everything",
+            "Always ask for help",
+            "Be careful with wallets"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-morning-market",
+      "hskLevel": 3,
+      "emoji": "🥬",
+      "titleZh": "早上的菜市场",
+      "pinyinTitle": "Zǎo Shàng De Cài Shì Chǎng",
+      "summaryEn": "Li Wei enjoys visiting the morning vegetable market for fresh produce.",
+      "durationMin": 3,
+      "bodyZh": "李伟每天早上七点去菜市场。他喜欢在市场上买新鲜的蔬菜和水果。今天，他看到很多新鲜的菜，比如西红柿、黄瓜和白菜。李伟走到一个摊位前，摊主是一个阿姨。阿姨笑着对他说：“你好！今天的菜特别好！”李伟点点头，问：“这个西红柿多少钱？”阿姨回答：“三块钱一斤。”李伟觉得很便宜，就买了一斤。然后，他又买了一些黄瓜和一个大白菜。李伟觉得这些菜很新鲜，回家后可以做一顿好吃的午饭。他高兴地走出市场，心里想着午饭的味道。",
+      "comprehension": [
+        {
+          "q": "What time does Li Wei go to the market?",
+          "a": "Seven o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Six o'clock",
+            "Nine o'clock"
+          ]
+        },
+        {
+          "q": "What vegetable did Li Wei buy?",
+          "a": "Tomatoes",
+          "distractors": [
+            "Carrots",
+            "Potatoes",
+            "Onions"
+          ]
+        },
+        {
+          "q": "Who is the owner of the stall?",
+          "a": "An aunt",
+          "distractors": [
+            "A man",
+            "A young girl",
+            "An old man"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-morning-run",
+      "hskLevel": 3,
+      "emoji": "🏃",
+      "titleZh": "早晨跑步",
+      "pinyinTitle": "Zǎo Chén Pǎo Bù",
+      "summaryEn": "Li Hua enjoys his morning run in the neighborhood.",
+      "durationMin": 2,
+      "bodyZh": "今天早上，李华起得很早。他穿上运动鞋，出门去跑步。早晨的空气很新鲜，花儿在阳光下开放。李华喜欢在小区里跑步。他看到很多邻居在晨练，大家都很高兴。李华跑过一个小公园，听到鸟儿在唱歌。他觉得跑步很舒服，也很快乐。跑了三圈，李华回到家，喝了一杯水，准备开始新的一天。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua do in the morning?",
+          "a": "He runs",
+          "distractors": [
+            "He sleeps",
+            "He eats breakfast",
+            "He reads books"
+          ]
+        },
+        {
+          "q": "What does Li Hua see while running?",
+          "a": "Neighbors exercising",
+          "distractors": [
+            "Cats playing",
+            "Cars driving",
+            "Children sleeping"
+          ]
+        },
+        {
+          "q": "How many laps does Li Hua run?",
+          "a": "Three laps",
+          "distractors": [
+            "Two laps",
+            "Five laps",
+            "One lap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-movie-night",
+      "hskLevel": 3,
+      "emoji": "🎬",
+      "titleZh": "安静的电影夜",
+      "pinyinTitle": "Ān Jìng De Diàn Yǐng Yè",
+      "summaryEn": "Li Hua enjoys a peaceful movie night at home with snacks.",
+      "durationMin": 2,
+      "bodyZh": "今天晚上，李华在家里看电影。他很喜欢这个安静的时间。李华准备了一些零食，有爆米花和饮料。他把沙发放在窗边，窗外的月光很美。电影开始了，李华非常专注。电影是一个关于友谊的故事，让他笑了很多次。时间过得很快，李华也忘记了时间。最后，电影结束了，李华觉得非常开心。他希望下次再有这样的电影夜。",
+      "comprehension": [
+        {
+          "q": "What snacks did Li Hua prepare?",
+          "a": "Popcorn and drinks",
+          "distractors": [
+            "Candy and chips",
+            "Fruit and cake",
+            "Cookies and ice cream"
+          ]
+        },
+        {
+          "q": "Where did Li Hua place the sofa?",
+          "a": "By the window",
+          "distractors": [
+            "In the middle of the room",
+            "Next to the TV",
+            "In the bedroom"
+          ]
+        },
+        {
+          "q": "What kind of story was the movie about?",
+          "a": "Friendship",
+          "distractors": [
+            "Adventure",
+            "Romance",
+            "Mystery"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-moving-house",
+      "hskLevel": 3,
+      "emoji": "📦",
+      "titleZh": "搬家那天",
+      "pinyinTitle": "Bān Jiā Nà Tiān",
+      "summaryEn": "Li Hua's moving day was busy but filled with joy and new beginnings.",
+      "durationMin": 3,
+      "bodyZh": "今天是李华搬家的日子。他早上六点就起床了。李华吃了简单的早餐，喝了一杯咖啡。然后，他开始整理东西。他把书、衣服和一些玩具放进箱子里。\n\n九点钟，朋友们来了。他们帮李华搬东西。大家在一起很快乐。李华的朋友张伟还带来了好吃的零食。搬家的时候，他们在楼道里说笑，气氛很好。\n\n中午时，他们把所有的东西搬进新家。李华的新家很大，有三个房间和一个阳台。阳台上可以看到公园。李华很喜欢这个新家。搬完家后，李华请朋友们吃饭，大家一起享受这一天。",
+      "comprehension": [
+        {
+          "q": "What time did Li Hua wake up on moving day?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Eight o'clock",
+            "Five o'clock"
+          ]
+        },
+        {
+          "q": "Who helped Li Hua move?",
+          "a": "Friends",
+          "distractors": [
+            "Family",
+            "Neighbors",
+            "Colleagues"
+          ]
+        },
+        {
+          "q": "How many rooms does Li Hua's new home have?",
+          "a": "Three rooms",
+          "distractors": [
+            "Two rooms",
+            "Four rooms",
+            "One room"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-music-class",
+      "hskLevel": 3,
+      "emoji": "🎵",
+      "titleZh": "音乐课的快乐",
+      "pinyinTitle": "Yīn Yuè Kè De Kuài Lè",
+      "summaryEn": "A joyful music class brings students together through song and laughter.",
+      "durationMin": 3,
+      "bodyZh": "今天，王明和他的朋友们在学校上音乐课。老师很有趣，他叫李老师。李老师教他们唱歌。王明特别喜欢唱歌，今天他唱了一首新歌。大家都跟着他一起唱，教室里充满了快乐的声音。李老师说：“唱得很好！现在，我们来学习乐器。”\n\n王明和朋友们兴奋地看着。李老师给他们每人发了一把小吉他。王明觉得吉他很好玩，他开始练习。朋友们也在练习，教室里变得热闹起来。最后，李老师让每个人展示自己的音乐。王明弹了一首简单的曲子，大家都鼓掌。音乐课结束时，王明感到很高兴，他希望下次能学到更多的音乐。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming's teacher teach in music class?",
+          "a": "Singing",
+          "distractors": [
+            "Dancing",
+            "Painting",
+            "Acting"
+          ]
+        },
+        {
+          "q": "What instrument did the students receive from their teacher?",
+          "a": "Guitar",
+          "distractors": [
+            "Piano",
+            "Drum",
+            "Violin"
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel at the end of the class?",
+          "a": "Happy",
+          "distractors": [
+            "Tired",
+            "Bored",
+            "Angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-my-day",
+      "hskLevel": 3,
+      "emoji": "🌞",
+      "titleZh": "王明的一天",
+      "pinyinTitle": "Wáng Míng de Yī Tiān",
+      "summaryEn": "Wang Ming enjoys a busy and fulfilling day in his life.",
+      "durationMin": 3,
+      "bodyZh": "王明每天都很忙。他早上六点起床，吃了一个鸡蛋和一杯牛奶。然后，他去公园跑步。跑步后，他回家洗澡，准备去上班。王明在一家商店工作，他的工作是卖书。中午，他和同事们一起吃午饭，通常是米饭和菜。下午，他继续工作，帮助顾客找书。在五点钟的时候，王明下班。他回家后，喜欢看电视和读书。晚上，王明做了晚饭，吃了一些水果。最后，他在十点钟上床睡觉，准备迎接新的一天。",
+      "comprehension": [
+        {
+          "q": "What time does Wang Ming wake up?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Seven o'clock",
+            "Five o'clock",
+            "Eight o'clock"
+          ]
+        },
+        {
+          "q": "What does Wang Ming eat for breakfast?",
+          "a": "Egg and milk",
+          "distractors": [
+            "Bread and tea",
+            "Rice and soup",
+            "Fruit and yogurt"
+          ]
+        },
+        {
+          "q": "What does Wang Ming do after work?",
+          "a": "Watch TV and read",
+          "distractors": [
+            "Go shopping",
+            "Exercise in the park",
+            "Meet friends for dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-neighbor-favor",
+      "hskLevel": 3,
+      "emoji": "🚪",
+      "titleZh": "借一杯水",
+      "pinyinTitle": "Jiè Yī Bēi Shuǐ",
+      "summaryEn": "Li Hua asks his neighbor for a small favor.",
+      "durationMin": 3,
+      "bodyZh": "李华住在一个小区。今天，天气很热。李华在家里喝水，但他没有更多的水了。他想喝冷水。李华决定去邻居王明家借一杯水。王明是一个友好的人，李华常常和他聊天。李华敲门，王明很快打开了门。李华说：“你好，王明！今天天气很热，我可以借一杯水吗？”王明笑着回答：“当然可以，李华！”王明把水杯递给李华。李华感谢他说：“谢谢你，王明！”王明说：“不客气！下次你也可以请我喝水。”李华点点头，心里觉得很开心。他喝了水，感觉好多了。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua want to borrow from Wang Ming?",
+          "a": "a cup of water",
+          "distractors": [
+            "a book",
+            "some food",
+            "a chair"
+          ]
+        },
+        {
+          "q": "How does Wang Ming respond to Li Hua's request?",
+          "a": "he agrees",
+          "distractors": [
+            "he refuses",
+            "he is busy",
+            "he doesn't hear"
+          ]
+        },
+        {
+          "q": "What does Li Hua feel after drinking the water?",
+          "a": "better",
+          "distractors": [
+            "tired",
+            "angry",
+            "hungry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-new-pet",
+      "hskLevel": 3,
+      "emoji": "🐱",
+      "titleZh": "新宠物",
+      "pinyinTitle": "Xīn Chǒngwù",
+      "summaryEn": "A family adopts a new pet and shares joyful moments together.",
+      "durationMin": 3,
+      "bodyZh": "王明的家里最近很忙。一天，王明和他的家人决定养一只宠物。他们去动物园，看到很多动物。王明看到一只小狗，毛色很美，眼睛也很大。王明很喜欢这只小狗，便问父母能不能带它回家。父母同意了，王明非常开心。\n\n回到家，王明给小狗起了个名字，叫“小白”。小白很聪明，喜欢跑和玩。王明每天都和小白一起散步，喂它吃东西。小白也很喜欢王明，常常跟在他身边。\n\n有一天，王明的朋友来家里玩。朋友看到小白，也很喜欢它。他们一起和小白玩球，笑声充满了整个房间。王明觉得，有了小白，家里变得更加快乐了。",
+      "comprehension": [
+        {
+          "q": "What kind of pet did Wang Ming's family adopt?",
+          "a": "a dog",
+          "distractors": [
+            "a cat",
+            "a rabbit",
+            "a bird"
+          ]
+        },
+        {
+          "q": "What name did Wang Ming give to the dog?",
+          "a": "Xiao Bai",
+          "distractors": [
+            "Xiao Hong",
+            "Xiao Hei",
+            "Xiao Yang"
+          ]
+        },
+        {
+          "q": "Who came to Wang Ming's house to play?",
+          "a": "his friend",
+          "distractors": [
+            "his teacher",
+            "his cousin",
+            "his neighbor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-old-friend",
+      "hskLevel": 3,
+      "emoji": "👫",
+      "titleZh": "重逢的快乐",
+      "pinyinTitle": "Zhòng Féng De Kuài Lè",
+      "summaryEn": "Li Wei meets an old friend after many years apart.",
+      "durationMin": 3,
+      "bodyZh": "李伟在公园散步，突然看见一个熟悉的脸。他想了想，发现是他的老朋友张伟。两个人已经很多年没见了。李伟高兴地跑过去，张伟也很惊讶。他们互相问好，然后一起坐在长椅上，聊起了过去的事情。\n\n张伟说：“我在外地工作，最近才回到这个城市。”李伟点点头：“我也忙，工作很累，但是我很想念以前的时光。”\n\n他们谈了很多，聊到了学校的朋友，和一起玩过的游戏。时间过得很快，李伟和张伟都觉得很快乐。最后，他们决定下个月再见面，一起去喝咖啡。李伟心里想着，和老朋友重逢真好！",
+      "comprehension": [
+        {
+          "q": "Where did Li Wei meet Zhang Wei?",
+          "a": "in the park",
+          "distractors": [
+            "at a cafe",
+            "in a store",
+            "at school"
+          ]
+        },
+        {
+          "q": "How long had they not seen each other?",
+          "a": "many years",
+          "distractors": [
+            "a few weeks",
+            "a few months",
+            "one year"
+          ]
+        },
+        {
+          "q": "What did they decide to do next month?",
+          "a": "drink coffee",
+          "distractors": [
+            "go to the movies",
+            "visit a museum",
+            "have lunch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-park-walk",
+      "hskLevel": 3,
+      "emoji": "🌳",
+      "titleZh": "公园的下午散步",
+      "pinyinTitle": "Gōng Yuán De Xià Wǔ Sàn Bù",
+      "summaryEn": "Li Hua enjoys a peaceful afternoon walk in the park.",
+      "durationMin": 3,
+      "bodyZh": "今天下午，李华在公园散步。公园里有很多树和花。阳光照在树上，空气很新鲜。李华边走边听鸟叫，觉得很快乐。 \n\n他看到一个小女孩在放风筝，风筝飞得很高。李华笑了，想起自己小时候也喜欢放风筝。他继续走，看到一个老人在喂鸽子。李华停下来，和老人聊了一会儿。 \n\n老人说，散步很健康，可以让人心情好。李华同意了。他们一起看着鸽子吃食，感觉时间过得很快。 \n\n散步结束时，李华心里很开心。他觉得在公园散步是个好主意。下次，他还想再来这里。",
+      "comprehension": [
+        {
+          "q": "What does Li Hua do in the park?",
+          "a": "He takes a walk.",
+          "distractors": [
+            "He plays basketball.",
+            "He reads a book.",
+            "He rides a bike."
+          ]
+        },
+        {
+          "q": "What does Li Hua see a little girl doing?",
+          "a": "Flying a kite.",
+          "distractors": [
+            "Drawing on the ground.",
+            "Playing with a dog.",
+            "Eating ice cream."
+          ]
+        },
+        {
+          "q": "What does the old man do in the park?",
+          "a": "Feeding pigeons.",
+          "distractors": [
+            "Walking his dog.",
+            "Sitting on a bench.",
+            "Picking flowers."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-phone-call",
+      "hskLevel": 3,
+      "emoji": "📞",
+      "titleZh": "重要的电话",
+      "pinyinTitle": "Zhòngyào de Diànhuà",
+      "summaryEn": "Li Hua receives an important phone call that changes his plans.",
+      "durationMin": 3,
+      "bodyZh": "李华在家里休息，突然他的手机响了。他看了看，是他的朋友张伟打来的。李华接了电话，问：“喂，张伟，有什么事吗？”张伟很兴奋地说：“李华，我得到了一个好工作！我想请你吃饭庆祝！”李华很高兴，但他有一个重要的考试。他回答：“谢谢你，张伟！我很开心，但我不能去。我下个星期有一个考试。”张伟理解了：“没关系，考试更重要！我们可以等到考试后再庆祝。”李华感到很感动，他说：“谢谢你的理解，我会努力学习的。”他们聊了一会儿，李华挂了电话，心里充满了力量。为了这个重要的考试，他知道自己必须努力。",
+      "comprehension": [
+        {
+          "q": "Who called Li Hua?",
+          "a": "Zhang Wei",
+          "distractors": [
+            "Li Ming",
+            "Wang Fang",
+            "Liu Qiang"
+          ]
+        },
+        {
+          "q": "What did Zhang Wei want to celebrate?",
+          "a": "A new job",
+          "distractors": [
+            "A birthday",
+            "An exam",
+            "A wedding"
+          ]
+        },
+        {
+          "q": "What is Li Hua preparing for?",
+          "a": "An important exam",
+          "distractors": [
+            "A party",
+            "A trip",
+            "A meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-post-office",
+      "hskLevel": 3,
+      "emoji": "📮",
+      "titleZh": "王明寄包裹",
+      "pinyinTitle": "Wáng Míng Jì Bāo Guǒ",
+      "summaryEn": "Wang Ming has an interesting experience at the post office sending a package.",
+      "durationMin": 3,
+      "bodyZh": "今天，王明要寄一个包裹。他的朋友小红住在南方，王明想给她寄一些家乡的特产。王明走进邮局，看到很多人在排队。他先在柜台前等了一会儿。柜台的工作人员很友好，问他要寄什么。王明说：“我想寄一个包裹。”工作人员帮他称了包裹的重量，告诉他邮费是十元。王明付了钱，然后填写了地址。填写完后，工作人员把包裹装好，并给王明一个收据。王明感到很高兴，因为他的朋友很快就能收到礼物。走出邮局，王明心里想着小红的笑脸。",
+      "comprehension": [
+        {
+          "q": "Who does Wang Ming want to send the package to?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Li Hua",
+            "Zhang Wei",
+            "Liu Fang"
+          ]
+        },
+        {
+          "q": "How much is the postage for the package?",
+          "a": "Ten yuan",
+          "distractors": [
+            "Five yuan",
+            "Fifteen yuan",
+            "Twenty yuan"
+          ]
+        },
+        {
+          "q": "What did Wang Ming send to his friend?",
+          "a": "Local specialties",
+          "distractors": [
+            "Clothes",
+            "Books",
+            "Toys"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-rainy-day",
+      "hskLevel": 3,
+      "emoji": "🌧️",
+      "titleZh": "雨天的乐趣",
+      "pinyinTitle": "Yǔ Tiān De Lè Qù",
+      "summaryEn": "On a rainy day, a girl finds joy indoors with her friends.",
+      "durationMin": 3,
+      "bodyZh": "今天是一个雨天，小红在家里。她看着窗外，雨水从天上下来，心里有些无聊。她想：我可以做什么呢？小红决定打电话给她的朋友李华。李华也在家，他很高兴能来小红家玩。小红准备了一些零食，他们一起看电影。电影很好看，他们笑得很开心。看完电影后，小红提议一起做手工。她们用纸和剪刀做了很多有趣的东西。虽然外面在下雨，里面却充满了欢声笑语。最后，小红和李华都觉得这个雨天很快乐！",
+      "comprehension": [
+        {
+          "q": "What did 小红 do first on the rainy day?",
+          "a": "Called her friend",
+          "distractors": [
+            "Went outside",
+            "Read a book",
+            "Slept all day"
+          ]
+        },
+        {
+          "q": "What did they do after watching the movie?",
+          "a": "Made crafts",
+          "distractors": [
+            "Played video games",
+            "Cooked dinner",
+            "Went shopping"
+          ]
+        },
+        {
+          "q": "How did 小红 and 李华 feel about the rainy day?",
+          "a": "Happy",
+          "distractors": [
+            "Bored",
+            "Angry",
+            "Tired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-restaurant",
+      "hskLevel": 3,
+      "emoji": "🍜",
+      "titleZh": "王明点餐",
+      "pinyinTitle": "Wáng Míng Diǎn Cān",
+      "summaryEn": "Wang Ming enjoys a meal at a restaurant with friends.",
+      "durationMin": 3,
+      "bodyZh": "今天，王明和他的朋友们去一家新餐厅吃饭。他们走进餐厅，看到很多美味的菜。王明看着菜单，问服务员：\"你们有什么特别推荐的？\" 服务员回答：\"我们这里的酸辣汤和宫保鸡丁都很好。\" 王明想了想，决定点酸辣汤和宫保鸡丁。朋友们也点了他们喜欢的菜。过了一会儿，菜终于上来了。王明尝了一口酸辣汤，觉得味道很棒。他的朋友们也很喜欢他们点的菜。吃完饭后，王明付了钱，大家都很开心。\"这个地方真不错！\" 王明说。朋友们纷纷点头同意。",
+      "comprehension": [
+        {
+          "q": "What did Wang Ming order?",
+          "a": "Sour and spicy soup and Kung Pao chicken",
+          "distractors": [
+            "Fried rice and sweet and sour pork",
+            "Noodles and dumplings",
+            "Spring rolls and hot pot"
+          ]
+        },
+        {
+          "q": "Who did Wang Ming go to the restaurant with?",
+          "a": "Friends",
+          "distractors": [
+            "Family",
+            "Colleagues",
+            "Classmates"
+          ]
+        },
+        {
+          "q": "What did Wang Ming think of the soup?",
+          "a": "He thought it was great",
+          "distractors": [
+            "He didn't like it",
+            "It was too salty",
+            "It was too cold"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-running-late",
+      "hskLevel": 3,
+      "emoji": "⏰",
+      "titleZh": "迟到的会议",
+      "pinyinTitle": "Chí Dào De Huì Yì",
+      "summaryEn": "Li Hua rushes to an important meeting but arrives late.",
+      "durationMin": 3,
+      "bodyZh": "李华今天早上起晚了。他的闹钟没有响。他很着急，因为今天有一个重要的会议。李华迅速穿好衣服，吃了几口早餐，然后跑出家门。外面天气很好，但是他没有时间享受。李华走到车站，等了很久，终于上了公交车。公交车很慢，路上还有很多车。他看着时间，心里越来越紧张。到达会议室时，已经迟到了。他轻声推开门，所有人都在等他。李华说：\"对不起，我来晚了！\" 大家微笑着说没关系。会议继续进行，李华认真听每一个人说的话。他希望下次能早一点到达。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua forget to set?",
+          "a": "alarm clock",
+          "distractors": [
+            "phone",
+            "watch",
+            "calendar"
+          ]
+        },
+        {
+          "q": "Where was the important meeting held?",
+          "a": "meeting room",
+          "distractors": [
+            "coffee shop",
+            "office",
+            "library"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel when he arrived late?",
+          "a": "nervous",
+          "distractors": [
+            "happy",
+            "excited",
+            "confused"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-school-day",
+      "hskLevel": 3,
+      "emoji": "🎒",
+      "titleZh": "学校的一天",
+      "pinyinTitle": "Xué Xiào De Yī Tiān",
+      "summaryEn": "A student enjoys a busy day at school from morning to afternoon.",
+      "durationMin": 4,
+      "bodyZh": "今天是李华的学校日。早上七点，李华起床，吃了早餐。他喝了牛奶，吃了面包，然后穿好衣服。八点钟，他和朋友们一起去学校。\n\n在学校，李华有很多课。第一节课是数学，老师教他们做题。李华觉得数学很有趣。第二节课是语文，老师让他们读故事。李华喜欢听故事。\n\n中午，李华和朋友们一起在食堂吃饭。他们点了米饭和鸡肉，大家都吃得很开心。吃完饭后，他们在操场上玩了半个小时。\n\n下午，李华有音乐课。老师教他们唱歌，李华唱得很好。最后一节课是科学，大家学习了植物。李华觉得今天的课程都很有意思。\n\n放学后，李华和朋友们一起回家。他们在路上聊天，李华想：今天真是美好的一天！",
+      "comprehension": [
+        {
+          "q": "What time does Li Hua wake up?",
+          "a": "Seven o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Six o'clock",
+            "Nine o'clock"
+          ]
+        },
+        {
+          "q": "What does Li Hua eat for breakfast?",
+          "a": "Bread and milk",
+          "distractors": [
+            "Rice and chicken",
+            "Noodles and tea",
+            "Fruit and yogurt"
+          ]
+        },
+        {
+          "q": "What subject does Li Hua have in the afternoon?",
+          "a": "Music",
+          "distractors": [
+            "Math",
+            "English",
+            "History"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-shopping-mall",
+      "hskLevel": 3,
+      "emoji": "🛍️",
+      "titleZh": "在购物中心的下午",
+      "pinyinTitle": "Zài Gòuwù Zhōngxīn De Xiàwǔ",
+      "summaryEn": "Li Hua enjoys a fun afternoon shopping with his friend at the mall.",
+      "durationMin": 3,
+      "bodyZh": "今天，李华和他的朋友小红一起去购物中心。下午的阳光很明亮，他们感到很开心。李华想买一件新衣服，小红想买一个包。 他们在一个大商店里，看到了很多漂亮的衣服和包。李华试了一件蓝色的衬衫，小红则试了一些不同颜色的包。 试衣间里，他们都觉得很有趣。李华说：“这件衬衫好看吗？”小红点了点头，回答：“很漂亮！”\n\n接着，他们去了一个小吃店，买了冰淇淋和饮料。吃着冰淇淋，他们聊着学校的事情，笑着。李华说：“我喜欢这个下午，我们下次再来吧。”小红同意了，笑着说：“好啊！下次我们可以买更多的东西！”",
+      "comprehension": [
+        {
+          "q": "What did Li Hua want to buy?",
+          "a": "A new shirt",
+          "distractors": [
+            "A bag",
+            "Ice cream",
+            "Shoes"
+          ]
+        },
+        {
+          "q": "What did they eat at the snack shop?",
+          "a": "Ice cream",
+          "distractors": [
+            "Pizza",
+            "Noodles",
+            "Fruit"
+          ]
+        },
+        {
+          "q": "Who did Li Hua go shopping with?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Zhang Wei",
+            "Wang Ming",
+            "Li Jie"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-snowy-morning",
+      "hskLevel": 3,
+      "emoji": "❄️",
+      "titleZh": "雪天的早晨",
+      "pinyinTitle": "Xuě Tiān De Zǎo Chén",
+      "summaryEn": "On a snowy morning, Li Hua enjoys winter fun with his friends.",
+      "durationMin": 3,
+      "bodyZh": "早上，李华起床，窗外下着雪。雪花在空中飘，地上变白了。李华很高兴，他想和朋友们一起玩。于是，他穿上厚厚的衣服，带上手套和帽子，走出家门。\n\n在公园里，李华看见朋友们在打雪仗。他也加入了他们，大家笑着、跑着，很开心。雪花落在他们的头上和身上，像白色的花。玩了一个小时后，李华和朋友们决定一起喝热巧克力。\n\n他们走进咖啡馆，点了热巧克力和蛋糕，享受温暖的饮料。李华说：“今天真是一个美好的雪天！”朋友们都同意，大家都希望这样的日子能多一些。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua do when he woke up?",
+          "a": "He saw snow outside.",
+          "distractors": [
+            "He went back to sleep.",
+            "He watched TV.",
+            "He cooked breakfast."
+          ]
+        },
+        {
+          "q": "What game did Li Hua play with his friends?",
+          "a": "Snowball fight.",
+          "distractors": [
+            "Hide and seek.",
+            "Tag.",
+            "Soccer."
+          ]
+        },
+        {
+          "q": "What did they drink at the café?",
+          "a": "Hot chocolate.",
+          "distractors": [
+            "Tea.",
+            "Juice.",
+            "Water."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-sports-day",
+      "hskLevel": 3,
+      "emoji": "⚽",
+      "titleZh": "学校运动会",
+      "pinyinTitle": "Xué Xiào Yùn Dòng Huì",
+      "summaryEn": "A student enjoys the excitement of sports day at school.",
+      "durationMin": 3,
+      "bodyZh": "今天是学校的运动会。王明很兴奋，他早上七点就到了学校。运动会在操场上举行，阳光明媚。王明参加了跑步和跳远比赛。跑步时，他看到他的朋友小红也在比赛。小红跑得很快，最后得了第一名。王明虽然没有得奖，但他很开心，因为他努力了。午饭后，班级还有接力赛。大家都为班级加油，气氛非常热烈。最后，王明的班级赢了接力赛，大家都很高兴。运动会结束后，王明和朋友们一起拍了很多照片。今天真是一个快乐的一天！",
+      "comprehension": [
+        {
+          "q": "What event did Wang Ming participate in?",
+          "a": "Running",
+          "distractors": [
+            "Basketball",
+            "Swimming",
+            "Volleyball"
+          ]
+        },
+        {
+          "q": "Who won first place in the race?",
+          "a": "Xiao Hong",
+          "distractors": [
+            "Wang Ming",
+            "Li Hua",
+            "Zhang Wei"
+          ]
+        },
+        {
+          "q": "What did Wang Ming's class win?",
+          "a": "Relay race",
+          "distractors": [
+            "Long jump",
+            "Football match",
+            "High jump"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-subway-ride",
+      "hskLevel": 3,
+      "emoji": "🚇",
+      "titleZh": "高峰时的地铁",
+      "pinyinTitle": "Gāo Fēng Shí De Dì Tiě",
+      "summaryEn": "A subway ride during rush hour brings unexpected encounters for Li Hua.",
+      "durationMin": 3,
+      "bodyZh": "今天早上，李华去上班。他坐地铁，正好是高峰时。地铁里人很多，李华站着，旁边有一个年轻的女孩。女孩在看手机，笑得很开心。李华觉得有点挤，但他也想看看女孩在看什么。突然，地铁停了，李华差点摔倒。女孩抓住了他的手。李华说：“谢谢！”女孩笑着说：“没关系！”\n\n几分钟后，地铁继续开。李华看到窗外的风景，心情也变好了。下车时，女孩对他说：“再见！”李华也说：“再见！”今天的地铁之旅，让李华觉得很有趣。",
+      "comprehension": [
+        {
+          "q": "What time of day is Li Hua taking the subway?",
+          "a": "Morning",
+          "distractors": [
+            "Afternoon",
+            "Evening",
+            "Night"
+          ]
+        },
+        {
+          "q": "What does the girl do on her phone?",
+          "a": "Looks at it and smiles",
+          "distractors": [
+            "Plays a game",
+            "Sends a text",
+            "Listens to music"
+          ]
+        },
+        {
+          "q": "What happens when the subway stops suddenly?",
+          "a": "Li Hua almost falls",
+          "distractors": [
+            "The lights go out",
+            "People start shouting",
+            "The doors open"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-subway-stranger",
+      "hskLevel": 3,
+      "emoji": "🚉",
+      "titleZh": "帮助陌生人找火车",
+      "pinyinTitle": "Bāng Zhù Mò Shēng Rén Zhǎo Huǒ Chē",
+      "summaryEn": "Li Hua helps a stranger find the right train at the station.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华在火车站等他的朋友。他看到一个陌生人，正在找火车。那个陌生人看起来很着急。李华走过去，问：“你好！你在找什么？”陌生人说：“我想去北京，但是我不知道在哪个站。”李华想了想，回答：“你需要乘坐去北京的车，站台在三号。”陌生人感谢李华，笑着说：“谢谢你！我很感激。”李华看着他走向三号站台，心里觉得很高兴。帮助别人总是让人快乐。",
+      "comprehension": [
+        {
+          "q": "What city does the stranger want to go to?",
+          "a": "Beijing",
+          "distractors": [
+            "Shanghai",
+            "Guangzhou",
+            "Chengdu"
+          ]
+        },
+        {
+          "q": "Where does Li Hua tell the stranger to go?",
+          "a": "Platform 3",
+          "distractors": [
+            "Platform 2",
+            "Platform 1",
+            "Platform 4"
+          ]
+        },
+        {
+          "q": "How does the stranger feel after Li Hua helps him?",
+          "a": "Grateful",
+          "distractors": [
+            "Angry",
+            "Confused",
+            "Bored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-summer-trip",
+      "hskLevel": 3,
+      "emoji": "🏖️",
+      "titleZh": "夏天的海边旅行",
+      "pinyinTitle": "Xià Tiān De Hǎi Biān Lǚ Xíng",
+      "summaryEn": "Li Hua enjoys a fun summer trip to the seaside with friends.",
+      "durationMin": 3,
+      "bodyZh": "李华和他的朋友们决定去海边度假。那是一个炎热的夏天，阳光明媚。他们早上六点就出发了，坐上了汽车。一路上，大家都很兴奋，唱歌和聊天。\\n\\n到了海边，他们看到蓝色的海水和白色的沙滩。李华和朋友们马上换好泳衣，跑去游泳。海水很凉快，他们在水里玩得很开心。\\n\\n游泳后，他们在沙滩上晒太阳，吃冰淇淋和水果。李华还用沙子做了一个小城堡。朋友们都很喜欢这个城堡，大家一起拍照片。\\n\\n傍晚时，他们坐在沙滩上，看着美丽的日落，感到非常快乐。这次海边旅行让他们的夏天更加难忘。",
+      "comprehension": [
+        {
+          "q": "What time did Li Hua and his friends leave for the seaside?",
+          "a": "Six o'clock",
+          "distractors": [
+            "Eight o'clock",
+            "Five o'clock",
+            "Seven o'clock"
+          ]
+        },
+        {
+          "q": "What did they eat on the beach?",
+          "a": "Ice cream and fruit",
+          "distractors": [
+            "Sandwiches and chips",
+            "Hot dogs and soda",
+            "Cake and cookies"
+          ]
+        },
+        {
+          "q": "What did Li Hua make with sand?",
+          "a": "A small castle",
+          "distractors": [
+            "A big tower",
+            "A sandbag",
+            "A beach chair"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-supermarket",
+      "hskLevel": 3,
+      "emoji": "🛒",
+      "titleZh": "每周去超市",
+      "pinyinTitle": "Měi Zhōu Qù Chāo Shì",
+      "summaryEn": "Li Hua enjoys his weekly trips to the supermarket for groceries.",
+      "durationMin": 2,
+      "bodyZh": "李华每周六去超市买东西。他喜欢去超市，因为那里有很多新鲜的食物。每次去，李华都买米、面条和新鲜的蔬菜。上个星期六，他还买了水果和一些零食。超市里总是很热闹，很多人都在购物。李华喜欢看到其他顾客的笑脸。买完东西后，他还会去咖啡店喝一杯咖啡。这样的一天让他感到很快乐。李华觉得，去超市不仅可以买到好吃的食物，还能和朋友聊天。",
+      "comprehension": [
+        {
+          "q": "What day does Li Hua go to the supermarket?",
+          "a": "Saturday",
+          "distractors": [
+            "Friday",
+            "Sunday",
+            "Monday"
+          ]
+        },
+        {
+          "q": "What does Li Hua buy at the supermarket?",
+          "a": "Rice and vegetables",
+          "distractors": [
+            "Clothes and shoes",
+            "Books and toys",
+            "Beverages and snacks"
+          ]
+        },
+        {
+          "q": "Where does Li Hua go after shopping?",
+          "a": "Coffee shop",
+          "distractors": [
+            "Bookstore",
+            "Restaurant",
+            "Gym"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-taxi-trip",
+      "hskLevel": 3,
+      "emoji": "🚕",
+      "titleZh": "短暂的出租车旅程",
+      "pinyinTitle": "Duǎn Zàn De Chū Zū Chē Lǚ Chéng",
+      "summaryEn": "A quick taxi ride leads to an unexpected conversation.",
+      "durationMin": 3,
+      "bodyZh": "今天，王明要去朋友家。他在路边等出租车。过了一会儿，一辆出租车来了。王明上了车，司机是个中年人。司机很友好，问王明去哪里。王明告诉他地址，司机点了点头。车子开动了，路上很堵。王明有点着急，但他也开始和司机聊天。司机说，他每天都开车，见到很多有趣的人。王明觉得这个司机很有意思。车终于到了朋友家，王明给了司机一些钱，司机微笑着说：“谢谢！希望你有个愉快的晚上！”王明也笑了，心里很开心。",
+      "comprehension": [
+        {
+          "q": "Where was Wang Ming going?",
+          "a": "to a friend's house",
+          "distractors": [
+            "to the airport",
+            "to a restaurant",
+            "to the park"
+          ]
+        },
+        {
+          "q": "What did the taxi driver do for a living?",
+          "a": "a taxi driver",
+          "distractors": [
+            "a chef",
+            "a teacher",
+            "a doctor"
+          ]
+        },
+        {
+          "q": "How did Wang Ming feel during the taxi ride?",
+          "a": "happy",
+          "distractors": [
+            "angry",
+            "bored",
+            "scared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-tea-with-friend",
+      "hskLevel": 3,
+      "emoji": "🍵",
+      "titleZh": "喝茶的朋友",
+      "pinyinTitle": "Hē Chá De Péng Yǒu",
+      "summaryEn": "Li Hua enjoys a warm tea time with his close friend.",
+      "durationMin": 3,
+      "bodyZh": "今天，李华和他的好朋友王明一起喝茶。他们在李华家里，泡了一壶绿茶。茶香四溢，让人感到很舒服。王明说：“这茶真好喝！你是怎么泡的？”李华笑着回答：“我用热水泡了三分钟。”\n\n他们边喝茶边聊天，谈论工作和生活。王明告诉李华，他最近在学习新的技能。李华非常支持他，鼓励他说：“我相信你能做得很好！”\n\n喝完茶后，王明还帮李华洗了杯子。他们一起享受了一个愉快的下午。李华觉得和好朋友在一起的时间总是过得很快。",
+      "comprehension": [
+        {
+          "q": "What type of tea did Li Hua and Wang Ming drink?",
+          "a": "green tea",
+          "distractors": [
+            "black tea",
+            "oolong tea",
+            "herbal tea"
+          ]
+        },
+        {
+          "q": "How long did Li Hua steep the tea?",
+          "a": "three minutes",
+          "distractors": [
+            "five minutes",
+            "two minutes",
+            "one minute"
+          ]
+        },
+        {
+          "q": "What did Wang Ming help Li Hua do after drinking tea?",
+          "a": "wash the cups",
+          "distractors": [
+            "make more tea",
+            "clean the table",
+            "serve snacks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-train-station",
+      "hskLevel": 3,
+      "emoji": "🚆",
+      "titleZh": "忙碌的火车站",
+      "pinyinTitle": "Máng Lì De Huǒ Chē Zhàn",
+      "summaryEn": "Li Hua experiences a busy day at the train station.",
+      "durationMin": 3,
+      "bodyZh": "今天，李华在火车站等朋友。车站很忙，很多人走来走去。李华看着时钟，心里有点紧张。朋友应该在十点到，但现在已经十点十五分了。李华想：‘她会不会迷路了？’\n\n他决定给朋友打电话。电话响了很久，最后朋友接了。‘对不起，我在外面等车。’李华松了一口气，笑了。‘没关系，我在这里等你。’\n\n李华找了一个座位，坐下来喝水。他看着人们，看到一个小女孩在和妈妈一起吃东西。女孩笑着，妈妈也很开心。李华觉得等候的时间不再那么无聊了。过了一会儿，他的朋友终于来了，李华站起来，向她挥手。两人一起走出火车站，开始新的冒险。  ",
+      "comprehension": [
+        {
+          "q": "What time was Li Hua waiting for his friend?",
+          "a": "Ten o'clock",
+          "distractors": [
+            "Nine o'clock",
+            "Ten fifteen",
+            "Eleven o'clock"
+          ]
+        },
+        {
+          "q": "What was Li Hua doing while waiting?",
+          "a": "Drinking water",
+          "distractors": [
+            "Eating food",
+            "Reading a book",
+            "Playing games"
+          ]
+        },
+        {
+          "q": "What did Li Hua see while waiting?",
+          "a": "A girl eating with her mom",
+          "distractors": [
+            "A dog playing",
+            "A train arriving",
+            "A man sleeping"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-village-visit",
+      "hskLevel": 3,
+      "emoji": "🏘️",
+      "titleZh": "小红看望爷爷奶奶",
+      "pinyinTitle": "Xiǎo Hóng Kànwàng Yéyé Nǎinai",
+      "summaryEn": "Xiao Hong visits her grandparents in a small village and enjoys her time there.",
+      "durationMin": 3,
+      "bodyZh": "小红上个周末去了一个小村庄，那里有她的爷爷和奶奶。她很高兴，因为她好久没见到他们了。村庄里有很多树和花，空气也很新鲜。小红和爷爷一起去田里，爷爷教她怎么种菜。奶奶则在家里做了好吃的饭菜，香味飘满了整个房子。\n\n晚上，小红和爷爷奶奶坐在院子里，聊天，看星星。小红说：“这里的晚上真美！”爷爷笑着说：“是啊，村庄的夜空很特别。”\n\n第二天，小红和爷爷一起去河边游泳，水很清凉。她也带了一些吃的，和爷爷一起享受美好的时光。小红觉得这次看望爷爷奶奶的旅行非常快乐，她希望能常来这个小村庄。",
+      "comprehension": [
+        {
+          "q": "Who did Xiao Hong visit in the village?",
+          "a": "Her grandparents",
+          "distractors": [
+            "Her friends",
+            "Her cousins",
+            "Her parents"
+          ]
+        },
+        {
+          "q": "What did Xiao Hong do with her grandfather?",
+          "a": "Plant vegetables",
+          "distractors": [
+            "Swim in the river",
+            "Cook food",
+            "Pick flowers"
+          ]
+        },
+        {
+          "q": "What did they do in the evening?",
+          "a": "Look at the stars",
+          "distractors": [
+            "Play games",
+            "Go to sleep",
+            "Watch TV"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-wedding-day",
+      "hskLevel": 3,
+      "emoji": "💒",
+      "titleZh": "参加朋友的婚礼",
+      "pinyinTitle": "Cān jiā péng yǒu de hūn lǐ",
+      "summaryEn": "Li Hua happily attends a friend's wedding celebration.",
+      "durationMin": 2,
+      "bodyZh": "今天是李华的好朋友张伟的婚礼。李华早上起床后，洗澡、穿衣服，然后去商店买了一份礼物。他选择了一本书，因为张伟喜欢读书。到了婚礼现场，张伟和他的妻子非常高兴。李华看到很多朋友，也很开心。他们一起吃饭、唱歌，还拍了很多照片。婚礼气氛很好，大家都祝福新婚夫妇。李华觉得这一天非常快乐，也希望自己能有这样美好的婚礼。",
+      "comprehension": [
+        {
+          "q": "Who is getting married?",
+          "a": "Zhang Wei",
+          "distractors": [
+            "Li Hua",
+            "Wang Ming",
+            "Xiao Hong"
+          ]
+        },
+        {
+          "q": "What gift did Li Hua buy?",
+          "a": "a book",
+          "distractors": [
+            "a watch",
+            "a toy",
+            "a vase"
+          ]
+        },
+        {
+          "q": "How did Li Hua feel at the wedding?",
+          "a": "very happy",
+          "distractors": [
+            "sad",
+            "tired",
+            "angry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-weekend",
+      "hskLevel": 3,
+      "emoji": "🛌",
+      "titleZh": "一个放松的周末",
+      "pinyinTitle": "Yī Gè Fàngsōng De Zhōumò",
+      "summaryEn": "Li Hua enjoys a relaxing weekend at home with simple pleasures.",
+      "durationMin": 2,
+      "bodyZh": "李华的周末很放松。周六早上，他在床上睡觉，阳光照进房间。他起来后，先喝了一杯咖啡，然后看了几本书。中午，他自己做了一个简单的午餐：米饭和炒菜。吃完饭，他在家里休息，听音乐。下午，他和朋友们在网上聊天，分享了一些有趣的事情。晚上，李华看了一部电影，觉得很开心。周日，他在公园散步，享受新鲜的空气。这个周末很轻松，让他感到很快乐。",
+      "comprehension": [
+        {
+          "q": "What did Li Hua drink in the morning?",
+          "a": "Coffee",
+          "distractors": [
+            "Tea",
+            "Juice",
+            "Milk"
+          ]
+        },
+        {
+          "q": "What did Li Hua cook for lunch?",
+          "a": "Rice and stir-fried vegetables",
+          "distractors": [
+            "Noodles and soup",
+            "Pizza",
+            "Sandwiches"
+          ]
+        },
+        {
+          "q": "Where did Li Hua walk on Sunday?",
+          "a": "In the park",
+          "distractors": [
+            "At home",
+            "On the street",
+            "In the mall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hsk3-yoga-class",
+      "hskLevel": 3,
+      "emoji": "🧘",
+      "titleZh": "李华的瑜伽课",
+      "pinyinTitle": "Lǐ Huá de Yújiā Kè",
+      "summaryEn": "Li Hua enjoys her first yoga class and learns to relax.",
+      "durationMin": 2,
+      "bodyZh": "今天，李华去上她的第一节瑜伽课。她有点紧张，但也很期待。教练是一个友好的女人，她叫小美。小美告诉大家，瑜伽可以帮助我们放松。课开始时，大家坐在垫子上，深呼吸。李华跟着小美做。她发现，呼吸很重要。然后，小美教大家做不同的动作。李华努力跟上，虽然有些动作很难。课的最后，大家躺在垫子上，闭上眼睛。李华感到很放松，心里很高兴。她决定下次还要来。",
+      "comprehension": [
+        {
+          "q": "What is the name of the yoga instructor?",
+          "a": "Xiao Mei",
+          "distractors": [
+            "Li Hua",
+            "Wang Ming",
+            "Zhang Wei"
+          ]
+        },
+        {
+          "q": "How does Li Hua feel at the end of the class?",
+          "a": "Relaxed",
+          "distractors": [
+            "Tired",
+            "Bored",
+            "Anxious"
+          ]
+        },
+        {
+          "q": "What does the instructor say yoga can help with?",
+          "a": "Relaxation",
+          "distractors": [
+            "Strength",
+            "Flexibility",
+            "Balance"
+          ]
+        }
+      ]
+    }
+  ]
+}

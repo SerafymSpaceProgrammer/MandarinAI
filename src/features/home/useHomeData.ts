@@ -4,8 +4,10 @@ import { supabase } from "@/api";
 import { computeStreak, fetchRecentActivity, todayISO } from "@/features/activity/activity";
 import { generatePlan, type PlanItem } from "@/features/dailyPlan/generatePlan";
 import { fetchTranslations } from "@/features/hsk/hsk";
+import { useT } from "@/i18n/i18n";
 import { logger } from "@/lib/logger";
 import { useUserStore } from "@/stores/userStore";
+import { currentGreeting, updateWidgetData } from "@/widgets/widgetData";
 
 export type RecentWord = {
   hanzi: string;
@@ -23,12 +25,21 @@ export type HomeData = {
   savedWordsTotal: number;
   recentWords: RecentWord[];
   minutesStudiedToday: number;
+  /** Cumulative XP across all daily_activity rows fetched (≤ 90 days). */
+  totalXp: number;
+  /** Derived 1-based level. Matches the formula used on the stats screen. */
+  level: number;
+  xpIntoLevel: number;
+  xpForNextLevel: number;
   refresh: () => Promise<void>;
 };
+
+const XP_PER_LEVEL = 100;
 
 export function useHomeData(): HomeData {
   const session = useUserStore((s) => s.session);
   const profile = useUserStore((s) => s.profile);
+  const t = useT();
 
   const [loading, setLoading] = useState(true);
   const [streak, setStreak] = useState(0);
@@ -37,6 +48,7 @@ export function useHomeData(): HomeData {
   const [savedWordsTotal, setSavedWordsTotal] = useState(0);
   const [recentWords, setRecentWords] = useState<RecentWord[]>([]);
   const [minutesStudiedToday, setMinutesStudiedToday] = useState(0);
+  const [totalXp, setTotalXp] = useState(0);
 
   async function load() {
     if (!session || !profile) {
@@ -95,6 +107,7 @@ export function useHomeData(): HomeData {
     });
 
     const nextPlan = generatePlan({
+      t,
       profile,
       dueCount: due,
       savedWordsTotal: total,
@@ -107,17 +120,40 @@ export function useHomeData(): HomeData {
     setDueCount(due);
     setSavedWordsTotal(total);
     setRecentWords(recent);
-    setStreak(computeStreak(activityRows));
+    const streakDays = computeStreak(activityRows);
+    setStreak(streakDays);
     setMinutesStudiedToday(today?.minutes_studied ?? 0);
+    setTotalXp(activityRows.reduce((s, r) => s + r.xp_earned, 0));
     setPlan(nextPlan);
     setLoading(false);
+
+    // Push the freshly computed snapshot into the Android home-screen
+    // widget. The widget cannot fetch from Supabase itself — it reads
+    // whatever the foreground app last wrote to AsyncStorage.
+    const firstWord = recent[0];
+    void updateWidgetData({
+      streak: streakDays,
+      dueCount: due,
+      wordHanzi: firstWord?.hanzi ?? null,
+      wordPinyin: firstWord?.pinyin ?? null,
+      wordMeaning: firstWord?.english ?? null,
+      greeting: currentGreeting(),
+    });
   }
 
   useEffect(() => {
     setLoading(true);
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session?.user.id, profile?.hsk_level, profile?.daily_goal_minutes]);
+  }, [
+    session?.user.id,
+    profile?.hsk_level,
+    profile?.daily_goal_minutes,
+    profile?.native_language,
+  ]);
+
+  const level = Math.floor(totalXp / XP_PER_LEVEL) + 1;
+  const xpIntoLevel = totalXp % XP_PER_LEVEL;
 
   return {
     loading,
@@ -127,6 +163,10 @@ export function useHomeData(): HomeData {
     savedWordsTotal,
     recentWords,
     minutesStudiedToday,
+    totalXp,
+    level,
+    xpIntoLevel,
+    xpForNextLevel: XP_PER_LEVEL,
     refresh: load,
   };
 }

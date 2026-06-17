@@ -1,9 +1,9 @@
 import { router } from "expo-router";
-import { ArrowLeft, ChevronRight } from "lucide-react-native";
+import { ChevronRight } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 
-import { Card, Screen, Skeleton, Text } from "@/components/ui";
+import { Card, PageHeader, Screen, Skeleton, Text } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { fmt } from "@/i18n/strings";
 import {
@@ -64,25 +64,10 @@ export default function HskIndex() {
 
   return (
     <Screen padded>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: theme.spacing.md,
-          paddingTop: theme.spacing.sm,
-          paddingBottom: theme.spacing.md,
-        }}
-      >
-        <Pressable onPress={() => router.back()} hitSlop={16} accessibilityLabel={t.common.back}>
-          <ArrowLeft color={theme.colors.textSecondary} size={24} strokeWidth={2} />
-        </Pressable>
-        <View style={{ flex: 1 }}>
-          <Text variant="caption" color="tertiary">
-            {t.hsk.headerLabel}
-          </Text>
-          <Text variant="h3">{mode === "level" ? t.hsk.pickLevel : t.hsk.pickTopic}</Text>
-        </View>
-      </View>
+      <PageHeader
+        eyebrow={t.hsk.headerLabel}
+        title={mode === "level" ? t.hsk.pickLevel : t.hsk.pickTopic}
+      />
 
       <ScrollView
         contentContainerStyle={{

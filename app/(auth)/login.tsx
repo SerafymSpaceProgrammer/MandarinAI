@@ -40,7 +40,7 @@ export default function Login() {
   }
 
   return (
-    <Screen padded>
+    <Screen padded edges={["top", "bottom", "left", "right"]}>
       <ScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
