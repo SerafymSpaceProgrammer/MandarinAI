@@ -505,6 +505,8 @@ export const EN = {
     autoRevealSub: "The answer appears when the timer runs out",
     autoAdvance: "Auto-advance",
     autoAdvanceSub: "Moves to the next phrase after the answer",
+    revealLabel: "REVEAL",
+    tempoTip: "Tempo speeds up:  4s  →  2s  →  1.5s",
   },
   personalGrammar: {
     eyebrow: "PERSONAL DECK",
@@ -585,6 +587,18 @@ export const EN = {
     phrasesListLabel: "PHRASES ({n})",
     removedToast: "Removed",
     removePhraseA11y: "Delete phrase",
+    whatIncludedLabel: "WHAT'S INCLUDED",
+    whatIncludedBody: "Construction name, description, template and all phrases with translations in every language present in the deck. Internal identifiers and timestamps are not exported — they're regenerated on import, so two devices with the same constructions won't conflict.",
+    errInvalidJson: "Invalid JSON: {msg}",
+    errExpectedConstructions: "Expected an object with a 'constructions' field or a single construction",
+    errExpectedObjectOrArray: "Expected a JSON object or an array",
+    errEmptyList: "The list of constructions is empty",
+    errConstructionNotObject: "Construction #{n}: expected an object",
+    errMissingName: "Construction #{n}: missing name",
+    errMissingPatterns: "Construction “{name}”: needs a patterns or phrases field (array)",
+    errPhraseNotObject: "“{name}” phrase #{n}: expected an object",
+    errPhraseMissingZh: "“{name}” phrase #{n}: missing zh",
+    errPhraseMissingTranslation: "“{name}” phrase #{n}: needs a translation (ru or en field)",
   },
   stats: {
     section: "Progress",
@@ -657,6 +671,8 @@ export const EN = {
     languageZh: "中文",
     signOut: "Sign out",
     deleteAccount: "Delete account",
+    privacyPolicy: "Privacy Policy",
+    termsOfUse: "Terms of Use",
     deleteConfirmTitle: "Delete your account?",
     deleteConfirmBody:
       "This permanently removes your account across MandarinAI and ChineseLens. This can't be undone.",
@@ -740,6 +756,7 @@ export const EN = {
       gradeAgain: "Again",
       gradeGood: "Good",
       gradeEasy: "Easy",
+      speak: "Play audio",
     },
     summary: {
       title: "Session done",
@@ -1185,6 +1202,7 @@ export const EN = {
     youLabel: "YOU",
     practiceAgain: "Practice again",
     pickAnother: "Pick another scenario",
+    filterAll: "All",
   },
 
   hsk: {
@@ -1230,6 +1248,10 @@ export const EN = {
     topicHskFilterAll: "All HSK",
     topicHskBadge: "HSK {n}",
     topicHskBadgeOld: "HSK {n} (old)",
+    select: "Select",
+    searchPlaceholder: "Search hanzi / pinyin / meaning",
+    wordsSelected: "{n} selected",
+    toDeck: "To deck",
   },
 
   strokes: {

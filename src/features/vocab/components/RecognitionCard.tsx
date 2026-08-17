@@ -103,7 +103,7 @@ export function RecognitionCard({ card, onRevealed }: Props) {
                   speak();
                 }}
                 hitSlop={10}
-                accessibilityLabel="Озвучить"
+                accessibilityLabel={t.vocab.review.speak}
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
@@ -116,7 +116,7 @@ export function RecognitionCard({ card, onRevealed }: Props) {
               >
                 <Volume2 color={theme.colors.accent} size={14} strokeWidth={2.2} />
                 <Text variant="small" color="accent">
-                  Озвучить
+                  {t.vocab.review.speak}
                 </Text>
               </Pressable>
 

@@ -1198,7 +1198,7 @@ function RevealCard({
           {ruText}
         </Text>
 
-        <DividerWithLabel label="REVEAL" />
+        <DividerWithLabel label={t.sprint.revealLabel} />
 
         <View style={{ alignItems: "center" }}>
           <HanziWithPinyin
@@ -1283,7 +1283,7 @@ function RevealCard({
               fontFamily: theme.fonts.uiSemiBold,
             }}
           >
-            Озвучить
+            {t.sprint.speakA11y}
           </Text>
           <Pressable onPress={cycleRate} hitSlop={6}>
             <Text
@@ -1334,7 +1334,7 @@ function RevealCard({
             flex: 1,
           }}
         >
-          Темп ускоряется:  4s  →  2s  →  1.5s
+          {t.sprint.tempoTip}
         </Text>
       </View>
     </Animated.View>
@@ -2079,7 +2079,7 @@ function SettingsBody({
         </Pressable>
       </View>
 
-      {/* РЕЖИМ — three preset cards in a row */}
+      {/* MODE — three preset cards in a row */}
       <SettingsSection
         label={t.sprint.sectionMode}
         hint={t.sprint.sectionModeHint}

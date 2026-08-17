@@ -17,6 +17,7 @@ import {
   usePracticeData,
   type LastSpeakingAttempt,
 } from "@/features/practice/usePracticeData";
+import { storiesWithComprehension } from "@/features/reading/stories";
 import { SCENARIOS, type Scenario } from "@/features/speaking/scenarios";
 import { useT } from "@/i18n/i18n";
 import { fmt, type Translations } from "@/i18n/strings";
@@ -185,6 +186,20 @@ export default function Practice() {
               statNumber="30"
               statLabel={t.practiceTab.statPerDay}
               onPress={() => router.push("/(app)/practice/chat")}
+            />
+          </View>
+          {/* Story-length listening was orphaned — the catalog existed but no
+              screen linked to it. Full-width entry below the 2×2 grid. */}
+          <View style={{ flexDirection: "row", gap: theme.spacing.sm }}>
+            <ModeCard
+              hanziWatermark="故"
+              tone={MODE_TONE_BLUE}
+              Icon={Headphones}
+              title={t.practiceTab.listeningLong}
+              subtitle={t.practiceTab.listeningLongHint}
+              statNumber={`${storiesWithComprehension("all").length}`}
+              statLabel={t.reading.title}
+              onPress={() => router.push("/(app)/practice/listening-scenarios")}
             />
           </View>
         </View>

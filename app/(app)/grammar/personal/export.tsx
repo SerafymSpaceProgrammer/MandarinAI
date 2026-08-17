@@ -118,14 +118,10 @@ export default function ExportPersonal() {
             </Card>
 
             <Text variant="caption" color="tertiary" style={{ marginTop: theme.spacing.md }}>
-              ЧТО ВКЛЮЧЕНО
+              {t.personalGrammar.whatIncludedLabel}
             </Text>
             <Text variant="small" color="secondary">
-              Имя конструкции, описание, шаблон и все фразы с переводами на
-              языках, которые встречаются в колоде. Внутренние идентификаторы
-              и timestamps не экспортируются — они генерируются заново при
-              импорте, поэтому два устройства с одинаковыми конструкциями не
-              будут конфликтовать.
+              {t.personalGrammar.whatIncludedBody}
             </Text>
           </>
         )}

@@ -40,6 +40,22 @@ export type ParsedImport = {
 // ──────────────────────────────────────────────────────────────────────────
 
 /**
+ * Validation failure as a stable code + params. The display site (the import
+ * screen) maps codes to localized strings — no user-facing text lives here.
+ */
+export type ImportError =
+  | { code: "invalidJson"; detail: string }
+  | { code: "expectedConstructions" }
+  | { code: "expectedObjectOrArray" }
+  | { code: "emptyList" }
+  | { code: "constructionNotObject"; n: number }
+  | { code: "missingName"; n: number }
+  | { code: "missingPatterns"; name: string }
+  | { code: "phraseNotObject"; name: string; n: number }
+  | { code: "phraseMissingZh"; name: string; n: number }
+  | { code: "phraseMissingTranslation"; name: string; n: number };
+
+/**
  * Accepts a few permissive shapes so users don't have to remember the exact
  * convention:
  *
@@ -51,12 +67,12 @@ export type ParsedImport = {
  * Phrase objects must contain at minimum `zh` and either `ru` or `en`. `py`
  * is optional — the trainer will fall back to pinyin-pro if missing.
  */
-export function parseImport(raw: string): { ok: true; data: ParsedImport } | { ok: false; error: string } {
+export function parseImport(raw: string): { ok: true; data: ParsedImport } | { ok: false; error: ImportError } {
   let json: unknown;
   try {
     json = JSON.parse(raw);
   } catch (err) {
-    return { ok: false, error: `Невалидный JSON: ${(err as Error).message}` };
+    return { ok: false, error: { code: "invalidJson", detail: (err as Error).message } };
   }
 
   let arr: unknown;
@@ -70,45 +86,45 @@ export function parseImport(raw: string): { ok: true; data: ParsedImport } | { o
       // Single construction wrapped at top level — treat as a one-element list.
       arr = [obj];
     } else {
-      return { ok: false, error: "Ожидается объект с полем 'constructions' или одна конструкция" };
+      return { ok: false, error: { code: "expectedConstructions" } };
     }
   } else {
-    return { ok: false, error: "Ожидается JSON-объект или массив" };
+    return { ok: false, error: { code: "expectedObjectOrArray" } };
   }
 
   if (!Array.isArray(arr) || arr.length === 0) {
-    return { ok: false, error: "Список конструкций пуст" };
+    return { ok: false, error: { code: "emptyList" } };
   }
 
   const out: ParsedImport["constructions"] = [];
   for (let i = 0; i < arr.length; i++) {
     const c = arr[i];
     if (!c || typeof c !== "object") {
-      return { ok: false, error: `Конструкция #${i + 1}: ожидается объект` };
+      return { ok: false, error: { code: "constructionNotObject", n: i + 1 } };
     }
     const obj = c as Record<string, unknown>;
     const name = typeof obj.name === "string" ? obj.name.trim() : "";
     const ru_name = typeof obj.ru_name === "string" ? obj.ru_name.trim() : "";
     const pattern = typeof obj.pattern === "string" ? obj.pattern.trim() : "";
-    if (!name) return { ok: false, error: `Конструкция #${i + 1}: отсутствует name` };
+    if (!name) return { ok: false, error: { code: "missingName", n: i + 1 } };
 
     const phrasesRaw = (obj.patterns ?? obj.phrases) as unknown;
     if (!Array.isArray(phrasesRaw)) {
-      return { ok: false, error: `Конструкция «${name}»: нужно поле patterns или phrases (массив)` };
+      return { ok: false, error: { code: "missingPatterns", name } };
     }
     const phrases: PatternPhrase[] = [];
     for (let j = 0; j < phrasesRaw.length; j++) {
       const p = phrasesRaw[j];
       if (!p || typeof p !== "object") {
-        return { ok: false, error: `«${name}» фраза #${j + 1}: ожидается объект` };
+        return { ok: false, error: { code: "phraseNotObject", name, n: j + 1 } };
       }
       const pe = p as Record<string, unknown>;
       const zh = typeof pe.zh === "string" ? pe.zh.trim() : "";
       const ru = typeof pe.ru === "string" ? pe.ru.trim() : "";
       const py = typeof pe.py === "string" ? pe.py.trim() : "";
-      if (!zh) return { ok: false, error: `«${name}» фраза #${j + 1}: отсутствует zh` };
+      if (!zh) return { ok: false, error: { code: "phraseMissingZh", name, n: j + 1 } };
       if (!ru && !pe.en) {
-        return { ok: false, error: `«${name}» фраза #${j + 1}: нужен перевод (поле ru или en)` };
+        return { ok: false, error: { code: "phraseMissingTranslation", name, n: j + 1 } };
       }
 
       const phrase: PatternPhrase = { zh, py, ru };

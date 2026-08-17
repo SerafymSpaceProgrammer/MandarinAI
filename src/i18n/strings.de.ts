@@ -424,6 +424,8 @@ export const DE: Translations = {
     "languageZh": "中文",
     "signOut": "Abmelden",
     "deleteAccount": "Konto löschen",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfUse": "Nutzungsbedingungen",
     "deleteConfirmTitle": "Ihr Konto löschen?",
     "deleteConfirmBody": "Dies entfernt Ihr Konto dauerhaft von MandarinAI und ChineseLens. Dies kann nicht rückgängig gemacht werden.",
     "deleteYes": "Ja, löschen",
@@ -498,7 +500,8 @@ export const DE: Translations = {
       "tapToReplay": "Tippen, um erneut abzuspielen",
       "gradeAgain": "Nochmals",
       "gradeGood": "Gut",
-      "gradeEasy": "Einfach"
+      "gradeEasy": "Einfach",
+      "speak": "Audio abspielen",
     },
     "summary": {
       "title": "Sitzung beendet",
@@ -935,7 +938,8 @@ export const DE: Translations = {
     "npcLabel": "NPC",
     "youLabel": "SIE",
     "practiceAgain": "Wiederholen",
-    "pickAnother": "Wähle ein anderes Szenario"
+    "pickAnother": "Wähle ein anderes Szenario",
+    "filterAll": "Alle",
   },
   "hsk": {
     "headerLabel": "HSK-Katalog",
@@ -977,7 +981,11 @@ export const DE: Translations = {
     "topicLabel": "Thema",
     "topicHskFilterAll": "Alle HSK",
     "topicHskBadge": "HSK {n}",
-    "topicHskBadgeOld": "HSK {n} (alt)"
+    "topicHskBadgeOld": "HSK {n} (alt)",
+    "select": "Auswählen",
+    "searchPlaceholder": "Suche nach Hanzi / Pinyin / Bedeutung",
+    "wordsSelected": "{n} ausgewählt",
+    "toDeck": "Zum Deck",
   },
   "strokes": {
     "title": "Strichfolge",
@@ -1161,6 +1169,8 @@ export const DE: Translations = {
     "autoRevealSub": "Die Antwort erscheint, wenn der Timer abläuft",
     "autoAdvance": "Automatisches Voranschreiten",
     "autoAdvanceSub": "Wechselt zur nächsten Phrase nach der Antwort",
+    "revealLabel": "ANTWORT",
+    "tempoTip": "Das Tempo steigt:  4s  →  2s  →  1.5s",
     "phraseCounter": "PHRASE  {n} / {total}",
     "translateToChinese": "{lang} · INS DEUTSCHE ÜBERSETZEN"
   },
@@ -1238,6 +1248,18 @@ export const DE: Translations = {
     "speakBtn": "Abspielen",
     "phrasesListLabel": "SÄTZE ({n})",
     "removedToast": "Entfernt",
-    "removePhraseA11y": "Satz löschen"
+    "removePhraseA11y": "Satz löschen",
+    "whatIncludedLabel": "WAS ENTHALTEN IST",
+    "whatIncludedBody": "Name der Konstruktion, Beschreibung, Vorlage und alle Phrasen mit Übersetzungen in den Sprachen, die im Deck vorkommen. Interne IDs und Zeitstempel werden nicht exportiert — sie werden beim Import neu erzeugt, sodass zwei Geräte mit denselben Konstruktionen nicht in Konflikt geraten.",
+    "errInvalidJson": "Ungültiges JSON: {msg}",
+    "errExpectedConstructions": "Erwartet wird ein Objekt mit dem Feld 'constructions' oder eine einzelne Konstruktion",
+    "errExpectedObjectOrArray": "Erwartet wird ein JSON-Objekt oder ein Array",
+    "errEmptyList": "Die Liste der Konstruktionen ist leer",
+    "errConstructionNotObject": "Konstruktion #{n}: Objekt erwartet",
+    "errMissingName": "Konstruktion #{n}: name fehlt",
+    "errMissingPatterns": "Konstruktion „{name}“: Feld patterns oder phrases (Array) erforderlich",
+    "errPhraseNotObject": "„{name}“ Phrase #{n}: Objekt erwartet",
+    "errPhraseMissingZh": "„{name}“ Phrase #{n}: zh fehlt",
+    "errPhraseMissingTranslation": "„{name}“ Phrase #{n}: Übersetzung erforderlich (Feld ru oder en)",
   }
 };

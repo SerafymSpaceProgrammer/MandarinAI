@@ -238,7 +238,7 @@ export default function HskLevelList() {
         <Pressable
           onPress={selectMode ? exitSelectMode : () => setSelectMode(true)}
           accessibilityRole="button"
-          accessibilityLabel={selectMode ? "Готово" : "Выбрать"}
+          accessibilityLabel={selectMode ? t.common.done : t.hsk.select}
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -264,7 +264,7 @@ export default function HskLevelList() {
               fontWeight: "700",
             }}
           >
-            {selectMode ? "Готово" : "Выбрать"}
+            {selectMode ? t.common.done : t.hsk.select}
           </Text>
         </Pressable>
       </View>
@@ -293,7 +293,7 @@ export default function HskLevelList() {
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="Поиск по hanzi / pinyin / значению"
+            placeholder={t.hsk.searchPlaceholder}
             placeholderTextColor={theme.colors.textTertiary}
             autoCapitalize="none"
             autoCorrect={false}
@@ -442,19 +442,16 @@ export default function HskLevelList() {
         >
           <View style={{ flex: 1 }}>
             <Text variant="bodyStrong">
-              {selectedHanzi.size} {pluralWordRu(selectedHanzi.size)}
-            </Text>
-            <Text variant="caption" color="tertiary">
-              выбрано
+              {fmt(t.hsk.wordsSelected, { n: selectedHanzi.size })}
             </Text>
           </View>
           <Button
-            label="Отмена"
+            label={t.common.cancel}
             variant="ghost"
             onPress={exitSelectMode}
           />
           <Button
-            label="В колоду"
+            label={t.hsk.toDeck}
             onPress={() => setBulkSaveOpen(true)}
             disabled={selectedHanzi.size === 0}
           />
@@ -515,14 +512,6 @@ export default function HskLevelList() {
       />
     </Screen>
   );
-}
-
-function pluralWordRu(n: number): string {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return "слово";
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "слова";
-  return "слов";
 }
 
 function WordRow({

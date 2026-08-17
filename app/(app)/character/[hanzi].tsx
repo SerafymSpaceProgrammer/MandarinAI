@@ -77,8 +77,8 @@ type StepDef = {
   /** 1-indexed for display ("1. Learn"). Matches `step_completed` semantics:
    *  step `id=N` is considered done when `step_completed >= N`. */
   id: number;
-  /** English label per the mock; kept in EN to match the design language. */
-  label: string;
+  /** i18n key (in `character.*`) of the step label. */
+  labelKey: keyof Translations["character"];
   /** i18n key (in `character.*`) of the hint under the label. */
   hintKey: keyof Translations["character"];
   /** Representative hanzi rendered on the active/pending tile. */
@@ -86,11 +86,11 @@ type StepDef = {
 };
 
 const STEPS: StepDef[] = [
-  { id: 1, label: "Learn", hintKey: "stepLearnHint", icon: "学" },
-  { id: 2, label: "Recognize", hintKey: "stepRecognizeHint", icon: "认" },
-  { id: 3, label: "Pronounce", hintKey: "stepPronounceHint", icon: "读" },
-  { id: 4, label: "Write", hintKey: "stepWriteHint", icon: "写" },
-  { id: 5, label: "Produce", hintKey: "stepProduceHint", icon: "说" },
+  { id: 1, labelKey: "stepLearn", hintKey: "stepLearnHint", icon: "学" },
+  { id: 2, labelKey: "stepRecognize", hintKey: "stepRecognizeHint", icon: "认" },
+  { id: 3, labelKey: "stepPronounce", hintKey: "stepPronounceHint", icon: "读" },
+  { id: 4, labelKey: "stepWrite", hintKey: "stepWriteHint", icon: "写" },
+  { id: 5, labelKey: "stepProduce", hintKey: "stepProduceHint", icon: "说" },
 ];
 
 // Per-step inline header copy + "next step" CTA label. Keeps the hub
@@ -243,7 +243,7 @@ export default function CharacterDetail() {
   if (inlineStep !== null) {
     const meta = stepMeta(t)[inlineStep] ?? {
       eyebrow: (STEP_LABELS[inlineStep - 1] ?? "").toUpperCase(),
-      title: STEPS[inlineStep - 1]?.label ?? "",
+      title: STEP_LABELS[inlineStep - 1] ?? "",
       nextLabel: t.common.continue,
     };
     return (
@@ -1183,7 +1183,7 @@ function StepItem({
       onPress={isActive ? onStart : undefined}
       disabled={!isActive}
       accessibilityRole={isActive ? "button" : undefined}
-      accessibilityLabel={`${step.id}. ${step.label}`}
+      accessibilityLabel={`${step.id}. ${t.character[step.labelKey]}`}
       style={{
         flexDirection: "row",
         alignItems: "center",
@@ -1244,7 +1244,7 @@ function StepItem({
             fontFamily: theme.fonts.uiBold,
           }}
         >
-          {step.id}. {step.label}
+          {step.id}. {t.character[step.labelKey]}
         </Text>
         <Text
           style={{

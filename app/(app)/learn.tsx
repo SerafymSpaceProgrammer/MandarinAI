@@ -83,6 +83,14 @@ const TONE_GREEN: CategoryTone = {
   text: "#2E8B57",
   watermark: "rgba(46, 139, 87, 0.07)",
 };
+const TONE_AMBER: CategoryTone = {
+  surface: "#FAFAF7",
+  tile: "#FCEFD9",
+  hanzi: "#D97706",
+  bar: "#D97706",
+  text: "#D97706",
+  watermark: "rgba(217, 119, 6, 0.07)",
+};
 
 // Each mini-exercise gets its own tile colour, lucide icon, short label and
 // estimated duration. Keeping the meta data right here (rather than reading
@@ -364,6 +372,18 @@ export default function Learn() {
                   badge={t.learn.badgeNew}
                   badgeVariant="success"
                   onPress={() => router.push("/(app)/grammar")}
+                />
+              </View>
+              {/* Reading was previously reachable only through a ≥30-min
+                  daily plan — 153 graded stories deserve a front door. */}
+              <View style={{ flexDirection: "row", gap: theme.spacing.sm }}>
+                <CategoryCard
+                  hanzi="读"
+                  tone={TONE_AMBER}
+                  title={t.learn.reading}
+                  subtitle={t.learn.readingHint}
+                  progress={0}
+                  onPress={() => router.push("/(app)/reading")}
                 />
               </View>
             </View>

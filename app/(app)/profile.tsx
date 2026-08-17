@@ -18,13 +18,15 @@ import {
 } from "@/components/ui";
 import { isPro } from "@/features/subscription/subscription";
 import { fmt } from "@/i18n/strings";
-import { useT } from "@/i18n/i18n";
+import { useLang, useT } from "@/i18n/i18n";
+import { openLegal } from "@/lib/legal";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
 export default function Profile() {
   const theme = useTheme();
   const t = useT();
+  const lang = useLang();
   const toast = useToast();
   const { session, profile } = useUserStore();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
@@ -117,6 +119,31 @@ export default function Profile() {
             fullWidth
             onPress={() => setConfirmingDelete(true)}
           />
+        </View>
+
+        {/* App Review requires working Privacy Policy / Terms links in-app. */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            gap: theme.spacing.xl,
+            paddingBottom: theme.spacing.lg,
+          }}
+        >
+          <Text
+            variant="small"
+            style={{ color: theme.colors.textSecondary, textDecorationLine: "underline" }}
+            onPress={() => openLegal("privacy", lang)}
+          >
+            {t.profile.privacyPolicy}
+          </Text>
+          <Text
+            variant="small"
+            style={{ color: theme.colors.textSecondary, textDecorationLine: "underline" }}
+            onPress={() => openLegal("terms", lang)}
+          >
+            {t.profile.termsOfUse}
+          </Text>
         </View>
       </ScrollView>
 

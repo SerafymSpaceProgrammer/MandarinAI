@@ -424,6 +424,8 @@ export const ZH: Translations = {
     "languageZh": "中文",
     "signOut": "退出登录",
     "deleteAccount": "删除账户",
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
     "deleteConfirmTitle": "删除你的账户？",
     "deleteConfirmBody": "这将永久删除你在 MandarinAI 和 ChineseLens 的账户。此操作无法撤销。",
     "deleteYes": "是的，删除",
@@ -498,7 +500,8 @@ export const ZH: Translations = {
       "tapToReplay": "点击重播",
       "gradeAgain": "再来一次",
       "gradeGood": "好",
-      "gradeEasy": "简单"
+      "gradeEasy": "简单",
+      "speak": "播放发音",
     },
     "summary": {
       "title": "会话完成",
@@ -935,7 +938,8 @@ export const ZH: Translations = {
     "npcLabel": "NPC",
     "youLabel": "你",
     "practiceAgain": "再练习一次",
-    "pickAnother": "选择另一个场景"
+    "pickAnother": "选择另一个场景",
+    "filterAll": "全部",
   },
   "hsk": {
     "headerLabel": "HSK 目录",
@@ -977,7 +981,11 @@ export const ZH: Translations = {
     "topicLabel": "主题",
     "topicHskFilterAll": "所有 HSK",
     "topicHskBadge": "HSK {n}",
-    "topicHskBadgeOld": "HSK {n}（旧）"
+    "topicHskBadgeOld": "HSK {n}（旧）",
+    "select": "选择",
+    "searchPlaceholder": "搜索汉字 / 拼音 / 释义",
+    "wordsSelected": "已选 {n} 个",
+    "toDeck": "到卡片",
   },
   "strokes": {
     "title": "笔顺",
@@ -1161,6 +1169,8 @@ export const ZH: Translations = {
     "autoRevealSub": "计时器结束时答案出现",
     "autoAdvance": "自动前进",
     "autoAdvanceSub": "答案后移动到下一个短语",
+    "revealLabel": "答案",
+    "tempoTip": "节奏加快：4s → 2s → 1.5s",
     "phraseCounter": "短语 {n} / {total}",
     "translateToChinese": "{lang} · 翻译成中文"
   },
@@ -1238,6 +1248,18 @@ export const ZH: Translations = {
     "speakBtn": "播放",
     "phrasesListLabel": "短语 ({n})",
     "removedToast": "已移除",
-    "removePhraseA11y": "删除短语"
+    "removePhraseA11y": "删除短语",
+    "whatIncludedLabel": "包含内容",
+    "whatIncludedBody": "包括结构名称、描述、模板以及所有短语及其在卡组中出现的各语言翻译。内部标识符和时间戳不会导出——导入时会重新生成，因此两台设备上的相同结构不会冲突。",
+    "errInvalidJson": "无效的 JSON：{msg}",
+    "errExpectedConstructions": "应为包含 'constructions' 字段的对象或单个结构",
+    "errExpectedObjectOrArray": "应为 JSON 对象或数组",
+    "errEmptyList": "结构列表为空",
+    "errConstructionNotObject": "结构 #{n}：应为对象",
+    "errMissingName": "结构 #{n}：缺少 name",
+    "errMissingPatterns": "结构“{name}”：需要 patterns 或 phrases 字段（数组）",
+    "errPhraseNotObject": "“{name}”短语 #{n}：应为对象",
+    "errPhraseMissingZh": "“{name}”短语 #{n}：缺少 zh",
+    "errPhraseMissingTranslation": "“{name}”短语 #{n}：需要翻译（ru 或 en 字段）",
   }
 };

@@ -424,6 +424,8 @@ export const PT: Translations = {
     "languageZh": "中文",
     "signOut": "Sair",
     "deleteAccount": "Eliminar conta",
+    "privacyPolicy": "Política de privacidade",
+    "termsOfUse": "Termos de utilização",
     "deleteConfirmTitle": "Eliminar a sua conta?",
     "deleteConfirmBody": "Isto remove permanentemente a sua conta em MandarinAI e ChineseLens. Não pode ser desfeito.",
     "deleteYes": "Sim, eliminar",
@@ -498,7 +500,8 @@ export const PT: Translations = {
       "tapToReplay": "Toque para repetir",
       "gradeAgain": "Novamente",
       "gradeGood": "Bom",
-      "gradeEasy": "Fácil"
+      "gradeEasy": "Fácil",
+      "speak": "Reproduzir áudio",
     },
     "summary": {
       "title": "Sessão concluída",
@@ -935,7 +938,8 @@ export const PT: Translations = {
     "npcLabel": "NPC",
     "youLabel": "VOCÊ",
     "practiceAgain": "Pratique novamente",
-    "pickAnother": "Escolha outro cenário"
+    "pickAnother": "Escolha outro cenário",
+    "filterAll": "Todos",
   },
   "hsk": {
     "headerLabel": "Catálogo HSK",
@@ -977,7 +981,11 @@ export const PT: Translations = {
     "topicLabel": "Tópico",
     "topicHskFilterAll": "Todos HSK",
     "topicHskBadge": "HSK {n}",
-    "topicHskBadgeOld": "HSK {n} (antigo)"
+    "topicHskBadgeOld": "HSK {n} (antigo)",
+    "select": "Selecionar",
+    "searchPlaceholder": "Buscar por hanzi / pinyin / significado",
+    "wordsSelected": "{n} selecionadas",
+    "toDeck": "Para baralho",
   },
   "strokes": {
     "title": "Ordem dos traços",
@@ -1161,6 +1169,8 @@ export const PT: Translations = {
     "autoRevealSub": "A resposta aparece quando o tempo acaba",
     "autoAdvance": "Avanço automático",
     "autoAdvanceSub": "Passa para a próxima frase após a resposta",
+    "revealLabel": "RESPOSTA",
+    "tempoTip": "O ritmo acelera:  4s  →  2s  →  1.5s",
     "phraseCounter": "FRASE {n} / {total}",
     "translateToChinese": "{lang} · TRADUZIR PARA CHINÊS"
   },
@@ -1238,6 +1248,18 @@ export const PT: Translations = {
     "speakBtn": "Reproduzir",
     "phrasesListLabel": "FRASES ({n})",
     "removedToast": "Removido",
-    "removePhraseA11y": "Eliminar frase"
+    "removePhraseA11y": "Eliminar frase",
+    "whatIncludedLabel": "O QUE ESTÁ INCLUÍDO",
+    "whatIncludedBody": "Nome da construção, descrição, modelo e todas as frases com traduções nos idiomas presentes no baralho. Identificadores internos e timestamps não são exportados — são gerados novamente na importação, então dois dispositivos com as mesmas construções não entrarão em conflito.",
+    "errInvalidJson": "JSON inválido: {msg}",
+    "errExpectedConstructions": "Esperado um objeto com o campo 'constructions' ou uma única construção",
+    "errExpectedObjectOrArray": "Esperado um objeto JSON ou um array",
+    "errEmptyList": "A lista de construções está vazia",
+    "errConstructionNotObject": "Construção #{n}: esperado um objeto",
+    "errMissingName": "Construção #{n}: falta name",
+    "errMissingPatterns": "Construção “{name}”: precisa de um campo patterns ou phrases (array)",
+    "errPhraseNotObject": "“{name}” frase #{n}: esperado um objeto",
+    "errPhraseMissingZh": "“{name}” frase #{n}: falta zh",
+    "errPhraseMissingTranslation": "“{name}” frase #{n}: precisa de uma tradução (campo ru ou en)",
   }
 };

@@ -424,6 +424,8 @@ export const PL: Translations = {
     "languageZh": "中文",
     "signOut": "Wyloguj się",
     "deleteAccount": "Usuń konto",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfUse": "Warunki korzystania",
     "deleteConfirmTitle": "Usunąć swoje konto?",
     "deleteConfirmBody": "To na stałe usuwa Twoje konto w MandarinAI i ChineseLens. Nie można tego cofnąć.",
     "deleteYes": "Tak, usuń",
@@ -498,7 +500,8 @@ export const PL: Translations = {
       "tapToReplay": "Stuknij, aby powtórzyć",
       "gradeAgain": "Jeszcze raz",
       "gradeGood": "Dobrze",
-      "gradeEasy": "Łatwe"
+      "gradeEasy": "Łatwe",
+      "speak": "Odtwórz audio",
     },
     "summary": {
       "title": "Sesja zakończona",
@@ -935,7 +938,8 @@ export const PL: Translations = {
     "npcLabel": "NPC",
     "youLabel": "TY",
     "practiceAgain": "Ćwicz ponownie",
-    "pickAnother": "Wybierz inny scenariusz"
+    "pickAnother": "Wybierz inny scenariusz",
+    "filterAll": "Wszystkie",
   },
   "hsk": {
     "headerLabel": "Katalog HSK",
@@ -977,7 +981,11 @@ export const PL: Translations = {
     "topicLabel": "Temat",
     "topicHskFilterAll": "Wszystkie HSK",
     "topicHskBadge": "HSK {n}",
-    "topicHskBadgeOld": "HSK {n} (stary)"
+    "topicHskBadgeOld": "HSK {n} (stary)",
+    "select": "Wybierz",
+    "searchPlaceholder": "Szukaj po hanzi / pinyin / znaczeniu",
+    "wordsSelected": "Wybrano: {n}",
+    "toDeck": "Do talii",
   },
   "strokes": {
     "title": "Kolejność kreślenia",
@@ -1161,6 +1169,8 @@ export const PL: Translations = {
     "autoRevealSub": "Odpowiedź pojawia się, gdy czas się skończy",
     "autoAdvance": "Automatyczne przejście",
     "autoAdvanceSub": "Przechodzi do następnej frazy po odpowiedzi",
+    "revealLabel": "ODPOWIEDŹ",
+    "tempoTip": "Tempo przyspiesza:  4s  →  2s  →  1.5s",
     "phraseCounter": "FRAZA  {n} / {total}",
     "translateToChinese": "{lang} · PRZETŁUMACZ NA CHIŃSKI"
   },
@@ -1238,6 +1248,18 @@ export const PL: Translations = {
     "speakBtn": "Odtwórz",
     "phrasesListLabel": "FRAZY ({n})",
     "removedToast": "Usunięto",
-    "removePhraseA11y": "Usuń frazę"
+    "removePhraseA11y": "Usuń frazę",
+    "whatIncludedLabel": "CO ZAWIERA",
+    "whatIncludedBody": "Nazwa konstrukcji, opis, szablon i wszystkie frazy z tłumaczeniami w językach występujących w talii. Wewnętrzne identyfikatory i znaczniki czasu nie są eksportowane — są generowane od nowa przy imporcie, więc dwa urządzenia z tymi samymi konstrukcjami nie będą w konflikcie.",
+    "errInvalidJson": "Nieprawidłowy JSON: {msg}",
+    "errExpectedConstructions": "Oczekiwano obiektu z polem 'constructions' lub pojedynczej konstrukcji",
+    "errExpectedObjectOrArray": "Oczekiwano obiektu JSON lub tablicy",
+    "errEmptyList": "Lista konstrukcji jest pusta",
+    "errConstructionNotObject": "Konstrukcja #{n}: oczekiwano obiektu",
+    "errMissingName": "Konstrukcja #{n}: brak pola name",
+    "errMissingPatterns": "Konstrukcja „{name}”: wymaga pola patterns lub phrases (tablica)",
+    "errPhraseNotObject": "„{name}” fraza #{n}: oczekiwano obiektu",
+    "errPhraseMissingZh": "„{name}” fraza #{n}: brak zh",
+    "errPhraseMissingTranslation": "„{name}” fraza #{n}: wymaga tłumaczenia (pole ru lub en)",
   }
 };

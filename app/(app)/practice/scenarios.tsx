@@ -89,7 +89,7 @@ export default function ScenarioPicker() {
           contentContainerStyle={{ gap: theme.spacing.sm }}
         >
           <FilterChip
-            label="Все"
+            label={t.speaking.filterAll}
             count={SCENARIOS.length}
             active={filter === "all"}
             onPress={() => setFilter("all")}

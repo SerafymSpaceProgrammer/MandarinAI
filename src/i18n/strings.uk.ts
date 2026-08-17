@@ -424,6 +424,8 @@ export const UK: Translations = {
     "languageZh": "中文",
     "signOut": "Вийти",
     "deleteAccount": "Видалити обліковий запис",
+    "privacyPolicy": "Політика конфіденційності",
+    "termsOfUse": "Умови використання",
     "deleteConfirmTitle": "Видалити ваш обліковий запис?",
     "deleteConfirmBody": "Це назавжди видаляє ваш обліковий запис у MandarinAI та ChineseLens. Це не можна скасувати.",
     "deleteYes": "Так, видалити",
@@ -498,7 +500,8 @@ export const UK: Translations = {
       "tapToReplay": "Торкніться, щоб повторити",
       "gradeAgain": "Знову",
       "gradeGood": "Добре",
-      "gradeEasy": "Легко"
+      "gradeEasy": "Легко",
+      "speak": "Озвучити",
     },
     "summary": {
       "title": "Сесію завершено",
@@ -935,7 +938,8 @@ export const UK: Translations = {
     "npcLabel": "NPC",
     "youLabel": "ВИ",
     "practiceAgain": "Практикуйте ще раз",
-    "pickAnother": "Виберіть інший сценарій"
+    "pickAnother": "Виберіть інший сценарій",
+    "filterAll": "Усі",
   },
   "hsk": {
     "headerLabel": "Каталог HSK",
@@ -977,7 +981,11 @@ export const UK: Translations = {
     "topicLabel": "Тема",
     "topicHskFilterAll": "Усі HSK",
     "topicHskBadge": "HSK {n}",
-    "topicHskBadgeOld": "HSK {n} (старий)"
+    "topicHskBadgeOld": "HSK {n} (старий)",
+    "select": "Вибрати",
+    "searchPlaceholder": "Пошук за hanzi / pinyin / значенням",
+    "wordsSelected": "Вибрано: {n}",
+    "toDeck": "До колоди",
   },
   "strokes": {
     "title": "Порядок написання",
@@ -1161,6 +1169,8 @@ export const UK: Translations = {
     "autoRevealSub": "Відповідь з'явиться, коли таймер сплине",
     "autoAdvance": "Авто-перехід",
     "autoAdvanceSub": "Після відповіді сама перейде до наступної фрази",
+    "revealLabel": "ВІДПОВІДЬ",
+    "tempoTip": "Темп пришвидшується:  4s  →  2s  →  1.5s",
     "phraseCounter": "ФРАЗА  {n} / {total}",
     "translateToChinese": "{lang} · ПЕРЕКЛАДИ КИТАЙСЬКОЮ"
   },
@@ -1238,6 +1248,18 @@ export const UK: Translations = {
     "speakBtn": "Озвучити",
     "phrasesListLabel": "ФРАЗИ ({n})",
     "removedToast": "Видалено",
-    "removePhraseA11y": "Видалити фразу"
+    "removePhraseA11y": "Видалити фразу",
+    "whatIncludedLabel": "ЩО ВКЛЮЧЕНО",
+    "whatIncludedBody": "Назва конструкції, опис, шаблон і всі фрази з перекладами мовами, що є в колоді. Внутрішні ідентифікатори й timestamps не експортуються — вони генеруються заново під час імпорту, тому два пристрої з однаковими конструкціями не конфліктуватимуть.",
+    "errInvalidJson": "Невалідний JSON: {msg}",
+    "errExpectedConstructions": "Очікується об'єкт із полем 'constructions' або одна конструкція",
+    "errExpectedObjectOrArray": "Очікується JSON-об'єкт або масив",
+    "errEmptyList": "Список конструкцій порожній",
+    "errConstructionNotObject": "Конструкція #{n}: очікується об'єкт",
+    "errMissingName": "Конструкція #{n}: відсутнє name",
+    "errMissingPatterns": "Конструкція «{name}»: потрібне поле patterns або phrases (масив)",
+    "errPhraseNotObject": "«{name}» фраза #{n}: очікується об'єкт",
+    "errPhraseMissingZh": "«{name}» фраза #{n}: відсутнє zh",
+    "errPhraseMissingTranslation": "«{name}» фраза #{n}: потрібен переклад (поле ru або en)",
   }
 };

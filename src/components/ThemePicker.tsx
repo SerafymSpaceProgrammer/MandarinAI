@@ -3,9 +3,22 @@ import { Pressable, View } from "react-native";
 
 import { updateProfile } from "@/api";
 import { Text, useToast } from "@/components/ui";
+import { useT } from "@/i18n/i18n";
+import type { Translations } from "@/i18n/strings";
 import { useUserStore } from "@/stores/userStore";
 import type { AppThemeId } from "@/types";
 import { APP_THEMES, useTheme } from "@/theme";
+
+/** Theme id → localized display-name key in `t.profile`. */
+const THEME_NAME_KEY: Record<AppThemeId, keyof Translations["profile"]> = {
+  system: "themeSystem",
+  light: "themeLight",
+  dark: "themeDark",
+  sakura: "themeSakura",
+  bamboo: "themeBamboo",
+  midnight: "themeMidnight",
+  parchment: "themeParchment",
+};
 
 type PickOption = {
   id: AppThemeId;
@@ -17,6 +30,7 @@ type PickOption = {
 
 export function ThemePicker() {
   const theme = useTheme();
+  const t = useT();
   const toast = useToast();
   const { session, profile, setProfile } = useUserStore();
   const [pending, setPending] = useState<AppThemeId | null>(null);
@@ -24,16 +38,16 @@ export function ThemePicker() {
   const selected: AppThemeId = profile?.app_theme ?? "system";
 
   const options: PickOption[] = [
-    { id: "system", name: "System", emoji: "⚙️", preview: null },
-    ...APP_THEMES.map((t) => ({
-      id: t.id as AppThemeId,
-      name: t.name,
-      emoji: t.emoji,
+    { id: "system", name: t.profile.themeSystem, emoji: "⚙️", preview: null },
+    ...APP_THEMES.map((th) => ({
+      id: th.id as AppThemeId,
+      name: t.profile[THEME_NAME_KEY[th.id]],
+      emoji: th.emoji,
       preview: {
-        bg: t.colors.bg,
-        textPrimary: t.colors.textPrimary,
-        accent: t.colors.accent,
-        surface: t.colors.surface,
+        bg: th.colors.bg,
+        textPrimary: th.colors.textPrimary,
+        accent: th.colors.accent,
+        surface: th.colors.surface,
       },
     })),
   ];
@@ -52,7 +66,7 @@ export function ThemePicker() {
 
     if (!updated) {
       if (prevProfile) setProfile(prevProfile);
-      toast.error("Couldn't save theme. Please try again.");
+      toast.error(t.profile.themeSaveError);
       return;
     }
     setProfile(updated);

@@ -108,7 +108,7 @@ export function ProductionCard({ card, onRevealed }: Props) {
               Speech.speak(card.hanzi, { language: "zh-CN", rate: 0.9 });
             }}
             hitSlop={10}
-            accessibilityLabel="Озвучить"
+            accessibilityLabel={t.vocab.review.speak}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -122,7 +122,7 @@ export function ProductionCard({ card, onRevealed }: Props) {
           >
             <Volume2 color={theme.colors.accent} size={14} strokeWidth={2.2} />
             <Text variant="small" color="accent">
-              Озвучить
+              {t.vocab.review.speak}
             </Text>
           </Pressable>
         </View>

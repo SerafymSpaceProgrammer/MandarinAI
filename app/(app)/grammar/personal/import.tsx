@@ -7,9 +7,10 @@ import { Button, Card, Input, Screen, Text, useToast } from "@/components/ui";
 import {
   parseImport,
   useHydratedPersonalDeck,
+  type ImportError,
 } from "@/features/grammar/personal";
 import { useT } from "@/i18n/i18n";
-import { fmt } from "@/i18n/strings";
+import { fmt, type Translations } from "@/i18n/strings";
 import { useTheme } from "@/theme";
 
 const SAMPLE = `{
@@ -151,7 +152,7 @@ export default function ImportPersonal() {
               {t.personalGrammar.parseError}
             </Text>
             <Text variant="small" color="danger">
-              {parsed.error}
+              {importErrorText(t, parsed.error)}
             </Text>
           </Card>
         ) : null}
@@ -213,6 +214,33 @@ export default function ImportPersonal() {
       </ScrollView>
     </Screen>
   );
+}
+
+/** Maps stable validator error codes to the user's language. */
+function importErrorText(t: Translations, e: ImportError): string {
+  const s = t.personalGrammar;
+  switch (e.code) {
+    case "invalidJson":
+      return fmt(s.errInvalidJson, { msg: e.detail });
+    case "expectedConstructions":
+      return s.errExpectedConstructions;
+    case "expectedObjectOrArray":
+      return s.errExpectedObjectOrArray;
+    case "emptyList":
+      return s.errEmptyList;
+    case "constructionNotObject":
+      return fmt(s.errConstructionNotObject, { n: e.n });
+    case "missingName":
+      return fmt(s.errMissingName, { n: e.n });
+    case "missingPatterns":
+      return fmt(s.errMissingPatterns, { name: e.name });
+    case "phraseNotObject":
+      return fmt(s.errPhraseNotObject, { name: e.name, n: e.n });
+    case "phraseMissingZh":
+      return fmt(s.errPhraseMissingZh, { name: e.name, n: e.n });
+    case "phraseMissingTranslation":
+      return fmt(s.errPhraseMissingTranslation, { name: e.name, n: e.n });
+  }
 }
 
 function statsFor(parsed: ReturnType<typeof parseImport> | null) {

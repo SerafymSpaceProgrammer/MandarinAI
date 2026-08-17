@@ -2,12 +2,14 @@ import { router } from "expo-router";
 import { View } from "react-native";
 
 import { Button, Screen, Text } from "@/components/ui";
-import { useT } from "@/i18n/i18n";
+import { useLang, useT } from "@/i18n/i18n";
+import { openLegal } from "@/lib/legal";
 import { useTheme } from "@/theme";
 
 export default function Welcome() {
   const theme = useTheme();
   const t = useT();
+  const lang = useLang();
 
   return (
     <Screen padded edges={["top", "bottom", "left", "right"]}>
@@ -33,6 +35,30 @@ export default function Welcome() {
           <Text variant="small" color="tertiary" align="center" style={{ paddingHorizontal: theme.spacing.lg }}>
             {t.auth.terms}
           </Text>
+          {/* The sentence above references the Terms and Privacy Policy —
+              App Review expects them to actually be reachable from here. */}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              gap: theme.spacing.xl,
+            }}
+          >
+            <Text
+              variant="small"
+              style={{ color: theme.colors.accent, textDecorationLine: "underline" }}
+              onPress={() => openLegal("terms", lang)}
+            >
+              {t.profile.termsOfUse}
+            </Text>
+            <Text
+              variant="small"
+              style={{ color: theme.colors.accent, textDecorationLine: "underline" }}
+              onPress={() => openLegal("privacy", lang)}
+            >
+              {t.profile.privacyPolicy}
+            </Text>
+          </View>
         </View>
       </View>
     </Screen>
