@@ -51,7 +51,10 @@ export const ES: Translations = {
     "toastAccountCreated": "Cuenta creada",
     "errorInvalidCredentials": "Email o contraseña inválidos.",
     "errorUserExists": "Ya existe una cuenta con este email.",
-    "errorWeakPassword": "La contraseña es demasiado débil — usa al menos 6 caracteres."
+    "errorWeakPassword": "La contraseña es demasiado débil — usa al menos 6 caracteres.",
+    "errorNetwork": "Sin conexión — comprueba tu internet e inténtalo de nuevo.",
+    "errorRateLimit": "Demasiados intentos. Inténtalo de nuevo en un minuto.",
+    "errorGeneric": "Algo salió mal. Inténtalo de nuevo."
   },
   "onboarding": {
     "language": {

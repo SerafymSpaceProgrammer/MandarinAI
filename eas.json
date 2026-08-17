@@ -3,6 +3,13 @@
     "version": ">= 13.0.0",
     "appVersionSource": "remote"
   },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "6801938282"
+      }
+    }
+  },
   "build": {
     "development": {
       "developmentClient": true,
@@ -16,7 +23,9 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_ENV": "development"
+        "EXPO_PUBLIC_ENV": "development",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://xdfzdlgqiluoedywmhwk.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkZnpkbGdxaWx1b2VkeXdtaHdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MjUyMDEsImV4cCI6MjA5MjAwMTIwMX0.GD57758vKrvpxdzL_6bbTBfVy3g2Jkj6zmIJtRvUbRM"
       }
     },
     "preview": {
@@ -29,7 +38,9 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_ENV": "preview"
+        "EXPO_PUBLIC_ENV": "preview",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://xdfzdlgqiluoedywmhwk.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkZnpkbGdxaWx1b2VkeXdtaHdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MjUyMDEsImV4cCI6MjA5MjAwMTIwMX0.GD57758vKrvpxdzL_6bbTBfVy3g2Jkj6zmIJtRvUbRM"
       }
     },
     "production": {
@@ -42,7 +53,9 @@
         "buildType": "app-bundle"
       },
       "env": {
-        "EXPO_PUBLIC_ENV": "production"
+        "EXPO_PUBLIC_ENV": "production",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://xdfzdlgqiluoedywmhwk.supabase.co",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkZnpkbGdxaWx1b2VkeXdtaHdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MjUyMDEsImV4cCI6MjA5MjAwMTIwMX0.GD57758vKrvpxdzL_6bbTBfVy3g2Jkj6zmIJtRvUbRM"
       }
     }
   }

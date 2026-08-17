@@ -51,7 +51,10 @@ export const DE: Translations = {
     "toastAccountCreated": "Konto erstellt",
     "errorInvalidCredentials": "Ungültige E-Mail oder Passwort.",
     "errorUserExists": "Ein Konto mit dieser E-Mail existiert bereits.",
-    "errorWeakPassword": "Das Passwort ist zu schwach – verwende mindestens 6 Zeichen."
+    "errorWeakPassword": "Das Passwort ist zu schwach – verwende mindestens 6 Zeichen.",
+    "errorNetwork": "Keine Verbindung – überprüfe dein Internet und versuche es erneut.",
+    "errorRateLimit": "Zu viele Versuche. Versuche es in einer Minute erneut.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "onboarding": {
     "language": {

@@ -59,6 +59,9 @@ export const EN = {
     errorInvalidCredentials: "Invalid email or password.",
     errorUserExists: "An account with this email already exists.",
     errorWeakPassword: "Password is too weak — use at least 6 characters.",
+    errorNetwork: "No connection — check your internet and try again.",
+    errorRateLimit: "Too many attempts. Try again in a minute.",
+    errorGeneric: "Something went wrong. Please try again.",
   },
 
   onboarding: {

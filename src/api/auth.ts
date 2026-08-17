@@ -1,38 +1,70 @@
 import { supabase } from "./supabase";
 import { logger } from "@/lib/logger";
 
+/**
+ * Stable error codes the UI can translate. "network" covers every
+ * connection-level failure (offline, DNS, paused backend) — supabase-js
+ * surfaces those as AuthRetryableFetchError with status 0.
+ */
+export type AuthErrorCode =
+  | "invalid_credentials"
+  | "user_already_exists"
+  | "weak_password"
+  | "email_not_confirmed"
+  | "rate_limit"
+  | "network"
+  | "unknown";
+
 export type AuthResult =
   | { ok: true }
-  | { ok: false; error: string };
+  | { ok: false; code: AuthErrorCode; error: string };
 
-/**
- * Translate a Supabase auth error code into a user-facing message.
- * Keep it short — the UI layer adds the emoji / formatting.
- */
-function humanizeError(code: string | undefined, fallback: string): string {
-  if (!code) return fallback;
-  const map: Record<string, string> = {
-    invalid_credentials: "Invalid email or password.",
-    user_already_exists: "An account with this email already exists.",
-    weak_password: "Password is too weak — use at least 6 characters.",
-    email_not_confirmed: "Please confirm your email first.",
-    over_email_send_rate_limit: "Too many attempts. Try again in a minute.",
-    signup_disabled: "Sign-up is currently disabled.",
-  };
-  return map[code] ?? fallback;
+function toErrorCode(error: {
+  code?: string;
+  message: string;
+  status?: number;
+}): AuthErrorCode {
+  if (error.status === 0 || /network request failed|failed to fetch/i.test(error.message)) {
+    return "network";
+  }
+  switch (error.code) {
+    case "invalid_credentials":
+      return "invalid_credentials";
+    case "user_already_exists":
+    case "email_exists":
+      return "user_already_exists";
+    case "weak_password":
+      return "weak_password";
+    case "email_not_confirmed":
+      return "email_not_confirmed";
+    case "over_email_send_rate_limit":
+    case "over_request_rate_limit":
+      return "rate_limit";
+    default:
+      return "unknown";
+  }
+}
+
+function failure(
+  context: string,
+  error: { code?: string; message: string; status?: number },
+): AuthResult {
+  logger.warn(`${context} failed`, { code: error.code, msg: error.message });
+  return { ok: false, code: toErrorCode(error), error: error.message };
 }
 
 export async function signInWithPassword(
   email: string,
   password: string,
 ): Promise<AuthResult> {
-  const { error } = await supabase.auth.signInWithPassword({
-    email: email.trim(),
-    password,
-  });
-  if (error) {
-    logger.warn("signIn failed", { code: error.code, msg: error.message });
-    return { ok: false, error: humanizeError(error.code, error.message) };
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+    if (error) return failure("signIn", error);
+  } catch (err) {
+    return failure("signIn", { message: String(err), status: 0 });
   }
   return { ok: true };
 }
@@ -41,15 +73,16 @@ export async function signUpWithPassword(
   email: string,
   password: string,
 ): Promise<AuthResult> {
-  const { error } = await supabase.auth.signUp({
-    email: email.trim(),
-    password,
-  });
-  if (error) {
-    logger.warn("signUp failed", { code: error.code, msg: error.message });
-    return { ok: false, error: humanizeError(error.code, error.message) };
+  try {
+    const { error } = await supabase.auth.signUp({
+      email: email.trim(),
+      password,
+    });
+    if (error) return failure("signUp", error);
+  } catch (err) {
+    return failure("signUp", { message: String(err), status: 0 });
   }
-  // The extension has `mailer_autoconfirm: true`, so signUp returns a session
+  // The project has `mailer_autoconfirm: true`, so signUp returns a session
   // immediately and onAuthStateChange will fire. Nothing else to do here.
   return { ok: true };
 }
@@ -72,7 +105,7 @@ export async function deleteAccount(): Promise<AuthResult> {
   const { data: sess } = await supabase.auth.getSession();
   const token = sess.session?.access_token;
   if (!token) {
-    return { ok: false, error: "Not signed in." };
+    return { ok: false, code: "unknown", error: "Not signed in." };
   }
 
   const url = `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/delete-account`;
@@ -88,7 +121,7 @@ export async function deleteAccount(): Promise<AuthResult> {
     });
   } catch (err) {
     logger.warn("delete-account fetch error", err);
-    return { ok: false, error: "Network error. Please try again." };
+    return { ok: false, code: "network", error: "Network error. Please try again." };
   }
 
   if (!res.ok) {
@@ -96,6 +129,7 @@ export async function deleteAccount(): Promise<AuthResult> {
     logger.warn("delete-account failed", res.status, body);
     return {
       ok: false,
+      code: "unknown",
       error: "Couldn't delete account. Please try again or contact support.",
     };
   }
@@ -107,9 +141,11 @@ export async function deleteAccount(): Promise<AuthResult> {
 }
 
 export async function sendPasswordReset(email: string): Promise<AuthResult> {
-  const { error } = await supabase.auth.resetPasswordForEmail(email.trim());
-  if (error) {
-    return { ok: false, error: humanizeError(error.code, error.message) };
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim());
+    if (error) return failure("passwordReset", error);
+  } catch (err) {
+    return failure("passwordReset", { message: String(err), status: 0 });
   }
   return { ok: true };
 }

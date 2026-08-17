@@ -51,7 +51,10 @@ export const PT: Translations = {
     "toastAccountCreated": "Conta criada",
     "errorInvalidCredentials": "Email ou palavra-passe inválidos.",
     "errorUserExists": "Já existe uma conta com este email.",
-    "errorWeakPassword": "A palavra-passe é muito fraca — use pelo menos 6 caracteres."
+    "errorWeakPassword": "A palavra-passe é muito fraca — use pelo menos 6 caracteres.",
+    "errorNetwork": "Sem ligação — verifique a sua internet e tente novamente.",
+    "errorRateLimit": "Demasiadas tentativas. Tente novamente dentro de um minuto.",
+    "errorGeneric": "Algo correu mal. Tente novamente."
   },
   "onboarding": {
     "language": {

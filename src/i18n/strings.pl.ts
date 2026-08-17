@@ -51,7 +51,10 @@ export const PL: Translations = {
     "toastAccountCreated": "Konto utworzone",
     "errorInvalidCredentials": "Nieprawidłowy e-mail lub hasło.",
     "errorUserExists": "Konto z tym e-mailem już istnieje.",
-    "errorWeakPassword": "Hasło jest zbyt słabe — użyj co najmniej 6 znaków."
+    "errorWeakPassword": "Hasło jest zbyt słabe — użyj co najmniej 6 znaków.",
+    "errorNetwork": "Brak połączenia — sprawdź internet i spróbuj ponownie.",
+    "errorRateLimit": "Zbyt wiele prób. Spróbuj ponownie za minutę.",
+    "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "onboarding": {
     "language": {

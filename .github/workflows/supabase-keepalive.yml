@@ -1,0 +1,21 @@
+# Prevents the free-tier Supabase project from being auto-paused after
+# 7 days of inactivity (a pause takes down auth for both the mobile app
+# and the ChineseLens extension). The anon key is public by design — it
+# ships inside every app build — so inlining it here is safe.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # daily at 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          curl -sf -o /dev/null \
+            "https://xdfzdlgqiluoedywmhwk.supabase.co/rest/v1/profiles?select=id&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkZnpkbGdxaWx1b2VkeXdtaHdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MjUyMDEsImV4cCI6MjA5MjAwMTIwMX0.GD57758vKrvpxdzL_6bbTBfVy3g2Jkj6zmIJtRvUbRM" \
+            || echo "Ping failed — project may be paused; restore it in the Supabase dashboard."

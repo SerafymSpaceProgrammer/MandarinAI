@@ -51,7 +51,10 @@ export const UK: Translations = {
     "toastAccountCreated": "Обліковий запис створено",
     "errorInvalidCredentials": "Неправильна електронна пошта або пароль.",
     "errorUserExists": "Обліковий запис з цією електронною поштою вже існує.",
-    "errorWeakPassword": "Пароль занадто слабкий — використовуйте не менше 6 символів."
+    "errorWeakPassword": "Пароль занадто слабкий — використовуйте не менше 6 символів.",
+    "errorNetwork": "Немає з'єднання — перевірте інтернет і спробуйте ще раз.",
+    "errorRateLimit": "Забагато спроб. Спробуйте за хвилину.",
+    "errorGeneric": "Щось пішло не так. Спробуйте ще раз."
   },
   "onboarding": {
     "language": {

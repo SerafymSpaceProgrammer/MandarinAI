@@ -6,7 +6,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "eas": "dotenv -e .env.eas.local -- npx eas-cli",
+    "eas:build:ios": "dotenv -e .env.eas.local -- npx eas-cli build --platform ios --profile production",
+    "eas:submit:ios": "dotenv -e .env.eas.local -- npx eas-cli submit --platform ios --latest"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.4.2",
@@ -28,6 +31,7 @@
     "expo-speech": "~14.0.8",
     "expo-splash-screen": "^55.0.21",
     "expo-status-bar": "~3.0.9",
+    "expo-updates": "~29.0.19",
     "expo-web-browser": "~15.0.11",
     "lucide-react-native": "^1.9.0",
     "nativewind": "^2.0.11",
@@ -49,6 +53,7 @@
   "devDependencies": {
     "@types/react": "~19.1.0",
     "babel-preset-expo": "~54.0.10",
+    "dotenv-cli": "^11.0.0",
     "typescript": "~5.9.2"
   },
   "private": true

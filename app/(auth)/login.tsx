@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable as RNPressable, ScrollView, View } from "react-native";
 
 import { signInWithPassword, signUpWithPassword } from "@/api";
+import type { AuthErrorCode } from "@/api/auth";
 import { Button, Input, Screen, Text, useToast } from "@/components/ui";
 import { useT } from "@/i18n/i18n";
 import { useTheme } from "@/theme";
@@ -22,6 +23,23 @@ export default function Login() {
   const isValid =
     email.trim().length > 3 && email.includes("@") && password.length >= 6;
 
+  function localizeAuthError(code: AuthErrorCode, fallback: string): string {
+    switch (code) {
+      case "invalid_credentials":
+        return t.auth.errorInvalidCredentials;
+      case "user_already_exists":
+        return t.auth.errorUserExists;
+      case "weak_password":
+        return t.auth.errorWeakPassword;
+      case "network":
+        return t.auth.errorNetwork;
+      case "rate_limit":
+        return t.auth.errorRateLimit;
+      default:
+        return fallback || t.auth.errorGeneric;
+    }
+  }
+
   async function submit() {
     if (!isValid || submitting) return;
     setSubmitting(true);
@@ -35,7 +53,7 @@ export default function Login() {
     if (res.ok) {
       toast.success(mode === "signup" ? t.auth.toastAccountCreated : t.auth.toastWelcomeBack);
     } else {
-      setError(res.error);
+      setError(localizeAuthError(res.code, res.error));
     }
   }
 

@@ -51,7 +51,10 @@ export const ZH: Translations = {
     "toastAccountCreated": "账户已创建",
     "errorInvalidCredentials": "无效的电子邮件或密码。",
     "errorUserExists": "该电子邮件已存在账户。",
-    "errorWeakPassword": "密码太弱 — 至少使用 6 个字符。"
+    "errorWeakPassword": "密码太弱 — 至少使用 6 个字符。",
+    "errorNetwork": "无法连接 — 请检查网络后重试。",
+    "errorRateLimit": "尝试次数过多，请一分钟后再试。",
+    "errorGeneric": "出了点问题，请重试。"
   },
   "onboarding": {
     "language": {
