@@ -50,3 +50,7 @@ scripts/strings.*.partial.json
 
 # Design source screens (not part of the app build)
 prof_designs/new_design_screens/
+
+# Never commit archives/dumps (app.zip once leaked .env to GitHub)
+*.zip
+*.stackdump
