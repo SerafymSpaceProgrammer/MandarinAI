@@ -56,8 +56,8 @@ async function checkAndIncrementQuota(
       },
       body: JSON.stringify({
         p_user_id: userId,
-        p_function_name: FN_NAME,
-        p_free_limit: FREE_DAILY_LIMIT,
+        p_function: FN_NAME,
+        p_limit: FREE_DAILY_LIMIT,
       }),
     });
     if (!res.ok) {

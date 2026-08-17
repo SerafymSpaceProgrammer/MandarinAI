@@ -14,6 +14,7 @@ export const RU: Translations = {
     "skip": "Пропустить",
     "loading": "Загрузка…",
     "error": "Что-то пошло не так",
+    "connectionError": "Нет связи с сервером — проверьте интернет и попробуйте ещё раз.",
     "retry": "Попробуйте снова",
     "close": "Закрыть",
     "yes": "Да",
@@ -22,6 +23,11 @@ export const RU: Translations = {
     "search": "Поиск",
     "minutesShort": "{n} мин",
     "daysShort": "{n}д"
+  },
+
+  "reminders": {
+    "title": "Время китайского! 中文时间",
+    "body": "Несколько минут практики — и твоя серия жива."
   },
   "tabs": {
     "home": "Главная",
@@ -291,6 +297,7 @@ export const RU: Translations = {
     "statThisMonth": "за месяц",
     "statCharacters": "иероглифов",
     "statUnlimited": "без лимита",
+    "statPerDay": "в день",
     "lastAttemptLabel": "ПОСЛЕДНЯЯ ПОПЫТКА",
     "lastAttemptRepeatA11y": "Повторить сценарий {title}",
     "lastAttemptMeta": "Сценарий «{title}» · HSK {n}",

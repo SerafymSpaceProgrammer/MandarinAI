@@ -11,13 +11,16 @@ import {
 } from "@expo-google-fonts/noto-serif-sc";
 import { useFonts } from "expo-font";
 import { Stack, usePathname, useRouter, useSegments } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { BrandLoader, ToastProvider } from "@/components/ui";
-import { I18nProvider } from "@/i18n/i18n";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { BrandLoader, Button, Text, ToastProvider } from "@/components/ui";
+import { I18nProvider, useT } from "@/i18n/i18n";
 import { configurePlaybackMode } from "@/lib/audioMode";
+import { syncDailyReminder } from "@/lib/reminders";
 import { initRevenueCat } from "@/lib/revenuecat";
 import { applyScrollDefaults } from "@/lib/scrollDefaults";
 import { useUserStore } from "@/stores/userStore";
@@ -53,19 +56,21 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaProvider>
-        <I18nProvider>
-          <ThemeProvider>
-            <ToastProvider>
-              <AuthGate>
-                <Stack
-                  screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }}
-                />
-              </AuthGate>
-            </ToastProvider>
-          </ThemeProvider>
-        </I18nProvider>
-      </SafeAreaProvider>
+      <ErrorBoundary>
+        <SafeAreaProvider>
+          <I18nProvider>
+            <ThemeProvider>
+              <ToastProvider>
+                <AuthGate>
+                  <Stack
+                    screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }}
+                  />
+                </AuthGate>
+              </ToastProvider>
+            </ThemeProvider>
+          </I18nProvider>
+        </SafeAreaProvider>
+      </ErrorBoundary>
     </GestureHandlerRootView>
   );
 }
@@ -85,11 +90,22 @@ function AuthGate({ children }: { children: React.ReactNode }) {
   const initializing = useUserStore((s) => s.initializing);
   const session = useUserStore((s) => s.session);
   const profile = useUserStore((s) => s.profile);
+  const profileError = useUserStore((s) => s.profileError);
   const bootstrap = useUserStore((s) => s.bootstrap);
 
   useEffect(() => {
     bootstrap();
   }, [bootstrap]);
+
+  // Keep the daily study reminder in sync with the profile settings —
+  // scheduling is idempotent (cancel + re-add), so re-running is cheap.
+  useEffect(() => {
+    void syncDailyReminder(profile);
+  }, [
+    profile?.notification_enabled,
+    profile?.notification_time,
+    profile?.native_language,
+  ]);
 
   useEffect(() => {
     if (initializing) return;
@@ -116,9 +132,52 @@ function AuthGate({ children }: { children: React.ReactNode }) {
     return <BrandLoader />;
   }
 
+  // Signed in but the profile fetch failed (offline / backend unreachable).
+  // Without this branch the effect above never navigates and the user is
+  // stuck on the splash spinner forever.
+  if (session && !profile && profileError) {
+    return <ConnectionError />;
+  }
+
   // theme is still needed for the rest of the tree to consume — referenced
   // by useTheme() elsewhere. We just don't render anything theme-bound here
   // anymore now that BrandLoader pulls its own theme.
   void theme;
   return <>{children}</>;
+}
+
+/** Full-screen offline state with a retry button, shown by AuthGate. */
+function ConnectionError() {
+  const theme = useTheme();
+  const t = useT();
+  const retryProfile = useUserStore((s) => s.retryProfile);
+  const [retrying, setRetrying] = useState(false);
+
+  async function retry() {
+    setRetrying(true);
+    await retryProfile();
+    setRetrying(false);
+  }
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: theme.spacing["2xl"],
+        gap: theme.spacing.lg,
+        backgroundColor: theme.colors.bg,
+      }}
+    >
+      <Text variant="display">📵</Text>
+      <Text variant="h2" style={{ textAlign: "center" }}>
+        {t.common.error}
+      </Text>
+      <Text variant="body" color="secondary" style={{ textAlign: "center" }}>
+        {t.common.connectionError}
+      </Text>
+      <Button label={t.common.retry} loading={retrying} onPress={retry} />
+    </View>
+  );
 }

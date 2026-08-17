@@ -9,7 +9,8 @@ import { logger } from "@/lib/logger";
 import { useOnboardingStore } from "@/stores/onboardingStore";
 import { useTheme } from "@/theme";
 
-const DEFAULT_TIME = "19:00:00";
+// Must be one of TIME_OPTIONS below, or the first paint has no chip selected.
+const DEFAULT_TIME = "18:00:00";
 
 export default function NotificationsStep() {
   const theme = useTheme();

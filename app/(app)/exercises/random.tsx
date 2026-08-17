@@ -9,7 +9,13 @@ import { useT } from "@/i18n/i18n";
 import { useUserStore } from "@/stores/userStore";
 import { useTheme } from "@/theme";
 
-const ALL_TYPES = Object.keys(EXERCISE_META) as ExerciseType[];
+// tone-pronounce is deliberately disabled (its Learn tile is commented out —
+// the on-device scorer is too brittle). Keep it out of the random pool too,
+// or the sprint can replace-navigate straight into the hidden exercise.
+const DISABLED_TYPES: ReadonlyArray<ExerciseType> = ["tone-pronounce"];
+const ALL_TYPES = (Object.keys(EXERCISE_META) as ExerciseType[]).filter(
+  (type) => !DISABLED_TYPES.includes(type),
+);
 
 type Status = "loading" | "no_session" | "no_words" | "redirecting";
 

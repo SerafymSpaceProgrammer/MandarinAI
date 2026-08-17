@@ -14,6 +14,7 @@ export const ZH: Translations = {
     "skip": "跳过",
     "loading": "加载中…",
     "error": "出现了问题",
+    "connectionError": "无法连接服务器 — 请检查网络后重试。",
     "retry": "再试一次",
     "close": "关闭",
     "yes": "是",
@@ -22,6 +23,11 @@ export const ZH: Translations = {
     "search": "搜索",
     "minutesShort": "{n} 分钟",
     "daysShort": "{n}天"
+  },
+
+  "reminders": {
+    "title": "该练中文啦！",
+    "body": "每天几分钟，保持你的连胜纪录。"
   },
   "tabs": {
     "home": "首页",
@@ -291,6 +297,7 @@ export const ZH: Translations = {
     "statThisMonth": "本月",
     "statCharacters": "汉字",
     "statUnlimited": "无限制",
+    "statPerDay": "每天",
     "lastAttemptLabel": "最后尝试",
     "lastAttemptRepeatA11y": "重复场景 {title}",
     "lastAttemptMeta": "场景 “{title}” · HSK {n}",

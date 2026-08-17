@@ -83,7 +83,9 @@ export default function Profile() {
           </Text>
         </Card>
 
-        <SubscriptionRow profile={profile} t={t} />
+        {/* v1 ships free: the paywall stays hidden until RevenueCat products,
+            the webhook, and real Pro gating land (v1.1). Re-enable by
+            restoring <SubscriptionRow profile={profile} t={t} /> here. */}
 
         <View style={{ gap: theme.spacing.md }}>
           <SectionLabel

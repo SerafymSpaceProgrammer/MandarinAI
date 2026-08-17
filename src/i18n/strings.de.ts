@@ -14,6 +14,7 @@ export const DE: Translations = {
     "skip": "Überspringen",
     "loading": "Laden…",
     "error": "Etwas ist schiefgelaufen",
+    "connectionError": "Server nicht erreichbar – überprüfe deine Internetverbindung und versuche es erneut.",
     "retry": "Erneut versuchen",
     "close": "Schließen",
     "yes": "Ja",
@@ -22,6 +23,11 @@ export const DE: Translations = {
     "search": "Suche",
     "minutesShort": "{n} Min",
     "daysShort": "{n}T"
+  },
+
+  "reminders": {
+    "title": "Zeit für Mandarin! 中文时间",
+    "body": "Ein paar Minuten Übung halten deine Serie am Leben."
   },
   "tabs": {
     "home": "Start",
@@ -291,6 +297,7 @@ export const DE: Translations = {
     "statThisMonth": "diesen Monat",
     "statCharacters": "Zeichen",
     "statUnlimited": "keine Begrenzung",
+    "statPerDay": "pro Tag",
     "lastAttemptLabel": "LETZTER VERSUCH",
     "lastAttemptRepeatA11y": "Szenario {title} wiederholen",
     "lastAttemptMeta": "Szenario “{title}” · HSK {n}",

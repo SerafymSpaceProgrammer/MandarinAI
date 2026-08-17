@@ -182,9 +182,8 @@ export default function Practice() {
               Icon={MessageSquare}
               title={t.practiceTab.modeChat}
               subtitle={t.practiceTab.modeChatSub}
-              statNumber="PRO"
-              statLabel={t.practiceTab.statUnlimited}
-              proBadge
+              statNumber="30"
+              statLabel={t.practiceTab.statPerDay}
               onPress={() => router.push("/(app)/practice/chat")}
             />
           </View>

@@ -14,6 +14,7 @@ export const UK: Translations = {
     "skip": "Пропустити",
     "loading": "Завантаження…",
     "error": "Щось пішло не так",
+    "connectionError": "Немає зв'язку з сервером — перевірте інтернет і спробуйте ще раз.",
     "retry": "Спробуйте ще раз",
     "close": "Закрити",
     "yes": "Так",
@@ -22,6 +23,11 @@ export const UK: Translations = {
     "search": "Пошук",
     "minutesShort": "{n} хв",
     "daysShort": "{n}д"
+  },
+
+  "reminders": {
+    "title": "Час китайської! 中文时间",
+    "body": "Кілька хвилин практики — і твоя серія жива."
   },
   "tabs": {
     "home": "Головна",
@@ -291,6 +297,7 @@ export const UK: Translations = {
     "statThisMonth": "за місяць",
     "statCharacters": "ієрогліфів",
     "statUnlimited": "без ліміту",
+    "statPerDay": "на день",
     "lastAttemptLabel": "ОСТАННЯ СПРОБА",
     "lastAttemptRepeatA11y": "Повторити сценарій {title}",
     "lastAttemptMeta": "Сценарій «{title}» · HSK {n}",

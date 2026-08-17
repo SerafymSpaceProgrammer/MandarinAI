@@ -642,8 +642,9 @@ function PlanRow({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Notification bell — appears in the header. The dot is purely cosmetic for
-// now; flips on whenever the user has due reviews to glance at.
+// Notification bell — appears in the header. The dot flips on when reviews
+// are due; tapping it opens the review session (a dead button with a badge
+// reads as broken and is an App Review magnet).
 // ─────────────────────────────────────────────────────────────────────────────
 function NotificationBell({ hasDot }: { hasDot: boolean }) {
   const theme = useTheme();
@@ -651,10 +652,7 @@ function NotificationBell({ hasDot }: { hasDot: boolean }) {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel="Notifications"
-      onPress={() => {
-        // Notifications hub will land later; for now the bell is a visual
-        // anchor that matches the design without misleading the user.
-      }}
+      onPress={() => router.push("/(app)/vocab/review")}
       style={({ pressed }) => ({
         width: 44,
         height: 44,

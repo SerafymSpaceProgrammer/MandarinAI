@@ -14,6 +14,7 @@ export const PT: Translations = {
     "skip": "Saltar",
     "loading": "A carregar…",
     "error": "Algo correu mal",
+    "connectionError": "Sem ligação ao servidor — verifique a sua internet e tente novamente.",
     "retry": "Tente novamente",
     "close": "Fechar",
     "yes": "Sim",
@@ -22,6 +23,11 @@ export const PT: Translations = {
     "search": "Pesquisar",
     "minutesShort": "{n} min",
     "daysShort": "{n}d"
+  },
+
+  "reminders": {
+    "title": "Hora do mandarim! 中文时间",
+    "body": "Alguns minutos de prática mantêm a sua sequência viva."
   },
   "tabs": {
     "home": "Início",
@@ -291,6 +297,7 @@ export const PT: Translations = {
     "statThisMonth": "este mês",
     "statCharacters": "caracteres",
     "statUnlimited": "sem limite",
+    "statPerDay": "por dia",
     "lastAttemptLabel": "ÚLTIMA TENTATIVA",
     "lastAttemptRepeatA11y": "Repetir cenário {title}",
     "lastAttemptMeta": "Cenário “{title}” · HSK {n}",

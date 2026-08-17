@@ -11,11 +11,19 @@ type UserState = {
   initializing: boolean;
   session: Session | null;
   profile: Profile | null;
+  /**
+   * true when we have a session but the profile fetch failed (offline,
+   * backend down). AuthGate shows a retry screen instead of hanging on
+   * the splash spinner forever.
+   */
+  profileError: boolean;
 
   /** Called once from the root layout. Safe to call multiple times. */
   bootstrap: () => Promise<void>;
   setProfile: (profile: Profile | null) => void;
   refreshProfile: () => Promise<void>;
+  /** Re-attempt the failed profile fetch from the connection-error screen. */
+  retryProfile: () => Promise<void>;
 };
 
 let bootstrapped = false;
@@ -24,6 +32,7 @@ export const useUserStore = create<UserState>((set, get) => ({
   initializing: true,
   session: null,
   profile: null,
+  profileError: false,
 
   bootstrap: async () => {
     if (bootstrapped) return;
@@ -39,7 +48,12 @@ export const useUserStore = create<UserState>((set, get) => ({
       // our Supabase user id (and the webhook can route it correctly).
       await identifyRevenueCat(session.user.id);
     }
-    set({ session, profile, initializing: false });
+    set({
+      session,
+      profile,
+      profileError: !!session && profile === null,
+      initializing: false,
+    });
 
     supabase.auth.onAuthStateChange(async (event, nextSession) => {
       logger.debug("auth event", event);
@@ -63,7 +77,7 @@ export const useUserStore = create<UserState>((set, get) => ({
 
       if (needsProfile) {
         const profile = await fetchOrCreateProfile(nextSession.user.id);
-        set({ profile });
+        set({ profile, profileError: profile === null && !get().profile });
       }
     });
   },
@@ -74,7 +88,16 @@ export const useUserStore = create<UserState>((set, get) => ({
     const session = get().session;
     if (!session) return;
     const profile = await fetchOrCreateProfile(session.user.id);
-    set({ profile });
+    // Keep the last good profile on a transient failure — clobbering it
+    // with null would bounce the user to the connection-error screen.
+    if (profile) set({ profile, profileError: false });
+  },
+
+  retryProfile: async () => {
+    const session = get().session;
+    if (!session) return;
+    const profile = await fetchOrCreateProfile(session.user.id);
+    set({ profile, profileError: profile === null });
   },
 }));
 

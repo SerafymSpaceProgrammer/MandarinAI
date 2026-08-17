@@ -57,8 +57,8 @@ async function checkAndIncrementQuota(
       },
       body: JSON.stringify({
         p_user_id: userId,
-        p_function_name: FN_NAME,
-        p_free_limit: FREE_DAILY_LIMIT,
+        p_function: FN_NAME,
+        p_limit: FREE_DAILY_LIMIT,
       }),
     });
     if (!res.ok) {
@@ -73,6 +73,43 @@ async function checkAndIncrementQuota(
     };
   } catch {
     return { ok: true, used: 0, limit: FREE_DAILY_LIMIT };
+  }
+}
+
+// App Store guideline 1.2: user-facing generative chat must filter
+// objectionable input. Flagged messages never reach the LLM — the tutor
+// answers with a canned redirect in the user's language instead.
+const MODERATION_MSG: Record<string, string> = {
+  en: "Let's keep things friendly and focused on Mandarin 🙂 What would you like to practice?",
+  ru: "Давай останемся в рамках дружелюбного разговора о китайском 🙂 Что хочешь потренировать?",
+  uk: "Залишмося в межах дружньої розмови про китайську 🙂 Що хочеш потренувати?",
+  pl: "Trzymajmy się przyjaznej rozmowy o chińskim 🙂 Co chcesz poćwiczyć?",
+  de: "Lass uns freundlich beim Mandarin-Lernen bleiben 🙂 Was möchtest du üben?",
+  es: "Mantengamos la conversación amistosa y centrada en el chino 🙂 ¿Qué te gustaría practicar?",
+  pt: "Vamos manter a conversa amigável e focada no mandarim 🙂 O que gostaria de praticar?",
+  zh: "我们还是友好地聊中文学习吧 🙂 你想练习什么呢？",
+};
+
+async function isFlaggedByModeration(text: string): Promise<boolean> {
+  try {
+    const res = await fetch("https://api.openai.com/v1/moderations", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ model: "omni-moderation-latest", input: text }),
+    });
+    // Fail open: a moderation outage must not take the tutor down.
+    if (!res.ok) {
+      console.warn("moderation non-2xx", res.status);
+      return false;
+    }
+    const data = (await res.json()) as { results?: Array<{ flagged?: boolean }> };
+    return data.results?.[0]?.flagged ?? false;
+  } catch (err) {
+    console.warn("moderation fetch error", err);
+    return false;
   }
 }
 
@@ -170,6 +207,15 @@ Deno.serve(async (req) => {
 
   if (history.length === 0 || history[history.length - 1].role !== "user") {
     return jsonResponse({ error: "last_message_must_be_user" }, 400);
+  }
+
+  const lastUserMessage = history[history.length - 1].content;
+  if (await isFlaggedByModeration(lastUserMessage)) {
+    const lang = payload.nativeLang ?? "en";
+    return jsonResponse({
+      reply: MODERATION_MSG[lang] ?? MODERATION_MSG.en,
+      moderated: true,
+    });
   }
 
   const quota = await checkAndIncrementQuota(auth.userId);

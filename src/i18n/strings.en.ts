@@ -19,6 +19,7 @@ export const EN = {
     skip: "Skip",
     loading: "Loading…",
     error: "Something went wrong",
+    connectionError: "Can't reach the server — check your internet connection and try again.",
     retry: "Try again",
     close: "Close",
     yes: "Yes",
@@ -27,6 +28,11 @@ export const EN = {
     search: "Search",
     minutesShort: "{n} min",
     daysShort: "{n}d",
+  },
+
+  reminders: {
+    title: "Mandarin time! 中文时间",
+    body: "A few minutes of practice keeps your streak alive.",
   },
 
   tabs: {
@@ -305,6 +311,7 @@ export const EN = {
     statThisMonth: "this month",
     statCharacters: "characters",
     statUnlimited: "no limit",
+    statPerDay: "per day",
     lastAttemptLabel: "LAST ATTEMPT",
     lastAttemptRepeatA11y: "Repeat scenario {title}",
     lastAttemptMeta: "Scenario “{title}” · HSK {n}",
